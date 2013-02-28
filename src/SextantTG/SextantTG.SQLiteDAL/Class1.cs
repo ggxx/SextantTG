@@ -7,5 +7,6 @@ namespace SextantTG.SQLiteDAL
 {
     public class Class1
     {
+
     }
 }
