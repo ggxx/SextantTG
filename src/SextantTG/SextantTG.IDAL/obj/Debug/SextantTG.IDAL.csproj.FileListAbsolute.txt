@@ -3,3 +3,5 @@ E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.IDAL\bin\Debug\Sextan
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.IDAL\obj\Debug\SextantTG.IDAL.csprojResolveAssemblyReference.cache
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.IDAL\obj\Debug\SextantTG.IDAL.dll
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.IDAL\obj\Debug\SextantTG.IDAL.pdb
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.IDAL\bin\Debug\SextantTG.Model.dll
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.IDAL\bin\Debug\SextantTG.Model.pdb

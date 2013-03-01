@@ -39,8 +39,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="Dict\City.cs" />
+    <Compile Include="Dict\Country.cs" />
+    <Compile Include="Dict\Province.cs" />
+    <Compile Include="Entity\Blog.cs" />
+    <Compile Include="Entity\Comment.cs" />
+    <Compile Include="Entity\Favorite.cs" />
+    <Compile Include="Entity\Permission.cs" />
+    <Compile Include="Entity\Picture.cs" />
+    <Compile Include="Entity\Sights.cs" />
+    <Compile Include="Entity\SightsComment.cs" />
+    <Compile Include="Entity\Tour.cs" />
+    <Compile Include="Entity\SubTour.cs" />
+    <Compile Include="Entity\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Entity\Graph1.dgml" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

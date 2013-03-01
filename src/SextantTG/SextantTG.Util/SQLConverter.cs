@@ -4,7 +4,7 @@ using System.Text;
 
 namespace SextantTG.Util
 {
-    public class SQLConvert
+    public class SQLConverter
     {
         /// <summary>
         /// SQL语句转换。

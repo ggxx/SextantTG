@@ -5,7 +5,7 @@ using System.Data;
 
 namespace SextantGT.Util
 {
-    public class TypeConvert
+    public class TypeConverter
     {
         private static System.Globalization.CultureInfo provider = System.Globalization.CultureInfo.InvariantCulture;
 

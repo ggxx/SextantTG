@@ -10,7 +10,7 @@ namespace SexTantTG.DBUtil
     /// <summary>  
     /// 通用数据库访问类，封装了对数据库的常见操作   
     /// </summary>
-    public sealed class DbHelper : IDisposable
+    public sealed class DBHelper : IDisposable
     {
         public string HelperName { get; set; }
         public string ConnectionString { get; private set; }
@@ -19,7 +19,7 @@ namespace SexTantTG.DBUtil
         private DbProviderType provider;
 
 
-        public DbHelper(string connectionString, DbProviderType providerType, string helperName)
+        public DBHelper(string connectionString, DbProviderType providerType, string helperName)
         {
             HelperName = helperName;
             ConnectionString = connectionString;
@@ -51,6 +51,11 @@ namespace SexTantTG.DBUtil
         }
 
 
+        public int ExecuteNonQuery(string sql)
+        {
+            return ExecuteNonQuery(null, sql, null, CommandType.Text);
+        }
+
         public int ExecuteNonQuery(string sql, Dictionary<string, object> parameters)
         {
             return ExecuteNonQuery(null, sql, parameters, CommandType.Text);
@@ -80,6 +85,10 @@ namespace SexTantTG.DBUtil
         }
 
 
+        public DbDataReader ExecuteReader(string sql)
+        {
+            return ExecuteReader(null, sql, null, CommandType.Text);
+        }
 
         public DbDataReader ExecuteReader(string sql, Dictionary<string, object> parameters)
         {
@@ -105,6 +114,10 @@ namespace SexTantTG.DBUtil
         }
 
 
+        public DataTable ExecuteDataTable(string sql)
+        {
+            return ExecuteDataTable(null, sql, null, CommandType.Text);
+        }
 
         public DataTable ExecuteDataTable(string sql, Dictionary<string, object> parameters)
         {
@@ -136,6 +149,10 @@ namespace SexTantTG.DBUtil
         }
 
 
+        public Object ExecuteScalar(string sql)
+        {
+            return ExecuteScalar(null, sql, null, CommandType.Text);
+        }
 
         public Object ExecuteScalar(string sql, Dictionary<string, object> parameters)
         {
@@ -190,7 +207,7 @@ namespace SexTantTG.DBUtil
                 {
                     DbParameter para = command.CreateParameter();
                     para.ParameterName = kvp.Key;
-                    para.Value = TypeConvert.ToDBValue(kvp.Value);
+                    para.Value = TypeConverter.ToDBValue(kvp.Value);
                     command.Parameters.Add(para);
                 }
             }

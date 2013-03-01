@@ -42,8 +42,26 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Class1.cs" />
+    <Compile Include="DictDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\SextantTG.DBUtil\SextantTG.DBUtil.csproj">
+      <Project>{0d10f093-09c6-4f15-b904-8023b55630cf}</Project>
+      <Name>SextantTG.DBUtil</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SextantTG.IDAL\SextantTG.IDAL.csproj">
+      <Project>{7b30ece6-dffb-477f-b0da-58aed795687b}</Project>
+      <Name>SextantTG.IDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SextantTG.Model\SextantTG.Model.csproj">
+      <Project>{2126e95b-3423-462b-a705-04055c1fae39}</Project>
+      <Name>SextantTG.Model</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SextantTG.Util\SextantTG.Util.csproj">
+      <Project>{2bfb5dfd-3bcf-45b9-92d2-e7a24a3343a7}</Project>
+      <Name>SextantTG.Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
