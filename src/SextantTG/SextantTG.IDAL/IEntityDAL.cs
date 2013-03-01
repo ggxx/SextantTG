@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SextantTG.IDAL
 {
-    public class Class1
+    interface IEntityDAL
     {
     }
 }
