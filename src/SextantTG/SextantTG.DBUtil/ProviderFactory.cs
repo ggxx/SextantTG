@@ -1,12 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
-using System.Data;
 using System.Data.Common;
-using System.Reflection;
-using System.Text.RegularExpressions;
 
-namespace SexTantTG.DBUtil
+namespace SextantTG.DbUtil
 {
     /// <summary>  
     /// DbProviderFactory工厂类  
@@ -17,14 +14,14 @@ namespace SexTantTG.DBUtil
         private static Dictionary<DbProviderType, DbProviderFactory> providerFactoies = new Dictionary<DbProviderType, DbProviderFactory>(20);
         static ProviderFactory()
         {
-            //加载已知的数据库访问类的程序集
+            //加载已知的数据库访问类的程序集  
             providerInvariantNames.Add(DbProviderType.SqlClient, "System.Data.SqlClient");
             providerInvariantNames.Add(DbProviderType.SQLite, "System.Data.SQLite");
             providerInvariantNames.Add(DbProviderType.OleDb, "System.Data.OleDb");
             providerInvariantNames.Add(DbProviderType.ODBC, "System.Data.Odbc");
-            //providerInvariantNames.Add(DbProviderType.OracleClient, "System.Data.OracleClient");
-            //providerInvariantNames.Add(DbProviderType.Oracle, "Oracle.DataAccess.Client");
-            //providerInvariantNames.Add(DbProviderType.DevartOracle, "Devart.Data.Oracle");
+            providerInvariantNames.Add(DbProviderType.OracleClient, "System.Data.OracleClient");
+            providerInvariantNames.Add(DbProviderType.Oracle, "Oracle.DataAccess.Client");
+            providerInvariantNames.Add(DbProviderType.DevartOracle, "Devart.Data.Oracle");
             //providerInvariantNames.Add(DbProviderType.MySql, "MySql.Data.MySqlClient");
             //providerInvariantNames.Add(DbProviderType.Firebird, "FirebirdSql.Data.Firebird");
             //providerInvariantNames.Add(DbProviderType.PostgreSql, "Npgsql");
@@ -78,5 +75,7 @@ namespace SexTantTG.DBUtil
             }
             return factory;
         }
+
+   
     }
 }

@@ -4,13 +4,14 @@ using System.Text;
 using System.Data.Common;
 using System.Data;
 using SextantGT.Util;
+using SextantTG.DbUtil;
 
-namespace SexTantTG.DBUtil
+namespace SexTantTG.DbUtil
 {
     /// <summary>  
     /// 通用数据库访问类，封装了对数据库的常见操作   
     /// </summary>
-    public sealed class DBHelper : IDisposable
+    public sealed class DbHelper : IDisposable
     {
         public string HelperName { get; set; }
         public string ConnectionString { get; private set; }
@@ -18,8 +19,19 @@ namespace SexTantTG.DBUtil
         private DbProviderFactory providerFactory;
         private DbProviderType provider;
 
+        public DbHelper(string connectionString, DbProviderType providerType)
+        {
+            HelperName = "";
+            ConnectionString = connectionString;
+            provider = providerType;
+            providerFactory = ProviderFactory.GetDbProviderFactory(providerType);
+            if (providerFactory == null)
+            {
+                throw new ArgumentException("Can't load DbProviderFactory for given value of providerType");
+            }
+        }
 
-        public DBHelper(string connectionString, DbProviderType providerType, string helperName)
+        public DbHelper(string connectionString, DbProviderType providerType, string helperName)
         {
             HelperName = helperName;
             ConnectionString = connectionString;

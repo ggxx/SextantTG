@@ -1,15 +1,14 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>8.0.30703</ProductVersion>
-    <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{E8DB7C60-3532-4CE4-B527-9EE4270B5890}</ProjectGuid>
+    <ProjectGuid>{6067CAE1-406C-44F2-8B68-823595B491C5}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SextantTG.SQLiteDAL</RootNamespace>
-    <AssemblyName>SextantTG.SQLiteDAL</AssemblyName>
+    <RootNamespace>SextantTG.Services</RootNamespace>
+    <AssemblyName>SextantTG.Services</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -32,36 +31,20 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
-    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
-    <Reference Include="System.Data.SQLite">
-      <HintPath>D:\Program Files\SQLite\2008\bin\System.Data.SQLite.dll</HintPath>
-    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlogDAL.cs" />
+    <Compile Include="BlogServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SextantTG.ActiveRecord\SextantTG.ActiveRecord.csproj">
-      <Project>{dd4377a0-3082-4f4e-bf11-fd95d6b6b798}</Project>
-      <Name>SextantTG.ActiveRecord</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SextantTG.DBUtil\SextantTG.DbUtil.csproj">
-      <Project>{0d10f093-09c6-4f15-b904-8023b55630cf}</Project>
-      <Name>SextantTG.DbUtil</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SextantTG.IDAL\SextantTG.IDAL.csproj">
       <Project>{7b30ece6-dffb-477f-b0da-58aed795687b}</Project>
       <Name>SextantTG.IDAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SextantTG.Util\SextantTG.Util.csproj">
-      <Project>{2bfb5dfd-3bcf-45b9-92d2-e7a24a3343a7}</Project>
-      <Name>SextantTG.Util</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

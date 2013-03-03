@@ -39,14 +39,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IDictDAL.cs" />
-    <Compile Include="IEntityDAL.cs" />
+    <Compile Include="IBlogDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SextantTG.Model\SextantTG.Model.csproj">
-      <Project>{2126e95b-3423-462b-a705-04055c1fae39}</Project>
-      <Name>SextantTG.Model</Name>
+    <ProjectReference Include="..\SextantTG.ActiveRecord\SextantTG.ActiveRecord.csproj">
+      <Project>{dd4377a0-3082-4f4e-bf11-fd95d6b6b798}</Project>
+      <Name>SextantTG.ActiveRecord</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
