@@ -7,6 +7,7 @@ using SextantTG.ActiveRecord;
 using SexTantTG.DbUtil;
 using System.Data.Common;
 using SextantGT.Util;
+using SextantTG.Util;
 
 namespace SextantTG.SQLiteDAL
 {
@@ -23,12 +24,12 @@ namespace SextantTG.SQLiteDAL
         private static readonly string SELECT___USER_ID = "select * from stg_blog where user_id = :UserId";
         private static readonly string SELECT___SIGHTS_ID = "select * from stg_blog where sights_id = :SightsId";
         private static readonly string SELECT___USER_ID__SIGHTS_ID = "select * from stg_blog where user_id = :UserId and sights_id = :SightsId";
-        
+        private static readonly string SELECT___TOUR_ID__SUB_TOUR_ID = "select * from stg_blog where tour_id = :TourId and sub_tour_id = :SubTourId";
         
         private static readonly string SELECT___BLOG_ID = "select * from stg_blog where blog_id = :BlogId";
 
-        private static readonly string INSERT = "insert into stg_blog(blog_id) values(:blog_id, )";
-        private static readonly string UPDATE = "update stg_blog set  where ";
+        private static readonly string INSERT = "insert into stg_blog(blog_id, user_id, tour_id, sub_tour_id, content, creating_time) values(:BlogId, :UserId, :TourId, :SubTourId, :Content, :CreatingTime)";
+        private static readonly string UPDATE = "update stg_blog set user_id = :UserId, tour_id = :TourId, sub_tour_id = :SubTourId, content = :Content, creating_time = :CreatingTime where blog_id = :BlogId";
         private static readonly string DELETE = "delete from stg_blog where blog_id = :BlogId";
 
         private Blog BuildBlogByReader(DbDataReader r)
@@ -103,6 +104,22 @@ namespace SextantTG.SQLiteDAL
             return blogs;
         }
 
+        public List<Blog> GetBlogsBuTourIdAndSubTourId(string tourId, string subTourId)
+        {
+            List<Blog> blogs = new List<Blog>();
+            Dictionary<string, object> pars = new Dictionary<string, object>();
+            pars.Add("TourId", tourId);
+            pars.Add("SubTourId", subTourId);
+            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___TOUR_ID__SUB_TOUR_ID, pars))
+            {
+                while (r.Read())
+                {
+                    blogs.Add(BuildBlogByReader(r));
+                }
+            }
+            return blogs;
+        }
+
         public Blog GetBlogById(string blogId)
         {
             Blog blog = null;
@@ -118,19 +135,38 @@ namespace SextantTG.SQLiteDAL
             return blog;
         }
 
-        public bool CreateBlog(Blog blog, DbTransaction trans)
+        public int InsertBlog(Blog blog, DbTransaction trans)
         {
-            throw new NotImplementedException();
+            blog.BlogId = StringHelper.CreateGuid();
+            blog.CreatingTime = DateTime.Now;
+
+            Dictionary<string, object> pars = new Dictionary<string, object>();
+            pars.Add("BlogId", blog.BlogId);
+            pars.Add("UserId", blog.UserId);
+            pars.Add("TourId", blog.TourId);
+            pars.Add("SubTourId", blog.SubTourId);
+            pars.Add("Content", blog.Content);
+            pars.Add("CreatingTime", blog.CreatingTime);
+            return dbHelper.ExecuteNonQuery(trans, INSERT, pars);
         }
 
-        public bool UpdateBlog(Blog blog, DbTransaction trans)
+        public int UpdateBlog(Blog blog, DbTransaction trans)
         {
-            throw new NotImplementedException();
+            Dictionary<string, object> pars = new Dictionary<string, object>();
+            pars.Add("BlogId", blog.BlogId);
+            pars.Add("UserId", blog.UserId);
+            pars.Add("TourId", blog.TourId);
+            pars.Add("SubTourId", blog.SubTourId);
+            pars.Add("Content", blog.Content);
+            pars.Add("CreatingTime", blog.CreatingTime);
+            return dbHelper.ExecuteNonQuery(trans, UPDATE, pars);
         }
 
-        public bool DeleteBlogById(string blogId, DbTransaction trans)
+        public int DeleteBlogById(string blogId, DbTransaction trans)
         {
-            throw new NotImplementedException();
+            Dictionary<string, object> pars = new Dictionary<string, object>();
+            pars.Add("BlogId", blogId);
+            return dbHelper.ExecuteNonQuery(trans, DELETE, pars);
         }
     }
 }

@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{6067CAE1-406C-44F2-8B68-823595B491C5}</ProjectGuid>
+    <ProjectGuid>{A8D6C61A-6C22-438A-99FF-A598575D6B6B}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SextantTG.Services</RootNamespace>
-    <AssemblyName>SextantTG.Services</AssemblyName>
+    <RootNamespace>SextantTG.IServices</RootNamespace>
+    <AssemblyName>SextantTG.IServices</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -38,21 +38,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BlogService.cs" />
+    <Compile Include="IBlogService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SextantTG.ActiveRecord\SextantTG.ActiveRecord.csproj">
       <Project>{dd4377a0-3082-4f4e-bf11-fd95d6b6b798}</Project>
       <Name>SextantTG.ActiveRecord</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SextantTG.IDAL\SextantTG.IDAL.csproj">
-      <Project>{7b30ece6-dffb-477f-b0da-58aed795687b}</Project>
-      <Name>SextantTG.IDAL</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SextantTG.IServices\SextantTG.IServices.csproj">
-      <Project>{a8d6c61a-6c22-438a-99ff-a598575d6b6b}</Project>
-      <Name>SextantTG.IServices</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -11,12 +11,12 @@ namespace SextantTG.DbUtil
     {
         SqlClient,
         SQLite,
+        OleDb,
+        ODBC,
         OracleClient,
         Oracle,
-        ODBC,
-        OleDb,
-        DevartOracle
-        //MySql,
+        DevartOracle,
+        MySql
         //Firebird,
         //PostgreSql,
         //DB2,

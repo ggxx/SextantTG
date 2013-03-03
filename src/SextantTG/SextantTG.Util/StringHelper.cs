@@ -35,5 +35,10 @@ namespace SextantTG.Util
             }
             return val + prefix + array[i] + suffix;
         }
+
+        public static string CreateGuid()
+        {
+            return Guid.NewGuid().ToString("N");
+        }
     }
 }

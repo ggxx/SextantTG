@@ -5,7 +5,7 @@ using System.Text;
 
 namespace SextantTG.ActiveRecord
 {
-    public class SightsComment
+    public class UserComment
     {
         /// <summary>
         /// 评论ID
@@ -22,7 +22,9 @@ namespace SextantTG.ActiveRecord
         /// </summary>
         public DateTime? CreatingTime { get; set; }
 
-
-        public string SightsId { get; set; }
+        /// <summary>
+        /// 被评论人
+        /// </summary>
+        public string UserId { get; set; }
     }
 }

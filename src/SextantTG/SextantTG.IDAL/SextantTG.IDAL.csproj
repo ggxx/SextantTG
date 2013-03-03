@@ -40,6 +40,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IBlogDAL.cs" />
+    <Compile Include="ICityDAL.cs" />
+    <Compile Include="ICountryDAL.cs" />
+    <Compile Include="IDataContext.cs" />
+    <Compile Include="IPictureDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

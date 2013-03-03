@@ -22,7 +22,7 @@ namespace SextantTG.DbUtil
             providerInvariantNames.Add(DbProviderType.OracleClient, "System.Data.OracleClient");
             providerInvariantNames.Add(DbProviderType.Oracle, "Oracle.DataAccess.Client");
             providerInvariantNames.Add(DbProviderType.DevartOracle, "Devart.Data.Oracle");
-            //providerInvariantNames.Add(DbProviderType.MySql, "MySql.Data.MySqlClient");
+            providerInvariantNames.Add(DbProviderType.MySql, "MySql.Data.MySqlClient");
             //providerInvariantNames.Add(DbProviderType.Firebird, "FirebirdSql.Data.Firebird");
             //providerInvariantNames.Add(DbProviderType.PostgreSql, "Npgsql");
             //providerInvariantNames.Add(DbProviderType.DB2, "IBM.Data.DB2.iSeries");

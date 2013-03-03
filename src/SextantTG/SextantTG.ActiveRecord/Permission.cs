@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace SextantTG.DomainModel
+namespace SextantTG.ActiveRecord
 {
     /// <summary>
     /// 权限实体类

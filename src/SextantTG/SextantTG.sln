@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SextantTG.Services", "Sexta
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SextantTG.ActiveRecord", "SextantTG.ActiveRecord\SextantTG.ActiveRecord.csproj", "{DD4377A0-3082-4F4E-BF11-FD95D6B6B798}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SextantTG.IServices", "SextantTG.IServices\SextantTG.IServices.csproj", "{A8D6C61A-6C22-438A-99FF-A598575D6B6B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -87,6 +89,16 @@ Global
 		{DD4377A0-3082-4F4E-BF11-FD95D6B6B798}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{DD4377A0-3082-4F4E-BF11-FD95D6B6B798}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{DD4377A0-3082-4F4E-BF11-FD95D6B6B798}.Release|Win32.ActiveCfg = Release|Any CPU
+		{A8D6C61A-6C22-438A-99FF-A598575D6B6B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A8D6C61A-6C22-438A-99FF-A598575D6B6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A8D6C61A-6C22-438A-99FF-A598575D6B6B}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{A8D6C61A-6C22-438A-99FF-A598575D6B6B}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{A8D6C61A-6C22-438A-99FF-A598575D6B6B}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{A8D6C61A-6C22-438A-99FF-A598575D6B6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A8D6C61A-6C22-438A-99FF-A598575D6B6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A8D6C61A-6C22-438A-99FF-A598575D6B6B}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{A8D6C61A-6C22-438A-99FF-A598575D6B6B}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{A8D6C61A-6C22-438A-99FF-A598575D6B6B}.Release|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -98,5 +110,6 @@ Global
 		{2BFB5DFD-3BCF-45B9-92D2-E7A24A3343A7} = {8D435E3F-331D-4C47-8DF7-C7EB37B4018F}
 		{6067CAE1-406C-44F2-8B68-823595B491C5} = {8D435E3F-331D-4C47-8DF7-C7EB37B4018F}
 		{DD4377A0-3082-4F4E-BF11-FD95D6B6B798} = {8D435E3F-331D-4C47-8DF7-C7EB37B4018F}
+		{A8D6C61A-6C22-438A-99FF-A598575D6B6B} = {8D435E3F-331D-4C47-8DF7-C7EB37B4018F}
 	EndGlobalSection
 EndGlobal

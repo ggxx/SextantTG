@@ -1,0 +1,38 @@
+﻿using SextantTG.ActiveRecord;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+
+namespace SextantTG.IServices
+{
+    public interface IBlogService
+    {
+        List<Blog> GetBlogsForUser(string userId);
+        List<Blog> GetBlogsForSights(string sightsId);
+        List<Blog> GetBlogsForSubTour(string tourId, string subTourId);
+
+        bool CreateBlog(Blog blog, List<Picture> pics, string userId, out string message);
+        bool UpdateBlog(Blog blog, List<Picture> pics, string userId, out string message);
+        bool DeleteBlog(string blogId, out string message);
+    }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
