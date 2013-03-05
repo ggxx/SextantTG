@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Data.Common;
 using System.Linq;
 using System.Text;
+using System.Configuration;
 
 namespace SextantTG.SQLiteDAL
 {
@@ -14,7 +15,7 @@ namespace SextantTG.SQLiteDAL
 
         public DataContext()
         {
-            this.dbHelper = new DbHelper(System.Configuration.ConfigurationManager.ConnectionStrings["SQLiteConnection"].ConnectionString, DbUtil.DbProviderType.SQLite);
+            this.dbHelper = new DbHelper(ConfigurationManager.ConnectionStrings["SQLiteConnection"].ConnectionString, DbUtil.DbProviderType.SQLite);
         }
 
         public DataContext(string connectionString)
@@ -25,6 +26,11 @@ namespace SextantTG.SQLiteDAL
         public DbConnection GetConnection()
         {
             return this.dbHelper.GetDbConnection();
+        }
+
+        public void Dispose()
+        {
+            this.dbHelper = null;
         }
     }
 }

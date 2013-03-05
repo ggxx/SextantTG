@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // 有关程序集的常规信息通过以下
 // 特性集控制。更改这些特性值可修改
 // 与程序集关联的信息。
-[assembly: AssemblyTitle("SextantTG.ActiveRecord")]
+[assembly: AssemblyTitle("SextantTG.Win")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("SextantTG.ActiveRecord")]
+[assembly: AssemblyProduct("SextantTG.Win")]
 [assembly: AssemblyCopyright("Copyright © Sextant Studio 2013")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 如果此项目向 COM 公开，则下列 GUID 用于类型库的 ID
-[assembly: Guid("142545d3-1d58-408a-b44d-bba40aabc494")]
+[assembly: Guid("876b0c2e-8ebd-45da-b3f1-bdf5907f8b57")]
 
 // 程序集的版本信息由下面四个值组成:
 //

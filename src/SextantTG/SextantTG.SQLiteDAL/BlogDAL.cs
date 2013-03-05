@@ -8,6 +8,7 @@ using SexTantTG.DbUtil;
 using System.Data.Common;
 using SextantGT.Util;
 using SextantTG.Util;
+using System.Configuration;
 
 namespace SextantTG.SQLiteDAL
 {
@@ -17,7 +18,7 @@ namespace SextantTG.SQLiteDAL
 
         public BlogDAL()
         {
-            this.dbHelper = new DbHelper(System.Configuration.ConfigurationManager.ConnectionStrings["SQLiteConnection"].ConnectionString, DbUtil.DbProviderType.SQLite);
+            this.dbHelper = new DbHelper(ConfigurationManager.ConnectionStrings["SQLiteConnection"].ConnectionString, DbUtil.DbProviderType.SQLite);
         }
 
         public BlogDAL(string connectionString)
@@ -172,6 +173,11 @@ namespace SextantTG.SQLiteDAL
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("BlogId", blogId);
             return dbHelper.ExecuteNonQuery(trans, DELETE, pars);
+        }
+
+        public void Dispose()
+        {
+            this.dbHelper = null;
         }
     }
 }

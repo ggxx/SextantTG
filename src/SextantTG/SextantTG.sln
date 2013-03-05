@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 2012
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2010
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{8D435E3F-331D-4C47-8DF7-C7EB37B4018F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{8ECE2436-400E-4192-A762-13D9393B8005}"
@@ -20,6 +20,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SextantTG.IServices", "SextantTG.IServices\SextantTG.IServices.csproj", "{A8D6C61A-6C22-438A-99FF-A598575D6B6B}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SextantTG.ServerTest", "SextantTG.ServerTest\SextantTG.ServerTest.csproj", "{8DB06A46-1F6A-43B8-B885-E3B8C26F24A6}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SextantTG.Win", "SextantTG.Win\SextantTG.Win.csproj", "{AB930CED-76D7-4789-9EC9-F1BEA06F7ED0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -111,6 +113,16 @@ Global
 		{8DB06A46-1F6A-43B8-B885-E3B8C26F24A6}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
 		{8DB06A46-1F6A-43B8-B885-E3B8C26F24A6}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{8DB06A46-1F6A-43B8-B885-E3B8C26F24A6}.Release|Win32.ActiveCfg = Release|Any CPU
+		{AB930CED-76D7-4789-9EC9-F1BEA06F7ED0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AB930CED-76D7-4789-9EC9-F1BEA06F7ED0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AB930CED-76D7-4789-9EC9-F1BEA06F7ED0}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{AB930CED-76D7-4789-9EC9-F1BEA06F7ED0}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{AB930CED-76D7-4789-9EC9-F1BEA06F7ED0}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{AB930CED-76D7-4789-9EC9-F1BEA06F7ED0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AB930CED-76D7-4789-9EC9-F1BEA06F7ED0}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AB930CED-76D7-4789-9EC9-F1BEA06F7ED0}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{AB930CED-76D7-4789-9EC9-F1BEA06F7ED0}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{AB930CED-76D7-4789-9EC9-F1BEA06F7ED0}.Release|Win32.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -124,5 +136,6 @@ Global
 		{DD4377A0-3082-4F4E-BF11-FD95D6B6B798} = {8D435E3F-331D-4C47-8DF7-C7EB37B4018F}
 		{A8D6C61A-6C22-438A-99FF-A598575D6B6B} = {8D435E3F-331D-4C47-8DF7-C7EB37B4018F}
 		{8DB06A46-1F6A-43B8-B885-E3B8C26F24A6} = {8D435E3F-331D-4C47-8DF7-C7EB37B4018F}
+		{AB930CED-76D7-4789-9EC9-F1BEA06F7ED0} = {8ECE2436-400E-4192-A762-13D9393B8005}
 	EndGlobalSection
 EndGlobal

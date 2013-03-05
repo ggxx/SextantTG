@@ -13,7 +13,6 @@ namespace SextantTG.ServerTest
             
             //这里是Factory设计模式
             IBlogDAL blogDal = IDAL.DALFactory.CreateDAL<IBlogDAL>();
-            
             if (blogDal != null)
             {
                 System.Console.WriteLine(blogDal.GetType().ToString());
@@ -22,6 +21,19 @@ namespace SextantTG.ServerTest
             {
                 System.Console.WriteLine("null");
             }
+
+
+
+
+
+
+
+
+
+
+
+
+
             System.Console.Read();
 
         }

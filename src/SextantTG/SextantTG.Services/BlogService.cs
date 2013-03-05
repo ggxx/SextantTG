@@ -10,16 +10,17 @@ using System.Data.Common;
 
 namespace SextantTG.Services
 {
-    public class BlogService// : IBlogService
+    public class BlogService : IBlogService
     {
-        IDataContext dataContext = null;
-        IBlogDAL blogDal = null;
-        
+        private IDataContext dataContext = null;
+        private IBlogDAL blogDal = null;
+        private IPictureDAL picDal = null;
 
-        public BlogService(string connectionString, string connectionProvider)
+        public BlogService()
         {
-            //dataContext = Factory.CreateDataContext();
-            //blogDal = Factory.CreateBlogDal();
+            dataContext = DALFactory.CreateDAL<IDataContext>();
+            blogDal = DALFactory.CreateDAL<IBlogDAL>();
+            picDal = DALFactory.CreateDAL<IPictureDAL>();
         }
 
         public List<Blog> GetBlogsForUser(string userId)
@@ -54,7 +55,7 @@ namespace SextantTG.Services
                         blogDal.UpdateBlog(blog, trans);
                         foreach (Picture pic in pics)
                         {
-                            
+                            picDal.InsertPicture(pic, trans);
                         }
 
                         trans.Commit();
@@ -71,7 +72,7 @@ namespace SextantTG.Services
             }
         }
 
-        public bool DeleteBlog(string blogId, out string message)
+        public bool DeleteBlog(string blogId, bool deletePictures, bool deleteComments, out string message)
         {
             using (DbConnection conn = dataContext.GetConnection())
             {
@@ -93,6 +94,17 @@ namespace SextantTG.Services
                     }
                 }
             }
+        }
+
+        public void Dispose()
+        {
+            this.dataContext.Dispose();
+            this.blogDal.Dispose();
+            this.picDal.Dispose();
+
+            this.dataContext = null;
+            this.blogDal = null;
+            this.picDal = null;
         }
     }
 }

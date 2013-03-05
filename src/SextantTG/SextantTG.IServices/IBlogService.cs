@@ -6,7 +6,7 @@ using System.Text;
 
 namespace SextantTG.IServices
 {
-    public interface IBlogService
+    public interface IBlogService : IBaseService
     {
         List<Blog> GetBlogsForUser(string userId);
         List<Blog> GetBlogsForSights(string sightsId);
@@ -14,7 +14,7 @@ namespace SextantTG.IServices
 
         bool CreateBlog(Blog blog, List<Picture> pics, string userId, out string message);
         bool UpdateBlog(Blog blog, List<Picture> pics, string userId, out string message);
-        bool DeleteBlog(string blogId, out string message);
+        bool DeleteBlog(string blogId, bool deletePictures, bool deleteComments, out string message);
     }
 }
 
