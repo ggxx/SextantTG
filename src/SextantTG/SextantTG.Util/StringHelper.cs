@@ -36,6 +36,11 @@ namespace SextantTG.Util
             return val + prefix + array[i] + suffix;
         }
 
+
+        /// <summary>
+        /// 生成一个32位的GUID字符串
+        /// </summary>
+        /// <returns></returns>
         public static string CreateGuid()
         {
             return Guid.NewGuid().ToString("N");

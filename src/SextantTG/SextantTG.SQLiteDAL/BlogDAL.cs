@@ -15,6 +15,11 @@ namespace SextantTG.SQLiteDAL
     {
         private DbHelper dbHelper = null;
 
+        public BlogDAL()
+        {
+            this.dbHelper = new DbHelper("", DbUtil.DbProviderType.SQLite);
+        }
+
         public BlogDAL(string connectionString)
         {
             this.dbHelper = new DbHelper(connectionString, DbUtil.DbProviderType.SQLite);

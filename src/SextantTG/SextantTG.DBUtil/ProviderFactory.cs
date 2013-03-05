@@ -23,11 +23,11 @@ namespace SextantTG.DbUtil
             providerInvariantNames.Add(DbProviderType.Oracle, "Oracle.DataAccess.Client");
             providerInvariantNames.Add(DbProviderType.DevartOracle, "Devart.Data.Oracle");
             providerInvariantNames.Add(DbProviderType.MySql, "MySql.Data.MySqlClient");
-            //providerInvariantNames.Add(DbProviderType.Firebird, "FirebirdSql.Data.Firebird");
-            //providerInvariantNames.Add(DbProviderType.PostgreSql, "Npgsql");
-            //providerInvariantNames.Add(DbProviderType.DB2, "IBM.Data.DB2.iSeries");
-            //providerInvariantNames.Add(DbProviderType.Informix, "IBM.Data.Informix");
-            //providerInvariantNames.Add(DbProviderType.SqlServerCe, "System.Data.SqlServerCe");
+            providerInvariantNames.Add(DbProviderType.Firebird, "FirebirdSql.Data.Firebird");
+            providerInvariantNames.Add(DbProviderType.PostgreSql, "Npgsql");
+            providerInvariantNames.Add(DbProviderType.DB2, "IBM.Data.DB2.iSeries");
+            providerInvariantNames.Add(DbProviderType.Informix, "IBM.Data.Informix");
+            providerInvariantNames.Add(DbProviderType.SqlServerCe, "System.Data.SqlServerCe");
         }
 
         /// <summary>  
@@ -73,7 +73,7 @@ namespace SextantTG.DbUtil
             {
                 factory = null;
             }
-            return factory;
+            return factory; 
         }
 
    
