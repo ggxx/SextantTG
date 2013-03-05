@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SextantTG.IDAL
 {
-    public interface ICityDAL
+    public interface ICityDAL : IBaseDAL
     {
         List<City> GetCities();
 

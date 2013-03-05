@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SextantTG.IDAL
 {
-    public interface IProvinceDAL
+    public interface IProvinceDAL : IBaseDAL
     {
         List<Province> GetProvinces();
 

@@ -34,18 +34,15 @@ namespace SextantTG.IDAL
         private static readonly string TOURCOMM_DAL = System.Configuration.ConfigurationManager.AppSettings["TOURCOMM_DAL"];
         private static readonly string USER_DAL = System.Configuration.ConfigurationManager.AppSettings["USER_DAL"];
         private static readonly string USERCOMM_DAL = System.Configuration.ConfigurationManager.AppSettings["USERCOMM_DAL"];
+        private static readonly string DATA_CONTEXT = System.Configuration.ConfigurationManager.AppSettings["DATA_CONTEXT"];
 
         //public static IBlogDAL CreateBlogDAL()
         //{
         //    return (IBlogDAL)System.Reflection.Assembly.Load(DAL).CreateInstance(BLOG_DAL);
         //}
 
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <typeparam name="T"></typeparam>
-        /// <returns></returns>
-        public static T CreateDAL<T>()
+
+        public static T CreateDAL<T>() where T : IBaseDAL
         {
             Type t = typeof(T);
             if (t.Equals(typeof(IBlogDAL))) { return (T)System.Reflection.Assembly.Load(DAL).CreateInstance(BLOG_DAL); }
@@ -64,6 +61,7 @@ namespace SextantTG.IDAL
             else if (t.Equals(typeof(ITourCommentDAL))) { return (T)System.Reflection.Assembly.Load(DAL).CreateInstance(TOURCOMM_DAL); }
             else if (t.Equals(typeof(IUserDAL))) { return (T)System.Reflection.Assembly.Load(DAL).CreateInstance(USER_DAL); }
             else if (t.Equals(typeof(IUserCommentDAL))) { return (T)System.Reflection.Assembly.Load(DAL).CreateInstance(USERCOMM_DAL); }
+            else if (t.Equals(typeof(IDataContext))) { return (T)System.Reflection.Assembly.Load(DAL).CreateInstance(DATA_CONTEXT); }
             else { throw new ArgumentException("Type of T is unkown"); }
         }
     }

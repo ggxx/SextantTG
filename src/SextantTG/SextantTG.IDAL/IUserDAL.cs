@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SextantTG.IDAL
 {
-    public interface IUserDAL
+    public interface IUserDAL : IBaseDAL
     {
         User GetUserByLoginNameAndPassword(string loginName, string password);
         User GetUserByUserId(string userId);

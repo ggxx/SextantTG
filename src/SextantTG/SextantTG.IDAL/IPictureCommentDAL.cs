@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SextantTG.IDAL
 {
-    public interface IPictureCommentDAL
+    public interface IPictureCommentDAL : IBaseDAL
     {
         List<PictureComment> GetPictureCommentsByPictureId(string pictureId);
 

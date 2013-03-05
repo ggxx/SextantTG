@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SextantTG.IDAL
 {
-    public interface IFavoriteDAL
+    public interface IFavoriteDAL : IBaseDAL
     {
         List<Favorite> GetFavoritesByUserId(string userId);
         List<Favorite> GetFavoritesBySightsId(string sightsId);

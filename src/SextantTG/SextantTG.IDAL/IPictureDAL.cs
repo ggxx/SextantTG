@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SextantTG.IDAL
 {
-    public interface IPictureDAL
+    public interface IPictureDAL : IBaseDAL
     {
         List<Picture> GetPictures();
         List<Picture> GetPicturesBySightsId(string sightsId);

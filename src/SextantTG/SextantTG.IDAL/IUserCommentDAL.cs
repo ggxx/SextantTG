@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SextantTG.IDAL
 {
-    public interface IUserCommentDAL
+    public interface IUserCommentDAL : IBaseDAL
     {
         List<UserComment> GetUserCommentsByUserId(string userId);
 

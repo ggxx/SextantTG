@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SextantTG.IDAL
 {
-    public interface ITourCommentDAL
+    public interface ITourCommentDAL : IBaseDAL
     {
         List<TourComment> GetTourCommentsByTourId(string tourId);
 

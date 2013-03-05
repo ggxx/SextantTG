@@ -41,6 +41,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DALFactory.cs" />
+    <Compile Include="IBaseDAL.cs" />
     <Compile Include="IBlogDAL.cs" />
     <Compile Include="ICityDAL.cs" />
     <Compile Include="ICountryDAL.cs" />

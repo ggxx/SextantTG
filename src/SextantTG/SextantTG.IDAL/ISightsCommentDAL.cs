@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SextantTG.IDAL
 {
-    public interface ISightsCommentDAL
+    public interface ISightsCommentDAL : IBaseDAL
     {
         List<SightsComment> GetSightsCommentsBySightsId(string sightsId);
 

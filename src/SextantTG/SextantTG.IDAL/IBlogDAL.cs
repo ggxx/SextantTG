@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SextantTG.IDAL
 {
-    public interface IBlogDAL
+    public interface IBlogDAL : IBaseDAL
     {
         List<Blog> GetBlogs();
         List<Blog> GetBlogsByUserId(string userId);

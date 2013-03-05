@@ -7,7 +7,7 @@ using System.Text;
 
 namespace SextantTG.IDAL
 {
-    public interface IPermissionDAL
+    public interface IPermissionDAL : IBaseDAL
     {
         List<Permission> GetPermissionsByUserId(string userId);
 
