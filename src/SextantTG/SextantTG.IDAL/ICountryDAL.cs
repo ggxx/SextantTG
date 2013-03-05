@@ -10,6 +10,7 @@ namespace SextantTG.IDAL
     public interface ICountryDAL
     {
         List<Country> GetCounties();
+
         int InsertCountry(Country country, DbTransaction trans);
         int UpdateCountry(Country country, DbTransaction trans);
         int DeleteCountryByCountryId(string countryId, DbTransaction trans);

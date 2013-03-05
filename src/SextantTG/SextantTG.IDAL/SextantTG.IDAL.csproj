@@ -45,7 +45,18 @@
     <Compile Include="ICityDAL.cs" />
     <Compile Include="ICountryDAL.cs" />
     <Compile Include="IDataContext.cs" />
+    <Compile Include="IFavoriteDAL.cs" />
+    <Compile Include="IPermissionDAL.cs" />
+    <Compile Include="IPictureCommentDAL.cs" />
     <Compile Include="IPictureDAL.cs" />
+    <Compile Include="IProvinceDAL.cs" />
+    <Compile Include="ISightsCommentDAL.cs" />
+    <Compile Include="ISightsDAL.cs" />
+    <Compile Include="ISubTourDAL.cs" />
+    <Compile Include="ITourCommentDAL.cs" />
+    <Compile Include="ITourDAL.cs" />
+    <Compile Include="IUserCommentDAL.cs" />
+    <Compile Include="IUserDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*********************************************************
+ * 
+ *        Author: 郭旭
+ * Last Modified: 2013-03-05
+ *     File Name: PictureComment.cs
+ *   Description: 图片评论实体类
+ * 
+ * ******************************************************/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -6,7 +14,7 @@ using System.Text;
 namespace SextantTG.ActiveRecord
 {
     /// <summary>
-    /// 评论实体类
+    /// 图片评论实体类
     /// </summary>
     public abstract class PictureComment
     {
@@ -25,6 +33,9 @@ namespace SextantTG.ActiveRecord
         /// </summary>
         public DateTime? CreatingTime { get; set; }
 
+        /// <summary>
+        /// 图片ID
+        /// </summary>
         public string PictureId { get; set; }
     }
 }

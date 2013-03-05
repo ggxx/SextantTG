@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*********************************************************
+ * 
+ *        Author: 郭旭
+ * Last Modified: 2013-03-05
+ *     File Name: Picture.cs
+ *   Description: 图片实体类
+ * 
+ * ******************************************************/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,12 +24,12 @@ namespace SextantTG.ActiveRecord
         public string PictureId { get; set; }
 
         /// <summary>
-        /// 景点
+        /// 景点ID
         /// </summary>
         public string SightsId { get; set; }
 
         /// <summary>
-        /// 日志（可为空）
+        /// 日志ID（可为空）
         /// </summary>
         public string BlogId { get; set; }
 
@@ -44,6 +52,5 @@ namespace SextantTG.ActiveRecord
         /// 上传时间
         /// </summary>
         public DateTime? CreatingTime { get; set; }
-
     }
 }

@@ -12,6 +12,11 @@ namespace SextantTG.SQLiteDAL
     {
         private DbHelper dbHelper = null;
 
+        public DataContext()
+        {
+            this.dbHelper = new DbHelper(System.Configuration.ConfigurationManager.ConnectionStrings["SQLiteConnection"].ConnectionString, DbUtil.DbProviderType.SQLite);
+        }
+
         public DataContext(string connectionString)
         {
             this.dbHelper = new DbHelper(connectionString, DbUtil.DbProviderType.SQLite);

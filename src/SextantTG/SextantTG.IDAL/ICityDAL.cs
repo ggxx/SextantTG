@@ -10,6 +10,7 @@ namespace SextantTG.IDAL
     public interface ICityDAL
     {
         List<City> GetCities();
+
         int InsertCity(City city, DbTransaction trans);
         int UpdateCity(City city, DbTransaction trans);
         int DeleteCityByCityId(string cityId, DbTransaction trans);

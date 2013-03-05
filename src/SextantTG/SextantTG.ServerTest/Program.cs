@@ -10,7 +10,10 @@ namespace SextantTG.ServerTest
     {
         static void Main(string[] args)
         {
-            IBlogDAL blogDal = IDAL.DALFactory.CreateBlogDAL();
+            
+            //这里是Factory设计模式
+            IBlogDAL blogDal = IDAL.DALFactory.CreateDAL<IBlogDAL>();
+            
             if (blogDal != null)
             {
                 System.Console.WriteLine(blogDal.GetType().ToString());

@@ -13,6 +13,7 @@ namespace SextantTG.IDAL
         List<Picture> GetPicturesBySightsId(string sightsId);
         List<Picture> GetPicturesByBlogId(string blogId);
         Picture GetPictureByPicture(string picId);
+
         int InsertPicture(Picture pic, DbTransaction trans);
         int UpdatePicture(Picture pic, DbTransaction trans);
         int DeletePictureByPictureId(string picId, DbTransaction trans);

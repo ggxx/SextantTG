@@ -1,4 +1,12 @@
-﻿using System;
+﻿/*********************************************************
+ * 
+ *        Author: 郭旭
+ * Last Modified: 2013-03-05
+ *     File Name: Blog.cs
+ *   Description: 日志记录的实体类
+ * 
+ * ******************************************************/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -44,21 +52,5 @@ namespace SextantTG.ActiveRecord
         /// 创建时间
         /// </summary>
         public DateTime? CreatingTime { get; set; }
-
-        /// <summary>
-        /// 对该日志的评价列表
-        /// </summary>
-        //public List<Comment> Comments { get; set; }
-
-        /// <summary>
-        /// 日志包含的图片列表
-        /// </summary>
-        //public List<Picture> Pictures { get; set; }
-
-
-        //public void AddComment(Comment comment)
-        //{
-        //   this.Comments.Add(comment);
-        //}
     }
 }

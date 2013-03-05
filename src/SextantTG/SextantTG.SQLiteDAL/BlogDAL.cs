@@ -17,7 +17,7 @@ namespace SextantTG.SQLiteDAL
 
         public BlogDAL()
         {
-            this.dbHelper = new DbHelper("", DbUtil.DbProviderType.SQLite);
+            this.dbHelper = new DbHelper(System.Configuration.ConfigurationManager.ConnectionStrings["SQLiteConnection"].ConnectionString, DbUtil.DbProviderType.SQLite);
         }
 
         public BlogDAL(string connectionString)

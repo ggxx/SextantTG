@@ -1,10 +1,21 @@
-﻿using System;
+﻿/*********************************************************
+ * 
+ *        Author: 郭旭
+ * Last Modified: 2013-03-05
+ *     File Name: UserComment.cs
+ *   Description: 用户评论实体类。
+ * 
+ * ******************************************************/
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
 namespace SextantTG.ActiveRecord
 {
+    /// <summary>
+    /// 用户评论实体类
+    /// </summary>
     public class UserComment
     {
         /// <summary>
@@ -23,7 +34,7 @@ namespace SextantTG.ActiveRecord
         public DateTime? CreatingTime { get; set; }
 
         /// <summary>
-        /// 被评论人
+        /// 被评论人ID
         /// </summary>
         public string UserId { get; set; }
     }
