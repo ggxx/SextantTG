@@ -7,5 +7,13 @@ namespace SextantTG.IServices
 {
     public interface ISightsService : IBaseService
     {
+		List<Sights> GetSights();
+		List<Sights> GetSightsByCountryId(string countryId);
+		List<Sights> GetSightsByProvinceId(string provinceId);
+		List<Sights> GetSightsByCityId(string cityId);
+		
+		bool InsertSights(Sights sights, DbTransaction trans, out string message);
+		bool UpdateSights(Sights sights, DbTransaction trans, out string message);
+		bool DeleteSightsBySightsId(string sightsId, DbTransction trans, out string message);
     }
 }
