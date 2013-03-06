@@ -17,22 +17,3 @@ namespace SextantTG.IServices
         bool DeleteBlog(string blogId, bool deletePictures, bool deleteComments, out string message);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

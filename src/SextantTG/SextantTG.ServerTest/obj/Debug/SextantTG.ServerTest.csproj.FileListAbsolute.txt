@@ -1,0 +1,10 @@
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.ServerTest\bin\Debug\SextantTG.ServerTest.exe.config
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.ServerTest\bin\Debug\SextantTG.ServerTest.exe
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.ServerTest\bin\Debug\SextantTG.ServerTest.pdb
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.ServerTest\bin\Debug\SextantTG.IDAL.dll
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.ServerTest\bin\Debug\SextantTG.ActiveRecord.dll
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.ServerTest\bin\Debug\SextantTG.IDAL.pdb
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.ServerTest\bin\Debug\SextantTG.ActiveRecord.pdb
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.ServerTest\obj\Debug\SextantTG.ServerTest.csprojResolveAssemblyReference.cache
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.ServerTest\obj\Debug\SextantTG.ServerTest.exe
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.ServerTest\obj\Debug\SextantTG.ServerTest.pdb

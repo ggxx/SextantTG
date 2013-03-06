@@ -7,5 +7,6 @@ namespace SextantTG.IServices
 {
     public interface ICommentService : IBaseService
     {
+
     }
 }

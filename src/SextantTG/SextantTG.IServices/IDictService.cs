@@ -9,8 +9,12 @@ namespace SextantTG.IServices
     public interface IDictService : IBaseService
     {
         List<Country> GetCountries();
+        List<Province> GetProvinces();
+        List<City> GetCities();
         List<Province> GetProvincesByCountryId(string countryId);
         List<City> GetCitiesByProvinceId(string provinceId);
+
+
 
         //bool UpdateCountries(List<Country> countries);
         //bool UpdateProvinces(List<Province> provinces);

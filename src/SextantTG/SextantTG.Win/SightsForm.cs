@@ -18,9 +18,54 @@ namespace SextantTG.Win
 
         private void SightsForm_Load(object sender, EventArgs e)
         {
+            this.bindingSource_Country.DataSource = UIUtil.GetCountries();
+            this.bindingSource_Province.DataSource = UIUtil.GetProvinces();
+            this.bindingSource_City.DataSource = UIUtil.GetCities();
+
             this.comboBox_Countries.DisplayMember = "CountryName";
             this.comboBox_Countries.ValueMember = "CountryId";
-            this.comboBox_Countries.DataSource = UIUtil.GetCountries();
+
+            this.comboBox_Provinces.DisplayMember = "ProvinceName";
+            this.comboBox_Provinces.ValueMember = "ProvinceId";
+
+            this.listBox_Cities.DisplayMember = "CityName";
+            this.listBox_Cities.ValueMember = "CityId";
+        }
+
+        private void comboBox_Countries_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.comboBox_Countries.SelectedValue != null)
+            {
+                this.bindingSource_Province.Filter = string.Format("CountryId = '{0}'", this.comboBox_Countries.SelectedValue);
+            }
+            else
+            {
+                this.bindingSource_Province.RemoveFilter();
+            }
+        }
+
+        private void comboBox_Provinces_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.comboBox_Provinces.SelectedValue != null)
+            {
+                this.bindingSource_City.Filter = string.Format("ProvinceId = '{0}'", this.comboBox_Provinces.SelectedValue);
+            }
+            else
+            {
+                this.bindingSource_City.RemoveFilter();
+            }
+        }
+
+        private void listBox_Cities_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.listBox_Cities.SelectedValue != null)
+            {
+
+            }
+            else
+            {
+ 
+            }
         }
     }
 }

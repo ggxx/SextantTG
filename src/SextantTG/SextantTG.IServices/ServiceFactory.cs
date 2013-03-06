@@ -19,14 +19,18 @@ namespace SextantTG.IServices
 
         public static T CreateService<T>() where T : IBaseService
         {
-            Type t = typeof(T);
-            if (t.Equals(typeof(IBlogService))) { return (T)Assembly.Load(SERVICES).CreateInstance(BLOG_SERVICE); }
-            else if (t.Equals(typeof(IDictService))) { return (T)Assembly.Load(SERVICES).CreateInstance(DICT_SERVICE); }
-            else if (t.Equals(typeof(IUserService))) { return (T)Assembly.Load(SERVICES).CreateInstance(USER_SERVICE); }
-            else if (t.Equals(typeof(ICommentService))) { return (T)Assembly.Load(SERVICES).CreateInstance(COMMENT_SERVICE); }
-            else if (t.Equals(typeof(ISightsService))) { return (T)Assembly.Load(SERVICES).CreateInstance(SIGHTS_SERVICE); }
-            else if (t.Equals(typeof(ITourService))) { return (T)Assembly.Load(SERVICES).CreateInstance(TOUR_SERVICE); }
+            T t;// = default(T);
+            Type type = typeof(T);
+            if (type.Equals(typeof(IBlogService))) { t = (T)Assembly.Load(SERVICES).CreateInstance(BLOG_SERVICE); }
+            else if (type.Equals(typeof(IDictService))) { t = (T)Assembly.Load(SERVICES).CreateInstance(DICT_SERVICE); }
+            else if (type.Equals(typeof(IUserService))) { t = (T)Assembly.Load(SERVICES).CreateInstance(USER_SERVICE); }
+            else if (type.Equals(typeof(ICommentService))) { t = (T)Assembly.Load(SERVICES).CreateInstance(COMMENT_SERVICE); }
+            else if (type.Equals(typeof(ISightsService))) { t = (T)Assembly.Load(SERVICES).CreateInstance(SIGHTS_SERVICE); }
+            else if (type.Equals(typeof(ITourService))) { t = (T)Assembly.Load(SERVICES).CreateInstance(TOUR_SERVICE); }
             else { throw new ArgumentException("Type of T is unkown"); }
+
+            if (t != null) { return t; }
+            else { throw new Exception("Cannot create service"); }
         }
     }
 }

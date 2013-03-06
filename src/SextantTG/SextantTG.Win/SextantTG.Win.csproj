@@ -64,6 +64,12 @@
     <Compile Include="SightsForm.Designer.cs">
       <DependentUpon>SightsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="ToursForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ToursForm.Designer.cs">
+      <DependentUpon>ToursForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="UIUtil.cs" />
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>

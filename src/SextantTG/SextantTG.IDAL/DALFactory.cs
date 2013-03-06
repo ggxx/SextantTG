@@ -46,25 +46,29 @@ namespace SextantTG.IDAL
 
         public static T CreateDAL<T>() where T : IBaseDAL
         {
-            Type t = typeof(T);
-            if (t.Equals(typeof(IBlogDAL))) { return (T)Assembly.Load(DAL).CreateInstance(BLOG_DAL); }
-            else if (t.Equals(typeof(IBlogDAL))) { return (T)Assembly.Load(DAL).CreateInstance(BLOG_DAL); }
-            else if (t.Equals(typeof(ICityDAL))) { return (T)Assembly.Load(DAL).CreateInstance(CITY_DAL); }
-            else if (t.Equals(typeof(ICountryDAL))) { return (T)Assembly.Load(DAL).CreateInstance(COUNTRY_DAL); }
-            else if (t.Equals(typeof(IFavoriteDAL))) { return (T)Assembly.Load(DAL).CreateInstance(FAVORITE_DAL); }
-            else if (t.Equals(typeof(IPermissionDAL))) { return (T)Assembly.Load(DAL).CreateInstance(PERMISSION_DAL); }
-            else if (t.Equals(typeof(IPictureDAL))) { return (T)Assembly.Load(DAL).CreateInstance(PICTURE_DAL); }
-            else if (t.Equals(typeof(IPictureCommentDAL))) { return (T)Assembly.Load(DAL).CreateInstance(PICTURECOMM_DAL); }
-            else if (t.Equals(typeof(IProvinceDAL))) { return (T)Assembly.Load(DAL).CreateInstance(PROVINCE_DAL); }
-            else if (t.Equals(typeof(ISightsDAL))) { return (T)Assembly.Load(DAL).CreateInstance(SIGHTS_DAL); }
-            else if (t.Equals(typeof(ISightsCommentDAL))) { return (T)Assembly.Load(DAL).CreateInstance(SIGHTSCOMM_DAL); }
-            else if (t.Equals(typeof(ISubTourDAL))) { return (T)Assembly.Load(DAL).CreateInstance(SUBTOUR_DAL); }
-            else if (t.Equals(typeof(ITourDAL))) { return (T)Assembly.Load(DAL).CreateInstance(TOUR_DAL); }
-            else if (t.Equals(typeof(ITourCommentDAL))) { return (T)Assembly.Load(DAL).CreateInstance(TOURCOMM_DAL); }
-            else if (t.Equals(typeof(IUserDAL))) { return (T)Assembly.Load(DAL).CreateInstance(USER_DAL); }
-            else if (t.Equals(typeof(IUserCommentDAL))) { return (T)Assembly.Load(DAL).CreateInstance(USERCOMM_DAL); }
-            else if (t.Equals(typeof(IDataContext))) { return (T)Assembly.Load(DAL).CreateInstance(DATA_CONTEXT); }
+            T t; //=default(T); 
+            Type type = typeof(T);
+            if (type.Equals(typeof(IBlogDAL))) { t = (T)Assembly.Load(DAL).CreateInstance(BLOG_DAL); }
+            else if (type.Equals(typeof(IBlogDAL))) { t = (T)Assembly.Load(DAL).CreateInstance(BLOG_DAL); }
+            else if (type.Equals(typeof(ICityDAL))) { t = (T)Assembly.Load(DAL).CreateInstance(CITY_DAL); }
+            else if (type.Equals(typeof(ICountryDAL))) { t = (T)Assembly.Load(DAL).CreateInstance(COUNTRY_DAL); }
+            else if (type.Equals(typeof(IFavoriteDAL))) { t = (T)Assembly.Load(DAL).CreateInstance(FAVORITE_DAL); }
+            else if (type.Equals(typeof(IPermissionDAL))) { t = (T)Assembly.Load(DAL).CreateInstance(PERMISSION_DAL); }
+            else if (type.Equals(typeof(IPictureDAL))) { t = (T)Assembly.Load(DAL).CreateInstance(PICTURE_DAL); }
+            else if (type.Equals(typeof(IPictureCommentDAL))) { t = (T)Assembly.Load(DAL).CreateInstance(PICTURECOMM_DAL); }
+            else if (type.Equals(typeof(IProvinceDAL))) { t = (T)Assembly.Load(DAL).CreateInstance(PROVINCE_DAL); }
+            else if (type.Equals(typeof(ISightsDAL))) { t = (T)Assembly.Load(DAL).CreateInstance(SIGHTS_DAL); }
+            else if (type.Equals(typeof(ISightsCommentDAL))) { t = (T)Assembly.Load(DAL).CreateInstance(SIGHTSCOMM_DAL); }
+            else if (type.Equals(typeof(ISubTourDAL))) { t = (T)Assembly.Load(DAL).CreateInstance(SUBTOUR_DAL); }
+            else if (type.Equals(typeof(ITourDAL))) { t = (T)Assembly.Load(DAL).CreateInstance(TOUR_DAL); }
+            else if (type.Equals(typeof(ITourCommentDAL))) { t = (T)Assembly.Load(DAL).CreateInstance(TOURCOMM_DAL); }
+            else if (type.Equals(typeof(IUserDAL))) { t = (T)Assembly.Load(DAL).CreateInstance(USER_DAL); }
+            else if (type.Equals(typeof(IUserCommentDAL))) { t = (T)Assembly.Load(DAL).CreateInstance(USERCOMM_DAL); }
+            else if (type.Equals(typeof(IDataContext))) { t = (T)Assembly.Load(DAL).CreateInstance(DATA_CONTEXT); }
             else { throw new ArgumentException("Type of T is unkown"); }
+
+            if (t != null) { return t; }
+            else { throw new Exception("Cannot create DAL"); }
         }
     }
 }
