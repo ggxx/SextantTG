@@ -7,6 +7,9 @@ using SextantTG.IServices;
 
 namespace SextantTG.Win
 {
+    /// <summary>
+    /// 为UI层访问Service层提供统一的出口
+    /// </summary>
     internal class UIUtil
     {
         private static readonly IBlogService blogSrv = ServiceFactory.CreateService<IBlogService>();
@@ -15,6 +18,8 @@ namespace SextantTG.Win
         private static readonly ISightsService sightsSrv = ServiceFactory.CreateService<ISightsService>();
         private static readonly ITourService tourSrv = ServiceFactory.CreateService<ITourService>();
         private static readonly IUserService userSrv = ServiceFactory.CreateService<IUserService>();
+
+        #region Dict Services
 
         internal static List<Country> GetCountries()
         {
@@ -41,9 +46,72 @@ namespace SextantTG.Win
             return dictSrv.GetCitiesByProvinceId(provinceId);
         }
 
+        internal static Country GetCountryByProvinceId(string provinceId)
+        {
+            return dictSrv.GetCountryByProvinceId(provinceId);
+        }
+
+        internal static Province GetProvinceByCityId(string cityId)
+        {
+            return dictSrv.GetProvinceByCityId(cityId);
+        }
+
+        internal static bool InsertCountry(Country country, out string message)
+        {
+            return dictSrv.InsertCountry(country, out message);
+        }
+
+        internal static bool UpdateCountry(Country country, out string message)
+        {
+            return dictSrv.UpdateCountry(country, out message);
+        }
+
+        internal static bool DeleteCountryByCountryId(string countryId, out string message)
+        {
+            return dictSrv.DeleteCountryByCountryId(countryId, out message);
+        }
+
+        internal static bool InsertProvince(Province province, out string message)
+        {
+            return dictSrv.InsertProvince(province, out message);
+        }
+
+        internal static bool UpdateProvince(Province province, out string message)
+        {
+            return dictSrv.UpdateProvince(province, out message);
+        }
+
+        internal static bool DeleteProvinceByProvinceId(string provinceId, out string message)
+        {
+            return dictSrv.DeleteProvinceByProvinceId(provinceId, out message);
+        }
+
+        internal static bool InsertCity(City city, out string message)
+        {
+            return dictSrv.InsertCity(city, out message);
+        }
+
+        internal static bool UpdateCity(City city, out string message)
+        {
+            return dictSrv.UpdateCity(city, out message);
+        }
+
+        internal static bool DeleteCityByCityId(string cityId, out string message)
+        {
+            return dictSrv.DeleteCityByCityId(cityId, out message);
+        }
+
+        #endregion
+
+
+        #region Sights Service
+
         internal List<Sights> GetSightsByCityId(string cityId)
         {
             return sightsSrv.GetSightsByCityId(cityId);
         }
+
+
+        #endregion
     }
 }

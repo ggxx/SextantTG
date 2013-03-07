@@ -29,12 +29,9 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.comboBox_Countries = new System.Windows.Forms.ComboBox();
-            this.bindingSource_Country = new System.Windows.Forms.BindingSource(this.components);
-            this.comboBox_Provinces = new System.Windows.Forms.ComboBox();
-            this.bindingSource_Province = new System.Windows.Forms.BindingSource(this.components);
+            this.comboBox_Country = new System.Windows.Forms.ComboBox();
+            this.comboBox_Province = new System.Windows.Forms.ComboBox();
             this.listBox_Sights = new System.Windows.Forms.ListBox();
-            this.bindingSource_City = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
@@ -47,32 +44,35 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
-            this.comboBox_Cities = new System.Windows.Forms.ComboBox();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_Country)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_Province)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_City)).BeginInit();
+            this.comboBox_City = new System.Windows.Forms.ComboBox();
+            this.bindingSource_City = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSource_Province = new System.Windows.Forms.BindingSource(this.components);
+            this.bindingSource_Country = new System.Windows.Forms.BindingSource(this.components);
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_City)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_Province)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_Country)).BeginInit();
             this.SuspendLayout();
             // 
-            // comboBox_Countries
+            // comboBox_Country
             // 
-            this.comboBox_Countries.DataSource = this.bindingSource_Country;
-            this.comboBox_Countries.FormattingEnabled = true;
-            this.comboBox_Countries.Location = new System.Drawing.Point(72, 12);
-            this.comboBox_Countries.Name = "comboBox_Countries";
-            this.comboBox_Countries.Size = new System.Drawing.Size(121, 20);
-            this.comboBox_Countries.TabIndex = 0;
-            this.comboBox_Countries.SelectedIndexChanged += new System.EventHandler(this.comboBox_Countries_SelectedIndexChanged);
+            this.comboBox_Country.DataSource = this.bindingSource_Country;
+            this.comboBox_Country.FormattingEnabled = true;
+            this.comboBox_Country.Location = new System.Drawing.Point(72, 12);
+            this.comboBox_Country.Name = "comboBox_Country";
+            this.comboBox_Country.Size = new System.Drawing.Size(121, 20);
+            this.comboBox_Country.TabIndex = 0;
+            this.comboBox_Country.SelectedIndexChanged += new System.EventHandler(this.comboBox_Country_SelectedIndexChanged);
             // 
-            // comboBox_Provinces
+            // comboBox_Province
             // 
-            this.comboBox_Provinces.DataSource = this.bindingSource_Province;
-            this.comboBox_Provinces.FormattingEnabled = true;
-            this.comboBox_Provinces.Location = new System.Drawing.Point(72, 38);
-            this.comboBox_Provinces.Name = "comboBox_Provinces";
-            this.comboBox_Provinces.Size = new System.Drawing.Size(121, 20);
-            this.comboBox_Provinces.TabIndex = 1;
-            this.comboBox_Provinces.SelectedIndexChanged += new System.EventHandler(this.comboBox_Provinces_SelectedIndexChanged);
+            this.comboBox_Province.DataSource = this.bindingSource_Province;
+            this.comboBox_Province.FormattingEnabled = true;
+            this.comboBox_Province.Location = new System.Drawing.Point(72, 38);
+            this.comboBox_Province.Name = "comboBox_Province";
+            this.comboBox_Province.Size = new System.Drawing.Size(121, 20);
+            this.comboBox_Province.TabIndex = 1;
+            this.comboBox_Province.SelectedIndexChanged += new System.EventHandler(this.comboBox_Province_SelectedIndexChanged);
             // 
             // listBox_Sights
             // 
@@ -83,7 +83,7 @@
             this.listBox_Sights.Name = "listBox_Sights";
             this.listBox_Sights.Size = new System.Drawing.Size(180, 340);
             this.listBox_Sights.TabIndex = 2;
-            this.listBox_Sights.SelectedIndexChanged += new System.EventHandler(this.listBox_Cities_SelectedIndexChanged);
+            this.listBox_Sights.SelectedIndexChanged += new System.EventHandler(this.listBox_Sights_SelectedIndexChanged);
             // 
             // tableLayoutPanel1
             // 
@@ -211,14 +211,15 @@
             this.label11.TabIndex = 7;
             this.label11.Text = "城市";
             // 
-            // comboBox_Cities
+            // comboBox_City
             // 
-            this.comboBox_Cities.DataSource = this.bindingSource_Province;
-            this.comboBox_Cities.FormattingEnabled = true;
-            this.comboBox_Cities.Location = new System.Drawing.Point(72, 64);
-            this.comboBox_Cities.Name = "comboBox_Cities";
-            this.comboBox_Cities.Size = new System.Drawing.Size(121, 20);
-            this.comboBox_Cities.TabIndex = 6;
+            this.comboBox_City.DataSource = this.bindingSource_Province;
+            this.comboBox_City.FormattingEnabled = true;
+            this.comboBox_City.Location = new System.Drawing.Point(72, 64);
+            this.comboBox_City.Name = "comboBox_City";
+            this.comboBox_City.Size = new System.Drawing.Size(121, 20);
+            this.comboBox_City.TabIndex = 6;
+            this.comboBox_City.SelectedIndexChanged += new System.EventHandler(this.comboBox_City_SelectedIndexChanged);
             // 
             // SightsForm
             // 
@@ -226,21 +227,21 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 442);
             this.Controls.Add(this.label11);
-            this.Controls.Add(this.comboBox_Cities);
+            this.Controls.Add(this.comboBox_City);
             this.Controls.Add(this.label10);
             this.Controls.Add(this.label9);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.listBox_Sights);
-            this.Controls.Add(this.comboBox_Provinces);
-            this.Controls.Add(this.comboBox_Countries);
+            this.Controls.Add(this.comboBox_Province);
+            this.Controls.Add(this.comboBox_Country);
             this.Name = "SightsForm";
             this.Text = "SightsForm";
             this.Load += new System.EventHandler(this.SightsForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_Country)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_Province)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_City)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_City)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_Province)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource_Country)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -248,8 +249,8 @@
 
         #endregion
 
-        private System.Windows.Forms.ComboBox comboBox_Countries;
-        private System.Windows.Forms.ComboBox comboBox_Provinces;
+        private System.Windows.Forms.ComboBox comboBox_Country;
+        private System.Windows.Forms.ComboBox comboBox_Province;
         private System.Windows.Forms.ListBox listBox_Sights;
         private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
         private System.Windows.Forms.Label label1;
@@ -262,10 +263,10 @@
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.ComboBox comboBox_City;
         private System.Windows.Forms.BindingSource bindingSource_Country;
         private System.Windows.Forms.BindingSource bindingSource_Province;
         private System.Windows.Forms.BindingSource bindingSource_City;
-        private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.ComboBox comboBox_Cities;
     }
 }

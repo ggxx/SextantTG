@@ -6,6 +6,9 @@ using System.Text;
 
 namespace SextantTG.IServices
 {
+    /// <summary>
+    /// 日志业务操作的接口
+    /// </summary>
     public interface IBlogService : IBaseService
     {
         List<Blog> GetBlogsForUser(string userId);

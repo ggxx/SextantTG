@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SextantTG.Win</RootNamespace>
-    <AssemblyName>SextantTG</AssemblyName>
+    <AssemblyName>SextantTG.Win</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -43,7 +43,31 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CitiesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CitiesForm.Designer.cs">
+      <DependentUpon>CitiesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CityEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CityEditForm.Designer.cs">
+      <DependentUpon>CityEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Config.cs" />
+    <Compile Include="CountriesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CountriesForm.Designer.cs">
+      <DependentUpon>CountriesForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="CountryEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="CountryEditForm.Designer.cs">
+      <DependentUpon>CountryEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -58,6 +82,18 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProvinceEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProvinceEditForm.Designer.cs">
+      <DependentUpon>ProvinceEditForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ProvincesForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ProvincesForm.Designer.cs">
+      <DependentUpon>ProvincesForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SightsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -71,6 +107,33 @@
       <DependentUpon>ToursForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UIUtil.cs" />
+    <Compile Include="Views\CityView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CityView.Designer.cs">
+      <DependentUpon>CityView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CountryView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\CountryView.Designer.cs">
+      <DependentUpon>CountryView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ProvinceView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ProvinceView.Designer.cs">
+      <DependentUpon>ProvinceView.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="CitiesForm.resx">
+      <DependentUpon>CitiesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CountriesForm.resx">
+      <DependentUpon>CountriesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CountryEditForm.resx">
+      <DependentUpon>CountryEditForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="LoginForm.resx">
       <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -89,7 +152,19 @@
     <EmbeddedResource Include="SightsForm.resx">
       <DependentUpon>SightsForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\CityView.resx">
+      <DependentUpon>CityView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\CountryView.resx">
+      <DependentUpon>CountryView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ProvinceView.resx">
+      <DependentUpon>ProvinceView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="App.config" />
+    <None Include="db\sgt.s3db">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -110,6 +185,7 @@
       <Name>SextantTG.IServices</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

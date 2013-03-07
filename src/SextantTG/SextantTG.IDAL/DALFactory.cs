@@ -68,7 +68,7 @@ namespace SextantTG.IDAL
             else { throw new ArgumentException("Type of T is unkown"); }
 
             if (t != null) { return t; }
-            else { throw new Exception("Cannot create DAL"); }
+            else { throw new Exception(string.Format("Cannot create DAL, Interface Name: {0}", type.ToString())); }
         }
     }
 }

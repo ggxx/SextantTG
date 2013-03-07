@@ -41,6 +41,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="BlogDAL.cs" />
+    <Compile Include="CityDAL.cs" />
+    <Compile Include="CountryDAL.cs" />
     <Compile Include="DataContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>

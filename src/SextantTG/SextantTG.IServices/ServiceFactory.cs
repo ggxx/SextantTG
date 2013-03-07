@@ -19,7 +19,7 @@ namespace SextantTG.IServices
 
         public static T CreateService<T>() where T : IBaseService
         {
-            T t;// = default(T);
+            T t;
             Type type = typeof(T);
             if (type.Equals(typeof(IBlogService))) { t = (T)Assembly.Load(SERVICES).CreateInstance(BLOG_SERVICE); }
             else if (type.Equals(typeof(IDictService))) { t = (T)Assembly.Load(SERVICES).CreateInstance(DICT_SERVICE); }
@@ -30,7 +30,7 @@ namespace SextantTG.IServices
             else { throw new ArgumentException("Type of T is unkown"); }
 
             if (t != null) { return t; }
-            else { throw new Exception("Cannot create service"); }
+            else { throw new Exception(string.Format("Cannot create service, Interface Name: {0}", type.ToString())); }
         }
     }
 }

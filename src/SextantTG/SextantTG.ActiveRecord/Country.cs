@@ -18,6 +18,12 @@ namespace SextantTG.ActiveRecord
     /// </summary>
     public class Country
     {
+        public Country() 
+        {
+            this.CountryId = "";
+            this.CountryName = "";
+        }
+
         /// <summary>
         /// 国家ID
         /// </summary>

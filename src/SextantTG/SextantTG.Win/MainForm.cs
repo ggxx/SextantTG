@@ -39,6 +39,21 @@ namespace SextantTG.Win
             this.OpenMdiChildForm(typeof(SightsForm));
         }
 
+        private void cityToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.OpenMdiChildForm(typeof(CitiesForm));
+        }
+
+        private void provinceToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.OpenMdiChildForm(typeof(ProvincesForm));
+        }
+
+        private void countryToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.OpenMdiChildForm(typeof(CountriesForm));
+        }
+
 
     }
 }
