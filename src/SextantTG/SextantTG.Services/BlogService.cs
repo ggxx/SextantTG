@@ -58,6 +58,7 @@ namespace SextantTG.Services
                             picDal.InsertPicture(pic, trans);
                         }
 
+
                         trans.Commit();
                         message = "";
                         return true;

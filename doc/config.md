@@ -13,7 +13,9 @@
 
 	[http://www.sqlite.org/](http://www.sqlite.org/) 
 
-	[http://www.sqliteexpert.com/download.html](http://www.sqliteexpert.com/download.html)
+	[http://www.sqliteexpert.com/download.html](http://www.sqliteexpert.com/download.html) 
+	
+	[http://www.cr173.com/soft/36343.html](http://www.cr173.com/soft/36343.html) XX补丁
 
 * SQLite For ADO.NET (System.Data.SQLite) v3.5 SP1 x64
 
