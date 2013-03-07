@@ -28,8 +28,8 @@ namespace SextantTG.Win
             this.comboBox_Provinces.DisplayMember = "ProvinceName";
             this.comboBox_Provinces.ValueMember = "ProvinceId";
 
-            this.listBox_Cities.DisplayMember = "CityName";
-            this.listBox_Cities.ValueMember = "CityId";
+            this.listBox_Sights.DisplayMember = "CityName";
+            this.listBox_Sights.ValueMember = "CityId";
         }
 
         private void comboBox_Countries_SelectedIndexChanged(object sender, EventArgs e)
@@ -58,7 +58,7 @@ namespace SextantTG.Win
 
         private void listBox_Cities_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.listBox_Cities.SelectedValue != null)
+            if (this.listBox_Sights.SelectedValue != null)
             {
 
             }

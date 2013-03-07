@@ -16,7 +16,7 @@ namespace SextantTG.Win
         private static readonly ITourService tourSrv = ServiceFactory.CreateService<ITourService>();
         private static readonly IUserService userSrv = ServiceFactory.CreateService<IUserService>();
 
-        internal static List<Country> GetCountries() 
+        internal static List<Country> GetCountries()
         {
             return dictSrv.GetCountries();
         }
@@ -41,6 +41,9 @@ namespace SextantTG.Win
             return dictSrv.GetCitiesByProvinceId(provinceId);
         }
 
-
+        internal List<Sights> GetSightsByCityId(string cityId)
+        {
+            return sightsSrv.GetSightsByCityId(cityId);
+        }
     }
 }
