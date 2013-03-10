@@ -162,7 +162,7 @@
       <DependentUpon>ProvinceView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config" />
-    <None Include="db\sgt.s3db">
+    <None Include="db\sgt.db3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="Properties\Settings.settings">
