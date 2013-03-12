@@ -22,7 +22,12 @@ namespace SextantTG.ActiveRecord
         /// 景点ID
         /// </summary>
         public string SightsId { get; set; }
-        
+
+        /// <summary>
+        /// 景点名称
+        /// </summary>
+        public string SightsName { get; set; }
+
         /// <summary>
         /// 所属城市ID
         /// </summary>

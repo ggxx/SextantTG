@@ -44,7 +44,19 @@
     <Compile Include="CityDAL.cs" />
     <Compile Include="CountryDAL.cs" />
     <Compile Include="DataContext.cs" />
+    <Compile Include="FavoriteDAL.cs" />
+    <Compile Include="PermissionDAL.cs" />
+    <Compile Include="PictureCommentDAL.cs" />
+    <Compile Include="PictureDAL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ProvinceDAL.cs" />
+    <Compile Include="SightsCommentDAL.cs" />
+    <Compile Include="SightsDAL.cs" />
+    <Compile Include="SubTourDAL.cs" />
+    <Compile Include="TourCommentDAL.cs" />
+    <Compile Include="TourDAL.cs" />
+    <Compile Include="UserCommentDAL.cs" />
+    <Compile Include="UserDAL.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SextantTG.ActiveRecord\SextantTG.ActiveRecord.csproj">

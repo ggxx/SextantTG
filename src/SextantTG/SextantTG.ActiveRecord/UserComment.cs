@@ -37,5 +37,10 @@ namespace SextantTG.ActiveRecord
         /// 被评论人ID
         /// </summary>
         public string UserId { get; set; }
+
+        /// <summary>
+        /// 评论
+        /// </summary>
+        public string Comment { get; set; }
     }
 }
