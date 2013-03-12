@@ -37,5 +37,10 @@ namespace SextantTG.ActiveRecord
         /// 景点ID
         /// </summary>
         public string SightsId { get; set; }
+
+        /// <summary>
+        /// 评论
+        /// </summary>
+        public string Comment { get; set; }
     }
 }

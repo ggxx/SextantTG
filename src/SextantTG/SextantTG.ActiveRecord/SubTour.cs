@@ -47,7 +47,7 @@ namespace SextantTG.ActiveRecord
         /// <summary>
         /// 结束时间
         /// </summary>
-        public DateTime? EndData { get; set; }
+        public DateTime? EndDate { get; set; }
 
         /// <summary>
         /// 创建日期
