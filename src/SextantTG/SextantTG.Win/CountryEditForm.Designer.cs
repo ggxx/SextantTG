@@ -28,9 +28,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.countryView = new Views.CountryView();
             this.button_Cancel = new System.Windows.Forms.Button();
             this.button_OK = new System.Windows.Forms.Button();
-            this.countryView = new SextantTG.Win.Views.CountryView();
             this.SuspendLayout();
             // 
             // button_Cancel
@@ -39,7 +39,7 @@
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(75, 23);
             this.button_Cancel.TabIndex = 1;
-            this.button_Cancel.Text = "Cancel";
+            this.button_Cancel.Text = "取消";
             this.button_Cancel.UseVisualStyleBackColor = true;
             this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
             // 
@@ -49,7 +49,7 @@
             this.button_OK.Name = "button_OK";
             this.button_OK.Size = new System.Drawing.Size(75, 23);
             this.button_OK.TabIndex = 2;
-            this.button_OK.Text = "OK";
+            this.button_OK.Text = "确定";
             this.button_OK.UseVisualStyleBackColor = true;
             this.button_OK.Click += new System.EventHandler(this.button_OK_Click);
             // 

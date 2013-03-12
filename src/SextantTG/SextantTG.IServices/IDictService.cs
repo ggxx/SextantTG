@@ -22,6 +22,7 @@ namespace SextantTG.IServices
         Province GetProvinceByProvinceId(string provinceId);
         City GetCiryByCityId(string cityId);
 
+        Dictionary<int, string> GetPermissions();
 
 
         //bool UpdateCountries(List<Country> countries);

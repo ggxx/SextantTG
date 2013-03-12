@@ -155,5 +155,13 @@ namespace SextantTG.Services
             provinceDal = null;
             cityDal = null;
         }
+
+
+        public Dictionary<int, string> GetPermissions()
+        {
+            Dictionary<int, string> p = new Dictionary<int, string>();
+            p.Add(9, "管理员");
+            return p;
+        }
     }
 }

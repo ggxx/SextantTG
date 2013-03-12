@@ -10,7 +10,7 @@ using SextantTG.ActiveRecord;
 
 namespace SextantTG.Win.Views
 {
-    public partial class CityView : UserControl
+    internal partial class CityView : UserControl
     {
         private string cityId = "";
 
@@ -23,10 +23,13 @@ namespace SextantTG.Win.Views
             return city;
         }
 
-        public CityView()
+        internal CityView()
         {
             InitializeComponent();
+        }
 
+        internal void BindData()
+        {
             this.comboBox_Country.DisplayMember = "CountryName";
             this.comboBox_Country.ValueMember = "CountryId";
             this.comboBox_Country.DataSource = UIUtil.GetCountries();
@@ -36,7 +39,7 @@ namespace SextantTG.Win.Views
             //this.comboBox_Province.DataSource = UIUtil.GetProvinces();
         }
 
-        public void SetCity(City city)
+        internal void SetCity(City city)
         {
             this.cityId = city.CityId;
             this.textBox_CityName.Text = city.CityName;
@@ -44,7 +47,7 @@ namespace SextantTG.Win.Views
             this.comboBox_Province.SelectedValue = city.ProvinceId;
         }
 
-        public bool Save(out string message)
+        internal bool Save(out string message)
         {
             if (string.IsNullOrEmpty(this.cityId))
             {

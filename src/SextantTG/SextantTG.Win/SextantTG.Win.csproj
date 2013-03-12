@@ -94,6 +94,12 @@
     <Compile Include="ProvincesForm.Designer.cs">
       <DependentUpon>ProvincesForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="RegForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="RegForm.Designer.cs">
+      <DependentUpon>RegForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SightsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -107,6 +113,18 @@
       <DependentUpon>ToursForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UIUtil.cs" />
+    <Compile Include="UserPermissionForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UserPermissionForm.Designer.cs">
+      <DependentUpon>UserPermissionForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="UsersForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="UsersForm.Designer.cs">
+      <DependentUpon>UsersForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\CityView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -127,6 +145,9 @@
     </Compile>
     <EmbeddedResource Include="CitiesForm.resx">
       <DependentUpon>CitiesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="CityEditForm.resx">
+      <DependentUpon>CityEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="CountriesForm.resx">
       <DependentUpon>CountriesForm.cs</DependentUpon>
@@ -149,8 +170,23 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="ProvinceEditForm.resx">
+      <DependentUpon>ProvinceEditForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ProvincesForm.resx">
+      <DependentUpon>ProvincesForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="RegForm.resx">
+      <DependentUpon>RegForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="SightsForm.resx">
       <DependentUpon>SightsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UserPermissionForm.resx">
+      <DependentUpon>UserPermissionForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="UsersForm.resx">
+      <DependentUpon>UsersForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\CityView.resx">
       <DependentUpon>CityView.cs</DependentUpon>
@@ -180,9 +216,33 @@
       <Project>{DD4377A0-3082-4F4E-BF11-FD95D6B6B798}</Project>
       <Name>SextantTG.ActiveRecord</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SextantTG.DBUtil\SextantTG.DbUtil.csproj">
+      <Project>{0D10F093-09C6-4F15-B904-8023B55630CF}</Project>
+      <Name>SextantTG.DbUtil</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SextantTG.IDAL\SextantTG.IDAL.csproj">
+      <Project>{7B30ECE6-DFFB-477F-B0DA-58AED795687B}</Project>
+      <Name>SextantTG.IDAL</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SextantTG.IServices\SextantTG.IServices.csproj">
       <Project>{A8D6C61A-6C22-438A-99FF-A598575D6B6B}</Project>
       <Name>SextantTG.IServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SextantTG.ServerTest\SextantTG.ServerTest.csproj">
+      <Project>{8DB06A46-1F6A-43B8-B885-E3B8C26F24A6}</Project>
+      <Name>SextantTG.ServerTest</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SextantTG.Services\SextantTG.Services.csproj">
+      <Project>{6067CAE1-406C-44F2-8B68-823595B491C5}</Project>
+      <Name>SextantTG.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SextantTG.SQLiteDAL\SextantTG.SQLiteDAL.csproj">
+      <Project>{E8DB7C60-3532-4CE4-B527-9EE4270B5890}</Project>
+      <Name>SextantTG.SQLiteDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SextantTG.Util\SextantTG.Util.csproj">
+      <Project>{2BFB5DFD-3BCF-45B9-92D2-E7A24A3343A7}</Project>
+      <Name>SextantTG.Util</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup />

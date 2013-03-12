@@ -31,17 +31,19 @@
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.sightsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sightsListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dictToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.provinceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.countryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
-            this.provinceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.countryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -62,10 +64,18 @@
             // 
             // sightsToolStripMenuItem
             // 
+            this.sightsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sightsListToolStripMenuItem});
             this.sightsToolStripMenuItem.Name = "sightsToolStripMenuItem";
             this.sightsToolStripMenuItem.Size = new System.Drawing.Size(55, 21);
             this.sightsToolStripMenuItem.Text = "Sights";
-            this.sightsToolStripMenuItem.Click += new System.EventHandler(this.sightsToolStripMenuItem_Click);
+            // 
+            // sightsListToolStripMenuItem
+            // 
+            this.sightsListToolStripMenuItem.Name = "sightsListToolStripMenuItem";
+            this.sightsListToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.sightsListToolStripMenuItem.Text = "SightsList";
+            this.sightsListToolStripMenuItem.Click += new System.EventHandler(this.sightsListToolStripMenuItem_Click);
             // 
             // tourToolStripMenuItem
             // 
@@ -76,7 +86,8 @@
             // adminToolStripMenuItem
             // 
             this.adminToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.dictToolStripMenuItem});
+            this.dictToolStripMenuItem,
+            this.userToolStripMenuItem});
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
             this.adminToolStripMenuItem.Size = new System.Drawing.Size(57, 21);
             this.adminToolStripMenuItem.Text = "Admin";
@@ -98,6 +109,20 @@
             this.cityToolStripMenuItem.Text = "City";
             this.cityToolStripMenuItem.Click += new System.EventHandler(this.cityToolStripMenuItem_Click);
             // 
+            // provinceToolStripMenuItem
+            // 
+            this.provinceToolStripMenuItem.Name = "provinceToolStripMenuItem";
+            this.provinceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.provinceToolStripMenuItem.Text = "Province";
+            this.provinceToolStripMenuItem.Click += new System.EventHandler(this.provinceToolStripMenuItem_Click);
+            // 
+            // countryToolStripMenuItem
+            // 
+            this.countryToolStripMenuItem.Name = "countryToolStripMenuItem";
+            this.countryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.countryToolStripMenuItem.Text = "Country";
+            this.countryToolStripMenuItem.Click += new System.EventHandler(this.countryToolStripMenuItem_Click);
+            // 
             // windowsToolStripMenuItem
             // 
             this.windowsToolStripMenuItem.Name = "windowsToolStripMenuItem";
@@ -118,20 +143,6 @@
             this.statusStrip1.TabIndex = 2;
             this.statusStrip1.Text = "statusStrip1";
             // 
-            // provinceToolStripMenuItem
-            // 
-            this.provinceToolStripMenuItem.Name = "provinceToolStripMenuItem";
-            this.provinceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.provinceToolStripMenuItem.Text = "Province";
-            this.provinceToolStripMenuItem.Click += new System.EventHandler(this.provinceToolStripMenuItem_Click);
-            // 
-            // countryToolStripMenuItem
-            // 
-            this.countryToolStripMenuItem.Name = "countryToolStripMenuItem";
-            this.countryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.countryToolStripMenuItem.Text = "Country";
-            this.countryToolStripMenuItem.Click += new System.EventHandler(this.countryToolStripMenuItem_Click);
-            // 
             // toolStrip1
             // 
             this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -151,6 +162,13 @@
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton1.Text = "toolStripButton1";
             // 
+            // userToolStripMenuItem
+            // 
+            this.userToolStripMenuItem.Name = "userToolStripMenuItem";
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.userToolStripMenuItem.Text = "User";
+            this.userToolStripMenuItem.Click += new System.EventHandler(this.userToolStripMenuItem_Click);
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -163,6 +181,7 @@
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
             this.Text = "MainForm";
+            this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.toolStrip1.ResumeLayout(false);
@@ -187,5 +206,7 @@
         private System.Windows.Forms.ToolStripMenuItem countryToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripMenuItem sightsListToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
     }
 }

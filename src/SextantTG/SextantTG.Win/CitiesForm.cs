@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SextantTG.ActiveRecord;
 
 namespace SextantTG.Win
 {
@@ -14,6 +15,66 @@ namespace SextantTG.Win
         public CitiesForm()
         {
             InitializeComponent();
+        }
+
+        private void CitiesForm_Load(object sender, EventArgs e)
+        {
+            LoadData();
+        }
+
+        private void LoadData()
+        {
+            this.bindingSource.DataSource = UIUtil.GetCities();
+        }
+
+        private void button_Add_Click(object sender, EventArgs e)
+        {
+            using (CityEditForm form = new CityEditForm())
+            {
+                if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                {
+                    LoadData();
+                }
+            }
+        }
+
+        private void button_Edit_Click(object sender, EventArgs e)
+        {
+            City city = this.bindingSource.Current as City;
+            if (city != null)
+            {
+                using (CityEditForm form = new CityEditForm())
+                {
+                    form.SetCity(city);
+                    if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        LoadData();
+                    }
+                }
+            }
+        }
+
+        private void button_Delete_Click(object sender, EventArgs e)
+        {
+            City city = this.bindingSource.Current as City;
+            if (city != null)
+            {
+                string msg;
+                if (UIUtil.DeleteCityByCityId(city.CityId, out msg))
+                {
+                    LoadData();
+                }
+                else
+                {
+                    MessageBox.Show("删除城市失败", "提示");
+                    return;
+                }
+            }
+        }
+
+        private void button_Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

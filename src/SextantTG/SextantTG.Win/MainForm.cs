@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using SextantTG.ActiveRecord;
 
 namespace SextantTG.Win
 {
@@ -34,9 +35,34 @@ namespace SextantTG.Win
             return form;
         }
 
-        private void sightsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void MainForm_Load(object sender, EventArgs e)
         {
-            this.OpenMdiChildForm(typeof(SightsForm));
+            //InitMenu();
+        }
+
+        private void InitMenu()
+        {
+            if (Config.AppConfig.User != null)
+            {
+                tourToolStripMenuItem.Visible = true;
+            }
+            else
+            {
+                tourToolStripMenuItem.Visible = false;
+            }
+
+            if (Config.AppConfig.Permissions != null
+                && Config.AppConfig.Permissions.Exists(delegate(Permission p)
+            {
+                return p.PermissionType.HasValue && p.PermissionType.Value == 9;
+            }))
+            {
+                adminToolStripMenuItem.Visible = true;
+            }
+            else
+            {
+                adminToolStripMenuItem.Visible = false;
+            }
         }
 
         private void cityToolStripMenuItem_Click(object sender, EventArgs e)
@@ -53,6 +79,18 @@ namespace SextantTG.Win
         {
             this.OpenMdiChildForm(typeof(CountriesForm));
         }
+
+        private void sightsListToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.OpenMdiChildForm(typeof(SightsForm));
+        }
+
+        private void userToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.OpenMdiChildForm(typeof(UsersForm));
+        }
+
+
 
 
     }

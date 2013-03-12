@@ -19,6 +19,51 @@ namespace SextantTG.Win
         private static readonly ITourService tourSrv = ServiceFactory.CreateService<ITourService>();
         private static readonly IUserService userSrv = ServiceFactory.CreateService<IUserService>();
 
+        #region User Services
+
+        internal static User Login(string loginName, string password) 
+        {
+            return userSrv.Login(loginName, password);
+        }
+
+        internal static List<Permission> GetPermissionsByUserId(string userId)
+        {
+            return userSrv.GetPermissionsByUserId(userId);
+        }
+
+        internal static User GetUserByLoginName(string loginName)
+        {
+            return userSrv.GetUserByLoginName(loginName);
+        }
+
+        internal static User GetUserByEmail(string email)
+        {
+            return userSrv.GetUserByEmail(email);
+        }
+
+        internal static bool InsertUser(User user, string password, out string message)
+        {
+            return userSrv.InsertUser(user, password, out message);
+        }
+
+        internal static List<User> GetUsers()
+        {
+            return userSrv.GetUsers();
+        }
+
+        internal static bool UpdateUser(User user, out string message)
+        {
+            return userSrv.UpdateUser(user, out message);
+        }
+
+        internal static bool UpdatePermissionsByUserId(string userId, List<Permission> permissions, out string message)
+        {
+            return userSrv.UpdatePermissionsByUserId(userId, permissions, out message);
+        }
+
+        #endregion
+
+
         #region Dict Services
 
         internal static List<Country> GetCountries()
@@ -54,6 +99,11 @@ namespace SextantTG.Win
         internal static Province GetProvinceByCityId(string cityId)
         {
             return dictSrv.GetProvinceByCityId(cityId);
+        }
+
+        internal static Dictionary<int, string> GetPermissions()
+        {
+            return dictSrv.GetPermissions();
         }
 
         internal static bool InsertCountry(Country country, out string message)

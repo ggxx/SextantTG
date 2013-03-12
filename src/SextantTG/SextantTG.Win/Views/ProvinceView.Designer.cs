@@ -85,6 +85,7 @@
             // comboBox_Country
             // 
             this.comboBox_Country.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox_Country.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Country.FormattingEnabled = true;
             this.comboBox_Country.Location = new System.Drawing.Point(78, 50);
             this.comboBox_Country.Name = "comboBox_Country";

@@ -17,9 +17,8 @@ namespace SextantTG.Win
             InitializeComponent();
         }
 
-        public CountryEditForm(Country country)
+        public void SetCountry(Country country)
         {
-            InitializeComponent();
             this.countryView.SetCountry(country);
         }
 
@@ -31,15 +30,18 @@ namespace SextantTG.Win
 
         private void button_OK_Click(object sender, EventArgs e)
         {
-            string message;
-            if (this.countryView.Save(out message))
+            bool val;
+            string msg;
+            val = this.countryView.Save(out msg);
+            if (val)
             {
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 this.Close();
             }
             else
             {
-                MessageBox.Show("Error", message);
+                MessageBox.Show("保存失败\r\n" + msg, "提示");
+                return;
             }
         }
     }

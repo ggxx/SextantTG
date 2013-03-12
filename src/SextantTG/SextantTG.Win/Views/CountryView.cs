@@ -10,11 +10,11 @@ using SextantTG.ActiveRecord;
 
 namespace SextantTG.Win.Views
 {
-    public partial class CountryView : UserControl
+    internal partial class CountryView : UserControl
     {
         private string countryId = "";
 
-        public CountryView()
+        internal CountryView()
         {
             InitializeComponent();
         }
@@ -27,13 +27,13 @@ namespace SextantTG.Win.Views
             return country;
         }
 
-        public void SetCountry(Country country)
+        internal void SetCountry(Country country)
         {
             this.countryId = country.CountryId;
             this.textBox_CountryName.Text = country.CountryName;
         }
 
-        public bool Save(out string message)
+        internal bool Save(out string message)
         {
             if (string.IsNullOrEmpty(countryId))
             {

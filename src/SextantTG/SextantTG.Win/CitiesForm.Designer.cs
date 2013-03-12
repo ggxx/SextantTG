@@ -29,70 +29,86 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(CitiesForm));
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.button1 = new System.Windows.Forms.Button();
+            this.button_Close = new System.Windows.Forms.Button();
+            this.button_Add = new System.Windows.Forms.Button();
+            this.button_Edit = new System.Windows.Forms.Button();
+            this.button_Delete = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
-            this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
             // dataGridView
             // 
+            this.dataGridView.AllowUserToAddRows = false;
+            this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.AutoGenerateColumns = false;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView.Location = new System.Drawing.Point(12, 28);
+            this.dataGridView.DataSource = this.bindingSource;
+            this.dataGridView.Location = new System.Drawing.Point(12, 12);
             this.dataGridView.Name = "dataGridView";
+            this.dataGridView.ReadOnly = true;
             this.dataGridView.RowTemplate.Height = 23;
-            this.dataGridView.Size = new System.Drawing.Size(260, 193);
+            this.dataGridView.Size = new System.Drawing.Size(600, 389);
             this.dataGridView.TabIndex = 0;
             // 
-            // toolStrip1
+            // button_Close
             // 
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripButton1});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(284, 25);
-            this.toolStrip1.TabIndex = 1;
-            this.toolStrip1.Text = "toolStrip1";
+            this.button_Close.Location = new System.Drawing.Point(537, 407);
+            this.button_Close.Name = "button_Close";
+            this.button_Close.Size = new System.Drawing.Size(75, 23);
+            this.button_Close.TabIndex = 2;
+            this.button_Close.Text = "关闭";
+            this.button_Close.UseVisualStyleBackColor = true;
+            this.button_Close.Click += new System.EventHandler(this.button_Close_Click);
             // 
-            // toolStripButton1
+            // button_Add
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
-            this.toolStripButton1.Text = "toolStripButton1";
+            this.button_Add.Location = new System.Drawing.Point(12, 407);
+            this.button_Add.Name = "button_Add";
+            this.button_Add.Size = new System.Drawing.Size(75, 23);
+            this.button_Add.TabIndex = 3;
+            this.button_Add.Text = "新增";
+            this.button_Add.UseVisualStyleBackColor = true;
+            this.button_Add.Click += new System.EventHandler(this.button_Add_Click);
             // 
-            // button1
+            // button_Edit
             // 
-            this.button1.Location = new System.Drawing.Point(197, 227);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Close";
-            this.button1.UseVisualStyleBackColor = true;
+            this.button_Edit.Location = new System.Drawing.Point(93, 407);
+            this.button_Edit.Name = "button_Edit";
+            this.button_Edit.Size = new System.Drawing.Size(75, 23);
+            this.button_Edit.TabIndex = 4;
+            this.button_Edit.Text = "编辑";
+            this.button_Edit.UseVisualStyleBackColor = true;
+            this.button_Edit.Click += new System.EventHandler(this.button_Edit_Click);
+            // 
+            // button_Delete
+            // 
+            this.button_Delete.Location = new System.Drawing.Point(174, 407);
+            this.button_Delete.Name = "button_Delete";
+            this.button_Delete.Size = new System.Drawing.Size(75, 23);
+            this.button_Delete.TabIndex = 5;
+            this.button_Delete.Text = "删除";
+            this.button_Delete.UseVisualStyleBackColor = true;
+            this.button_Delete.Click += new System.EventHandler(this.button_Delete_Click);
             // 
             // CitiesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(284, 262);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.toolStrip1);
+            this.ClientSize = new System.Drawing.Size(624, 442);
+            this.Controls.Add(this.button_Delete);
+            this.Controls.Add(this.button_Edit);
+            this.Controls.Add(this.button_Add);
+            this.Controls.Add(this.button_Close);
             this.Controls.Add(this.dataGridView);
             this.Name = "CitiesForm";
             this.Text = "CitiesForm";
+            this.Load += new System.EventHandler(this.CitiesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
@@ -100,8 +116,9 @@
 
         private System.Windows.Forms.BindingSource bindingSource;
         private System.Windows.Forms.DataGridView dataGridView;
-        private System.Windows.Forms.ToolStrip toolStrip1;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button button_Close;
+        private System.Windows.Forms.Button button_Add;
+        private System.Windows.Forms.Button button_Edit;
+        private System.Windows.Forms.Button button_Delete;
     }
 }
