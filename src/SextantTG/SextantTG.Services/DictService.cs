@@ -30,7 +30,7 @@ namespace SextantTG.Services
         public List<Country> GetCountries()
         {
             if (countries == null)
-                countries = countryDal.GetCounties();
+                countries = countryDal.GetCountries();
             return countries;
         }
 
@@ -75,7 +75,7 @@ namespace SextantTG.Services
         public Country GetCountryByCountryId(string countryId) 
         {
             if (countries == null)
-                countries = countryDal.GetCounties();
+                countries = countryDal.GetCountries();
             return countries.Find(delegate(Country tmp) { return tmp.CountryId == countryId; });
         }
 

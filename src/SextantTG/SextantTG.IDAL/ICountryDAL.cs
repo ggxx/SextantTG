@@ -9,7 +9,7 @@ namespace SextantTG.IDAL
 {
     public interface ICountryDAL : IBaseDAL
     {
-        List<Country> GetCounties();
+        List<Country> GetCountries();
 
         int InsertCountry(Country country, DbTransaction trans);
         int UpdateCountry(Country country, DbTransaction trans);

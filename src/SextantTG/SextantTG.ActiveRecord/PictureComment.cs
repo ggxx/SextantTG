@@ -37,5 +37,10 @@ namespace SextantTG.ActiveRecord
         /// 图片ID
         /// </summary>
         public string PictureId { get; set; }
+
+        /// <summary>
+        /// 评论
+        /// </summary>
+        public string Comment { get; set; }
     }
 }

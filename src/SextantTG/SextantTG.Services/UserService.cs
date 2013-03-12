@@ -49,5 +49,11 @@ namespace SextantTG.Services
         {
             throw new NotImplementedException();
         }
+
+
+        public bool UpdatePermissionsByUserId(string userId, List<Permission> permissions, out string message)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
