@@ -35,6 +35,10 @@
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button_Permission = new System.Windows.Forms.Button();
+            this.Column_UserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_LoginName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.SuspendLayout();
@@ -75,8 +79,14 @@
             this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.AutoGenerateColumns = false;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column_UserId,
+            this.Column_LoginName,
+            this.Column_Email,
+            this.Column_Status});
             this.dataGridView.DataSource = this.bindingSource;
             this.dataGridView.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowTemplate.Height = 23;
@@ -93,6 +103,36 @@
             this.button_Permission.Text = "权限";
             this.button_Permission.UseVisualStyleBackColor = true;
             this.button_Permission.Click += new System.EventHandler(this.button_Permission_Click);
+            // 
+            // Column_UserId
+            // 
+            this.Column_UserId.DataPropertyName = "UserId";
+            this.Column_UserId.HeaderText = "ID";
+            this.Column_UserId.Name = "Column_UserId";
+            this.Column_UserId.ReadOnly = true;
+            // 
+            // Column_LoginName
+            // 
+            this.Column_LoginName.DataPropertyName = "LoginName";
+            this.Column_LoginName.HeaderText = "登录名";
+            this.Column_LoginName.Name = "Column_LoginName";
+            this.Column_LoginName.ReadOnly = true;
+            // 
+            // Column_Email
+            // 
+            this.Column_Email.DataPropertyName = "Email";
+            this.Column_Email.HeaderText = "Email";
+            this.Column_Email.Name = "Column_Email";
+            this.Column_Email.ReadOnly = true;
+            // 
+            // Column_Status
+            // 
+            this.Column_Status.DataPropertyName = "Status";
+            this.Column_Status.HeaderText = "有效";
+            this.Column_Status.Name = "Column_Status";
+            this.Column_Status.ReadOnly = true;
+            this.Column_Status.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column_Status.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
             // 
             // UsersForm
             // 
@@ -121,5 +161,9 @@
         private System.Windows.Forms.Button button_Close;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Button button_Permission;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_UserId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_LoginName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Email;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Status;
     }
 }

@@ -47,7 +47,7 @@
             this.button_Guest.Location = new System.Drawing.Point(24, 232);
             this.button_Guest.Name = "button_Guest";
             this.button_Guest.Size = new System.Drawing.Size(75, 23);
-            this.button_Guest.TabIndex = 4;
+            this.button_Guest.TabIndex = 2;
             this.button_Guest.Text = "游客登录";
             this.button_Guest.UseVisualStyleBackColor = true;
             this.button_Guest.Click += new System.EventHandler(this.button_Guest_Click);
@@ -57,7 +57,7 @@
             this.button_OK.Location = new System.Drawing.Point(259, 232);
             this.button_OK.Name = "button_OK";
             this.button_OK.Size = new System.Drawing.Size(75, 23);
-            this.button_OK.TabIndex = 6;
+            this.button_OK.TabIndex = 4;
             this.button_OK.Text = "登录";
             this.button_OK.UseVisualStyleBackColor = true;
             this.button_OK.Click += new System.EventHandler(this.button_OK_Click);
@@ -67,7 +67,7 @@
             this.button_Reg.Location = new System.Drawing.Point(105, 232);
             this.button_Reg.Name = "button_Reg";
             this.button_Reg.Size = new System.Drawing.Size(75, 23);
-            this.button_Reg.TabIndex = 5;
+            this.button_Reg.TabIndex = 3;
             this.button_Reg.Text = "注册帐号";
             this.button_Reg.UseVisualStyleBackColor = true;
             this.button_Reg.Click += new System.EventHandler(this.button_Reg_Click);
@@ -111,10 +111,11 @@
             // 
             // button_Close
             // 
+            this.button_Close.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button_Close.Location = new System.Drawing.Point(340, 232);
             this.button_Close.Name = "button_Close";
             this.button_Close.Size = new System.Drawing.Size(75, 23);
-            this.button_Close.TabIndex = 7;
+            this.button_Close.TabIndex = 5;
             this.button_Close.Text = "退出";
             this.button_Close.UseVisualStyleBackColor = true;
             this.button_Close.Click += new System.EventHandler(this.button_Close_Click);
@@ -135,7 +136,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(237, 80);
-            this.tableLayoutPanel1.TabIndex = 8;
+            this.tableLayoutPanel1.TabIndex = 1;
             // 
             // label3
             // 
@@ -144,14 +145,16 @@
             this.label3.Location = new System.Drawing.Point(28, 9);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(113, 12);
-            this.label3.TabIndex = 9;
+            this.label3.TabIndex = 0;
             this.label3.Text = "Sextant Tour Guide";
             // 
             // LoginForm
             // 
+            this.AcceptButton = this.button_OK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackgroundImage = ((System.Drawing.Image)(resources.GetObject("$this.BackgroundImage")));
+            this.CancelButton = this.button_Close;
             this.ClientSize = new System.Drawing.Size(450, 285);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.tableLayoutPanel1);

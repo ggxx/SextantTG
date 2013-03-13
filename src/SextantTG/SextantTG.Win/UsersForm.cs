@@ -46,6 +46,10 @@ namespace SextantTG.Win
                         MessageBox.Show("操作失败\r\n" + msg, "提示");
                         return;
                     }
+                    else
+                    {
+                        LoadData();
+                    }
                 }
             }
         }
@@ -64,6 +68,10 @@ namespace SextantTG.Win
                         MessageBox.Show("操作失败\r\n" + msg, "提示");
                         return;
                     }
+                    else
+                    {
+                        LoadData();
+                    }
                 }
             }
         }
@@ -75,7 +83,11 @@ namespace SextantTG.Win
             {
                 using (UserPermissionForm form = new UserPermissionForm())
                 {
-
+                    form.SetUser(user.UserId);
+                    if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        LoadData();
+                    }
                 }
             }
         }

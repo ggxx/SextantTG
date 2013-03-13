@@ -27,7 +27,15 @@ namespace SextantTG.Win
 
             this.comboBox_Province.DisplayMember = "ProvinceName";
             this.comboBox_Province.ValueMember = "ProvinceId";
-            this.comboBox_Province.DataSource = UIUtil.GetProvinces();
+            //this.comboBox_Province.DataSource = UIUtil.GetProvinces();
+        }
+
+        private void comboBox_Country_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.comboBox_Country.SelectedValue != null)
+            {
+                this.comboBox_Province.DataSource = UIUtil.GetProvincesByCountryId(this.comboBox_Country.SelectedValue.ToString());
+            }
         }
 
         public void SetCity(City city)

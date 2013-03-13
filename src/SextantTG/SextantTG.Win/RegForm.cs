@@ -51,6 +51,12 @@ namespace SextantTG.Win
                 return;
             }
 
+            if (!Util.StringHelper.IsEmail(email))
+            {
+                MessageBox.Show("Email格式不正确", "提示");
+                return;
+            }
+
             User user = new User();
             user.Email = email;
             user.LoginName = loginName;

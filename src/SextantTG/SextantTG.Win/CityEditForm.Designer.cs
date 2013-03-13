@@ -128,6 +128,7 @@
             this.comboBox_Country.Name = "comboBox_Country";
             this.comboBox_Country.Size = new System.Drawing.Size(234, 20);
             this.comboBox_Country.TabIndex = 4;
+            this.comboBox_Country.SelectedIndexChanged += new System.EventHandler(this.comboBox_Country_SelectedIndexChanged);
             // 
             // comboBox_Province
             // 
@@ -148,6 +149,7 @@
             this.Controls.Add(this.button_OK);
             this.Controls.Add(this.button_Cancel);
             this.Name = "CityEditForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "CityEditForm";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

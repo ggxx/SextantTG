@@ -34,7 +34,7 @@ namespace SextantTG.SQLiteDAL
         private static readonly string SELECT___LOGIN_NAME__PASSWORD = "select * from stg_user where login_name = :LoginName and password = :Password";
         
         private static readonly string INSERT = "insert into stg_user(user_id, login_name, password, email, status) values(:UserId, :LoginName, :Password, :Email, :Status)";
-        private static readonly string UPDATE = "update stg_user set login_name = :Login_Name, password = :Password, status = :Status where user_id = :UserId" ;
+        private static readonly string UPDATE = "update stg_user set login_name = :LoginName, email = :Email, status = :Status where user_id = :UserId" ;
         private static readonly string DELETE = "delete from stg_user where user_id = :UserId";
 
         private User BuildUserByReader(DbDataReader r)
@@ -124,7 +124,7 @@ namespace SextantTG.SQLiteDAL
             user.UserId = StringHelper.CreateGuid();
             
             Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("User", user.UserId);
+            pars.Add("UserId", user.UserId);
             pars.Add("LoginName", user.LoginName);
             pars.Add("Password", password);
             pars.Add("Email", user.Email);
@@ -135,7 +135,7 @@ namespace SextantTG.SQLiteDAL
         public int UpdateUser(User user, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("User", user.UserId);
+            pars.Add("UserId", user.UserId);
             pars.Add("LoginName", user.LoginName);
             //pars.Add("Password", user.Password);
             pars.Add("Email", user.Email);

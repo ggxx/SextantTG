@@ -123,6 +123,7 @@
             this.Controls.Add(this.button_OK);
             this.Controls.Add(this.button_Cancel);
             this.Name = "ProvinceEditForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ProvinceEditForm";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();

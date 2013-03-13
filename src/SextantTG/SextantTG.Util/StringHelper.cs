@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Security.Cryptography;
+using System.Text.RegularExpressions;
 
 namespace SextantTG.Util
 {
@@ -43,7 +45,54 @@ namespace SextantTG.Util
         /// <returns></returns>
         public static string CreateGuid()
         {
-            return Guid.NewGuid().ToString("N");
+            return Guid.NewGuid().ToString("N").ToUpper();
+        }
+
+        /// <summary>
+        /// 生成哈希
+        /// </summary>
+        /// <param name="input"></param>
+        /// <returns></returns>
+        public static string GetMd5Hash(string input)
+        {
+            byte[] buffer = MD5.Create().ComputeHash(Encoding.Default.GetBytes(input));
+            StringBuilder builder = new StringBuilder();
+            for (int i = 0; i < buffer.Length; i++)
+            {
+                builder.Append(buffer[i].ToString("X2"));
+            }
+            return builder.ToString();
+        }
+
+        /// <summary>
+        /// 验证哈希
+        /// </summary>
+        /// <param name="input"></param>
+        /// <param name="hash"></param>
+        /// <returns></returns>
+        public static bool VerifyMd5Hash(string input, string hash)
+        {
+            string x = GetMd5Hash(input);
+            return (StringComparer.OrdinalIgnoreCase.Compare(x, hash) == 0);
+        }
+
+
+        private static readonly string strRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
+        private static readonly Regex re = new Regex(strRegex);
+
+        public static bool IsEmail(string inputEmail)
+        {
+            if (!string.IsNullOrEmpty(inputEmail))
+            {
+                if (re.IsMatch(inputEmail))
+                    return true;
+                else
+                    return false;
+            }
+            else
+            {
+                return false;
+            }
         }
     }
 }

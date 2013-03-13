@@ -13,6 +13,7 @@ namespace SextantTG.Win
     public partial class UserPermissionForm : Form
     {
         private string userId = "";
+        
 
         public UserPermissionForm()
         {
@@ -77,9 +78,34 @@ namespace SextantTG.Win
 
         private void button_OK_Click(object sender, EventArgs e)
         {
+            Dictionary<int, string> all = UIUtil.GetPermissions();
+            List<Permission> list = new List<Permission>();
+            foreach (object item in this.listBox_Current.Items)
+            {
+                foreach (KeyValuePair<int, string> k in all)
+                {
+                    if (k.Value.Equals(item.ToString()))
+                    {
+                        Permission p = new Permission();
+                        p.UserId = this.userId;
+                        p.PermissionType = k.Key;
+                        list.Add(p);
+                        break;
+                    }
+                }
+            }
 
+            string msg;
+            if (UIUtil.UpdatePermissionsByUserId(this.userId, list, out msg))
+            {
+                this.DialogResult = System.Windows.Forms.DialogResult.OK;
+                this.Close();
+            }
+            else
+            {
+                MessageBox.Show("操作失败", "提示");
+                return;
+            }
         }
-
-
     }
 }

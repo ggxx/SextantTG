@@ -59,6 +59,10 @@
       <Project>{a8d6c61a-6c22-438a-99ff-a598575d6b6b}</Project>
       <Name>SextantTG.IServices</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SextantTG.Util\SextantTG.Util.csproj">
+      <Project>{2BFB5DFD-3BCF-45B9-92D2-E7A24A3343A7}</Project>
+      <Name>SextantTG.Util</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
