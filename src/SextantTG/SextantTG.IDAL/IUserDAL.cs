@@ -9,10 +9,13 @@ namespace SextantTG.IDAL
 {
     public interface IUserDAL : IBaseDAL
     {
+        List<User> GetUsers();
+        User GetUserByEmail(string email);
+        User GetUserByLoginName(string loginName);
         User GetUserByLoginNameAndPassword(string loginName, string password);
         User GetUserByUserId(string userId);
 
-        int InsertUser(User user, DbTransaction trans);
+        int InsertUser(User user, string password, DbTransaction trans);
         int UpdateUser(User user, DbTransaction trans);
         int DeleteUserByUserId(string userId, DbTransaction trans);
     }

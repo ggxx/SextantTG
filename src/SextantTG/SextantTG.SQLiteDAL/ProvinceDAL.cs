@@ -27,22 +27,22 @@ namespace SextantTG.SQLiteDAL
         }
         
         private static readonly string SELECT = "select * from stg_province";
-        private static readonly string SELECT___PROVINCE_ID = "select * from stg_province where province_id = :ProvinceId";
-        private static readonly string SELECT___PROVINCE_NAME = "select * from stg_province where province_Name = :ProvinceName";
-        private static readonly string SELECT___COUNTRY_ID = "select * from stg_province where country_id = :countryId";
+        //private static readonly string SELECT___PROVINCE_ID = "select * from stg_province where province_id = :ProvinceId";
+        //private static readonly string SELECT___PROVINCE_NAME = "select * from stg_province where province_Name = :ProvinceName";
+        //private static readonly string SELECT___COUNTRY_ID = "select * from stg_province where country_id = :countryId";
         private static readonly string INSERT = "insert into stg_province(Province_id, Province_name,Country_id) values(:ProvinceId,:Provincename,CountryId)";
         private static readonly string UPDATE = "update stg_province set province_id = :ProvinceId, Province_name = :Province_name where province_id = :ProvinceId";
         private static readonly string DELETE = "delete from stg_province where province_id = :ProvinceId";
 
         private Province BuildProvinceByReader(DbDataReader r)
         {
-            Province province = new province();
+            Province province = new Province();
             province.ProvinceId = TypeConverter.ToString(r["province_id"]);
             province.ProvinceName = TypeConverter.ToString(r["province_name"]);          
             return province;
         }
 
-        public List<Province> GetProvince()
+        public List<Province> GetProvinces()
         {
             List<Province> province = new List<Province>();
             using (DbDataReader r = dbHelper.ExecuteReader(SELECT))
@@ -55,69 +55,67 @@ namespace SextantTG.SQLiteDAL
             return province;
         }
 
-        public List<Province> GetProvinceByProvinceId(string provinceID)
-        {
-            List<Province> province = new List<Province>();
-            Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("provinceID", provinceID);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___PROVINCE_ID , pars))
-            {
-                while (r.Read())
-                {
-                    province.Add(BuildProvinceByReader(r));
-                }
-            }
-            return province;
-        }
+        //public Province GetProvinceByProvinceId(string provinceID)
+        //{
+        //    Dictionary<string, object> pars = new Dictionary<string, object>();
+        //    pars.Add("provinceID", provinceID);
+        //    using (DbDataReader r = dbHelper.ExecuteReader(SELECT___PROVINCE_ID , pars))
+        //    {
+        //        if (r.Read())
+        //        {
+        //            return BuildProvinceByReader(r);
+        //        }
+        //    }
+        //    return null;
+        //}
 
-        public List<Province> GetProvinceByProvinceName(string provinceName)
-        {
-            List<Province> province = new List<Province>();
-            Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("ProvinceName", provinceName);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___PROVINCE_NAME , pars))
-            {
-                while (r.Read())
-                {
-                    province.Add(BuildProvinceByReader(r));
-                }
-            }
-            return province;
-        }
+        //public Province GetProvinceByProvinceName(string provinceName)
+        //{
+        //    Dictionary<string, object> pars = new Dictionary<string, object>();
+        //    pars.Add("ProvinceName", provinceName);
+        //    using (DbDataReader r = dbHelper.ExecuteReader(SELECT___PROVINCE_NAME , pars))
+        //    {
+        //        if (r.Read())
+        //        {
+        //            province.Add(BuildProvinceByReader(r));
+        //        }
+        //    }
+        //    return province;
+        //}
 
        
-        public List<Province> GetProvinceByCountryId(string countryId)
-        {
-            List<Province> province = new List<Province>();
-            Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("CountryId", countryId);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___COUNTRY_ID , pars))
-            {
-                while (r.Read())
-                {
-                    province.Add(BuildProvinceByReader(r));
-                }
-            }
-            return province;
-        }
+        //public List<Province> GetProvinceByCountryId(string countryId)
+        //{
+        //    List<Province> province = new List<Province>();
+        //    Dictionary<string, object> pars = new Dictionary<string, object>();
+        //    pars.Add("CountryId", countryId);
+        //    using (DbDataReader r = dbHelper.ExecuteReader(SELECT___COUNTRY_ID , pars))
+        //    {
+        //        while (r.Read())
+        //        {
+        //            province.Add(BuildProvinceByReader(r));
+        //        }
+        //    }
+        //    return province;
+        //}
 
 
         
 
-        public Province GetProvinceById(string provinceId)
-        {
-            Province province = null;
-            Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("ProvinceID", provinceId);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___PROVINCE_ID, pars))
-            {
-                if (r.Read())
-                {
-                    province = BuildProvinceByReader(r);
-                }
-            }
-            return province;
-        }
+        //public Province GetProvinceById(string provinceId)
+        //{
+        //    Province province = null;
+        //    Dictionary<string, object> pars = new Dictionary<string, object>();
+        //    pars.Add("ProvinceID", provinceId);
+        //    using (DbDataReader r = dbHelper.ExecuteReader(SELECT___PROVINCE_ID, pars))
+        //    {
+        //        if (r.Read())
+        //        {
+        //            province = BuildProvinceByReader(r);
+        //        }
+        //    }
+        //    return province;
+        //}
 
         public int InsertProvince(Province province, DbTransaction trans)
         {
@@ -137,7 +135,7 @@ namespace SextantTG.SQLiteDAL
             return dbHelper.ExecuteNonQuery(trans, UPDATE, pars);
         }
 
-        public int DeleteProvinceByProvinceID(Province province, DbTransaction trans)
+        public int DeleteProvinceByProvinceId(string provinceId, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("ProvinceID", provinceId);

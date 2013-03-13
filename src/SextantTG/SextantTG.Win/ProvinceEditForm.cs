@@ -17,8 +17,6 @@ namespace SextantTG.Win
             InitializeComponent();
         }
 
-
-
         public void SetProvince(Province province)
         {
             this.provinceView.SetProvince(province);

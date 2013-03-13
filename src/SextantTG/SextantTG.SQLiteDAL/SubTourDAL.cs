@@ -31,8 +31,8 @@ namespace SextantTG.SQLiteDAL
         private static readonly string SELECT___TOUR_ID__SUB_TOUR_ID = "select * from stg_sub_tour where tour_id = :TourId and sub_tour_id = :SubTourId";
 
         private static readonly string INSERT = "insert into stg_sub_tour(tour_id, sub_tour_id, sub_tour_name, sights_id, begin_date, end_date, creating_time, memos) values(:TourId, :SubTourId, :SubTourName :SightsId, :BeginDate, :EndDate, :CreatingTime, :Memos)";
-        private static readonly string UPDATE = "update stg_sub_tour set tour_id = :TourId, sub_tour_id = :SubTourId, sub_tour_name = :SubTourName, sights_id = :SightsId, begin_date = :BeginDate, end_date = :EndDate, creating_time = :CreatingTime, memos = :Memos where tour_id = :TourId and sub_tour_id =: SubTourId";
-        private static readonly string DELETE = "delete from stg_sub_tour where tour_id = :TourId and sub_tour_id = :Sub_tour_id";
+        private static readonly string UPDATE = "update stg_sub_tour set sub_tour_name = :SubTourName, sights_id = :SightsId, begin_date = :BeginDate, end_date = :EndDate, creating_time = :CreatingTime, memos = :Memos where tour_id = :TourId and sub_tour_id =: SubTourId";
+        private static readonly string DELETE = "delete from stg_sub_tour where tour_id = :TourId and sub_tour_id = :SubTourId";
 
         private SubTour BuildSubTourByReader(DbDataReader r)
         {
@@ -48,10 +48,6 @@ namespace SextantTG.SQLiteDAL
             return subtour;
         }
 
-        public List<SubTour> GetSubToursByTourId(string tourId)
-        {
-            throw new NotImplementedException();
-        }
 
         public List<SubTour> GetSubTours()
         {
@@ -65,7 +61,7 @@ namespace SextantTG.SQLiteDAL
             }
             return subtour;
         }
-
+        
         public SubTour GetSubTourByTourIdAndSubTourId(string tourId, string subTourId)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
@@ -81,12 +77,12 @@ namespace SextantTG.SQLiteDAL
             return null;
         }
 
-        public List<SubTour> GetSubTourByUserId(string userId)
+        public List<SubTour> GetSubToursByTourId(string tourId)
         {
-            List<Tour> subtours = new List<Tour>();
+            List<SubTour> subtours = new List<SubTour>();
             Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("UserId", userId);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___TOUR_ID__SUB_TOUR_ID, pars))
+            pars.Add("TourId", tourId);
+            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___TOUR_ID, pars))
             {
                 while (r.Read())
                 {
@@ -98,14 +94,14 @@ namespace SextantTG.SQLiteDAL
 
         public int InsertSubTour(SubTour subtour, DbTransaction trans)
         {
-            subtour.TourId = StringHelper.CreateGuid();
+            subtour.SubTourId = StringHelper.CreateGuid();
             subtour.CreatingTime = DateTime.Now;
 
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("TourId", subtour.TourId);
             pars.Add("SubTourId", subtour.SubTourId);
             pars.Add("SubTourName", subtour.SubTourName);
-            pars.Add("SightsId", subtour.Sightsid);
+            pars.Add("SightsId", subtour.SightsId);
             pars.Add("BeginDate", subtour.BeginDate);
             pars.Add("EndDate", subtour.EndDate);
             pars.Add("CreatingTime", subtour.CreatingTime);
@@ -119,7 +115,7 @@ namespace SextantTG.SQLiteDAL
             pars.Add("TourId", subtour.TourId);
             pars.Add("SubTourId", subtour.SubTourId);
             pars.Add("SubTourName", subtour.SubTourName);
-            pars.Add("SightsId", subtour.Sightsid);
+            pars.Add("SightsId", subtour.SightsId);
             pars.Add("BeginDate", subtour.BeginDate);
             pars.Add("EndDate", subtour.EndDate);
             pars.Add("CreatingTime", subtour.CreatingTime);

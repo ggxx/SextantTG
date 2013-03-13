@@ -12,6 +12,8 @@ namespace SextantTG.Win
 {
     public partial class CountryEditForm : Form
     {
+        private Country country = null;
+
         public CountryEditForm()
         {
             InitializeComponent();
@@ -19,7 +21,8 @@ namespace SextantTG.Win
 
         public void SetCountry(Country country)
         {
-            this.countryView.SetCountry(country);
+            this.country = country;
+            this.textBox_CountryName.Text = country.CountryName;
         }
 
         private void button_Cancel_Click(object sender, EventArgs e)
@@ -32,6 +35,17 @@ namespace SextantTG.Win
         {
             bool val;
             string msg;
+            if (country == null)
+            {
+                country = new Country();
+                country.CountryName = this.textBox_CountryName.Text.Trim();
+            }
+            else
+            {
+ 
+            }
+
+
             val = this.countryView.Save(out msg);
             if (val)
             {

@@ -28,9 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.countryView = new Views.CountryView();
             this.button_Cancel = new System.Windows.Forms.Button();
             this.button_OK = new System.Windows.Forms.Button();
+            this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox_CountryName = new System.Windows.Forms.TextBox();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button_Cancel
@@ -53,24 +56,51 @@
             this.button_OK.UseVisualStyleBackColor = true;
             this.button_OK.Click += new System.EventHandler(this.button_OK_Click);
             // 
-            // countryView
+            // tableLayoutPanel1
             // 
-            this.countryView.Location = new System.Drawing.Point(12, 12);
-            this.countryView.Name = "countryView";
-            this.countryView.Size = new System.Drawing.Size(300, 40);
-            this.countryView.TabIndex = 3;
+            this.tableLayoutPanel1.ColumnCount = 2;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
+            this.tableLayoutPanel1.Controls.Add(this.label1, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.textBox_CountryName, 1, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(312, 40);
+            this.tableLayoutPanel1.TabIndex = 3;
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(34, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(41, 12);
+            this.label1.TabIndex = 0;
+            this.label1.Text = "国家名";
+            // 
+            // textBox_CountryName
+            // 
+            this.textBox_CountryName.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.textBox_CountryName.Location = new System.Drawing.Point(81, 9);
+            this.textBox_CountryName.Name = "textBox_CountryName";
+            this.textBox_CountryName.Size = new System.Drawing.Size(228, 21);
+            this.textBox_CountryName.TabIndex = 1;
             // 
             // CountryEditForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(336, 103);
-            this.Controls.Add(this.countryView);
+            this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.button_OK);
             this.Controls.Add(this.button_Cancel);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.Name = "CountryEditForm";
             this.Text = "国家字典编辑";
+            this.tableLayoutPanel1.ResumeLayout(false);
+            this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -79,6 +109,8 @@
 
         private System.Windows.Forms.Button button_Cancel;
         private System.Windows.Forms.Button button_OK;
-        private Views.CountryView countryView;
+        private System.Windows.Forms.TableLayoutPanel tableLayoutPanel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TextBox textBox_CountryName;
     }
 }

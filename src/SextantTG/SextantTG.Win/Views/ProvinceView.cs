@@ -23,7 +23,7 @@ namespace SextantTG.Win.Views
         {
             this.comboBox_Country.DisplayMember = "CountryName";
             this.comboBox_Country.ValueMember = "CountryId";
-            //this.comboBox_Country.DataSource = UIUtil.GetCountries();
+            this.comboBox_Country.DataSource = UIUtil.GetCountries();
         }
 
         internal void SetProvince(Province province)

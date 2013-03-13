@@ -13,6 +13,6 @@ namespace SextantTG.IDAL
 
         int InsertPermission(Permission permission, DbTransaction trans);
         //int UpdatePermission(Permission permission, DbTransaction trans);
-        int DeletePermissionByUserId(Permission permission, DbTransaction trans);
+        int DeletePermissionsByUserId(string userId, DbTransaction trans);
     }
 }

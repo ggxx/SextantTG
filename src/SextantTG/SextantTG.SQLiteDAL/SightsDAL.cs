@@ -33,7 +33,7 @@ namespace SextantTG.SQLiteDAL
         private static readonly string SELECT___SIGHTS_LEVEL = "select * from stg_sights where sights_level = :SightsLevel";
 
         private static readonly string INSERT = "insert into stg_sights(sights_id, sights_name, city_id, sights_level, description, price, creating_time, memos) values(:SightsId, :SightsName, :CityId, :SightsLevel, :Description, :Price, :CreatingTime, :Memos)";
-        private static readonly string UPDATE = "update stg_sights set sights_id = :SightsId, sights_name = :SightsName, city_id = :CityId, sights_levle = :SightsLevel, description = :Description, price = :Price, creating_time = :CreatingTime, memos = :Memos where sights_id = :SightsId";
+        private static readonly string UPDATE = "update stg_sights set sights_name = :SightsName, city_id = :CityId, sights_levle = :SightsLevel, description = :Description, price = :Price, creating_time = :CreatingTime, memos = :Memos where sights_id = :SightsId";
         private static readonly string DELETE = "delete from stg_sights where sights_id = :Sights_Id";
 
         private Sights BuildSightsByReader(DbDataReader r)
@@ -71,7 +71,7 @@ namespace SextantTG.SQLiteDAL
             {
                 if (r.Read())
                 {
-                    return BuildsightsByReader(r);
+                    return BuildSightsByReader(r);
                 }
             }
             return null;
@@ -133,7 +133,7 @@ namespace SextantTG.SQLiteDAL
             pars.Add("CityId", sights.CityId);
             pars.Add("SightsLevel", sights.SightsLevel);
             pars.Add("Description", sights.Description);
-            pars.Add("Price", sights.price);
+            pars.Add("Price", sights.Price);
             pars.Add("CreatingTime", sights.CreatingTime);
             pars.Add("Memos", sights.Memos);
             return dbHelper.ExecuteNonQuery(trans, INSERT, pars);
@@ -147,7 +147,7 @@ namespace SextantTG.SQLiteDAL
             pars.Add("CityId", sights.CityId);
             pars.Add("SightsLevel", sights.SightsLevel);
             pars.Add("Description", sights.Description);
-            pars.Add("Price", sights.price);
+            pars.Add("Price", sights.Price);
             pars.Add("CreatingTime", sights.CreatingTime);
             pars.Add("Memos", sights.Memos);
             return dbHelper.ExecuteNonQuery(trans, UPDATE, pars);

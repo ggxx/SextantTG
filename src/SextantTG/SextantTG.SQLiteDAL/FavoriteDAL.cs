@@ -25,25 +25,27 @@ namespace SextantTG.SQLiteDAL
         {
             this.dbHelper = new DbHelper(connectionString, DbUtil.DbProviderType.SQLite);
         }
-        
+
         private static readonly string SELECT = "select * from stg_favorite";
         private static readonly string SELECT___USER_ID = "select * from stg_favorite where user_id = :UserId";
         private static readonly string SELECT___SIGHTS_ID = "select * from stg_favorite where sights_id = :SightsId";
         private static readonly string SELECT___USER_ID__SIGHTS_ID = "select * from stg_favorite where user_id = :UserId and sights_id = :SightsId";
-                
+
         private static readonly string INSERT = "insert into stg_favorite(user_id, sights_id, visited, stars, creating_time) values(:UserId, :SightsId, :Visited, :Stars, :CreatingTime)";
-        private static readonly string UPDATE = "update stg_favorite set user_id = :UserId, sights_id = :SightsId, visited = :Visited, stars = :Stars, creating_time = :CreatingTime  where user_id = :UserId" ;
-        private static readonly string DELETE = "delete from stg_favorite where user_id = :UserId";
+        private static readonly string UPDATE = "update stg_favorite set visited = :Visited, stars = :Stars, creating_time = :CreatingTime  where user_id = :UserId and sights_id = :SightsId";
+        private static readonly string DELETE = "delete from stg_favorite where user_id = :UserId and sights_id = :SightsId";
+        private static readonly string DELETE___USER_ID = "delete from stg_favorite where user_id = :UserId";
+        private static readonly string DELETE___SIGHTS_ID = "delete from stg_favorite where sights_id = :SightsId";
 
         private Favorite BuildFavoriteByReader(DbDataReader r)
         {
             Favorite favorite = new Favorite();
             favorite.UserId = TypeConverter.ToString(r["user_id"]);
             favorite.SightsId = TypeConverter.ToString(r["sights_id"]);
-            favorite.Visited = TypeConverter.ToDateTimeNull(r["visited"]);
-            favorite.Stars = TypeConverter.ToString(r["stars"]);
-            favorite.CreatingtTime = TypeConverter.ToString(r["creating_time"]);
-           
+            favorite.Visited = TypeConverter.ToInt32Null(r["visited"]);
+            favorite.Stars = TypeConverter.ToInt32Null(r["stars"]);
+            favorite.CreatingTime = TypeConverter.ToDateTimeNull(r["creating_time"]);
+
             return favorite;
         }
 
@@ -75,28 +77,27 @@ namespace SextantTG.SQLiteDAL
             return favorites;
         }
 
-        public List<Favorite> GetFavoritesBySightsId(string SightsId)
-        {
-            List<User> users = new List<User>();
-            Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("SightsId", SightsId);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___SIGHTS_ID, pars))
-            {
-                while (r.Read())
-                {
-                    favorites.Add(BuildFavoriteByReader(r));
-                }
-            }
-            return favorites;
-        }
-
-
-        public List<Favorite> GetFavoritesByUserIdAndSightsId(string UserId, string SightsId)
+        public List<Favorite> GetFavoritesBySightsId(string sightsId)
         {
             List<Favorite> favorites = new List<Favorite>();
             Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("UserId", UserId);
-            pars.Add("SightsId", SightsId);
+            pars.Add("SightsId", sightsId);
+            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___SIGHTS_ID, pars))
+            {
+                while (r.Read())
+                {
+                    favorites.Add(BuildFavoriteByReader(r));
+                }
+            }
+            return favorites;
+        }
+
+        public List<Favorite> GetFavoriteByUserIdAndSightsId(string userId, string sightsId)
+        {
+            List<Favorite> favorites = new List<Favorite>();
+            Dictionary<string, object> pars = new Dictionary<string, object>();
+            pars.Add("UserId", userId);
+            pars.Add("SightsId", sightsId);
             using (DbDataReader r = dbHelper.ExecuteReader(SELECT___USER_ID__SIGHTS_ID, pars))
             {
                 while (r.Read())
@@ -107,57 +108,10 @@ namespace SextantTG.SQLiteDAL
             return favorites;
         }
 
-      
-       public Favorite GetFavoriteByUserId(string userId)
-        {
-            Favorite favorite = null;
-            Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("UserId", userId);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___USER_ID, pars))
-            {
-                if (r.Read())
-                {
-                    favorite = BuildFavoriteByReader(r);
-                }
-            }
-            return favorite;
-        }
-
-        public Favorite GetFavoriteBySightsId(string SightsId)
-        {
-            Favorite favorite = null;
-            Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("SightsId", SightsId);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___SIGHTS_ID, pars))
-            {
-                if (r.Read())
-                {
-                    favorite = BuildFavoriteByReader(r);
-                }
-            }
-            return favorite;
-        }
-
-        public Favorite GetFavoriteByUserIdAndSightsId(string UserId, string SightsId)
-        {
-            Favorite favorite = null;
-            Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("UserId", UserId);
-            pars.Add("SightsId", SightsId);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___USER_ID__SIGHTS_ID, pars))
-            {
-                if (r.Read())
-                {
-                    favorite = BuildFavoriteByReader(r);
-                }
-            }
-            return favorite;
-        }
-       
         public int InsertFavorite(Favorite favorite, DbTransaction trans)
         {
             favorite.CreatingTime = DateTime.Now;
-            
+
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("UserId", favorite.UserId);
             pars.Add("SightsId", favorite.SightsId);
@@ -178,16 +132,34 @@ namespace SextantTG.SQLiteDAL
             return dbHelper.ExecuteNonQuery(trans, UPDATE, pars);
         }
 
+        public int DeleteFavoriteByUserIdAndSightsId(string userId, string sightsId, DbTransaction trans)
+        {
+            Dictionary<string, object> pars = new Dictionary<string, object>();
+            pars.Add("UserId", userId);
+            pars.Add("SightsId", sightsId);
+            return dbHelper.ExecuteNonQuery(trans, DELETE, pars);
+        }
+
         public int DeleteFavoriteByUserId(string userId, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("UserId", userId);
-            return dbHelper.ExecuteNonQuery(trans, DELETE, pars);
+            return dbHelper.ExecuteNonQuery(trans, DELETE___USER_ID, pars);
+        }
+
+        public int DeleteFavoriteBySightsId(string sightsId, DbTransaction trans)
+        {
+            Dictionary<string, object> pars = new Dictionary<string, object>();
+            pars.Add("SightsId", sightsId);
+            return dbHelper.ExecuteNonQuery(trans, DELETE___SIGHTS_ID, pars);
         }
 
         public void Dispose()
         {
             this.dbHelper = null;
         }
+
+
+
     }
 }

@@ -26,11 +26,11 @@ namespace SextantTG.SQLiteDAL
         }
 
         private static readonly string SELECT = "select * from stg_City";
-        private static readonly string SELECT___CITY_ID = "select * from stg_city where city_id = :CityId";
-        private static readonly string SELECT___CITY_NAME = "select * from stg_city where city_Name = :CityName";
-        private static readonly string SELECT___PROVINCE_ID = "select * from stg_city where province_id = :provinceId";
-        private static readonly string INSERT = "insert into stg_city(City_id, City_name,Province_id) values(:CityId,:Cityname,ProvinceId)";
-        private static readonly string UPDATE = "update stg_city set city_id = :CityId, City_name = :City_name where city_id = :CityId";
+        //private static readonly string SELECT___CITY_ID = "select * from stg_city where city_id = :CityId";
+        //private static readonly string SELECT___CITY_NAME = "select * from stg_city where city_Name = :CityName";
+        //private static readonly string SELECT___PROVINCE_ID = "select * from stg_city where province_id = :provinceId";
+        private static readonly string INSERT = "insert into stg_city(City_id, City_name, Province_id) values(:CityId, :Cityname, ProvinceId)";
+        private static readonly string UPDATE = "update stg_city set City_name = :city_name, province_id = :ProvinceId where city_id = :CityId";
         private static readonly string DELETE = "delete from stg_city where City_id = :CityId";
 
         private City BuildCityByReader(DbDataReader r)
@@ -55,83 +55,6 @@ namespace SextantTG.SQLiteDAL
             return cities;
         }
 
-        public List<City> GetCity()
-        {
-            List<City> city = new List<City>();
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT))
-            {
-                while (r.Read())
-                {
-                    city.Add(BuildCityByReader(r));
-                }
-            }
-            return city;
-        }
-
-        public List<City> GetCityByCityId(string cityID)
-        {
-            List<City> city = new List<City>();
-            Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("cityID", cityID);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___CITY_ID, pars))
-            {
-                while (r.Read())
-                {
-                    city.Add(BuildCityByReader(r));
-                }
-            }
-            return city;
-        }
-
-        public List<City> GetCityByCityName(string cityName)
-        {
-            List<City> city = new List<City>();
-            Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("CityName", cityName);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___CITY_NAME, pars))
-            {
-                while (r.Read())
-                {
-                    city.Add(BuildCityByReader(r));
-                }
-            }
-            return city;
-        }
-
-
-        public List<City> GetCityByCountryId(string provinceId)
-        {
-            List<City> city = new List<City>();
-            Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("ProvinceId", provinceId);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___PROVINCE_ID, pars))
-            {
-                while (r.Read())
-                {
-                    city.Add(BuildCityByReader(r));
-                }
-            }
-            return city;
-        }
-
-
-
-
-        public City GetCityById(string cityId)
-        {
-            City city = null;
-            Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("CityID", cityId);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___CITY_ID, pars))
-            {
-                if (r.Read())
-                {
-                    city = BuildCityByReader(r);
-                }
-            }
-            return city;
-        }
-
         public int InsertCity(City city, DbTransaction trans)
         {
             city.CityId = StringHelper.CreateGuid();
@@ -139,6 +62,7 @@ namespace SextantTG.SQLiteDAL
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("cityID", city.CityId);
             pars.Add("CityName", city.CityName);
+            pars.Add("ProvinceId", city.ProvinceId);
             return dbHelper.ExecuteNonQuery(trans, INSERT, pars);
         }
 
@@ -147,23 +71,21 @@ namespace SextantTG.SQLiteDAL
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("CityID", city.CityId);
             pars.Add("CityName", city.CityName);
+            pars.Add("ProvinceId", city.ProvinceId);
             return dbHelper.ExecuteNonQuery(trans, UPDATE, pars);
         }
 
         public int DeleteCityByCityId(string cityId, DbTransaction trans)
         {
-            throw new NotImplementedException();
+            Dictionary<string, object> pars = new Dictionary<string, object>();
+            pars.Add("CityID", cityId);
+            return dbHelper.ExecuteNonQuery(trans, DELETE, pars);
         }
 
         public void Dispose()
         {
             this.dbHelper = null;
         }
-
-
-
-
-
 
     }
 }

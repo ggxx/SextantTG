@@ -16,7 +16,7 @@ namespace SextantTG.ActiveRecord
     /// <summary>
     /// 图片评论实体类
     /// </summary>
-    public abstract class PictureComment
+    public class PictureComment
     {
         /// <summary>
         /// 评论ID

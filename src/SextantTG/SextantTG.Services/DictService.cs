@@ -5,6 +5,7 @@ using System.Text;
 using SextantTG.IServices;
 using SextantTG.ActiveRecord;
 using SextantTG.IDAL;
+using System.Data.Common;
 
 namespace SextantTG.Services
 {
@@ -72,7 +73,7 @@ namespace SextantTG.Services
             return GetProvinceByProvinceId(GetCiryByCityId(cityId).ProvinceId);
         }
 
-        public Country GetCountryByCountryId(string countryId) 
+        public Country GetCountryByCountryId(string countryId)
         {
             if (countries == null)
                 countries = countryDal.GetCountries();
@@ -86,7 +87,7 @@ namespace SextantTG.Services
             return provinces.Find(delegate(Province tmp) { return tmp.ProvinceId == provinceId; });
         }
 
-        public City GetCiryByCityId(string cityId) 
+        public City GetCiryByCityId(string cityId)
         {
             if (cities == null)
                 cities = cityDal.GetCities();
@@ -96,47 +97,227 @@ namespace SextantTG.Services
 
         public bool InsertCountry(Country country, out string message)
         {
-            throw new NotImplementedException();
+            using (DbConnection conn = dataContext.GetConnection())
+            {
+                conn.Open();
+                using (DbTransaction trans = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        countryDal.InsertCountry(country, trans);
+                        trans.Commit();
+                        message = "";
+                        countries = null;
+                        return true;
+                    }
+                    catch (DbException ex)
+                    {
+                        message = ex.Message;
+                        trans.Rollback();
+                        return false;
+                    }
+                }
+            }
         }
 
         public bool UpdateCountry(Country country, out string message)
         {
-            throw new NotImplementedException();
+            using (DbConnection conn = dataContext.GetConnection())
+            {
+                conn.Open();
+                using (DbTransaction trans = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        countryDal.UpdateCountry(country, trans);
+                        trans.Commit();
+                        message = "";
+                        countries = null;
+                        return true;
+                    }
+                    catch (DbException ex)
+                    {
+                        message = ex.Message;
+                        trans.Rollback();
+                        return false;
+                    }
+                }
+            }
         }
 
         public bool DeleteCountryByCountryId(string countryId, out string message)
         {
-            throw new NotImplementedException();
+            using (DbConnection conn = dataContext.GetConnection())
+            {
+                conn.Open();
+                using (DbTransaction trans = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        countryDal.DeleteCountryByCountryId(countryId, trans);
+                        trans.Commit();
+                        message = "";
+                        countries = null;
+                        return true;
+                    }
+                    catch (DbException ex)
+                    {
+                        message = ex.Message;
+                        trans.Rollback();
+                        return false;
+                    }
+                }
+            }
         }
 
         public bool InsertProvince(Province province, out string message)
         {
-            throw new NotImplementedException();
+            using (DbConnection conn = dataContext.GetConnection())
+            {
+                conn.Open();
+                using (DbTransaction trans = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        provinceDal.InsertProvince(province, trans);
+                        trans.Commit();
+                        message = "";
+                        provinces = null;
+                        return true;
+                    }
+                    catch (DbException ex)
+                    {
+                        message = ex.Message;
+                        trans.Rollback();
+                        return false;
+                    }
+                }
+            }
         }
 
         public bool UpdateProvince(Province province, out string message)
         {
-            throw new NotImplementedException();
+            using (DbConnection conn = dataContext.GetConnection())
+            {
+                conn.Open();
+                using (DbTransaction trans = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        provinceDal.UpdateProvince(province, trans);
+                        trans.Commit();
+                        message = "";
+                        provinces = null;
+                        return true;
+                    }
+                    catch (DbException ex)
+                    {
+                        message = ex.Message;
+                        trans.Rollback();
+                        return false;
+                    }
+                }
+            }
         }
 
         public bool DeleteProvinceByProvinceId(string provinceId, out string message)
         {
-            throw new NotImplementedException();
+            using (DbConnection conn = dataContext.GetConnection())
+            {
+                conn.Open();
+                using (DbTransaction trans = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        provinceDal.DeleteProvinceByProvinceId(provinceId, trans);
+                        trans.Commit();
+                        message = "";
+                        provinces = null;
+                        return true;
+                    }
+                    catch (DbException ex)
+                    {
+                        message = ex.Message;
+                        trans.Rollback();
+                        return false;
+                    }
+                }
+            }
         }
 
         public bool InsertCity(City city, out string message)
         {
-            throw new NotImplementedException();
+            using (DbConnection conn = dataContext.GetConnection())
+            {
+                conn.Open();
+                using (DbTransaction trans = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        cityDal.InsertCity(city, trans);
+                        trans.Commit();
+                        message = "";
+                        cities = null;
+                        return true;
+                    }
+                    catch (DbException ex)
+                    {
+                        message = ex.Message;
+                        trans.Rollback();
+                        return false;
+                    }
+                }
+            }
         }
 
         public bool UpdateCity(City city, out string message)
         {
-            throw new NotImplementedException();
+            using (DbConnection conn = dataContext.GetConnection())
+            {
+                conn.Open();
+                using (DbTransaction trans = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        cityDal.UpdateCity(city, trans);
+                        trans.Commit();
+                        message = "";
+                        cities = null;
+                        return true;
+                    }
+                    catch (DbException ex)
+                    {
+                        message = ex.Message;
+                        trans.Rollback();
+                        return false;
+                    }
+                }
+            }
         }
 
         public bool DeleteCityByCityId(string cityId, out string message)
         {
-            throw new NotImplementedException();
+            using (DbConnection conn = dataContext.GetConnection())
+            {
+                conn.Open();
+                using (DbTransaction trans = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        cityDal.DeleteCityByCityId(cityId, trans);
+                        trans.Commit();
+                        message = "";
+                        cities = null;
+                        return true;
+                    }
+                    catch (DbException ex)
+                    {
+                        message = ex.Message;
+                        trans.Rollback();
+                        return false;
+                    }
+                }
+            }
         }
 
         public void Dispose()

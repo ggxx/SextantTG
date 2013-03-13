@@ -31,7 +31,7 @@ namespace SextantTG.ActiveRecord
         /// <summary>
         /// 是否游览过
         /// </summary>
-        public bool HasVisited { get; set; }
+        public int? Visited { get; set; }
 
         /// <summary>
         /// 评分0-10

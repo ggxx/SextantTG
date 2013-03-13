@@ -25,129 +25,130 @@ namespace SextantTG.SQLiteDAL
         {
             this.dbHelper = new DbHelper(connectionString, DbUtil.DbProviderType.SQLite);
         }
-        
-        private static readonly string SELECT = "select * from stg_picturecomment";
-        private static readonly string SELECT___PICTURE_ID = "select * from stg_picturecomment where picture_id = :PictureId";
-        private static readonly string SELECT___COMM_USER_ID = "select * from stg_picturecomment where comm_user_id = :CommUserId";
-                        
-        private static readonly string INSERT = "insert into stg_picturecomment(picture_id, comm_user_id, creating_time, comment) values(:PictureId, :CommUserId, :CreatingTime, :Comment)";
-        private static readonly string UPDATE = "update stg_picturecomment set picture_id = :PictureId, comm_user_id = :CommUserId, creating_time = :CreatingTime, comment = :Comment where picture_id = :PictureId" ;
-        private static readonly string DELETE = "delete from stg_picturecomment where picture_id = :PictureId";
+
+        private static readonly string SELECT = "select * from stg_picture_comment";
+        private static readonly string SELECT___PICTURE_ID = "select * from stg_picture_comment where picture_id = :PictureId";
+        private static readonly string SELECT___COMM_USER_ID = "select * from stg_picture_comment where comm_user_id = :CommUserId";
+
+        private static readonly string INSERT = "insert into stg_picture_comment(picture_id, comm_user_id, creating_time, comment) values(:PictureId, :CommUserId, :CreatingTime, :Comment)";
+        private static readonly string UPDATE = "update stg_picture_comment set picture_id = :PictureId, comm_user_id = :CommUserId, creating_time = :CreatingTime, comment = :Comment where picture_id = :PictureId";
+        private static readonly string DELETE = "delete from stg_picture_comment where comment_id = :CommentId";
 
         private PictureComment BuildPictureCommentByReader(DbDataReader r)
         {
             PictureComment picturecomment = new PictureComment();
             picturecomment.PictureId = TypeConverter.ToString(r["picture_id"]);
-            picturecomment.CommUserId = TypeConverter.ToString(r["comm_user_id"]);
-            picturecomment.CreatingtTime = TypeConverter.ToString(r["creating_time"]);
-            picturecomment.Comment = TypeConverter.ToDateTimeNull(r["comment"]);           
-           
+            picturecomment.CommentUserId = TypeConverter.ToString(r["comm_user_id"]);
+            picturecomment.CreatingTime = TypeConverter.ToDateTimeNull(r["creating_time"]);
+            picturecomment.Comment = TypeConverter.ToString(r["comment"]);
             return picturecomment;
         }
 
-        public List<PictureComment> GetPictureComments()
-        {
-            List<PictureComment> picturecomments = new List<PictureComment>();
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT))
-            {
-                while (r.Read())
-                {
-                    picturecomments.Add(BuildPictureCommentByReader(r));
-                }
-            }
-            return picturecomments;
-        }
+        //public List<PictureComment> GetPictureComments()
+        //{
+        //    List<PictureComment> picturecomments = new List<PictureComment>();
+        //    using (DbDataReader r = dbHelper.ExecuteReader(SELECT))
+        //    {
+        //        while (r.Read())
+        //        {
+        //            picturecomments.Add(BuildPictureCommentByReader(r));
+        //        }
+        //    }
+        //    return picturecomments;
+        //}
 
-       
-        public List<PictureComment> GetPictureCommentsByPictureId(string PictureId)
+
+        public List<PictureComment> GetPictureCommentsByPictureId(string pictureId)
         {
-            List<PictureComment> picturecomments = new List<PictureComment>();
+            List<PictureComment> pictureComments = new List<PictureComment>();
             Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("PictureId", PictureId);
+            pars.Add("PictureId", pictureId);
             using (DbDataReader r = dbHelper.ExecuteReader(SELECT___PICTURE_ID, pars))
             {
                 while (r.Read())
                 {
-                    picturecomments.Add(BuildPictureCommentByReader(r));
+                    pictureComments.Add(BuildPictureCommentByReader(r));
                 }
             }
-            return picturecomments;
+            return pictureComments;
         }
 
 
-        public List<PictureComment> GetPictureCommentsByCommUserId(string CommUserId)
-        {
-            List<PictureComment> picturecomments = new List<PictureComment>();
-            Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("CommUserId", CommUserId);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___COMM_USER_ID, pars))
-            {
-                while (r.Read())
-                {
-                    picturecomments.Add(BuildPictureCommentByReader(r));
-                }
-            }
-            return picturecomments;
-        }
+        //public List<PictureComment> GetPictureCommentsByCommUserId(string CommUserId)
+        //{
+        //    List<PictureComment> picturecomments = new List<PictureComment>();
+        //    Dictionary<string, object> pars = new Dictionary<string, object>();
+        //    pars.Add("CommUserId", CommUserId);
+        //    using (DbDataReader r = dbHelper.ExecuteReader(SELECT___COMM_USER_ID, pars))
+        //    {
+        //        while (r.Read())
+        //        {
+        //            picturecomments.Add(BuildPictureCommentByReader(r));
+        //        }
+        //    }
+        //    return picturecomments;
+        //}
 
-      
-       public PictureComment GetPictureCommentByPictureId(string PictureId)
-        {
-            PictureComment picturecomment = null;
-            Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("PictureId", PictureId);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___PICTURE_ID, pars))
-            {
-                if (r.Read())
-                {
-                    picturecomment = BuildPictureCommentByReader(r);
-                }
-            }
-            return picturecomment;
-        }
 
-        public PictureComment GetPictureCommentByCommUserId(string CommUserId)
-        {
-            PictureComment picturecomment = null;
-            Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("CommUserId", CommUserId);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___COMM_USER_ID, pars))
-            {
-                if (r.Read())
-                {
-                    picturecomment = BuildPictureCommentByReader(r);
-                }
-            }
-            return picturecomment;
-        }
+        //public PictureComment GetPictureCommentByPictureId(string PictureId)
+        //{
+        //    PictureComment picturecomment = null;
+        //    Dictionary<string, object> pars = new Dictionary<string, object>();
+        //    pars.Add("PictureId", PictureId);
+        //    using (DbDataReader r = dbHelper.ExecuteReader(SELECT___PICTURE_ID, pars))
+        //    {
+        //        if (r.Read())
+        //        {
+        //            picturecomment = BuildPictureCommentByReader(r);
+        //        }
+        //    }
+        //    return picturecomment;
+        //}
 
-      
-        public int InsertPictureComment(PictureComment picturecomment, DbTransaction trans)
+        //public PictureComment GetPictureCommentByCommUserId(string CommUserId)
+        //{
+        //    PictureComment picturecomment = null;
+        //    Dictionary<string, object> pars = new Dictionary<string, object>();
+        //    pars.Add("CommUserId", CommUserId);
+        //    using (DbDataReader r = dbHelper.ExecuteReader(SELECT___COMM_USER_ID, pars))
+        //    {
+        //        if (r.Read())
+        //        {
+        //            picturecomment = BuildPictureCommentByReader(r);
+        //        }
+        //    }
+        //    return picturecomment;
+        //}
+
+
+        public int InsertPictureComment(PictureComment pictureComment, DbTransaction trans)
         {
-            picturecomment.CreatingTime = DateTime.Now;                      
+            pictureComment.CommentId = Util.StringHelper.CreateGuid();
+            pictureComment.CreatingTime = DateTime.Now;
+
             Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("PictureId", picturecomment.PictureId);
-            pars.Add("CommUserId", picturecomment.CommUserId);
-            pars.Add("CreatingTime", picturecomment.CreatingTime);
-            pars.Add("Comment", picturecomment.Comment);
-            
+            pars.Add("PictureId", pictureComment.PictureId);
+            pars.Add("CommUserId", pictureComment.CommentUserId);
+            pars.Add("CreatingTime", pictureComment.CreatingTime);
+            pars.Add("Comment", pictureComment.Comment);
+
             return dbHelper.ExecuteNonQuery(trans, INSERT, pars);
         }
 
-        public int UpdatePictureComment(PictureComment picturecomment, DbTransaction trans)
+        public int UpdatePictureComment(PictureComment pictureComment, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("PictureId", picturecomment.PictureId);
-            pars.Add("CommUserId", picturecomment.CommUserId);
-            pars.Add("CreatingTime", picturecomment.CreatingTime);
-            pars.Add("Comment", picturecomment.Comment);
+            pars.Add("PictureId", pictureComment.PictureId);
+            pars.Add("CommUserId", pictureComment.CommentUserId);
+            pars.Add("CreatingTime", pictureComment.CreatingTime);
+            pars.Add("Comment", pictureComment.Comment);
             return dbHelper.ExecuteNonQuery(trans, UPDATE, pars);
         }
 
-        public int DeleteFavoriteByPictureId(string PictureId, DbTransaction trans)
+        public int DeletePictureCommentByCommentId(string commentId, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("PictureId", PictureId);
+            pars.Add("CommentId", commentId);
             return dbHelper.ExecuteNonQuery(trans, DELETE, pars);
         }
 
