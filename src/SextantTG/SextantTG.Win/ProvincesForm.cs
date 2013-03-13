@@ -24,6 +24,11 @@ namespace SextantTG.Win
 
         private void LoadData()
         {
+            this.Column_CountryId.DisplayMember = "CountryName";
+            this.Column_CountryId.ValueMember = "CountryId";
+            this.Column_CountryId.DataSource = UIUtil.GetCountries();
+
+            //this.dataGridView.AutoGenerateColumns = true;
             this.bindingSource.DataSource = UIUtil.GetProvinces();
         }
 
@@ -31,6 +36,7 @@ namespace SextantTG.Win
         {
             using (ProvinceEditForm form = new ProvinceEditForm())
             {
+                form.BindData();
                 if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
                     LoadData();
@@ -45,6 +51,7 @@ namespace SextantTG.Win
             {
                 using (ProvinceEditForm form = new ProvinceEditForm())
                 {
+                    form.BindData();
                     form.SetProvince(province);
                     if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {

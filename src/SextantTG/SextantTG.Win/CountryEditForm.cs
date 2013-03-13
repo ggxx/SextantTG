@@ -39,14 +39,14 @@ namespace SextantTG.Win
             {
                 country = new Country();
                 country.CountryName = this.textBox_CountryName.Text.Trim();
+                val = UIUtil.InsertCountry(country, out msg);
             }
             else
             {
- 
+                country.CountryName = this.textBox_CountryName.Text.Trim();
+                val = UIUtil.UpdateCountry(country, out msg);
             }
 
-
-            val = this.countryView.Save(out msg);
             if (val)
             {
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;

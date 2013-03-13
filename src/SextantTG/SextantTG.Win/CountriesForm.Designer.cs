@@ -35,6 +35,8 @@
             this.button_Add = new System.Windows.Forms.Button();
             this.button_Close = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.Column_CountryId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_CountryName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.SuspendLayout();
@@ -85,13 +87,32 @@
             this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.AutoGenerateColumns = false;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column_CountryId,
+            this.Column_CountryName});
             this.dataGridView.DataSource = this.bindingSource;
             this.dataGridView.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowTemplate.Height = 23;
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(600, 389);
             this.dataGridView.TabIndex = 6;
+            // 
+            // Column_CountryId
+            // 
+            this.Column_CountryId.DataPropertyName = "CountryId";
+            this.Column_CountryId.HeaderText = "ID";
+            this.Column_CountryId.Name = "Column_CountryId";
+            this.Column_CountryId.ReadOnly = true;
+            // 
+            // Column_CountryName
+            // 
+            this.Column_CountryName.DataPropertyName = "CountryName";
+            this.Column_CountryName.HeaderText = "国家";
+            this.Column_CountryName.Name = "Column_CountryName";
+            this.Column_CountryName.ReadOnly = true;
             // 
             // CountriesForm
             // 
@@ -120,5 +141,7 @@
         private System.Windows.Forms.Button button_Add;
         private System.Windows.Forms.Button button_Close;
         private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_CountryId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_CountryName;
     }
 }

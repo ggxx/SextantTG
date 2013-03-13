@@ -16,9 +16,6 @@ E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\Sextant
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.Properties.Resources.resources
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.ProvinceEditForm.resources
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.SightsForm.resources
-E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.Views.CityView.resources
-E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.Views.CountryView.resources
-E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.Views.ProvinceView.resources
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.csproj.GenerateResource.Cache
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.exe
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.pdb

@@ -34,6 +34,9 @@
             this.button_Add = new System.Windows.Forms.Button();
             this.button_Close = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.Column_ProvinceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_ProvinceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_CountryId = new System.Windows.Forms.DataGridViewComboBoxColumn();
             this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
@@ -85,13 +88,40 @@
             this.dataGridView.AllowUserToDeleteRows = false;
             this.dataGridView.AutoGenerateColumns = false;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column_ProvinceId,
+            this.Column_ProvinceName,
+            this.Column_CountryId});
             this.dataGridView.DataSource = this.bindingSource;
             this.dataGridView.Location = new System.Drawing.Point(12, 12);
+            this.dataGridView.MultiSelect = false;
             this.dataGridView.Name = "dataGridView";
             this.dataGridView.ReadOnly = true;
             this.dataGridView.RowTemplate.Height = 23;
+            this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(600, 389);
             this.dataGridView.TabIndex = 11;
+            // 
+            // Column_ProvinceId
+            // 
+            this.Column_ProvinceId.DataPropertyName = "ProvinceId";
+            this.Column_ProvinceId.HeaderText = "ID";
+            this.Column_ProvinceId.Name = "Column_ProvinceId";
+            this.Column_ProvinceId.ReadOnly = true;
+            // 
+            // Column_ProvinceName
+            // 
+            this.Column_ProvinceName.DataPropertyName = "ProvinceName";
+            this.Column_ProvinceName.HeaderText = "省份";
+            this.Column_ProvinceName.Name = "Column_ProvinceName";
+            this.Column_ProvinceName.ReadOnly = true;
+            // 
+            // Column_CountryId
+            // 
+            this.Column_CountryId.DataPropertyName = "CountryId";
+            this.Column_CountryId.HeaderText = "所属国家";
+            this.Column_CountryId.Name = "Column_CountryId";
+            this.Column_CountryId.ReadOnly = true;
             // 
             // ProvincesForm
             // 
@@ -120,5 +150,8 @@
         private System.Windows.Forms.Button button_Close;
         private System.Windows.Forms.BindingSource bindingSource;
         private System.Windows.Forms.DataGridView dataGridView;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_ProvinceId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_ProvinceName;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Column_CountryId;
     }
 }

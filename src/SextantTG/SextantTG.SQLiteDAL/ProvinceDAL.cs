@@ -30,15 +30,16 @@ namespace SextantTG.SQLiteDAL
         //private static readonly string SELECT___PROVINCE_ID = "select * from stg_province where province_id = :ProvinceId";
         //private static readonly string SELECT___PROVINCE_NAME = "select * from stg_province where province_Name = :ProvinceName";
         //private static readonly string SELECT___COUNTRY_ID = "select * from stg_province where country_id = :countryId";
-        private static readonly string INSERT = "insert into stg_province(Province_id, Province_name,Country_id) values(:ProvinceId,:Provincename,CountryId)";
-        private static readonly string UPDATE = "update stg_province set province_id = :ProvinceId, Province_name = :Province_name where province_id = :ProvinceId";
+        private static readonly string INSERT = "insert into stg_province(province_id, province_name, country_id) values(:ProvinceId, :ProvinceName, :CountryId)";
+        private static readonly string UPDATE = "update stg_province set province_id = :ProvinceId, province_name = :ProvinceName where province_id = :ProvinceId";
         private static readonly string DELETE = "delete from stg_province where province_id = :ProvinceId";
 
         private Province BuildProvinceByReader(DbDataReader r)
         {
             Province province = new Province();
             province.ProvinceId = TypeConverter.ToString(r["province_id"]);
-            province.ProvinceName = TypeConverter.ToString(r["province_name"]);          
+            province.ProvinceName = TypeConverter.ToString(r["province_name"]);
+            province.CountryId = TypeConverter.ToString(r["country_id"]);
             return province;
         }
 
@@ -122,23 +123,25 @@ namespace SextantTG.SQLiteDAL
             province.ProvinceId = StringHelper.CreateGuid();
            
             Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("ProvinceID", province.ProvinceId);
+            pars.Add("ProvinceId", province.ProvinceId);
             pars.Add("ProvinceName", province.ProvinceName);
+            pars.Add("CountryId", province.CountryId);
             return dbHelper.ExecuteNonQuery(trans, INSERT, pars);
         }
 
         public int UpdateProvince(Province province, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("ProvinceID", province.ProvinceId);
+            pars.Add("ProvinceId", province.ProvinceId);
             pars.Add("ProvinceName", province.ProvinceName);
+            pars.Add("CountryId", province.CountryId);
             return dbHelper.ExecuteNonQuery(trans, UPDATE, pars);
         }
 
         public int DeleteProvinceByProvinceId(string provinceId, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("ProvinceID", provinceId);
+            pars.Add("ProvinceId", provinceId);
             return dbHelper.ExecuteNonQuery(trans, DELETE, pars);
         }
 

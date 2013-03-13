@@ -24,9 +24,8 @@ namespace SextantTG.Win
 
         private void LoadData()
         {
-            this.dataGridView.AutoGenerateColumns = true;
+            //this.dataGridView.AutoGenerateColumns = true;
             this.bindingSource.DataSource = UIUtil.GetCountries();
-            this.dataGridView.DataSource = this.bindingSource;
         }
 
         private void button_Add_Click(object sender, EventArgs e)

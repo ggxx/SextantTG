@@ -125,24 +125,6 @@
     <Compile Include="UsersForm.Designer.cs">
       <DependentUpon>UsersForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="Views\CityView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\CityView.Designer.cs">
-      <DependentUpon>CityView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\CountryView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\CountryView.Designer.cs">
-      <DependentUpon>CountryView.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Views\ProvinceView.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Include="Views\ProvinceView.Designer.cs">
-      <DependentUpon>ProvinceView.cs</DependentUpon>
-    </Compile>
     <EmbeddedResource Include="CitiesForm.resx">
       <DependentUpon>CitiesForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -188,20 +170,10 @@
     <EmbeddedResource Include="UsersForm.resx">
       <DependentUpon>UsersForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Views\CityView.resx">
-      <DependentUpon>CityView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\CountryView.resx">
-      <DependentUpon>CountryView.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Views\ProvinceView.resx">
-      <DependentUpon>ProvinceView.cs</DependentUpon>
-    </EmbeddedResource>
     <None Include="App.config" />
     <None Include="db\sgt.db3">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="db\sgt.db3.old" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

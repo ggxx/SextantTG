@@ -12,14 +12,25 @@ namespace SextantTG.Win
 {
     public partial class ProvinceEditForm : Form
     {
+        private Province province;
+
         public ProvinceEditForm()
         {
             InitializeComponent();
         }
 
+        public void BindData()
+        {
+            this.comboBox_Country.DisplayMember = "CountryName";
+            this.comboBox_Country.ValueMember = "CountryId";
+            this.comboBox_Country.DataSource = UIUtil.GetCountries();
+        }
+
         public void SetProvince(Province province)
         {
-            this.provinceView.SetProvince(province);
+            this.province = province;
+            this.textBox_ProvinceName.Text = province.ProvinceName;
+            this.comboBox_Country.SelectedValue = province.CountryId;
         }
 
         private void button_Cancel_Click(object sender, EventArgs e)
@@ -32,7 +43,20 @@ namespace SextantTG.Win
         {
             bool val;
             string msg;
-            val = this.provinceView.Save(out msg);
+            if (this.province == null)
+            {
+                this.province = new Province();
+                this.province.ProvinceName = this.textBox_ProvinceName.Text.Trim();
+                this.province.CountryId = this.comboBox_Country.SelectedValue.ToString();
+                val = UIUtil.InsertProvince(province, out msg);
+            }
+            else
+            {
+                this.province.ProvinceName = this.textBox_ProvinceName.Text.Trim();
+                this.province.CountryId = this.comboBox_Country.SelectedValue.ToString();
+                val = UIUtil.UpdateProvince(province, out msg);
+            }
+
             if (val)
             {
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;

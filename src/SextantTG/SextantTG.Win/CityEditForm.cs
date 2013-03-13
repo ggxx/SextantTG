@@ -12,14 +12,30 @@ namespace SextantTG.Win
 {
     public partial class CityEditForm : Form
     {
+        private City city = null;
+
         public CityEditForm()
         {
             InitializeComponent();
         }
 
+        public void BindData()
+        {
+            this.comboBox_Country.DisplayMember = "CountryName";
+            this.comboBox_Country.ValueMember = "CountryId";
+            this.comboBox_Country.DataSource = UIUtil.GetCountries();
+
+            this.comboBox_Province.DisplayMember = "ProvinceName";
+            this.comboBox_Province.ValueMember = "ProvinceId";
+            this.comboBox_Province.DataSource = UIUtil.GetProvinces();
+        }
+
         public void SetCity(City city)
         {
-            this.cityView.SetCity(city);
+            this.city = city;
+            this.textBox_CityName.Text = city.CityName;
+            this.comboBox_Country.SelectedValue = UIUtil.GetCountryByProvinceId(city.ProvinceId).CountryId;
+            this.comboBox_Province.SelectedValue = city.ProvinceId;
         }
 
         private void button_Cancel_Click(object sender, EventArgs e)
@@ -32,7 +48,20 @@ namespace SextantTG.Win
         {
             bool val;
             string msg;
-            val = this.cityView.Save(out msg);
+            if (this.city == null)
+            {
+                this.city = new City();
+                city.CityName = this.textBox_CityName.Text.Trim();
+                city.ProvinceId = this.comboBox_Province.SelectedValue.ToString();
+                val = UIUtil.InsertCity(city, out msg);
+            }
+            else
+            {
+                city.CityName = this.textBox_CityName.Text.Trim();
+                city.ProvinceId = this.comboBox_Province.SelectedValue.ToString();
+                val = UIUtil.UpdateCity(city, out msg);
+            }
+
             if (val)
             {
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
