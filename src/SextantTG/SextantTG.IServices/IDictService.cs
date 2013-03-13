@@ -16,6 +16,7 @@ namespace SextantTG.IServices
         List<City> GetCities();
         List<Province> GetProvincesByCountryId(string countryId);
         List<City> GetCitiesByProvinceId(string provinceId);
+        List<City> GetCitiesByCountryId(string countryId);
         Country GetCountryByProvinceId(string provinceId);
         Province GetProvinceByCityId(string cityId);
         Country GetCountryByCountryId(string countryId);

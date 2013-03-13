@@ -2,4 +2,3 @@ E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.ActiveRecord\bin\Debu
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.ActiveRecord\bin\Debug\SextantTG.ActiveRecord.pdb
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.ActiveRecord\obj\Debug\SextantTG.ActiveRecord.dll
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.ActiveRecord\obj\Debug\SextantTG.ActiveRecord.pdb
-E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.ActiveRecord\obj\Debug\SextantTG.ActiveRecord.csprojResolveAssemblyReference.cache

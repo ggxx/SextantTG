@@ -82,12 +82,17 @@ namespace SextantTG.Win
 
         private void sightsListToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.OpenMdiChildForm(typeof(SightsForm));
+            this.OpenMdiChildForm(typeof(ViewSightsForm));
         }
 
         private void userToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.OpenMdiChildForm(typeof(UsersForm));
+        }
+
+        private void sightsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.OpenMdiChildForm(typeof(SightsForm));
         }
 
 

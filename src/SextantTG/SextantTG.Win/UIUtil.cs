@@ -91,6 +91,11 @@ namespace SextantTG.Win
             return dictSrv.GetCitiesByProvinceId(provinceId);
         }
 
+        internal static List<City> GetCitiesByCountryId(string countryId)
+        {
+            return dictSrv.GetCitiesByCountryId(countryId);
+        }
+
         internal static Country GetCountryByProvinceId(string provinceId)
         {
             return dictSrv.GetCountryByProvinceId(provinceId);

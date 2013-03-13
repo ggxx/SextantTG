@@ -63,6 +63,17 @@ namespace SextantTG.Services
             return cities.FindAll(delegate(City tmp) { return tmp.ProvinceId == provinceId; });
         }
 
+        public List<City> GetCitiesByCountryId(string countryId)
+        {
+            List<City> cites = new List<City>();
+            List<Province> provinces = GetProvincesByCountryId(countryId);
+            foreach (Province province in provinces)
+            {
+                cites.AddRange(GetCitiesByProvinceId(province.ProvinceId));
+            }
+            return cites;
+        }
+
         public Country GetCountryByProvinceId(string provinceId)
         {
             return GetCountryByCountryId(GetProvinceByProvinceId(provinceId).CountryId);

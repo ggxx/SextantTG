@@ -34,10 +34,10 @@
             this.button_Add = new System.Windows.Forms.Button();
             this.button_Close = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Column_ProvinceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_ProvinceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_CountryId = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.SuspendLayout();
@@ -119,6 +119,7 @@
             // Column_CountryId
             // 
             this.Column_CountryId.DataPropertyName = "CountryId";
+            this.Column_CountryId.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
             this.Column_CountryId.HeaderText = "所属国家";
             this.Column_CountryId.Name = "Column_CountryId";
             this.Column_CountryId.ReadOnly = true;

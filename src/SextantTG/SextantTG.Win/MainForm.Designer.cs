@@ -30,20 +30,22 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.sightsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sights2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sightsListToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.tourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.dictToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.cityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.provinceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.countryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sightsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
             this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
-            this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -51,29 +53,31 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sightsToolStripMenuItem,
+            this.sights2ToolStripMenuItem,
             this.tourToolStripMenuItem,
+            this.userToolStripMenuItem1,
             this.adminToolStripMenuItem,
             this.windowsToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip1.MdiWindowListItem = this.windowsToolStripMenuItem;
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Size = new System.Drawing.Size(784, 25);
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // sightsToolStripMenuItem
+            // sights2ToolStripMenuItem
             // 
-            this.sightsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sights2ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sightsListToolStripMenuItem});
-            this.sightsToolStripMenuItem.Name = "sightsToolStripMenuItem";
-            this.sightsToolStripMenuItem.Size = new System.Drawing.Size(55, 21);
-            this.sightsToolStripMenuItem.Text = "Sights";
+            this.sights2ToolStripMenuItem.Name = "sights2ToolStripMenuItem";
+            this.sights2ToolStripMenuItem.Size = new System.Drawing.Size(55, 21);
+            this.sights2ToolStripMenuItem.Text = "Sights";
             // 
             // sightsListToolStripMenuItem
             // 
             this.sightsListToolStripMenuItem.Name = "sightsListToolStripMenuItem";
-            this.sightsListToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
+            this.sightsListToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.sightsListToolStripMenuItem.Text = "SightsList";
             this.sightsListToolStripMenuItem.Click += new System.EventHandler(this.sightsListToolStripMenuItem_Click);
             // 
@@ -83,11 +87,18 @@
             this.tourToolStripMenuItem.Size = new System.Drawing.Size(47, 21);
             this.tourToolStripMenuItem.Text = "Tour";
             // 
+            // userToolStripMenuItem1
+            // 
+            this.userToolStripMenuItem1.Name = "userToolStripMenuItem1";
+            this.userToolStripMenuItem1.Size = new System.Drawing.Size(47, 21);
+            this.userToolStripMenuItem1.Text = "User";
+            // 
             // adminToolStripMenuItem
             // 
             this.adminToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dictToolStripMenuItem,
-            this.userToolStripMenuItem});
+            this.userToolStripMenuItem,
+            this.sightsToolStripMenuItem});
             this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
             this.adminToolStripMenuItem.Size = new System.Drawing.Size(57, 21);
             this.adminToolStripMenuItem.Text = "Admin";
@@ -105,23 +116,37 @@
             // cityToolStripMenuItem
             // 
             this.cityToolStripMenuItem.Name = "cityToolStripMenuItem";
-            this.cityToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cityToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.cityToolStripMenuItem.Text = "City";
             this.cityToolStripMenuItem.Click += new System.EventHandler(this.cityToolStripMenuItem_Click);
             // 
             // provinceToolStripMenuItem
             // 
             this.provinceToolStripMenuItem.Name = "provinceToolStripMenuItem";
-            this.provinceToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.provinceToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.provinceToolStripMenuItem.Text = "Province";
             this.provinceToolStripMenuItem.Click += new System.EventHandler(this.provinceToolStripMenuItem_Click);
             // 
             // countryToolStripMenuItem
             // 
             this.countryToolStripMenuItem.Name = "countryToolStripMenuItem";
-            this.countryToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.countryToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
             this.countryToolStripMenuItem.Text = "Country";
             this.countryToolStripMenuItem.Click += new System.EventHandler(this.countryToolStripMenuItem_Click);
+            // 
+            // userToolStripMenuItem
+            // 
+            this.userToolStripMenuItem.Name = "userToolStripMenuItem";
+            this.userToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.userToolStripMenuItem.Text = "User";
+            this.userToolStripMenuItem.Click += new System.EventHandler(this.userToolStripMenuItem_Click);
+            // 
+            // sightsToolStripMenuItem
+            // 
+            this.sightsToolStripMenuItem.Name = "sightsToolStripMenuItem";
+            this.sightsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sightsToolStripMenuItem.Text = "Sights";
+            this.sightsToolStripMenuItem.Click += new System.EventHandler(this.sightsToolStripMenuItem_Click);
             // 
             // windowsToolStripMenuItem
             // 
@@ -162,13 +187,6 @@
             this.toolStripButton1.Size = new System.Drawing.Size(23, 22);
             this.toolStripButton1.Text = "toolStripButton1";
             // 
-            // userToolStripMenuItem
-            // 
-            this.userToolStripMenuItem.Name = "userToolStripMenuItem";
-            this.userToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.userToolStripMenuItem.Text = "User";
-            this.userToolStripMenuItem.Click += new System.EventHandler(this.userToolStripMenuItem_Click);
-            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -194,7 +212,7 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem sightsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sights2ToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem tourToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem adminToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem windowsToolStripMenuItem;
@@ -208,5 +226,7 @@
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripMenuItem sightsListToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem sightsToolStripMenuItem;
     }
 }

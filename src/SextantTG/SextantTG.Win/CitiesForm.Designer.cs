@@ -119,6 +119,7 @@
             // Column_ProvinceId
             // 
             this.Column_ProvinceId.DataPropertyName = "ProvinceId";
+            this.Column_ProvinceId.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
             this.Column_ProvinceId.HeaderText = "所属省份";
             this.Column_ProvinceId.Name = "Column_ProvinceId";
             this.Column_ProvinceId.ReadOnly = true;

@@ -1,4 +1,3 @@
-E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\bin\Debug\db\sgt.db3
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\bin\Debug\SextantTG.Win.exe.config
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\bin\Debug\SextantTG.Win.exe
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\bin\Debug\SextantTG.Win.pdb
@@ -35,3 +34,5 @@ E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\bin\Debug\Sextant
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.RegForm.resources
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.UsersForm.resources
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.UserPermissionForm.resources
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.ViewSightsForm.resources
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\bin\Debug\db\sgt.db3

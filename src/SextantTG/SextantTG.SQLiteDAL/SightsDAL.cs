@@ -29,8 +29,10 @@ namespace SextantTG.SQLiteDAL
         private static readonly string SELECT = "select * from stg_sights";
         private static readonly string SELECT___SIGHTS_ID = "select * from stg_sights where sights_id = :SightsId";
         private static readonly string SELECT___SIGHTS_NAME = "select * from stg_sights where sights_name = :SightsName";
-        private static readonly string SELECT___CITY_ID = "select * from stg_sights where city_id = :CityId";
         private static readonly string SELECT___SIGHTS_LEVEL = "select * from stg_sights where sights_level = :SightsLevel";
+        private static readonly string SELECT___CITY_ID = "select * from stg_sights where city_id = :CityId";
+        private static readonly string SELECT___PROVINCE_ID = "select stg_sights.* from stg_sights, stg_city where stg_sights.city_id = stg_city.city_id and stg_city.province_id = :ProvinceId";
+        private static readonly string SELECT___COUNTRY_ID = "select stg_sights.* from stg_sights, stg_city, stg_province where stg_sights.CITY_ID = stg_city.city_id and stg_city.province_id = stg_province.province_id and stg_province.country_id = :CountryId";
 
         private static readonly string INSERT = "insert into stg_sights(sights_id, sights_name, city_id, sights_level, description, price, creating_time, memos) values(:SightsId, :SightsName, :CityId, :SightsLevel, :Description, :Price, :CreatingTime, :Memos)";
         private static readonly string UPDATE = "update stg_sights set sights_name = :SightsName, city_id = :CityId, sights_levle = :SightsLevel, description = :Description, price = :Price, creating_time = :CreatingTime, memos = :Memos where sights_id = :SightsId";
@@ -83,6 +85,36 @@ namespace SextantTG.SQLiteDAL
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("CityId", cityId);
             using (DbDataReader r = dbHelper.ExecuteReader(SELECT___CITY_ID, pars))
+            {
+                while (r.Read())
+                {
+                    sights.Add(BuildSightsByReader(r));
+                }
+            }
+            return sights;
+        }
+
+        public List<Sights> GetSightsByProvinceId(string provinceId)
+        {
+            List<Sights> sights = new List<Sights>();
+            Dictionary<string, object> pars = new Dictionary<string, object>();
+            pars.Add("ProvinceId", provinceId);
+            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___PROVINCE_ID, pars))
+            {
+                while (r.Read())
+                {
+                    sights.Add(BuildSightsByReader(r));
+                }
+            }
+            return sights;
+        }
+
+        public List<Sights> GetSightsByCountryId(string countryId)
+        {
+            List<Sights> sights = new List<Sights>();
+            Dictionary<string, object> pars = new Dictionary<string, object>();
+            pars.Add("CountryId", countryId);
+            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___COUNTRY_ID, pars))
             {
                 while (r.Read())
                 {

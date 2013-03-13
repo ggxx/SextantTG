@@ -3,47 +3,53 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SextantTG.IServices;
+using SextantTG.ActiveRecord;
+using System.Data.Common;
+using SextantTG.IDAL;
 
 namespace SextantTG.Services
 {
     public class SightsService : ISightsService
     {
-        public List<ActiveRecord.Sights> GetSights()
+        private IDataContext dataContext = null;
+        private ISightsDAL sightsDal = null;
+
+        public List<Sights> GetSights()
+        {
+            return sightsDal.GetSights();
+        }
+
+        public List<Sights> GetSightsByCountryId(string countryId)
+        {
+            return sightsDal.GetSightsByCountryId(countryId);
+        }
+
+        public List<Sights> GetSightsByProvinceId(string provinceId)
+        {
+            return sightsDal.GetSightsByProvinceId(provinceId);
+        }
+
+        public List<Sights> GetSightsByCityId(string cityId)
+        {
+            return sightsDal.GetSightsByCityId(cityId);
+        }
+
+        public Sights GetSightsBySightsId(string sightsId)
+        {
+            return sightsDal.GetSightBySightsId(sightsId);
+        }
+
+        public bool InsertSights(Sights sights, DbTransaction trans, out string message)
         {
             throw new NotImplementedException();
         }
 
-        public List<ActiveRecord.Sights> GetSightsByCountryId(string countryId)
+        public bool UpdateSights(Sights sights, DbTransaction trans, out string message)
         {
             throw new NotImplementedException();
         }
 
-        public List<ActiveRecord.Sights> GetSightsByProvinceId(string provinceId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public List<ActiveRecord.Sights> GetSightsByCityId(string cityId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public ActiveRecord.Sights GetSightsBySightsId(string sightsId)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool InsertSights(ActiveRecord.Sights sights, System.Data.Common.DbTransaction trans, out string message)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool UpdateSights(ActiveRecord.Sights sights, System.Data.Common.DbTransaction trans, out string message)
-        {
-            throw new NotImplementedException();
-        }
-
-        public bool DeleteSightsBySightsId(string sightsId, System.Data.Common.DbTransaction trans, out string message)
+        public bool DeleteSightsBySightsId(string sightsId, DbTransaction trans, out string message)
         {
             throw new NotImplementedException();
         }

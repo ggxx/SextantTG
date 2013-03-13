@@ -9,14 +9,15 @@ namespace SextantTG.IServices
 {
     public interface ISightsService : IBaseService
     {
-		List<Sights> GetSights();
-		List<Sights> GetSightsByCountryId(string countryId);
-		List<Sights> GetSightsByProvinceId(string provinceId);
-		List<Sights> GetSightsByCityId(string cityId);
+        List<Sights> GetSights();
+        List<Sights> GetSightsByCountryId(string countryId);
+        List<Sights> GetSightsByProvinceId(string provinceId);
+        List<Sights> GetSightsByCityId(string cityId);
         Sights GetSightsBySightsId(string sightsId);
-		
-		bool InsertSights(Sights sights, DbTransaction trans, out string message);
-		bool UpdateSights(Sights sights, DbTransaction trans, out string message);
-		bool DeleteSightsBySightsId(string sightsId, DbTransaction trans, out string message);
+
+
+        bool InsertSights(Sights sights, DbTransaction trans, out string message);
+        bool UpdateSights(Sights sights, DbTransaction trans, out string message);
+        bool DeleteSightsBySightsId(string sightsId, DbTransaction trans, out string message);
     }
 }

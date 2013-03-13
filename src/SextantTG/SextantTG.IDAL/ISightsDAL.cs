@@ -10,6 +10,9 @@ namespace SextantTG.IDAL
     public interface ISightsDAL : IBaseDAL
     {
         List<Sights> GetSights();
+        List<Sights> GetSightsByCityId(string cityId);
+        List<Sights> GetSightsByProvinceId(string provinceId);
+        List<Sights> GetSightsByCountryId(string countryId);
         Sights GetSightBySightsId(string sightsId);
 
         int InsertSights(Sights sights, DbTransaction trans);
