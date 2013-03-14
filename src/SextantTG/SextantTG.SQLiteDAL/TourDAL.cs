@@ -7,7 +7,6 @@ using SextantTG.ActiveRecord;
 using SexTantTG.DbUtil;
 using System.Data.Common;
 using SextantTG.Util;
-using SextantTG.Util;
 using System.Configuration;
 
 namespace SextantTG.SQLiteDAL

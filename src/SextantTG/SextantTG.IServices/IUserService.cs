@@ -15,7 +15,10 @@ namespace SextantTG.IServices
         List<Permission> GetPermissionsByUserId(string userId);
         bool InsertUser(User user, string password, out string message);
         bool UpdateUser(User user, out string message);
+        List<Favorite> GetFavoritesByUserId(string userId);
+        Favorite GetFavoriteByUserIdAndSightsId(string userId, string sightsId);
 
         bool UpdatePermissionsByUserId(string userId, List<Permission> permissions, out string message);
+        bool SaveFavorite(Favorite favorite, out string message);
     }
 }

@@ -63,6 +63,90 @@ namespace SextantTG.Services
             return favoriteDal.GetAverageStarsBySightsId(sightsId);
         }
 
+        public List<Sights> GetVisitedSights(string userId)
+        {
+            if (string.IsNullOrEmpty(userId))
+            { return GetSights(); }
+
+            List<Sights> l = new List<Sights>();
+            List<Sights> sights =  GetSights();
+            foreach (Favorite f in favoriteDal.GetFavoritesByUserId(userId))
+            {
+                foreach (Sights s in sights)
+                {
+                    if (s.SightsId == f.SightsId)
+                    {
+                        l.Add(s);
+                        break;
+                    }
+                }
+            }
+            return l;
+        }
+
+        public List<Sights> GetVisitedSightsByCountryId(string countryId, string userId)
+        {
+            if (string.IsNullOrEmpty(userId))
+            { return GetSightsByCountryId(countryId); }
+
+            List<Sights> l = new List<Sights>();
+            List<Sights> sights = GetSightsByCountryId(countryId);
+            foreach (Favorite f in favoriteDal.GetFavoritesByUserId(userId))
+            {
+                foreach (Sights s in sights)
+                {
+                    if (s.SightsId == f.SightsId)
+                    {
+                        l.Add(s);
+                        break;
+                    }
+                }
+            }
+            return l;
+        }
+
+        public List<Sights> GetVisitedSightsByProvinceId(string provinceId, string userId)
+        {
+            if (string.IsNullOrEmpty(userId))
+            { return GetSightsByProvinceId(provinceId); }
+
+            List<Sights> l = new List<Sights>();
+            List<Sights> sights = GetSightsByProvinceId(provinceId);
+            foreach (Favorite f in favoriteDal.GetFavoritesByUserId(userId))
+            {
+                foreach (Sights s in sights)
+                {
+                    if (s.SightsId == f.SightsId)
+                    {
+                        l.Add(s);
+                        break;
+                    }
+                }
+            }
+            return l;
+        }
+
+        public List<Sights> GetVisitedSightsByCityId(string cityId, string userId)
+        {
+            if (string.IsNullOrEmpty(userId))
+            { return GetSightsByCityId(cityId); }
+
+            List<Sights> l = new List<Sights>();
+            List<Sights> sights = GetSightsByCityId(cityId);
+            foreach (Favorite f in favoriteDal.GetFavoritesByUserId(userId))
+            {
+                foreach (Sights s in sights)
+                {
+                    if (s.SightsId == f.SightsId)
+                    {
+                        l.Add(s);
+                        break;
+                    }
+                }
+            }
+            return l;
+        }
+
         public bool InsertSights(Sights sights, List<Picture> pictures, out string message)
         {
             using (DbConnection conn = dataContext.GetConnection())

@@ -9,8 +9,10 @@ namespace SextantTG.IDAL
 {
     public interface IFavoriteDAL : IBaseDAL
     {
+        List<Favorite> GetFavorites();
         List<Favorite> GetFavoritesByUserId(string userId);
         List<Favorite> GetFavoritesBySightsId(string sightsId);
+        Favorite GetFavoriteByUserIdAndSightsId(string userId, string sightsId);
         float? GetAverageStarsBySightsId(string sightsId);
 
         int InsertFavorite(Favorite favorite, DbTransaction trans);

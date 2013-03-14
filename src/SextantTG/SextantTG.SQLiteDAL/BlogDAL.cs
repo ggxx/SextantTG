@@ -7,7 +7,6 @@ using SextantTG.ActiveRecord;
 using SexTantTG.DbUtil;
 using System.Data.Common;
 using SextantTG.Util;
-using SextantTG.Util;
 using System.Configuration;
 
 namespace SextantTG.SQLiteDAL
@@ -31,7 +30,6 @@ namespace SextantTG.SQLiteDAL
         private static readonly string SELECT___SIGHTS_ID = "select * from stg_blog where sights_id = :SightsId";
         private static readonly string SELECT___USER_ID__SIGHTS_ID = "select * from stg_blog where user_id = :UserId and sights_id = :SightsId";
         private static readonly string SELECT___TOUR_ID__SUB_TOUR_ID = "select * from stg_blog where tour_id = :TourId and sub_tour_id = :SubTourId";
-        
         private static readonly string SELECT___BLOG_ID = "select * from stg_blog where blog_id = :BlogId";
 
         private static readonly string INSERT = "insert into stg_blog(blog_id, user_id, tour_id, sub_tour_id, content, creating_time) values(:BlogId, :UserId, :TourId, :SubTourId, :Content, :CreatingTime)";
@@ -110,7 +108,7 @@ namespace SextantTG.SQLiteDAL
             return blogs;
         }
 
-        public List<Blog> GetBlogsBuTourIdAndSubTourId(string tourId, string subTourId)
+        public List<Blog> GetBlogsByTourIdAndSubTourId(string tourId, string subTourId)
         {
             List<Blog> blogs = new List<Blog>();
             Dictionary<string, object> pars = new Dictionary<string, object>();

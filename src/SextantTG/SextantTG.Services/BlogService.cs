@@ -23,24 +23,58 @@ namespace SextantTG.Services
             picDal = DALFactory.CreateDAL<IPictureDAL>();
         }
 
-        public List<Blog> GetBlogsForUser(string userId)
+        public List<Blog> GetBlogsByUserId(string userId)
         {
-            throw new NotImplementedException();
+            return blogDal.GetBlogsByUserId(userId);
         }
 
-        public List<Blog> GetBlogsForSights(string sightsId)
+        public List<Blog> GetBlogsBySightsId(string sightsId)
         {
-            throw new NotImplementedException();
+            return blogDal.GetBlogsBySightsId(sightsId);
         }
 
-        public List<Blog> GetBlogsForSubTour(string tourId, string subTourId)
+        public List<Blog> GetBlogsByUserIdAndSightsId(string userId, string sightsId)
         {
-            throw new NotImplementedException();
+            return blogDal.GetBlogsByUserIdAndSightsId(userId, sightsId);
+        }
+
+        public List<Blog> GetBlogsByTourIdAndSubTourId(string tourId, string subTourId)
+        {
+            return blogDal.GetBlogsByTourIdAndSubTourId(tourId, subTourId);
+        }
+
+        public Blog GetBlogByBlogId(string blogId)
+        {
+            return blogDal.GetBlogById(blogId);
         }
 
         public bool CreateBlog(Blog blog, List<Picture> pics, string userId, out string message)
         {
-            throw new NotImplementedException();
+            using (DbConnection conn = dataContext.GetConnection())
+            {
+                conn.Open();
+                using (DbTransaction trans = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        blogDal.InsertBlog(blog, trans);
+                        foreach (Picture pic in pics)
+                        {
+                            picDal.InsertPicture(pic, trans);
+                        }
+                        trans.Commit();
+                        message = "";
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        trans.Rollback();
+                        message = ex.Message;
+                        return false;
+                    }
+                }
+            }
+
         }
 
         public bool UpdateBlog(Blog blog, List<Picture> pics, string userId, out string message)
@@ -57,7 +91,6 @@ namespace SextantTG.Services
                         {
                             picDal.InsertPicture(pic, trans);
                         }
-
 
                         trans.Commit();
                         message = "";

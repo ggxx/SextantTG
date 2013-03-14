@@ -7,7 +7,6 @@ using SextantTG.ActiveRecord;
 using SexTantTG.DbUtil;
 using System.Data.Common;
 using SextantTG.Util;
-using SextantTG.Util;
 using System.Configuration;
 
 namespace SextantTG.SQLiteDAL
@@ -93,20 +92,19 @@ namespace SextantTG.SQLiteDAL
             return favorites;
         }
 
-        public List<Favorite> GetFavoriteByUserIdAndSightsId(string userId, string sightsId)
+        public Favorite GetFavoriteByUserIdAndSightsId(string userId, string sightsId)
         {
-            List<Favorite> favorites = new List<Favorite>();
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("UserId", userId);
             pars.Add("SightsId", sightsId);
             using (DbDataReader r = dbHelper.ExecuteReader(SELECT___USER_ID__SIGHTS_ID, pars))
             {
-                while (r.Read())
+                if (r.Read())
                 {
-                    favorites.Add(BuildFavoriteByReader(r));
+                    return BuildFavoriteByReader(r);
                 }
             }
-            return favorites;
+            return null;
         }
 
         public float? GetAverageStarsBySightsId(string sightsId)

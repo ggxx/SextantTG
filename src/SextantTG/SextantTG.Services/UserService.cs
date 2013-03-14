@@ -14,19 +14,22 @@ namespace SextantTG.Services
         private IDataContext dataContext = null;
         private IUserDAL userDal = null;
         private IPermissionDAL permissionDal = null;
+        private IFavoriteDAL favoriteDal = null;
 
         public UserService()
         {
             dataContext = DALFactory.CreateDAL<IDataContext>();
             userDal = DALFactory.CreateDAL<IUserDAL>();
             permissionDal = DALFactory.CreateDAL<IPermissionDAL>();
+            favoriteDal = DALFactory.CreateDAL<IFavoriteDAL>();
         }
 
         public void Dispose()
         {
-            dataContext = null;
-            userDal = null;
-            permissionDal = null;
+            dataContext.Dispose();
+            userDal.Dispose();
+            permissionDal.Dispose();
+            favoriteDal.Dispose();
         }
 
         public User Login(string loginName, string password)
@@ -119,6 +122,47 @@ namespace SextantTG.Services
                         {
                             permissionDal.InsertPermission(p, trans);
                         }
+                        trans.Commit();
+                        message = "";
+                        return true;
+                    }
+                    catch (DbException ex)
+                    {
+                        message = ex.Message;
+                        trans.Rollback();
+                        return false;
+                    }
+                }
+            }
+        }
+
+
+
+        public List<Favorite> GetFavoritesByUserId(string userId)
+        {
+            return favoriteDal.GetFavoritesByUserId(userId);
+        }
+
+        public Favorite GetFavoriteByUserIdAndSightsId(string userId, string sightsId)
+        {
+            return favoriteDal.GetFavoriteByUserIdAndSightsId(userId, sightsId);
+        }
+
+        public bool SaveFavorite(Favorite favorite, out string message)
+        {
+            favorite.CreatingTime = DateTime.Now;
+            using (DbConnection conn = dataContext.GetConnection())
+            {
+                conn.Open();
+                using (DbTransaction trans = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        if (favoriteDal.UpdateFavorite(favorite, trans) < 1)
+                        {
+                            favoriteDal.InsertFavorite(favorite, trans);
+                        }
+
                         trans.Commit();
                         message = "";
                         return true;

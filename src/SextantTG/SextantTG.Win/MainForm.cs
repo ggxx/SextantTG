@@ -37,60 +37,54 @@ namespace SextantTG.Win
 
         private void MainForm_Load(object sender, EventArgs e)
         {
-            //InitMenu();
+            InitMenu();
         }
 
         private void InitMenu()
         {
             if (Config.AppConfig.User != null)
             {
-                tourToolStripMenuItem.Visible = true;
+                userDictToolStripMenuItem.Visible = true;
             }
             else
             {
-                tourToolStripMenuItem.Visible = false;
+                userDictToolStripMenuItem.Visible = false;
             }
 
-            if (Config.AppConfig.Permissions != null
-                && Config.AppConfig.Permissions.Exists(delegate(Permission p)
+            if (Config.AppConfig.Permissions != null && Config.AppConfig.Permissions.Exists(delegate(Permission p)
             {
                 return p.PermissionType.HasValue && p.PermissionType.Value == 9;
             }))
             {
-                adminToolStripMenuItem.Visible = true;
+                managementToolStripMenuItem.Visible = true;
             }
             else
             {
-                adminToolStripMenuItem.Visible = false;
+                managementToolStripMenuItem.Visible = false;
             }
         }
 
-        private void cityToolStripMenuItem_Click(object sender, EventArgs e)
+        private void cityDictToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.OpenMdiChildForm(typeof(CitiesForm));
         }
 
-        private void provinceToolStripMenuItem_Click(object sender, EventArgs e)
+        private void provinceDictToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.OpenMdiChildForm(typeof(ProvincesForm));
         }
 
-        private void countryToolStripMenuItem_Click(object sender, EventArgs e)
+        private void countryDictToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.OpenMdiChildForm(typeof(CountriesForm));
         }
 
-        private void viewSightsToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            this.OpenMdiChildForm(typeof(ViewSightsForm));
-        }
-
-        private void userToolStripMenuItem_Click(object sender, EventArgs e)
+        private void userDictToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.OpenMdiChildForm(typeof(UsersForm));
         }
 
-        private void sightsToolStripMenuItem_Click(object sender, EventArgs e)
+        private void sightsDictToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.OpenMdiChildForm(typeof(SightsForm));
         }
@@ -103,8 +97,9 @@ namespace SextantTG.Win
             }
         }
 
-
-
-
+        private void viewSightsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.OpenMdiChildForm(typeof(ViewSightsForm));
+        }
     }
 }

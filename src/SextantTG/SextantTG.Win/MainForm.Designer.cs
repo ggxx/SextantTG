@@ -30,17 +30,20 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.sights2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.viweSightsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.tourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.userToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
-            this.adminToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.dictToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.cityToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.provinceToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.countryToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.userToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.sightsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.viweSightsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.myToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.myMainToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.mySightsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.myBlogToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.myTourToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.managementToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.dictToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cityDictToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.provinceDictToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.countryDictToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.userDictToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sightsDictToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.windowsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,10 +57,9 @@
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.sights2ToolStripMenuItem,
-            this.tourToolStripMenuItem,
-            this.userToolStripMenuItem1,
-            this.adminToolStripMenuItem,
+            this.sightsToolStripMenuItem,
+            this.myToolStripMenuItem,
+            this.managementToolStripMenuItem,
             this.windowsToolStripMenuItem,
             this.helpToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
@@ -67,107 +69,130 @@
             this.menuStrip1.TabIndex = 1;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // sights2ToolStripMenuItem
+            // sightsToolStripMenuItem
             // 
-            this.sights2ToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.sightsToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.viweSightsToolStripMenuItem});
-            this.sights2ToolStripMenuItem.Name = "sights2ToolStripMenuItem";
-            this.sights2ToolStripMenuItem.Size = new System.Drawing.Size(55, 21);
-            this.sights2ToolStripMenuItem.Text = "Sights";
+            this.sightsToolStripMenuItem.Name = "sightsToolStripMenuItem";
+            this.sightsToolStripMenuItem.Size = new System.Drawing.Size(59, 21);
+            this.sightsToolStripMenuItem.Text = "景点(&S)";
             // 
             // viweSightsToolStripMenuItem
             // 
             this.viweSightsToolStripMenuItem.Name = "viweSightsToolStripMenuItem";
-            this.viweSightsToolStripMenuItem.Size = new System.Drawing.Size(130, 22);
-            this.viweSightsToolStripMenuItem.Text = "SightsList";
+            this.viweSightsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.viweSightsToolStripMenuItem.Text = "景点一览(&V)...";
             this.viweSightsToolStripMenuItem.Click += new System.EventHandler(this.viewSightsToolStripMenuItem_Click);
             // 
-            // tourToolStripMenuItem
+            // myToolStripMenuItem
             // 
-            this.tourToolStripMenuItem.Name = "tourToolStripMenuItem";
-            this.tourToolStripMenuItem.Size = new System.Drawing.Size(47, 21);
-            this.tourToolStripMenuItem.Text = "Tour";
+            this.myToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.myMainToolStripMenuItem,
+            this.mySightsToolStripMenuItem,
+            this.myBlogToolStripMenuItem,
+            this.myTourToolStripMenuItem});
+            this.myToolStripMenuItem.Name = "myToolStripMenuItem";
+            this.myToolStripMenuItem.Size = new System.Drawing.Size(61, 21);
+            this.myToolStripMenuItem.Text = "用户(&U)";
             // 
-            // userToolStripMenuItem1
+            // myMainToolStripMenuItem
             // 
-            this.userToolStripMenuItem1.Name = "userToolStripMenuItem1";
-            this.userToolStripMenuItem1.Size = new System.Drawing.Size(47, 21);
-            this.userToolStripMenuItem1.Text = "User";
+            this.myMainToolStripMenuItem.Name = "myMainToolStripMenuItem";
+            this.myMainToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.myMainToolStripMenuItem.Text = "我的主页(&H)...";
             // 
-            // adminToolStripMenuItem
+            // mySightsToolStripMenuItem
             // 
-            this.adminToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.mySightsToolStripMenuItem.Name = "mySightsToolStripMenuItem";
+            this.mySightsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mySightsToolStripMenuItem.Text = "我的景点(&G)...";
+            // 
+            // myBlogToolStripMenuItem
+            // 
+            this.myBlogToolStripMenuItem.Name = "myBlogToolStripMenuItem";
+            this.myBlogToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.myBlogToolStripMenuItem.Text = "我的日志(&B)...";
+            // 
+            // myTourToolStripMenuItem
+            // 
+            this.myTourToolStripMenuItem.Name = "myTourToolStripMenuItem";
+            this.myTourToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.myTourToolStripMenuItem.Text = "我的旅行(&T)...";
+            // 
+            // managementToolStripMenuItem
+            // 
+            this.managementToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.dictToolStripMenuItem,
-            this.userToolStripMenuItem,
-            this.sightsToolStripMenuItem});
-            this.adminToolStripMenuItem.Name = "adminToolStripMenuItem";
-            this.adminToolStripMenuItem.Size = new System.Drawing.Size(57, 21);
-            this.adminToolStripMenuItem.Text = "Admin";
+            this.userDictToolStripMenuItem,
+            this.sightsDictToolStripMenuItem});
+            this.managementToolStripMenuItem.Name = "managementToolStripMenuItem";
+            this.managementToolStripMenuItem.Size = new System.Drawing.Size(64, 21);
+            this.managementToolStripMenuItem.Text = "管理(&M)";
             // 
             // dictToolStripMenuItem
             // 
             this.dictToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cityToolStripMenuItem,
-            this.provinceToolStripMenuItem,
-            this.countryToolStripMenuItem});
+            this.cityDictToolStripMenuItem,
+            this.provinceDictToolStripMenuItem,
+            this.countryDictToolStripMenuItem});
             this.dictToolStripMenuItem.Name = "dictToolStripMenuItem";
-            this.dictToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
-            this.dictToolStripMenuItem.Text = "Dict";
+            this.dictToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.dictToolStripMenuItem.Text = "字典管理(&D)";
             // 
-            // cityToolStripMenuItem
+            // cityDictToolStripMenuItem
             // 
-            this.cityToolStripMenuItem.Name = "cityToolStripMenuItem";
-            this.cityToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.cityToolStripMenuItem.Text = "City";
-            this.cityToolStripMenuItem.Click += new System.EventHandler(this.cityToolStripMenuItem_Click);
+            this.cityDictToolStripMenuItem.Name = "cityDictToolStripMenuItem";
+            this.cityDictToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cityDictToolStripMenuItem.Text = "国家字典(&C)...";
+            this.cityDictToolStripMenuItem.Click += new System.EventHandler(this.cityDictToolStripMenuItem_Click);
             // 
-            // provinceToolStripMenuItem
+            // provinceDictToolStripMenuItem
             // 
-            this.provinceToolStripMenuItem.Name = "provinceToolStripMenuItem";
-            this.provinceToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.provinceToolStripMenuItem.Text = "Province";
-            this.provinceToolStripMenuItem.Click += new System.EventHandler(this.provinceToolStripMenuItem_Click);
+            this.provinceDictToolStripMenuItem.Name = "provinceDictToolStripMenuItem";
+            this.provinceDictToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.provinceDictToolStripMenuItem.Text = "省份字典(&P)...";
+            this.provinceDictToolStripMenuItem.Click += new System.EventHandler(this.provinceDictToolStripMenuItem_Click);
             // 
-            // countryToolStripMenuItem
+            // countryDictToolStripMenuItem
             // 
-            this.countryToolStripMenuItem.Name = "countryToolStripMenuItem";
-            this.countryToolStripMenuItem.Size = new System.Drawing.Size(125, 22);
-            this.countryToolStripMenuItem.Text = "Country";
-            this.countryToolStripMenuItem.Click += new System.EventHandler(this.countryToolStripMenuItem_Click);
+            this.countryDictToolStripMenuItem.Name = "countryDictToolStripMenuItem";
+            this.countryDictToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.countryDictToolStripMenuItem.Text = "城市字典(&I)...";
+            this.countryDictToolStripMenuItem.Click += new System.EventHandler(this.countryDictToolStripMenuItem_Click);
             // 
-            // userToolStripMenuItem
+            // userDictToolStripMenuItem
             // 
-            this.userToolStripMenuItem.Name = "userToolStripMenuItem";
-            this.userToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
-            this.userToolStripMenuItem.Text = "User";
-            this.userToolStripMenuItem.Click += new System.EventHandler(this.userToolStripMenuItem_Click);
+            this.userDictToolStripMenuItem.Name = "userDictToolStripMenuItem";
+            this.userDictToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.userDictToolStripMenuItem.Text = "用户管理(&R)...";
+            this.userDictToolStripMenuItem.Click += new System.EventHandler(this.userDictToolStripMenuItem_Click);
             // 
-            // sightsToolStripMenuItem
+            // sightsDictToolStripMenuItem
             // 
-            this.sightsToolStripMenuItem.Name = "sightsToolStripMenuItem";
-            this.sightsToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
-            this.sightsToolStripMenuItem.Text = "Sights";
-            this.sightsToolStripMenuItem.Click += new System.EventHandler(this.sightsToolStripMenuItem_Click);
+            this.sightsDictToolStripMenuItem.Name = "sightsDictToolStripMenuItem";
+            this.sightsDictToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.sightsDictToolStripMenuItem.Text = "景点管理(&E)...";
+            this.sightsDictToolStripMenuItem.Click += new System.EventHandler(this.sightsDictToolStripMenuItem_Click);
             // 
             // windowsToolStripMenuItem
             // 
             this.windowsToolStripMenuItem.Name = "windowsToolStripMenuItem";
-            this.windowsToolStripMenuItem.Size = new System.Drawing.Size(73, 21);
-            this.windowsToolStripMenuItem.Text = "Windows";
+            this.windowsToolStripMenuItem.Size = new System.Drawing.Size(64, 21);
+            this.windowsToolStripMenuItem.Text = "窗口(&W)";
             // 
             // helpToolStripMenuItem
             // 
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.aboutToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(47, 21);
-            this.helpToolStripMenuItem.Text = "Help";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(61, 21);
+            this.helpToolStripMenuItem.Text = "帮助(&H)";
             // 
             // aboutToolStripMenuItem
             // 
             this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
-            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(111, 22);
-            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(231, 22);
+            this.aboutToolStripMenuItem.Text = "关于 Sextant Tour Guide(A)";
             this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
             // 
             // statusStrip1
@@ -208,7 +233,7 @@
             this.IsMdiContainer = true;
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "MainForm";
-            this.Text = "MainForm";
+            this.Text = "Sextant Tour Guide";
             this.Load += new System.EventHandler(this.MainForm_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
@@ -222,22 +247,25 @@
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem sights2ToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem tourToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem adminToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sightsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem managementToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem windowsToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem helpToolStripMenuItem;
         private System.Windows.Forms.StatusStrip statusStrip1;
         private System.Windows.Forms.ToolStripMenuItem dictToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem cityToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem provinceToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem countryToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem cityDictToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem provinceDictToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem countryDictToolStripMenuItem;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton toolStripButton1;
         private System.Windows.Forms.ToolStripMenuItem viweSightsToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem userToolStripMenuItem1;
-        private System.Windows.Forms.ToolStripMenuItem sightsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem userDictToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem myToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem sightsDictToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem aboutToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem myMainToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem mySightsToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem myBlogToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem myTourToolStripMenuItem;
     }
 }

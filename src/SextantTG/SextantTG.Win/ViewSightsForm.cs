@@ -20,6 +20,16 @@ namespace SextantTG.Win
 
         private void SightsForm_Load(object sender, EventArgs e)
         {
+            if (Config.AppConfig.User == null)
+            {
+                this.checkBox_Visited.Enabled = false;
+                this.tabControl1.TabPages.Remove(tabPage4);
+            }
+            else
+            {
+                this.checkBox_Visited.Enabled = true;
+            }
+
             this.comboBox_Country.DisplayMember = "CountryName";
             this.comboBox_Country.ValueMember = "CountryId";
 
@@ -113,36 +123,51 @@ namespace SextantTG.Win
 
         private void comboBox_City_SelectedIndexChanged(object sender, EventArgs e)
         {
+            BindSightsList();
+        }
 
-            this.textBox_FilterSightsName.Text = "";
+        private void BindSightsList()
+        {
+            string userId = Config.AppConfig.User != null && this.checkBox_Visited.Checked ? Config.AppConfig.User.UserId : "";
+            List<Sights> ds = null;
             if (comboBox_City.SelectedValue != null)
             {
                 if (comboBox_City.SelectedValue.ToString() != "*")
                 {
-                    this.listBox_Sights.DataSource = UIUtil.GetSightsByCityId(comboBox_City.SelectedValue.ToString());
+                    ds = UIUtil.GetVisitedSightsByCityId(comboBox_City.SelectedValue.ToString(), userId);
                 }
                 else
                 {
                     if (comboBox_Province.SelectedValue.ToString() != "*")
                     {
-                        this.listBox_Sights.DataSource = UIUtil.GetSightsByProvinceId(comboBox_Province.SelectedValue.ToString());
+                        ds = UIUtil.GetVisitedSightsByProvinceId(comboBox_Province.SelectedValue.ToString(), userId);
                     }
                     else
                     {
                         if (comboBox_Country.SelectedValue.ToString() != "*")
                         {
-                            this.listBox_Sights.DataSource = UIUtil.GetSightsByCountryId(comboBox_Country.SelectedValue.ToString());
+                            ds = UIUtil.GetVisitedSightsByCountryId(comboBox_Country.SelectedValue.ToString(), userId);
                         }
                         else
                         {
-                            this.listBox_Sights.DataSource = UIUtil.GetSights();
+                            ds = UIUtil.GetVisitedSights(userId);
                         }
                     }
+                }
+
+                string nameFilter = this.textBox_FilterSightsName.Text.Trim();
+                if (string.IsNullOrEmpty(nameFilter))
+                {
+                    this.listBox_Sights.DataSource = ds;
+                }
+                else
+                {
+                    this.listBox_Sights.DataSource = ds.FindAll(delegate(Sights sights) { return sights.SightsName.Contains(nameFilter); });
                 }
             }
             else
             {
-                this.listBox_Sights.DataSource = null;
+                ds = null;
             }
         }
 
@@ -157,7 +182,6 @@ namespace SextantTG.Win
         private void BindItem(Sights sights)
         {
             float? stars = UIUtil.GetAverageStarsBySightsId(sights.SightsId);
-
             this.textBox_SightsName.Text = sights.SightsName;
             this.textBox_Stars.Text = CustomTypeConverter.ToString(stars, "n2");
             this.textBox_Country.Text = UIUtil.GetCountryByProvinceId(UIUtil.GetProvinceByCityId(sights.CityId).ProvinceId).CountryName;
@@ -167,9 +191,69 @@ namespace SextantTG.Win
             this.textBox_Price.Text = CustomTypeConverter.ToString(sights.Price, "n2");
             this.textBox_Description.Text = sights.Description;
 
+            //
             this.stgReadonlyPictures.SetPicturesForSights(sights.SightsId, "0000");
+
+            //
+            this.dataGridView_Comment.AutoGenerateColumns = true;
+            this.bindingSource_Comment.DataSource = UIUtil.GetSightsCommentsBySightsId(sights.SightsId);
+
+            //
+            this.dataGridView_Blog.AutoGenerateColumns = true;
+            this.bindingSource_Blog.DataSource = UIUtil.GetBlogsBySightsId(sights.SightsId);
+
+            if (Config.AppConfig.User != null)
+            {
+                Favorite fav = UIUtil.GetFavoriteByUserIdAndSightsId(Config.AppConfig.User.UserId, sights.SightsId);
+                if (fav != null)
+                {
+                    this.textBox_MyVisited.Text = fav.Visited == 1 ? "是" : "否";
+                    this.textBox_MyStars.Text = CustomTypeConverter.ToString(fav.Stars, "n0");
+                }
+            }
         }
 
+        private void textBox_FilterSightsName_TextChanged(object sender, EventArgs e)
+        {
+            BindSightsList();
+        }
 
+        private void checkBox_Visited_CheckedChanged(object sender, EventArgs e)
+        {
+            BindSightsList();
+        }
+
+        private void button_Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void button_Comment_Click(object sender, EventArgs e)
+        {
+            if (listBox_Sights.SelectedItem != null)
+            {
+                using (CommentEditForm form = new CommentEditForm(this.listBox_Sights.SelectedItem as Sights))
+                {
+                    if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        BindSightsList();
+                    }
+                }
+            }
+        }
+
+        private void button_Favorite_Click(object sender, EventArgs e)
+        {
+            if (listBox_Sights.SelectedItem != null)
+            {
+                using (FavoriteEditForm form = new FavoriteEditForm((this.listBox_Sights.SelectedItem as Sights).SightsId))
+                {
+                    if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        BindSightsList();
+                    }
+                }
+            }
+        }
     }
 }

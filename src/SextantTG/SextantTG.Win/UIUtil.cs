@@ -19,6 +19,7 @@ namespace SextantTG.Win
         private static readonly ITourService tourSrv = ServiceFactory.CreateService<ITourService>();
         private static readonly IUserService userSrv = ServiceFactory.CreateService<IUserService>();
 
+
         #region User Services
 
         internal static User Login(string loginName, string password)
@@ -59,6 +60,21 @@ namespace SextantTG.Win
         internal static bool UpdatePermissionsByUserId(string userId, List<Permission> permissions, out string message)
         {
             return userSrv.UpdatePermissionsByUserId(userId, permissions, out message);
+        }
+
+        internal static List<Favorite> GetFavoritesByUserId(string userId)
+        {
+            return userSrv.GetFavoritesByUserId(userId);
+        }
+
+        internal static Favorite GetFavoriteByUserIdAndSightsId(string userId, string sightsId)
+        {
+            return userSrv.GetFavoriteByUserIdAndSightsId(userId, sightsId);
+        }
+
+        internal static bool SaveFavorite(Favorite favorite, out string message)
+        {
+            return userSrv.SaveFavorite(favorite, out message);
         }
 
         #endregion
@@ -186,6 +202,26 @@ namespace SextantTG.Win
             return sightsSrv.GetSightsByProvinceId(provinceId);
         }
 
+        internal static List<Sights> GetVisitedSights(string userId)
+        {
+            return sightsSrv.GetVisitedSights(userId);
+        }
+
+        internal static List<Sights> GetVisitedSightsByCountryId(string countryId, string userId)
+        {
+            return sightsSrv.GetVisitedSightsByCountryId(countryId, userId);
+        }
+
+        internal static List<Sights> GetVisitedSightsByProvinceId(string provinceId, string userId)
+        {
+            return sightsSrv.GetVisitedSightsByProvinceId(provinceId, userId);
+        }
+
+        internal static List<Sights> GetVisitedSightsByCityId(string cityId, string userId)
+        {
+            return sightsSrv.GetVisitedSightsByCityId(cityId, userId);
+        }
+
         internal static bool InsertSights(Sights sights, List<Picture> pictures, out string message)
         {
             return sightsSrv.InsertSights(sights, pictures, out message);
@@ -214,5 +250,132 @@ namespace SextantTG.Win
         #endregion
 
 
+        #region Comment
+
+        internal static List<PictureComment> GetPictureCommentsByPictureId(string pictureId)
+        {
+            return commentSrv.GetPictureCommentsByPictureId(pictureId);
+        }
+
+        internal static List<SightsComment> GetSightsCommentsBySightsId(string sightsId)
+        {
+            return commentSrv.GetSightsCommentsBySightsId(sightsId);
+        }
+
+        internal static List<TourComment> GetTourCommentsByTourId(string tourId)
+        {
+            return commentSrv.GetTourCommentsByTourId(tourId);
+        }
+
+        internal static List<UserComment> GetUserCommentsByUserId(string userId)
+        {
+            return commentSrv.GetUserCommentsByUserId(userId);
+        }
+
+        internal static bool InsertPictureComment(PictureComment comment, out string message)
+        {
+            return commentSrv.InsertPictureComment(comment, out  message);
+        }
+
+        internal static bool UpdatePictureComment(PictureComment comment, out string message)
+        {
+            return commentSrv.UpdatePictureComment(comment, out  message);
+
+        }
+
+        internal static bool DeletePictureCommentByCommentId(string commentId, out string message)
+        {
+            return commentSrv.DeletePictureCommentByCommentId(commentId, out  message);
+        }
+
+        internal static bool InsertSightsComment(SightsComment comment, out string message)
+        {
+            return commentSrv.InsertSightsComment(comment, out  message);
+        }
+
+        internal static bool UpdateSightsComment(SightsComment comment, out string message)
+        {
+            return commentSrv.UpdateSightsComment(comment, out  message);
+        }
+
+        internal static bool DeleteSightsCommentByCommentId(string commentId, out string message)
+        {
+            return commentSrv.DeleteSightsCommentByCommentId(commentId, out  message);
+        }
+
+        internal static bool InsertTourComment(TourComment comment, out string message)
+        {
+            return commentSrv.InsertTourComment(comment, out  message);
+        }
+
+        internal static bool UpdateTourComment(TourComment comment, out string message)
+        {
+            return commentSrv.UpdateTourComment(comment, out  message);
+        }
+
+        internal static bool DeleteTourCommentByCommentId(string commentId, out string message)
+        {
+            return commentSrv.DeleteTourCommentByCommentId(commentId, out  message);
+        }
+
+        internal static bool InsertUserComment(UserComment comment, out string message)
+        {
+            return commentSrv.InsertUserComment(comment, out  message);
+        }
+
+        internal static bool UpdateUserComment(UserComment comment, out string message)
+        {
+            return commentSrv.UpdateUserComment(comment, out  message);
+        }
+
+        internal static bool DeleteUserCommentByCommentId(string commentId, out string message)
+        {
+            return commentSrv.DeleteUserCommentByCommentId(commentId, out  message);
+        }
+
+        #endregion
+
+
+        #region Blog
+
+        internal static List<Blog> GetBlogsByUserId(string userId)
+        {
+            return blogSrv.GetBlogsByUserId(userId);
+        }
+
+        internal static List<Blog> GetBlogsBySightsId(string sightsId)
+        {
+            return blogSrv.GetBlogsBySightsId(sightsId);
+        }
+
+        internal static List<Blog> GetBlogsByUserIdAndSightsId(string userId, string sightsId)
+        {
+            return blogSrv.GetBlogsByUserIdAndSightsId(userId, sightsId);
+        }
+        internal static List<Blog> GetBlogsByTourIdAndSubTourId(string tourId, string subTourId)
+        {
+            return blogSrv.GetBlogsByTourIdAndSubTourId(tourId, subTourId);
+        }
+        internal static Blog GetBlogByBlogId(string blogId)
+        {
+            return blogSrv.GetBlogByBlogId(blogId);
+        }
+
+        internal static bool CreateBlog(Blog blog, List<Picture> pics, string userId, out string message)
+        {
+            return blogSrv.CreateBlog(blog, pics, userId, out  message);
+        }
+
+        internal static bool UpdateBlog(Blog blog, List<Picture> pics, string userId, out string message)
+        {
+            return blogSrv.UpdateBlog(blog, pics, userId, out  message);
+        }
+
+        internal static bool DeleteBlog(string blogId, bool deletePictures, bool deleteComments, out string message)
+        {
+            return blogSrv.DeleteBlog(blogId, deletePictures, deleteComments, out  message);
+        }
+
+        #endregion
     }
 }
