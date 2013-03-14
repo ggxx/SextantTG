@@ -38,10 +38,10 @@ namespace SextantTG.Win
             this.comboBox_City.ValueMember = "CityId";
 
             List<Country> countries = UIUtil.GetCountries();
-            //Country country = new Country();
-            //country.CountryId = "*";
-            //country.CountryName = "<全部>";
-            //countries.Insert(0, country);
+            Country country = new Country();
+            country.CountryId = "*";
+            country.CountryName = "<全部>";
+            countries.Insert(0, country);
             this.comboBox_Country.DataSource = countries;
         }
 
@@ -52,19 +52,19 @@ namespace SextantTG.Win
                 if (comboBox_Country.SelectedValue.ToString() != "*")
                 {
                     List<Province> provinces = UIUtil.GetProvincesByCountryId(comboBox_Country.SelectedValue.ToString());
-                    //Province province = new Province();
-                    //province.ProvinceId = "*";
-                    //province.ProvinceName = "<全部>";
-                    //provinces.Insert(0, province);
+                    Province province = new Province();
+                    province.ProvinceId = "*";
+                    province.ProvinceName = "<全部>";
+                    provinces.Insert(0, province);
                     this.comboBox_Province.DataSource = provinces;
                 }
                 else
                 {
                     List<Province> provinces = UIUtil.GetProvinces();
-                    //Province province = new Province();
-                    //province.ProvinceId = "*";
-                    //province.ProvinceName = "<全部>";
-                    //provinces.Insert(0, province);
+                    Province province = new Province();
+                    province.ProvinceId = "*";
+                    province.ProvinceName = "<全部>";
+                    provinces.Insert(0, province);
                     this.comboBox_Province.DataSource = provinces;
                 }
             }
@@ -82,10 +82,10 @@ namespace SextantTG.Win
                 if (comboBox_Province.SelectedValue.ToString() != "*")
                 {
                     List<City> cities = UIUtil.GetCitiesByProvinceId(comboBox_Province.SelectedValue.ToString());
-                    //City city = new City();
-                    //city.CityId = "*";
-                    //city.CityName = "<全部>";
-                    //cities.Insert(0, city);
+                    City city = new City();
+                    city.CityId = "*";
+                    city.CityName = "<全部>";
+                    cities.Insert(0, city);
                     this.comboBox_City.DataSource = cities;
                 }
                 else
@@ -93,19 +93,19 @@ namespace SextantTG.Win
                     if (comboBox_Country.SelectedValue.ToString() != "*")
                     {
                         List<City> cities = UIUtil.GetCitiesByCountryId(comboBox_Country.SelectedValue.ToString());
-                        //City city = new City();
-                        //city.CityId = "*";
-                        //city.CityName = "<全部>";
-                        //cities.Insert(0, city);
+                        City city = new City();
+                        city.CityId = "*";
+                        city.CityName = "<全部>";
+                        cities.Insert(0, city);
                         this.comboBox_City.DataSource = cities;
                     }
                     else
                     {
                         List<City> cities = UIUtil.GetCities();
-                        //City city = new City();
-                        //city.CityId = "*";
-                        //city.CityName = "<全部>";
-                        //cities.Insert(0, city);
+                        City city = new City();
+                        city.CityId = "*";
+                        city.CityName = "<全部>";
+                        cities.Insert(0, city);
                         this.comboBox_City.DataSource = cities;
                     }
                 }

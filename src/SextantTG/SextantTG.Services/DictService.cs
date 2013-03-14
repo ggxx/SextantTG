@@ -32,21 +32,27 @@ namespace SextantTG.Services
         {
             if (countries == null)
                 countries = countryDal.GetCountries();
-            return countries;
+            Country[] c = new Country[countries.Count];
+            countries.CopyTo(c);
+            return c.ToList();
         }
 
         public List<Province> GetProvinces()
         {
             if (provinces == null)
                 provinces = provinceDal.GetProvinces();
-            return provinces;
+            Province[] p = new Province[provinces.Count];
+            provinces.CopyTo(p);
+            return p.ToList();
         }
 
         public List<City> GetCities()
         {
             if (cities == null)
                 cities = cityDal.GetCities();
-            return cities;
+            City[] c = new City[cities.Count];
+            cities.CopyTo(c);
+            return c.ToList();
         }
 
         public List<Province> GetProvincesByCountryId(string countryId)

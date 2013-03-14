@@ -166,9 +166,24 @@ namespace SextantTG.Win
 
         #region Sights Service
 
+        internal static List<Sights> GetSights()
+        {
+            return sightsSrv.GetSights();
+        }
+
         internal static List<Sights> GetSightsByCityId(string cityId)
         {
             return sightsSrv.GetSightsByCityId(cityId);
+        }
+
+        internal static List<Sights> GetSightsByCountryId(string countryId)
+        {
+            return sightsSrv.GetSightsByCountryId(countryId);
+        }
+
+        internal static List<Sights> GetSightsByProvinceId(string provinceId)
+        {
+            return sightsSrv.GetSightsByProvinceId(provinceId);
         }
 
         internal static bool InsertSights(Sights sights, List<Picture> pictures, out string message)

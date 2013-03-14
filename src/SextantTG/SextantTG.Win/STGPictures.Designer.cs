@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.textBox_Desc = new System.Windows.Forms.TextBox();
             this.button_Delete = new System.Windows.Forms.Button();
             this.listView_Pic = new System.Windows.Forms.ListView();
             this.button_Upload = new System.Windows.Forms.Button();
-            this.textBox_Desc = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -51,6 +51,26 @@
             this.groupBox1.TabIndex = 11;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "图片";
+            // 
+            // label1
+            // 
+            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(6, 302);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(53, 12);
+            this.label1.TabIndex = 12;
+            this.label1.Text = "图片说明";
+            // 
+            // textBox_Desc
+            // 
+            this.textBox_Desc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.textBox_Desc.Location = new System.Drawing.Point(65, 298);
+            this.textBox_Desc.Name = "textBox_Desc";
+            this.textBox_Desc.ReadOnly = true;
+            this.textBox_Desc.Size = new System.Drawing.Size(246, 21);
+            this.textBox_Desc.TabIndex = 11;
+            this.textBox_Desc.TextChanged += new System.EventHandler(this.textBox_Desc_TextChanged);
             // 
             // button_Delete
             // 
@@ -87,25 +107,6 @@
             this.button_Upload.Text = "上传...";
             this.button_Upload.UseVisualStyleBackColor = true;
             this.button_Upload.Click += new System.EventHandler(this.button_Upload_Click);
-            // 
-            // textBox_Desc
-            // 
-            this.textBox_Desc.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.textBox_Desc.Location = new System.Drawing.Point(65, 298);
-            this.textBox_Desc.Name = "textBox_Desc";
-            this.textBox_Desc.Size = new System.Drawing.Size(246, 21);
-            this.textBox_Desc.TabIndex = 11;
-            this.textBox_Desc.TextChanged += new System.EventHandler(this.textBox_Desc_TextChanged);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(6, 302);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(53, 12);
-            this.label1.TabIndex = 12;
-            this.label1.Text = "图片说明";
             // 
             // STGPictures
             // 

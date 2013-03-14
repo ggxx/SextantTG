@@ -39,3 +39,4 @@ E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\bin\Debug\db\sgt.
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.SightsEditForm.resources
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.AboutBox.resources
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.STGPictures.resources
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.STGReadonlyPictures.resources

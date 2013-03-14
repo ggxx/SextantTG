@@ -20,10 +20,6 @@ namespace SextantTG.Win
 
         private void SightsForm_Load(object sender, EventArgs e)
         {
-            //this.Column_CityId.DisplayMember = "CityName";
-            //this.Column_CityId.ValueMember = "CityId";
-            //this.Column_CityId.DataSource = UIUtil.GetCities();
-
             this.comboBox_Country.DisplayMember = "CountryName";
             this.comboBox_Country.ValueMember = "CountryId";
 
@@ -33,17 +29,39 @@ namespace SextantTG.Win
             this.comboBox_City.DisplayMember = "CityName";
             this.comboBox_City.ValueMember = "CityId";
 
-            this.comboBox_Country.DataSource = UIUtil.GetCountries();
-
             this.listBox_Sights.DisplayMember = "SightsName";
             this.listBox_Sights.ValueMember = "SightsId";
+
+            List<Country> countries = UIUtil.GetCountries();
+            Country country = new Country();
+            country.CountryId = "*";
+            country.CountryName = "<全部>";
+            countries.Insert(0, country);
+            this.comboBox_Country.DataSource = countries;
         }
 
         private void comboBox_Country_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (comboBox_Country.SelectedValue != null)
             {
-                this.comboBox_Province.DataSource = UIUtil.GetProvincesByCountryId(comboBox_Country.SelectedValue.ToString());
+                if (comboBox_Country.SelectedValue.ToString() != "*")
+                {
+                    List<Province> provinces = UIUtil.GetProvincesByCountryId(comboBox_Country.SelectedValue.ToString());
+                    Province province = new Province();
+                    province.ProvinceId = "*";
+                    province.ProvinceName = "<全部>";
+                    provinces.Insert(0, province);
+                    this.comboBox_Province.DataSource = provinces;
+                }
+                else
+                {
+                    List<Province> provinces = UIUtil.GetProvinces();
+                    Province province = new Province();
+                    province.ProvinceId = "*";
+                    province.ProvinceName = "<全部>";
+                    provinces.Insert(0, province);
+                    this.comboBox_Province.DataSource = provinces;
+                }
             }
             else
             {
@@ -56,7 +74,36 @@ namespace SextantTG.Win
         {
             if (comboBox_Province.SelectedValue != null)
             {
-                this.comboBox_City.DataSource = UIUtil.GetCitiesByProvinceId(comboBox_Province.SelectedValue.ToString());
+                if (comboBox_Province.SelectedValue.ToString() != "*")
+                {
+                    List<City> cities = UIUtil.GetCitiesByProvinceId(comboBox_Province.SelectedValue.ToString());
+                    City city = new City();
+                    city.CityId = "*";
+                    city.CityName = "<全部>";
+                    cities.Insert(0, city);
+                    this.comboBox_City.DataSource = cities;
+                }
+                else
+                {
+                    if (comboBox_Country.SelectedValue.ToString() != "*")
+                    {
+                        List<City> cities = UIUtil.GetCitiesByCountryId(comboBox_Country.SelectedValue.ToString());
+                        City city = new City();
+                        city.CityId = "*";
+                        city.CityName = "<全部>";
+                        cities.Insert(0, city);
+                        this.comboBox_City.DataSource = cities;
+                    }
+                    else
+                    {
+                        List<City> cities = UIUtil.GetCities();
+                        City city = new City();
+                        city.CityId = "*";
+                        city.CityName = "<全部>";
+                        cities.Insert(0, city);
+                        this.comboBox_City.DataSource = cities;
+                    }
+                }
             }
             else
             {
@@ -66,9 +113,32 @@ namespace SextantTG.Win
 
         private void comboBox_City_SelectedIndexChanged(object sender, EventArgs e)
         {
+
+            this.textBox_FilterSightsName.Text = "";
             if (comboBox_City.SelectedValue != null)
             {
-                this.listBox_Sights.DataSource = UIUtil.GetSightsByCityId(comboBox_City.SelectedValue.ToString());
+                if (comboBox_City.SelectedValue.ToString() != "*")
+                {
+                    this.listBox_Sights.DataSource = UIUtil.GetSightsByCityId(comboBox_City.SelectedValue.ToString());
+                }
+                else
+                {
+                    if (comboBox_Province.SelectedValue.ToString() != "*")
+                    {
+                        this.listBox_Sights.DataSource = UIUtil.GetSightsByProvinceId(comboBox_Province.SelectedValue.ToString());
+                    }
+                    else
+                    {
+                        if (comboBox_Country.SelectedValue.ToString() != "*")
+                        {
+                            this.listBox_Sights.DataSource = UIUtil.GetSightsByCountryId(comboBox_Country.SelectedValue.ToString());
+                        }
+                        else
+                        {
+                            this.listBox_Sights.DataSource = UIUtil.GetSights();
+                        }
+                    }
+                }
             }
             else
             {
@@ -81,7 +151,6 @@ namespace SextantTG.Win
             if (listBox_Sights.SelectedItem != null)
             {
                 BindItem(this.listBox_Sights.SelectedItem as Sights);
-                
             }
         }
 
@@ -98,7 +167,7 @@ namespace SextantTG.Win
             this.textBox_Price.Text = CustomTypeConverter.ToString(sights.Price, "n2");
             this.textBox_Description.Text = sights.Description;
 
-
+            this.stgReadonlyPictures.SetPicturesForSights(sights.SightsId, "0000");
         }
 
 

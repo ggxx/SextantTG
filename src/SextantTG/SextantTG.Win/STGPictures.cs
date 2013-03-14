@@ -32,12 +32,21 @@ namespace SextantTG.Win
 
         public void SetPicturesForSights(string sightsId, string uploaderId)
         {
+            this.images.Images.Clear();
+            this.listView_Pic.Items.Clear();
+
             this.sightsId = sightsId;
             this.uploaderId = uploaderId;
+
+            if (string.IsNullOrEmpty(sightsId))
+            {
+                return;
+            }
+
             this.Pictures = UIUtil.GetPicturesBySightsIdAndUploaderId(sightsId, uploaderId);
             foreach (Picture pic in Pictures)
             {
-                images.Images.Add(pic.PictureId, new System.Drawing.Bitmap(PicPath + pic.Path));
+                this.images.Images.Add(pic.PictureId, new System.Drawing.Bitmap(PicPath + pic.Path));
                 this.listView_Pic.Items.Add(pic.PictureId, pic.Description, pic.PictureId);
             }
         }
