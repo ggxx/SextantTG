@@ -39,15 +39,15 @@ namespace SextantTG.SQLiteDAL
         private Tour BuildTourByReader(DbDataReader r)
         {
             Tour tour = new Tour();
-            tour.TourId = TypeConverter.ToString(r["tour_id"]);
-            tour.TourName = TypeConverter.ToString(r["tour_name"]);
-            tour.UserId = TypeConverter.ToString(r["user_id"]);
-            tour.BeginDate = TypeConverter.ToDateTimeNull(r["begin_date"]);
-            tour.EndDate = TypeConverter.ToDateTimeNull(r["end_date"]);
-            tour.Cost = TypeConverter.ToInt32Null(r["cost"]);
-            tour.Status = TypeConverter.ToInt32Null(r["status"]);
-            tour.CreatingTime = TypeConverter.ToDateTimeNull(r["creating_time"]);
-            tour.Memos = TypeConverter.ToString(r["memos"]);
+            tour.TourId = CustomTypeConverter.ToString(r["tour_id"]);
+            tour.TourName = CustomTypeConverter.ToString(r["tour_name"]);
+            tour.UserId = CustomTypeConverter.ToString(r["user_id"]);
+            tour.BeginDate = CustomTypeConverter.ToDateTimeNull(r["begin_date"]);
+            tour.EndDate = CustomTypeConverter.ToDateTimeNull(r["end_date"]);
+            tour.Cost = CustomTypeConverter.ToInt32Null(r["cost"]);
+            tour.Status = CustomTypeConverter.ToInt32Null(r["status"]);
+            tour.CreatingTime = CustomTypeConverter.ToDateTimeNull(r["creating_time"]);
+            tour.Memos = CustomTypeConverter.ToString(r["memos"]);
             return tour;
         }
 

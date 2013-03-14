@@ -21,7 +21,7 @@ namespace SextantTG.Win
 
         #region User Services
 
-        internal static User Login(string loginName, string password) 
+        internal static User Login(string loginName, string password)
         {
             return userSrv.Login(loginName, password);
         }
@@ -106,6 +106,11 @@ namespace SextantTG.Win
             return dictSrv.GetProvinceByCityId(cityId);
         }
 
+        internal static City GetCityByCityId(string cityId)
+        {
+            return dictSrv.GetCityByCityId(cityId);
+        }
+
         internal static Dictionary<int, string> GetPermissions()
         {
             return dictSrv.GetPermissions();
@@ -166,14 +171,14 @@ namespace SextantTG.Win
             return sightsSrv.GetSightsByCityId(cityId);
         }
 
-        internal static bool InsertSights(Sights sights, out string message)
+        internal static bool InsertSights(Sights sights, List<Picture> pictures, out string message)
         {
-            return sightsSrv.InsertSights(sights, out message);
+            return sightsSrv.InsertSights(sights, pictures, out message);
         }
 
-        internal static bool UpdateSights(Sights sights, out string message)
+        internal static bool UpdateSights(Sights sights, List<Picture> pictures, List<Picture> removedPictures, out string message)
         {
-            return sightsSrv.UpdateSights(sights, out message);
+            return sightsSrv.UpdateSights(sights, pictures, removedPictures, out message);
         }
 
         internal static bool DeleteSightsBySightsId(string sightsId, out string message)
@@ -181,6 +186,18 @@ namespace SextantTG.Win
             return sightsSrv.DeleteSightsBySightsId(sightsId, out message);
         }
 
+        internal static float? GetAverageStarsBySightsId(string sightsId)
+        {
+            return sightsSrv.GetAverageStarsBySightsId(sightsId);
+        }
+
+        internal static List<Picture> GetPicturesBySightsIdAndUploaderId(string sightsId, string uploaderId)
+        {
+            return sightsSrv.GetPicturesBySightsIdAndUploaderId(sightsId, uploaderId);
+        }
+
         #endregion
+
+
     }
 }

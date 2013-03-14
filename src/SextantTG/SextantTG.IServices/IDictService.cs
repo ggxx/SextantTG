@@ -21,7 +21,7 @@ namespace SextantTG.IServices
         Province GetProvinceByCityId(string cityId);
         Country GetCountryByCountryId(string countryId);
         Province GetProvinceByProvinceId(string provinceId);
-        City GetCiryByCityId(string cityId);
+        City GetCityByCityId(string cityId);
 
         Dictionary<int, string> GetPermissions();
 

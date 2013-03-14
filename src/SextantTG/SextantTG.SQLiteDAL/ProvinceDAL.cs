@@ -37,9 +37,9 @@ namespace SextantTG.SQLiteDAL
         private Province BuildProvinceByReader(DbDataReader r)
         {
             Province province = new Province();
-            province.ProvinceId = TypeConverter.ToString(r["province_id"]);
-            province.ProvinceName = TypeConverter.ToString(r["province_name"]);
-            province.CountryId = TypeConverter.ToString(r["country_id"]);
+            province.ProvinceId = CustomTypeConverter.ToString(r["province_id"]);
+            province.ProvinceName = CustomTypeConverter.ToString(r["province_name"]);
+            province.CountryId = CustomTypeConverter.ToString(r["country_id"]);
             return province;
         }
 

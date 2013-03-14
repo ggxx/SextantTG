@@ -41,10 +41,12 @@ namespace SextantTG.Win
             this.comboBox_Province.SelectedValue = UIUtil.GetProvinceByCityId(sights.CityId).ProvinceId;
             this.comboBox_City.SelectedValue = sights.CityId;
             this.comboBox_SightsLevel.SelectedItem = sights.SightsLevel;
-            this.maskedTextBox_Price.Text = Util.TypeConverter.ToString(sights.Price, "n2");
+            this.maskedTextBox_Price.Text = Util.CustomTypeConverter.ToString(sights.Price, "n2");
             this.textBox_Description.Text = sights.Description;
             this.textBox_Memos.Text = sights.Memos;
-            this.textBox_CreatingTime.Text = Util.TypeConverter.ToString(sights.CreatingTime, "yyyy-MM-dd HH:mm:ss");
+            this.textBox_CreatingTime.Text = Util.CustomTypeConverter.ToString(sights.CreatingTime, "yyyy-MM-dd HH:mm:ss");
+
+            this.stgPictures.SetPicturesForSights(sights.SightsId, "0000");
         }
 
         private void button_OK_Click(object sender, EventArgs e)
@@ -73,24 +75,24 @@ namespace SextantTG.Win
                 sights.SightsName = this.textBox_SightsName.Text.Trim();
                 sights.CityId = this.comboBox_City.SelectedValue.ToString();
                 sights.SightsLevel = this.comboBox_SightsLevel.Text;
-                sights.Price = Util.TypeConverter.ToInt32Null(this.maskedTextBox_Price.Text);
+                sights.Price = Util.CustomTypeConverter.ToInt32Null(this.maskedTextBox_Price.Text);
                 sights.Description = this.textBox_Description.Text.Trim();
                 sights.Memos = this.textBox_Memos.Text.Trim();
-                sights.CreatingTime = Util.TypeConverter.ToDateTimeNull(this.textBox_CreatingTime.Text, "yyyy-MM-dd HH:mm:ss");
+                sights.CreatingTime = Util.CustomTypeConverter.ToDateTimeNull(this.textBox_CreatingTime.Text, "yyyy-MM-dd HH:mm:ss");
 
-                val = UIUtil.InsertSights(sights, out msg);
+                val = UIUtil.InsertSights(sights, this.stgPictures.Pictures, out msg);
             }
             else
             {
                 sights.SightsName = this.textBox_SightsName.Text.Trim();
                 sights.CityId = this.comboBox_City.SelectedValue.ToString();
                 sights.SightsLevel = this.comboBox_SightsLevel.Text;
-                sights.Price = Util.TypeConverter.ToInt32Null(this.maskedTextBox_Price.Text);
+                sights.Price = Util.CustomTypeConverter.ToInt32Null(this.maskedTextBox_Price.Text);
                 sights.Description = this.textBox_Description.Text.Trim();
                 sights.Memos = this.textBox_Memos.Text.Trim();
-                sights.CreatingTime = Util.TypeConverter.ToDateTimeNull(this.textBox_CreatingTime.Text, "yyyy-MM-dd HH:mm:ss");
+                sights.CreatingTime = Util.CustomTypeConverter.ToDateTimeNull(this.textBox_CreatingTime.Text, "yyyy-MM-dd HH:mm:ss");
 
-                val = UIUtil.UpdateSights(sights, out msg);
+                val = UIUtil.UpdateSights(sights, this.stgPictures.Pictures, this.stgPictures.RemovedPictures, out msg);
             }
 
             if (val)
@@ -156,5 +158,6 @@ namespace SextantTG.Win
                 this.comboBox_City.DataSource = null;
             }
         }
+        
     }
 }

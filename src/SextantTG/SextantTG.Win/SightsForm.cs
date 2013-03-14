@@ -36,7 +36,7 @@ namespace SextantTG.Win
 
             this.comboBox_City.DisplayMember = "CityName";
             this.comboBox_City.ValueMember = "CityId";
-            
+
             List<Country> countries = UIUtil.GetCountries();
             //Country country = new Country();
             //country.CountryId = "*";

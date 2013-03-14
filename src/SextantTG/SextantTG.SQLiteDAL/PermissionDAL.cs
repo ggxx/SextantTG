@@ -35,8 +35,8 @@ namespace SextantTG.SQLiteDAL
         private Permission BuildPermissionByReader(DbDataReader r)
         {
             Permission permission = new Permission();
-            permission.UserId = TypeConverter.ToString(r["user_id"]);
-            permission.PermissionType = TypeConverter.ToInt32Null(r["permission_type"]);          
+            permission.UserId = CustomTypeConverter.ToString(r["user_id"]);
+            permission.PermissionType = CustomTypeConverter.ToInt32Null(r["permission_type"]);          
             return permission;
         }
 

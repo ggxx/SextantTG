@@ -9,7 +9,7 @@ namespace SextantTG.IDAL
 {
     public interface IPictureDAL : IBaseDAL
     {
-        List<Picture> GetPictures();
+        List<Picture> GetPicturesBySightsIdAndUploaderId(string sightsId, string uploaderId);
         List<Picture> GetPicturesBySightsId(string sightsId);
         List<Picture> GetPicturesByBlogId(string blogId);
         Picture GetPictureByPictureId(string picId);

@@ -37,10 +37,10 @@ namespace SextantTG.SQLiteDAL
         private TourComment BuildTourCommentByReader(DbDataReader r)
         {
             TourComment tourcomment = new TourComment();
-            tourcomment.TourId = TypeConverter.ToString(r["tour_id"]);
-            tourcomment.CommentUserId = TypeConverter.ToString(r["comm_user_id"]);
-            tourcomment.CreatingTime = TypeConverter.ToDateTimeNull(r["creating_time"]);
-            tourcomment.Comment = TypeConverter.ToString(r["comment"]);
+            tourcomment.TourId = CustomTypeConverter.ToString(r["tour_id"]);
+            tourcomment.CommentUserId = CustomTypeConverter.ToString(r["comm_user_id"]);
+            tourcomment.CreatingTime = CustomTypeConverter.ToDateTimeNull(r["creating_time"]);
+            tourcomment.Comment = CustomTypeConverter.ToString(r["comment"]);
             return tourcomment;
         }
 

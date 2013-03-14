@@ -33,6 +33,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -43,6 +44,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AboutBox.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="AboutBox.Designer.cs">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </Compile>
     <Compile Include="CitiesForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -112,6 +119,12 @@
     <Compile Include="SightsForm.Designer.cs">
       <DependentUpon>SightsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="STGPictures.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="STGPictures.Designer.cs">
+      <DependentUpon>STGPictures.cs</DependentUpon>
+    </Compile>
     <Compile Include="ViewSightsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -137,6 +150,9 @@
     <Compile Include="UsersForm.Designer.cs">
       <DependentUpon>UsersForm.cs</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="AboutBox.resx">
+      <DependentUpon>AboutBox.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="CitiesForm.resx">
       <DependentUpon>CitiesForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -178,6 +194,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="SightsForm.resx">
       <DependentUpon>SightsForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="STGPictures.resx">
+      <DependentUpon>STGPictures.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="ViewSightsForm.resx">
       <DependentUpon>ViewSightsForm.cs</DependentUpon>
@@ -236,7 +255,9 @@
       <Name>SextantTG.Util</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="pic\" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

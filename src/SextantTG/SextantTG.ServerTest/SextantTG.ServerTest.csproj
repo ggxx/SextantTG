@@ -44,9 +44,33 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\SextantTG.ActiveRecord\SextantTG.ActiveRecord.csproj">
+      <Project>{dd4377a0-3082-4f4e-bf11-fd95d6b6b798}</Project>
+      <Name>SextantTG.ActiveRecord</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SextantTG.DBUtil\SextantTG.DbUtil.csproj">
+      <Project>{0d10f093-09c6-4f15-b904-8023b55630cf}</Project>
+      <Name>SextantTG.DbUtil</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SextantTG.IDAL\SextantTG.IDAL.csproj">
       <Project>{7b30ece6-dffb-477f-b0da-58aed795687b}</Project>
       <Name>SextantTG.IDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SextantTG.IServices\SextantTG.IServices.csproj">
+      <Project>{a8d6c61a-6c22-438a-99ff-a598575d6b6b}</Project>
+      <Name>SextantTG.IServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SextantTG.Services\SextantTG.Services.csproj">
+      <Project>{6067cae1-406c-44f2-8b68-823595b491c5}</Project>
+      <Name>SextantTG.Services</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SextantTG.SQLiteDAL\SextantTG.SQLiteDAL.csproj">
+      <Project>{e8db7c60-3532-4ce4-b527-9ee4270b5890}</Project>
+      <Name>SextantTG.SQLiteDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SextantTG.Util\SextantTG.Util.csproj">
+      <Project>{2bfb5dfd-3bcf-45b9-92d2-e7a24a3343a7}</Project>
+      <Name>SextantTG.Util</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>

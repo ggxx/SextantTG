@@ -40,11 +40,11 @@ namespace SextantTG.SQLiteDAL
         private User BuildUserByReader(DbDataReader r)
         {
             User user = new User();
-            user.UserId = TypeConverter.ToString(r["user_id"]);
-            user.LoginName = TypeConverter.ToString(r["login_name"]);
+            user.UserId = CustomTypeConverter.ToString(r["user_id"]);
+            user.LoginName = CustomTypeConverter.ToString(r["login_name"]);
             //user.Password = TypeConverter.ToDateTimeNull(r["password"]);
-            user.Email = TypeConverter.ToString(r["email"]);
-            user.Status = TypeConverter.ToInt32Null(r["status"]);
+            user.Email = CustomTypeConverter.ToString(r["email"]);
+            user.Status = CustomTypeConverter.ToInt32Null(r["status"]);
             return user;
         }
 

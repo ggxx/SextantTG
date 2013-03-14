@@ -219,7 +219,7 @@ namespace SexTantTG.DbUtil
                 {
                     DbParameter para = command.CreateParameter();
                     para.ParameterName = kvp.Key;
-                    para.Value = TypeConverter.ToDBValue(kvp.Value);
+                    para.Value = CustomTypeConverter.ToDBValue(kvp.Value);
                     command.Parameters.Add(para);
                 }
             }

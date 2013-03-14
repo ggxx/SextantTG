@@ -39,8 +39,8 @@ namespace SextantTG.SQLiteDAL
         private Country BuildCountryByReader(DbDataReader r)
         {
             Country country = new Country();
-            country.CountryId = TypeConverter.ToString(r["country_id"]);
-            country.CountryName = TypeConverter.ToString(r["country_name"]);
+            country.CountryId = CustomTypeConverter.ToString(r["country_id"]);
+            country.CountryName = CustomTypeConverter.ToString(r["country_name"]);
             return country;
         }
 

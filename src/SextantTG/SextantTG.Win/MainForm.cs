@@ -80,7 +80,7 @@ namespace SextantTG.Win
             this.OpenMdiChildForm(typeof(CountriesForm));
         }
 
-        private void sightsListToolStripMenuItem_Click(object sender, EventArgs e)
+        private void viewSightsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.OpenMdiChildForm(typeof(ViewSightsForm));
         }
@@ -93,6 +93,14 @@ namespace SextantTG.Win
         private void sightsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.OpenMdiChildForm(typeof(SightsForm));
+        }
+
+        private void aboutToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (AboutBox aboutBox = new AboutBox())
+            {
+                aboutBox.ShowDialog();
+            }
         }
 
 

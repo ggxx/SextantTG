@@ -41,13 +41,13 @@ namespace SextantTG.SQLiteDAL
         private Blog BuildBlogByReader(DbDataReader r)
         {
             Blog blog = new Blog();
-            blog.BlogId = TypeConverter.ToString(r["blog_id"]);
-            blog.Content = TypeConverter.ToString(r["content"]);
-            blog.CreatingTime = TypeConverter.ToDateTimeNull(r["creating_time"]);
-            blog.SightsId = TypeConverter.ToString(r["sights_id"]);
-            blog.SubTourId = TypeConverter.ToString(r["sub_tour_id"]);
-            blog.TourId = TypeConverter.ToString(r["tour_id"]);
-            blog.UserId = TypeConverter.ToString(r["user_id"]);
+            blog.BlogId = CustomTypeConverter.ToString(r["blog_id"]);
+            blog.Content = CustomTypeConverter.ToString(r["content"]);
+            blog.CreatingTime = CustomTypeConverter.ToDateTimeNull(r["creating_time"]);
+            blog.SightsId = CustomTypeConverter.ToString(r["sights_id"]);
+            blog.SubTourId = CustomTypeConverter.ToString(r["sub_tour_id"]);
+            blog.TourId = CustomTypeConverter.ToString(r["tour_id"]);
+            blog.UserId = CustomTypeConverter.ToString(r["user_id"]);
             return blog;
         }
 

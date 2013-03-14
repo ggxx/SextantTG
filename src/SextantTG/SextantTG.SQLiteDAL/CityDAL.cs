@@ -36,9 +36,9 @@ namespace SextantTG.SQLiteDAL
         private City BuildCityByReader(DbDataReader r)
         {
             City city = new City();
-            city.CityId = TypeConverter.ToString(r["city_id"]);
-            city.CityName = TypeConverter.ToString(r["city_name"]);
-            city.ProvinceId = TypeConverter.ToString(r["province_id"]);
+            city.CityId = CustomTypeConverter.ToString(r["city_id"]);
+            city.CityName = CustomTypeConverter.ToString(r["city_name"]);
+            city.ProvinceId = CustomTypeConverter.ToString(r["province_id"]);
             return city;
         }
 

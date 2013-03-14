@@ -13,11 +13,15 @@ namespace SextantTG.Services
     {
         private IDataContext dataContext = null;
         private ISightsDAL sightsDal = null;
+        private IFavoriteDAL favoriteDal = null;
+        private IPictureDAL pictureDal = null;
 
         public SightsService()
         {
             dataContext = DALFactory.CreateDAL<IDataContext>();
             sightsDal = DALFactory.CreateDAL<ISightsDAL>();
+            favoriteDal = DALFactory.CreateDAL<IFavoriteDAL>();
+            pictureDal = DALFactory.CreateDAL<IPictureDAL>();
         }
 
         public List<Sights> GetSights()
@@ -45,7 +49,21 @@ namespace SextantTG.Services
             return sightsDal.GetSightBySightsId(sightsId);
         }
 
-        public bool InsertSights(Sights sights, out string message)
+        public List<Picture> GetPicturesBySightsIdAndUploaderId(string sightsId, string uploaderId)
+        {
+            if (string.IsNullOrEmpty(uploaderId))
+            {
+                return pictureDal.GetPicturesBySightsId(sightsId);
+            }
+            return pictureDal.GetPicturesBySightsIdAndUploaderId(sightsId, uploaderId);
+        }
+
+        public float? GetAverageStarsBySightsId(string sightsId)
+        {
+            return favoriteDal.GetAverageStarsBySightsId(sightsId);
+        }
+
+        public bool InsertSights(Sights sights, List<Picture> pictures, out string message)
         {
             using (DbConnection conn = dataContext.GetConnection())
             {
@@ -55,6 +73,11 @@ namespace SextantTG.Services
                     try
                     {
                         sightsDal.InsertSights(sights, trans);
+                        foreach (Picture picture in pictures)
+                        {
+                            picture.PictureId = picture.PictureId.Substring(1);
+                            pictureDal.InsertPicture(picture, trans);
+                        }
                         trans.Commit();
                         message = "";
                         return true;
@@ -69,7 +92,7 @@ namespace SextantTG.Services
             }
         }
 
-        public bool UpdateSights(Sights sights, out string message)
+        public bool UpdateSights(Sights sights, List<Picture> pictures, List<Picture> removedPictures, out string message)
         {
             using (DbConnection conn = dataContext.GetConnection())
             {
@@ -79,6 +102,22 @@ namespace SextantTG.Services
                     try
                     {
                         sightsDal.UpdateSights(sights, trans);
+                        foreach (Picture picture in pictures)
+                        {
+                            if (picture.PictureId.StartsWith("_"))
+                            {
+                                picture.PictureId = picture.PictureId.Substring(1);
+                                pictureDal.InsertPicture(picture, trans);
+                            }
+                            else
+                            {
+                                pictureDal.UpdatePicture(picture, trans);
+                            }
+                        }
+                        foreach (Picture picture in removedPictures)
+                        {
+                            pictureDal.DeletePictureByPictureId(picture.PictureId, trans);
+                        }
                         trans.Commit();
                         message = "";
                         return true;
@@ -121,9 +160,14 @@ namespace SextantTG.Services
         {
             dataContext.Dispose();
             sightsDal.Dispose();
+            favoriteDal.Dispose();
+            pictureDal.Dispose();
 
             dataContext = null;
             sightsDal = null;
+            favoriteDal = null;
+            pictureDal = null;
         }
+
     }
 }

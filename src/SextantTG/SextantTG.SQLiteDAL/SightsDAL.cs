@@ -41,14 +41,14 @@ namespace SextantTG.SQLiteDAL
         private Sights BuildSightsByReader(DbDataReader r)
         {
             Sights sights = new Sights();
-            sights.SightsId = TypeConverter.ToString(r["sights_id"]);
-            sights.SightsName = TypeConverter.ToString(r["sights_name"]);
-            sights.CityId = TypeConverter.ToString(r["city_id"]);
-            sights.SightsLevel = TypeConverter.ToString(r["sights_level"]);
-            sights.Description = TypeConverter.ToString(r["description"]);
-            sights.Price = TypeConverter.ToInt32Null(r["price"]);
-            sights.CreatingTime = TypeConverter.ToDateTimeNull(r["creating_time"]);
-            sights.Memos = TypeConverter.ToString(r["memos"]);
+            sights.SightsId = CustomTypeConverter.ToString(r["sights_id"]);
+            sights.SightsName = CustomTypeConverter.ToString(r["sights_name"]);
+            sights.CityId = CustomTypeConverter.ToString(r["city_id"]);
+            sights.SightsLevel = CustomTypeConverter.ToString(r["sights_level"]);
+            sights.Description = CustomTypeConverter.ToString(r["description"]);
+            sights.Price = CustomTypeConverter.ToInt32Null(r["price"]);
+            sights.CreatingTime = CustomTypeConverter.ToDateTimeNull(r["creating_time"]);
+            sights.Memos = CustomTypeConverter.ToString(r["memos"]);
             return sights;
         }
 

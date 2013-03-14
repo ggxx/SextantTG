@@ -11,6 +11,7 @@ namespace SextantTG.IDAL
     {
         List<Favorite> GetFavoritesByUserId(string userId);
         List<Favorite> GetFavoritesBySightsId(string sightsId);
+        float? GetAverageStarsBySightsId(string sightsId);
 
         int InsertFavorite(Favorite favorite, DbTransaction trans);
         int UpdateFavorite(Favorite favorite, DbTransaction trans);

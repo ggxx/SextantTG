@@ -30,6 +30,7 @@ namespace SextantTG.SQLiteDAL
         private static readonly string SELECT___USER_ID = "select * from stg_favorite where user_id = :UserId";
         private static readonly string SELECT___SIGHTS_ID = "select * from stg_favorite where sights_id = :SightsId";
         private static readonly string SELECT___USER_ID__SIGHTS_ID = "select * from stg_favorite where user_id = :UserId and sights_id = :SightsId";
+        private static readonly string SELECT___AVG_STARS___SIGHTS_ID = "select avg(stars) from stg_favorite where sights_id = :SightsId";
 
         private static readonly string INSERT = "insert into stg_favorite(user_id, sights_id, visited, stars, creating_time) values(:UserId, :SightsId, :Visited, :Stars, :CreatingTime)";
         private static readonly string UPDATE = "update stg_favorite set visited = :Visited, stars = :Stars, creating_time = :CreatingTime  where user_id = :UserId and sights_id = :SightsId";
@@ -40,11 +41,11 @@ namespace SextantTG.SQLiteDAL
         private Favorite BuildFavoriteByReader(DbDataReader r)
         {
             Favorite favorite = new Favorite();
-            favorite.UserId = TypeConverter.ToString(r["user_id"]);
-            favorite.SightsId = TypeConverter.ToString(r["sights_id"]);
-            favorite.Visited = TypeConverter.ToInt32Null(r["visited"]);
-            favorite.Stars = TypeConverter.ToInt32Null(r["stars"]);
-            favorite.CreatingTime = TypeConverter.ToDateTimeNull(r["creating_time"]);
+            favorite.UserId = CustomTypeConverter.ToString(r["user_id"]);
+            favorite.SightsId = CustomTypeConverter.ToString(r["sights_id"]);
+            favorite.Visited = CustomTypeConverter.ToInt32Null(r["visited"]);
+            favorite.Stars = CustomTypeConverter.ToInt32Null(r["stars"]);
+            favorite.CreatingTime = CustomTypeConverter.ToDateTimeNull(r["creating_time"]);
 
             return favorite;
         }
@@ -108,6 +109,13 @@ namespace SextantTG.SQLiteDAL
             return favorites;
         }
 
+        public float? GetAverageStarsBySightsId(string sightsId)
+        {
+            Dictionary<string, object> pars = new Dictionary<string, object>();
+            pars.Add("SightsId", sightsId);
+            return CustomTypeConverter.ToFloatNull(dbHelper.ExecuteScalar(SELECT___AVG_STARS___SIGHTS_ID, pars));
+        }
+
         public int InsertFavorite(Favorite favorite, DbTransaction trans)
         {
             favorite.CreatingTime = DateTime.Now;
@@ -158,8 +166,6 @@ namespace SextantTG.SQLiteDAL
         {
             this.dbHelper = null;
         }
-
-
 
     }
 }

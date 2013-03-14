@@ -37,10 +37,10 @@ namespace SextantTG.SQLiteDAL
         private SightsComment BuildSightsCommentByReader(DbDataReader r)
         {
             SightsComment sightscomment = new SightsComment();
-            sightscomment.SightsId = TypeConverter.ToString(r["sights_id"]);
-            sightscomment.CommentUserId = TypeConverter.ToString(r["comm_user_id"]);
-            sightscomment.CreatingTime = TypeConverter.ToDateTimeNull(r["creating_time"]);
-            sightscomment.Comment = TypeConverter.ToString(r["comment"]);
+            sightscomment.SightsId = CustomTypeConverter.ToString(r["sights_id"]);
+            sightscomment.CommentUserId = CustomTypeConverter.ToString(r["comm_user_id"]);
+            sightscomment.CreatingTime = CustomTypeConverter.ToDateTimeNull(r["creating_time"]);
+            sightscomment.Comment = CustomTypeConverter.ToString(r["comment"]);
             return sightscomment;
         }
 

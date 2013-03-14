@@ -41,7 +41,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="SQLConverter.cs" />
     <Compile Include="StringHelper.cs" />
-    <Compile Include="TypeConverter.cs" />
+    <Compile Include="CustomTypeConverter.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

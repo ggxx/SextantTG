@@ -81,7 +81,7 @@ namespace SextantTG.Services
 
         public Province GetProvinceByCityId(string cityId)
         {
-            return GetProvinceByProvinceId(GetCiryByCityId(cityId).ProvinceId);
+            return GetProvinceByProvinceId(GetCityByCityId(cityId).ProvinceId);
         }
 
         public Country GetCountryByCountryId(string countryId)
@@ -98,7 +98,7 @@ namespace SextantTG.Services
             return provinces.Find(delegate(Province tmp) { return tmp.ProvinceId == provinceId; });
         }
 
-        public City GetCiryByCityId(string cityId)
+        public City GetCityByCityId(string cityId)
         {
             if (cities == null)
                 cities = cityDal.GetCities();

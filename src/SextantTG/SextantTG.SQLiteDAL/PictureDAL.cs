@@ -26,7 +26,7 @@ namespace SextantTG.SQLiteDAL
             this.dbHelper = new DbHelper(connectionString, DbUtil.DbProviderType.SQLite);
         }
         
-        private static readonly string SELECT = "select * from stg_picture";
+        private static readonly string SELECT___PICTURE_ID__USER_ID = "select * from stg_picture where sights_id = :SightsId and user_id = :UserId";
         private static readonly string SELECT___PICTURE_ID = "select * from stg_picture where picture_id = :PictureId";
         private static readonly string SELECT___SIGHTS_ID = "select * from stg_picture where sights_id = :SightsId";
         private static readonly string SELECT___BLOG_ID = "select * from stg_picture where blog_id = :BlogId";
@@ -40,20 +40,23 @@ namespace SextantTG.SQLiteDAL
         private Picture BuildPictureByReader(DbDataReader r)
         {
             Picture picture = new Picture();
-            picture.PictureId = TypeConverter.ToString(r["picture_id"]);
-            picture.SightsId = TypeConverter.ToString(r["sights_id"]);
-            picture.BlogId = TypeConverter.ToString(r["blog_id"]);
-            picture.Path = TypeConverter.ToString(r["path"]);
-            picture.Description = TypeConverter.ToString(r["description"]);
-            picture.UploaderId = TypeConverter.ToString(r["user_id"]);
-            picture.CreatingTime = TypeConverter.ToDateTimeNull(r["creating_time"]);
+            picture.PictureId = CustomTypeConverter.ToString(r["picture_id"]);
+            picture.SightsId = CustomTypeConverter.ToString(r["sights_id"]);
+            picture.BlogId = CustomTypeConverter.ToString(r["blog_id"]);
+            picture.Path = CustomTypeConverter.ToString(r["path"]);
+            picture.Description = CustomTypeConverter.ToString(r["description"]);
+            picture.UploaderId = CustomTypeConverter.ToString(r["user_id"]);
+            picture.CreatingTime = CustomTypeConverter.ToDateTimeNull(r["creating_time"]);
             return picture;
         }
 
-        public List<Picture> GetPictures()
+        public List<Picture> GetPicturesBySightsIdAndUploaderId(string sightsId, string uploaderId)
         {
             List<Picture> pictures = new List<Picture>();
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT))
+            Dictionary<string, object> pars = new Dictionary<string, object>();
+            pars.Add("SightsId", sightsId);
+            pars.Add("UserId", uploaderId);
+            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___PICTURE_ID__USER_ID, pars))
             {
                 while (r.Read())
                 {

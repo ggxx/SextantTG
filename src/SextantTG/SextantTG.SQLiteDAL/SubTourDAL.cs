@@ -37,14 +37,14 @@ namespace SextantTG.SQLiteDAL
         private SubTour BuildSubTourByReader(DbDataReader r)
         {
             SubTour subtour = new SubTour();
-            subtour.TourId = TypeConverter.ToString(r["tour_id"]);
-            subtour.SubTourId = TypeConverter.ToString(r["sub_tour_id"]);
-            subtour.SubTourName = TypeConverter.ToString(r["sub_tour_name"]);
-            subtour.SightsId = TypeConverter.ToString(r["sights_id"]);
-            subtour.BeginDate = TypeConverter.ToDateTimeNull(r["begin_date"]);
-            subtour.EndDate = TypeConverter.ToDateTimeNull(r["end_date"]);
-            subtour.CreatingTime = TypeConverter.ToDateTimeNull(r["creating_time"]);
-            subtour.Memos = TypeConverter.ToString(r["memos"]);
+            subtour.TourId = CustomTypeConverter.ToString(r["tour_id"]);
+            subtour.SubTourId = CustomTypeConverter.ToString(r["sub_tour_id"]);
+            subtour.SubTourName = CustomTypeConverter.ToString(r["sub_tour_name"]);
+            subtour.SightsId = CustomTypeConverter.ToString(r["sights_id"]);
+            subtour.BeginDate = CustomTypeConverter.ToDateTimeNull(r["begin_date"]);
+            subtour.EndDate = CustomTypeConverter.ToDateTimeNull(r["end_date"]);
+            subtour.CreatingTime = CustomTypeConverter.ToDateTimeNull(r["creating_time"]);
+            subtour.Memos = CustomTypeConverter.ToString(r["memos"]);
             return subtour;
         }
 

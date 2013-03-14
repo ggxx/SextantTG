@@ -5,7 +5,7 @@ using System.Data;
 
 namespace SextantTG.Util
 {
-    public class TypeConverter
+    public class CustomTypeConverter
     {
         private static System.Globalization.CultureInfo provider = System.Globalization.CultureInfo.InvariantCulture;
 
@@ -18,6 +18,11 @@ namespace SextantTG.Util
         }
 
         public static string ToString(decimal? value, string strType)
+        {
+            return value.HasValue ? value.Value.ToString(strType) : string.Empty;
+        }
+
+        public static string ToString(float? value, string strType)
         {
             return value.HasValue ? value.Value.ToString(strType) : string.Empty;
         }

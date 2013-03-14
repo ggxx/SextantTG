@@ -14,10 +14,11 @@ namespace SextantTG.IServices
         List<Sights> GetSightsByProvinceId(string provinceId);
         List<Sights> GetSightsByCityId(string cityId);
         Sights GetSightsBySightsId(string sightsId);
+        float? GetAverageStarsBySightsId(string sightsId);
+        List<Picture> GetPicturesBySightsIdAndUploaderId(string sightsId, string uploaderId);
 
-
-        bool InsertSights(Sights sights, out string message);
-        bool UpdateSights(Sights sights, out string message);
+        bool InsertSights(Sights sights, List<Picture> pictures, out string message);
+        bool UpdateSights(Sights sights, List<Picture> pictures, List<Picture> removedPictures, out string message);
         bool DeleteSightsBySightsId(string sightsId, out string message);
     }
 }
