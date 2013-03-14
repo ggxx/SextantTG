@@ -100,6 +100,12 @@
     <Compile Include="RegForm.Designer.cs">
       <DependentUpon>RegForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="SightsEditForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="SightsEditForm.Designer.cs">
+      <DependentUpon>SightsEditForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="SightsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -166,6 +172,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="RegForm.resx">
       <DependentUpon>RegForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SightsEditForm.resx">
+      <DependentUpon>SightsEditForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="SightsForm.resx">
       <DependentUpon>SightsForm.cs</DependentUpon>

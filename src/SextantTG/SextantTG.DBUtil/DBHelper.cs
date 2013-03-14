@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data.Common;
 using System.Data;
-using SextantGT.Util;
+using SextantTG.Util;
 using SextantTG.DbUtil;
 
 namespace SexTantTG.DbUtil

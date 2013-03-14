@@ -7,7 +7,7 @@ using System.Text;
 using SextantTG.ActiveRecord;
 using SexTantTG.DbUtil;
 using System.Data.Common;
-using SextantGT.Util;
+using SextantTG.Util;
 using SextantTG.Util;
 using System.Configuration;
 

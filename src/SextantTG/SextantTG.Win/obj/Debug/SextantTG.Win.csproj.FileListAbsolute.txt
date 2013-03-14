@@ -36,3 +36,4 @@ E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\Sextant
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.UserPermissionForm.resources
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.ViewSightsForm.resources
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\bin\Debug\db\sgt.db3
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.SightsEditForm.resources

@@ -24,9 +24,12 @@ namespace SextantTG.Win
 
         private void BindControls()
         {
+            this.Column_CityId.DisplayMember = "CityName";
+            this.Column_CityId.ValueMember = "CityId";
+            this.Column_CityId.DataSource = UIUtil.GetCities();
+
             this.comboBox_Country.DisplayMember = "CountryName";
             this.comboBox_Country.ValueMember = "CountryId";
-
 
             this.comboBox_Province.DisplayMember = "ProvinceName";
             this.comboBox_Province.ValueMember = "ProvinceId";
@@ -115,7 +118,68 @@ namespace SextantTG.Win
 
         private void button_Query_Click(object sender, EventArgs e)
         {
+            LoadData();
+        }
 
+        private void LoadData()
+        {
+            if (this.comboBox_City.SelectedValue != null)
+            {
+                this.bindingSource.DataSource = UIUtil.GetSightsByCityId(this.comboBox_City.SelectedValue.ToString());
+            }
+        }
+
+        private void button_Add_Click(object sender, EventArgs e)
+        {
+            if (this.bindingSource.Current != null)
+            {
+                using (SightsEditForm form = new SightsEditForm())
+                {
+                    form.BindControls();
+                    if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        LoadData();
+                    }
+                }
+            }
+        }
+
+        private void button_Edit_Click(object sender, EventArgs e)
+        {
+            if (this.bindingSource.Current != null)
+            {
+                using (SightsEditForm form = new SightsEditForm())
+                {
+                    form.BindControls();
+                    form.SetSights(this.bindingSource.Current as Sights);
+                    if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        LoadData();
+                    }
+                }
+            }
+        }
+
+        private void button_Delete_Click(object sender, EventArgs e)
+        {
+            if (this.bindingSource.Current != null)
+            {
+                string msg;
+                if (UIUtil.DeleteSightsBySightsId((this.bindingSource.Current as Sights).SightsId, out msg))
+                {
+                    LoadData();
+                }
+                else
+                {
+                    MessageBox.Show("操作失败\r\n" + msg, "提示");
+                    return;
+                }
+            }
+        }
+
+        private void button_Close_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

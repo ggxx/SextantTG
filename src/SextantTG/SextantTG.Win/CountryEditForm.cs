@@ -35,7 +35,7 @@ namespace SextantTG.Win
         {
             bool val;
             string msg;
-            if (country == null)
+            if (country == null || string.IsNullOrEmpty(country.CountryId))
             {
                 country = new Country();
                 country.CountryName = this.textBox_CountryName.Text.Trim();

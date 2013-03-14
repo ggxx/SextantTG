@@ -16,8 +16,8 @@ namespace SextantTG.IServices
         Sights GetSightsBySightsId(string sightsId);
 
 
-        bool InsertSights(Sights sights, DbTransaction trans, out string message);
-        bool UpdateSights(Sights sights, DbTransaction trans, out string message);
-        bool DeleteSightsBySightsId(string sightsId, DbTransaction trans, out string message);
+        bool InsertSights(Sights sights, out string message);
+        bool UpdateSights(Sights sights, out string message);
+        bool DeleteSightsBySightsId(string sightsId, out string message);
     }
 }

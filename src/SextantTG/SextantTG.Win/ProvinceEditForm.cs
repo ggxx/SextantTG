@@ -43,7 +43,7 @@ namespace SextantTG.Win
         {
             bool val;
             string msg;
-            if (this.province == null)
+            if (this.province == null || string.IsNullOrEmpty(province.ProvinceId))
             {
                 this.province = new Province();
                 this.province.ProvinceName = this.textBox_ProvinceName.Text.Trim();

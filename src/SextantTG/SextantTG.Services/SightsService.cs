@@ -14,6 +14,12 @@ namespace SextantTG.Services
         private IDataContext dataContext = null;
         private ISightsDAL sightsDal = null;
 
+        public SightsService()
+        {
+            dataContext = DALFactory.CreateDAL<IDataContext>();
+            sightsDal = DALFactory.CreateDAL<ISightsDAL>();
+        }
+
         public List<Sights> GetSights()
         {
             return sightsDal.GetSights();
@@ -39,24 +45,85 @@ namespace SextantTG.Services
             return sightsDal.GetSightBySightsId(sightsId);
         }
 
-        public bool InsertSights(Sights sights, DbTransaction trans, out string message)
+        public bool InsertSights(Sights sights, out string message)
         {
-            throw new NotImplementedException();
+            using (DbConnection conn = dataContext.GetConnection())
+            {
+                conn.Open();
+                using (DbTransaction trans = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        sightsDal.InsertSights(sights, trans);
+                        trans.Commit();
+                        message = "";
+                        return true;
+                    }
+                    catch (DbException ex)
+                    {
+                        message = ex.Message;
+                        trans.Rollback();
+                        return false;
+                    }
+                }
+            }
         }
 
-        public bool UpdateSights(Sights sights, DbTransaction trans, out string message)
+        public bool UpdateSights(Sights sights, out string message)
         {
-            throw new NotImplementedException();
+            using (DbConnection conn = dataContext.GetConnection())
+            {
+                conn.Open();
+                using (DbTransaction trans = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        sightsDal.UpdateSights(sights, trans);
+                        trans.Commit();
+                        message = "";
+                        return true;
+                    }
+                    catch (DbException ex)
+                    {
+                        message = ex.Message;
+                        trans.Rollback();
+                        return false;
+                    }
+                }
+            }
         }
 
-        public bool DeleteSightsBySightsId(string sightsId, DbTransaction trans, out string message)
+        public bool DeleteSightsBySightsId(string sightsId, out string message)
         {
-            throw new NotImplementedException();
+            using (DbConnection conn = dataContext.GetConnection())
+            {
+                conn.Open();
+                using (DbTransaction trans = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        sightsDal.DeleteSightsBySightsId(sightsId, trans);
+                        trans.Commit();
+                        message = "";
+                        return true;
+                    }
+                    catch (DbException ex)
+                    {
+                        message = ex.Message;
+                        trans.Rollback();
+                        return false;
+                    }
+                }
+            }
         }
 
         public void Dispose()
         {
-            throw new NotImplementedException();
+            dataContext.Dispose();
+            sightsDal.Dispose();
+
+            dataContext = null;
+            sightsDal = null;
         }
     }
 }

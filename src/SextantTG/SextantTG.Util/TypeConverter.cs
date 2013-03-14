@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using System.Data;
 
-namespace SextantGT.Util
+namespace SextantTG.Util
 {
     public class TypeConverter
     {
@@ -165,7 +165,7 @@ namespace SextantGT.Util
 
             DateTime d;
 
-            if (DateTime.TryParseExact(obj.ToString(), "yyyyMMddHHmmss", provider, System.Globalization.DateTimeStyles.None, out d))
+            if (DateTime.TryParseExact(obj.ToString(), format, provider, System.Globalization.DateTimeStyles.None, out d))
                 return d;
             else
                 return tag ? DateTime.MinValue : new DateTime?();

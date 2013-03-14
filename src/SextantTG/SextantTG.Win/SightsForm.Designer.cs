@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.Column_Email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_Status = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_LoginName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
-            this.Column_UserId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.button_Close = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
             this.button_Delete = new System.Windows.Forms.Button();
@@ -47,40 +42,19 @@
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox_City = new System.Windows.Forms.ComboBox();
             this.button_Query = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
+            this.Column_SightsId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_SightsName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_CityId = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column_SightsLevel = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_CreatingTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_Memos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.SuspendLayout();
-            // 
-            // Column_Email
-            // 
-            this.Column_Email.DataPropertyName = "Email";
-            this.Column_Email.HeaderText = "Email";
-            this.Column_Email.Name = "Column_Email";
-            this.Column_Email.ReadOnly = true;
-            // 
-            // Column_Status
-            // 
-            this.Column_Status.DataPropertyName = "Status";
-            this.Column_Status.HeaderText = "有效";
-            this.Column_Status.Name = "Column_Status";
-            this.Column_Status.ReadOnly = true;
-            this.Column_Status.Resizable = System.Windows.Forms.DataGridViewTriState.True;
-            this.Column_Status.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
-            // 
-            // Column_LoginName
-            // 
-            this.Column_LoginName.DataPropertyName = "LoginName";
-            this.Column_LoginName.HeaderText = "登录名";
-            this.Column_LoginName.Name = "Column_LoginName";
-            this.Column_LoginName.ReadOnly = true;
-            // 
-            // Column_UserId
-            // 
-            this.Column_UserId.DataPropertyName = "UserId";
-            this.Column_UserId.HeaderText = "ID";
-            this.Column_UserId.Name = "Column_UserId";
-            this.Column_UserId.ReadOnly = true;
             // 
             // button_Close
             // 
@@ -90,6 +64,7 @@
             this.button_Close.TabIndex = 22;
             this.button_Close.Text = "关闭";
             this.button_Close.UseVisualStyleBackColor = true;
+            this.button_Close.Click += new System.EventHandler(this.button_Close_Click);
             // 
             // dataGridView
             // 
@@ -98,10 +73,14 @@
             this.dataGridView.AutoGenerateColumns = false;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Column_UserId,
-            this.Column_LoginName,
-            this.Column_Email,
-            this.Column_Status});
+            this.Column_SightsId,
+            this.Column_SightsName,
+            this.Column_CityId,
+            this.Column_SightsLevel,
+            this.Column_Description,
+            this.Column_Price,
+            this.Column_CreatingTime,
+            this.Column_Memos});
             this.dataGridView.DataSource = this.bindingSource;
             this.dataGridView.Location = new System.Drawing.Point(12, 57);
             this.dataGridView.MultiSelect = false;
@@ -120,6 +99,7 @@
             this.button_Delete.TabIndex = 25;
             this.button_Delete.Text = "删除";
             this.button_Delete.UseVisualStyleBackColor = true;
+            this.button_Delete.Click += new System.EventHandler(this.button_Delete_Click);
             // 
             // button_Edit
             // 
@@ -129,6 +109,7 @@
             this.button_Edit.TabIndex = 24;
             this.button_Edit.Text = "编辑";
             this.button_Edit.UseVisualStyleBackColor = true;
+            this.button_Edit.Click += new System.EventHandler(this.button_Edit_Click);
             // 
             // button_Add
             // 
@@ -138,6 +119,7 @@
             this.button_Add.TabIndex = 23;
             this.button_Add.Text = "新增";
             this.button_Add.UseVisualStyleBackColor = true;
+            this.button_Add.Click += new System.EventHandler(this.button_Add_Click);
             // 
             // tableLayoutPanel1
             // 
@@ -148,7 +130,7 @@
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 81F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
             this.tableLayoutPanel1.Controls.Add(this.comboBox_Country, 1, 0);
             this.tableLayoutPanel1.Controls.Add(this.comboBox_Province, 3, 0);
             this.tableLayoutPanel1.Controls.Add(this.label1, 4, 0);
@@ -168,9 +150,9 @@
             this.comboBox_Country.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox_Country.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Country.FormattingEnabled = true;
-            this.comboBox_Country.Location = new System.Drawing.Point(46, 9);
+            this.comboBox_Country.Location = new System.Drawing.Point(45, 9);
             this.comboBox_Country.Name = "comboBox_Country";
-            this.comboBox_Country.Size = new System.Drawing.Size(123, 20);
+            this.comboBox_Country.Size = new System.Drawing.Size(122, 20);
             this.comboBox_Country.TabIndex = 4;
             this.comboBox_Country.SelectedIndexChanged += new System.EventHandler(this.comboBox_Country_SelectedIndexChanged);
             // 
@@ -179,9 +161,9 @@
             this.comboBox_Province.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox_Province.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_Province.FormattingEnabled = true;
-            this.comboBox_Province.Location = new System.Drawing.Point(218, 9);
+            this.comboBox_Province.Location = new System.Drawing.Point(215, 9);
             this.comboBox_Province.Name = "comboBox_Province";
-            this.comboBox_Province.Size = new System.Drawing.Size(123, 20);
+            this.comboBox_Province.Size = new System.Drawing.Size(122, 20);
             this.comboBox_Province.TabIndex = 5;
             this.comboBox_Province.SelectedIndexChanged += new System.EventHandler(this.comboBox_Province_SelectedIndexChanged);
             // 
@@ -189,7 +171,7 @@
             // 
             this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(355, 13);
+            this.label1.Location = new System.Drawing.Point(350, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 12);
             this.label1.TabIndex = 1;
@@ -199,7 +181,7 @@
             // 
             this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(11, 13);
+            this.label2.Location = new System.Drawing.Point(10, 13);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(29, 12);
             this.label2.TabIndex = 2;
@@ -209,7 +191,7 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(183, 13);
+            this.label3.Location = new System.Drawing.Point(180, 13);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
             this.label3.TabIndex = 3;
@@ -220,9 +202,9 @@
             this.comboBox_City.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
             this.comboBox_City.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.comboBox_City.FormattingEnabled = true;
-            this.comboBox_City.Location = new System.Drawing.Point(390, 9);
+            this.comboBox_City.Location = new System.Drawing.Point(385, 9);
             this.comboBox_City.Name = "comboBox_City";
-            this.comboBox_City.Size = new System.Drawing.Size(123, 20);
+            this.comboBox_City.Size = new System.Drawing.Size(122, 20);
             this.comboBox_City.TabIndex = 6;
             // 
             // button_Query
@@ -235,6 +217,73 @@
             this.button_Query.Text = "查询";
             this.button_Query.UseVisualStyleBackColor = true;
             this.button_Query.Click += new System.EventHandler(this.button_Query_Click);
+            // 
+            // Column_SightsId
+            // 
+            this.Column_SightsId.DataPropertyName = "SightsId";
+            this.Column_SightsId.HeaderText = "ID";
+            this.Column_SightsId.Name = "Column_SightsId";
+            this.Column_SightsId.ReadOnly = true;
+            // 
+            // Column_SightsName
+            // 
+            this.Column_SightsName.DataPropertyName = "SightsName";
+            this.Column_SightsName.HeaderText = "景区";
+            this.Column_SightsName.Name = "Column_SightsName";
+            this.Column_SightsName.ReadOnly = true;
+            // 
+            // Column_CityId
+            // 
+            this.Column_CityId.DataPropertyName = "CityId";
+            this.Column_CityId.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.Column_CityId.HeaderText = "城市";
+            this.Column_CityId.Name = "Column_CityId";
+            this.Column_CityId.ReadOnly = true;
+            this.Column_CityId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column_CityId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Column_SightsLevel
+            // 
+            this.Column_SightsLevel.DataPropertyName = "SightsLevel";
+            this.Column_SightsLevel.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.Column_SightsLevel.HeaderText = "级别";
+            this.Column_SightsLevel.Items.AddRange(new object[] {
+            "AAAAA",
+            "AAAA",
+            "AAA",
+            "其它"});
+            this.Column_SightsLevel.Name = "Column_SightsLevel";
+            this.Column_SightsLevel.ReadOnly = true;
+            this.Column_SightsLevel.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column_SightsLevel.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Column_Description
+            // 
+            this.Column_Description.DataPropertyName = "Description";
+            this.Column_Description.HeaderText = "简介";
+            this.Column_Description.Name = "Column_Description";
+            this.Column_Description.ReadOnly = true;
+            // 
+            // Column_Price
+            // 
+            this.Column_Price.DataPropertyName = "Price";
+            this.Column_Price.HeaderText = "门票价格";
+            this.Column_Price.Name = "Column_Price";
+            this.Column_Price.ReadOnly = true;
+            // 
+            // Column_CreatingTime
+            // 
+            this.Column_CreatingTime.DataPropertyName = "CreatingTime";
+            this.Column_CreatingTime.HeaderText = "录入时间";
+            this.Column_CreatingTime.Name = "Column_CreatingTime";
+            this.Column_CreatingTime.ReadOnly = true;
+            // 
+            // Column_Memos
+            // 
+            this.Column_Memos.DataPropertyName = "Memos";
+            this.Column_Memos.HeaderText = "备注";
+            this.Column_Memos.Name = "Column_Memos";
+            this.Column_Memos.ReadOnly = true;
             // 
             // SightsForm
             // 
@@ -250,21 +299,17 @@
             this.Name = "SightsForm";
             this.Text = "SightsForm";
             this.Load += new System.EventHandler(this.SightsForm_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Email;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Status;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_LoginName;
         private System.Windows.Forms.BindingSource bindingSource;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Column_UserId;
         private System.Windows.Forms.Button button_Close;
         private System.Windows.Forms.DataGridView dataGridView;
         private System.Windows.Forms.Button button_Delete;
@@ -278,5 +323,13 @@
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox comboBox_City;
         private System.Windows.Forms.Button button_Query;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_SightsId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_SightsName;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Column_CityId;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Column_SightsLevel;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Description;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_CreatingTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_Memos;
     }
 }

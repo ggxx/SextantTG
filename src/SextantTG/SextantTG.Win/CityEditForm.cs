@@ -56,7 +56,7 @@ namespace SextantTG.Win
         {
             bool val;
             string msg;
-            if (this.city == null)
+            if (this.city == null || string.IsNullOrEmpty(this.city.CityId))
             {
                 this.city = new City();
                 city.CityName = this.textBox_CityName.Text.Trim();
