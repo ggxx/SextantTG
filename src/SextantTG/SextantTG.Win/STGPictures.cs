@@ -16,7 +16,7 @@ namespace SextantTG.Win
         private static readonly string PicPath = System.Configuration.ConfigurationManager.AppSettings["PIC_PATH"];
         private ImageList images = new ImageList();
 
-        private string uploaderId, blogId;
+        private string uploaderId, tourId, subTourId;
         private string sightsId;
         public List<Picture> Pictures { get; private set; }
         public List<Picture> RemovedPictures { get; private set; }
@@ -37,6 +37,8 @@ namespace SextantTG.Win
             this.listView_Pic.Items.Clear();
 
             this.sightsId = sightsId;
+            this.tourId = string.Empty;
+            this.subTourId = string.Empty;
             this.uploaderId = uploaderId;
 
             if (string.IsNullOrEmpty(sightsId))
@@ -52,18 +54,30 @@ namespace SextantTG.Win
             }
         }
 
-        public void SetPicturesForBlog(string blogId)
+        public void SetPicturesForTour(string sightsId, string tourId, string subTourId, string uploaderId)
         {
-            //List<Picture> remotePics = UIUtil.getpi(sightsId, uploaderId);
-            //foreach (Picture pic in remotePics)
-            //{
-            //    images.Images.Add(pic.PictureId, new System.Drawing.Bitmap(PicPath + pic.Path));
-            //    this.listView_Pic.Items.Add(pic.PictureId, pic.Description, pic.PictureId);
-            //}
+            this.images.Images.Clear();
+            this.listView_Pic.Items.Clear();
+
+            this.sightsId = sightsId;
+            this.tourId = tourId;
+            this.subTourId = subTourId;
+            this.uploaderId = uploaderId;
+
+            this.Pictures = UIUtil.GetPicturesByTourIdAndSubTourId(tourId, subTourId);
+            foreach (Picture pic in Pictures)
+            {
+                images.Images.Add(pic.PictureId, new System.Drawing.Bitmap(PicPath + pic.Path));
+                this.listView_Pic.Items.Add(pic.PictureId, pic.Description, pic.PictureId);
+            }
         }
 
         public void ResetList()
         {
+            this.uploaderId = string.Empty;
+            this.tourId = string.Empty;
+            this.subTourId = string.Empty;
+            this.sightsId = string.Empty;
             this.images.Images.Clear();
             this.listView_Pic.Items.Clear();
             this.Pictures.Clear();
@@ -87,7 +101,8 @@ namespace SextantTG.Win
                             Picture picture = new Picture();
                             picture.PictureId = "_" + Util.StringHelper.CreateGuid();
                             picture.SightsId = this.sightsId;
-                            picture.BlogId = this.blogId;
+                            picture.TourId = this.tourId;
+                            picture.SubTourId = this.subTourId;
                             picture.UploaderId = this.uploaderId;
                             picture.Path = picture.PictureId.Substring(1) + file.Extension;
                             this.Pictures.Add(picture);
@@ -125,12 +140,12 @@ namespace SextantTG.Win
             this.textBox_Desc.TextChanged -= textBox_Desc_TextChanged;
             if (this.listView_Pic.SelectedItems != null && this.listView_Pic.SelectedItems.Count == 1)
             {
-                this.textBox_Desc.Enabled = true;
+                this.textBox_Desc.ReadOnly = false;
                 this.textBox_Desc.Text = this.Pictures[this.listView_Pic.SelectedIndices[0]].Description;
             }
             else
             {
-                this.textBox_Desc.Enabled = false;
+                this.textBox_Desc.ReadOnly = true;
                 this.textBox_Desc.Text = string.Empty;
             }
             this.textBox_Desc.TextChanged += textBox_Desc_TextChanged;

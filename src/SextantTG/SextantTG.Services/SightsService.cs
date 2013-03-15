@@ -176,7 +176,7 @@ namespace SextantTG.Services
             }
         }
 
-        public bool UpdateSights(Sights sights, List<Picture> pictures, List<Picture> removedPictures, out string message)
+        public bool SaveSights(Sights sights, List<Picture> pictures, List<Picture> removedPictures, out string message)
         {
             using (DbConnection conn = dataContext.GetConnection())
             {

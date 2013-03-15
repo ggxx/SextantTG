@@ -29,7 +29,7 @@ namespace SextantTG.SQLiteDAL
         private static readonly string SELECT___PICTURE_ID = "select * from stg_picture_comment where picture_id = :PictureId";
         //private static readonly string SELECT___COMM_USER_ID = "select * from stg_picture_comment where comm_user_id = :CommUserId";
 
-        private static readonly string INSERT = "insert into stg_picture_comment(picture_id, comm_user_id, creating_time, comment) values(:PictureId, :CommUserId, :CreatingTime, :Comment)";
+        private static readonly string INSERT = "insert into stg_picture_comment(comment_id, picture_id, comm_user_id, creating_time, comment) values(:CommentId, :PictureId, :CommUserId, :CreatingTime, :Comment)";
         private static readonly string UPDATE = "update stg_picture_comment set picture_id = :PictureId, comm_user_id = :CommUserId, creating_time = :CreatingTime, comment = :Comment where picture_id = :PictureId";
         private static readonly string DELETE = "delete from stg_picture_comment where comment_id = :CommentId";
 
@@ -123,7 +123,8 @@ namespace SextantTG.SQLiteDAL
 
         public int InsertPictureComment(PictureComment pictureComment, DbTransaction trans)
         {
-            pictureComment.CommentId = Util.StringHelper.CreateGuid();
+            if (string.IsNullOrEmpty(pictureComment.CommentId))
+                pictureComment.CommentId = Util.StringHelper.CreateGuid();
             pictureComment.CreatingTime = DateTime.Now;
 
             Dictionary<string, object> pars = new Dictionary<string, object>();
@@ -154,7 +155,7 @@ namespace SextantTG.SQLiteDAL
 
         public void Dispose()
         {
-            this.dbHelper = null;
+            this.dbHelper.Dispose();
         }
     }
 }

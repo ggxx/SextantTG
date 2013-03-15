@@ -36,6 +36,11 @@ namespace SextantTG.ActiveRecord
         public string SubTourId { get; set; }
 
         /// <summary>
+        /// 日志标题
+        /// </summary>
+        public string Title { get; set; }
+
+        /// <summary>
         /// 日志内容
         /// </summary>
         public string Content { get; set; }

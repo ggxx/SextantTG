@@ -29,9 +29,10 @@ namespace SextantTG.SQLiteDAL
         private static readonly string SELECT___TOUR_ID = "select * from stg_tour_comment where tour_id = :TourId";
         //private static readonly string SELECT___COMM_USER_ID = "select * from stg_tour_comment where comm_user_id = :CommUserId";
 
-        private static readonly string INSERT = "insert into stg_tour_comment(tour_id, comm_user_id, creating_time, comment) values(:TourId, :CommUserId, :CreatingTime, :Comment)";
+        private static readonly string INSERT = "insert into stg_tour_comment(comment_id, tour_id, comm_user_id, creating_time, comment) values(:CommentId, :TourId, :CommUserId, :CreatingTime, :Comment)";
         private static readonly string UPDATE = "update stg_tour_comment set tour_id = :TourId, comm_user_id = :CommUserId, creating_time = :CreatingTime, comment = :Comment where comment_id = :CommentId";
-        private static readonly string DELETE = "delete from stg_tour_comment where comment_id = :CommentId";
+        private static readonly string DELETE___COMMENT_ID = "delete from stg_tour_comment where comment_id = :CommentId";
+        private static readonly string DELETE___TOUR_ID = "delete from stg_tour_comment where tour_id = :TourId";
 
         private TourComment BuildTourCommentByReader(DbDataReader r)
         {
@@ -89,8 +90,9 @@ namespace SextantTG.SQLiteDAL
 
         public int InsertTourComment(TourComment tourcomment, DbTransaction trans)
         {
+            if (string.IsNullOrEmpty(tourcomment.CommentId))
+                tourcomment.CommentId = Util.StringHelper.CreateGuid();
             tourcomment.CreatingTime = DateTime.Now;
-            tourcomment.CommentId = Util.StringHelper.CreateGuid();
 
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("TourId", tourcomment.TourId);
@@ -116,12 +118,22 @@ namespace SextantTG.SQLiteDAL
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("CommentId", commentId);
-            return dbHelper.ExecuteNonQuery(trans, DELETE, pars);
+            return dbHelper.ExecuteNonQuery(trans, DELETE___COMMENT_ID, pars);
+        }
+
+        public int DeleteTourCommentByTourId(string tourId, DbTransaction trans)
+        {
+            Dictionary<string, object> pars = new Dictionary<string, object>();
+            pars.Add("TourId", tourId);
+            return dbHelper.ExecuteNonQuery(trans, DELETE___TOUR_ID, pars);
         }
 
         public void Dispose()
         {
-            this.dbHelper = null;
+            this.dbHelper.Dispose();
         }
+
+
+
     }
 }

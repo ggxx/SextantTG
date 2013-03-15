@@ -119,7 +119,7 @@ namespace SextantTG.Win
 
         private void myTourToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            this.OpenMdiChildForm(typeof(ViewUserTourForm));
+            this.OpenMdiChildForm(typeof(MyTourForm));
         }
     }
 }

@@ -1,6 +1,6 @@
 ﻿namespace SextantTG.Win
 {
-    partial class ViewUserMainForm
+    partial class MyMainForm
     {
         /// <summary>
         /// Required designer variable.

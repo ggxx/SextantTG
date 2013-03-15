@@ -26,18 +26,21 @@ namespace SextantTG.Win
         {
             InitializeComponent();
             this.kind = 2;
+            this.targetId = user.UserId;
         }
 
         public CommentEditForm(Picture picture)
         {
             InitializeComponent();
             this.kind = 3;
+            this.targetId = picture.PictureId;
         }
 
         public CommentEditForm(Tour tour)
         {
             InitializeComponent();
             this.kind = 4;
+            this.targetId = tour.TourId;
         }
 
         private void button_Cancel_Click(object sender, EventArgs e)

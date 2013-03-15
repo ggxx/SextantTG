@@ -104,7 +104,7 @@
             this.button_Upload.Name = "button_Upload";
             this.button_Upload.Size = new System.Drawing.Size(75, 23);
             this.button_Upload.TabIndex = 8;
-            this.button_Upload.Text = "上传...";
+            this.button_Upload.Text = "选择...";
             this.button_Upload.UseVisualStyleBackColor = true;
             this.button_Upload.Click += new System.EventHandler(this.button_Upload_Click);
             // 

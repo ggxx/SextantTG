@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace SextantTG.Win
 {
-    public partial class ViewUserMainForm : Form
+    public partial class MyMainForm : Form
     {
-        public ViewUserMainForm()
+        public MyMainForm()
         {
             InitializeComponent();
         }

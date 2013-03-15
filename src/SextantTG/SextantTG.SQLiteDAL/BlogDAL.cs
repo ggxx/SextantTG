@@ -33,14 +33,15 @@ namespace SextantTG.SQLiteDAL
         private static readonly string SELECT___TOUR_ID__SUB_TOUR_ID = "select * from stg_blog where tour_id = :TourId and sub_tour_id = :SubTourId";
         private static readonly string SELECT___BLOG_ID = "select * from stg_blog where blog_id = :BlogId";
 
-        private static readonly string INSERT = "insert into stg_blog(blog_id, user_id, tour_id, sub_tour_id, content, creating_time) values(:BlogId, :UserId, :TourId, :SubTourId, :Content, :CreatingTime)";
-        private static readonly string UPDATE = "update stg_blog set user_id = :UserId, tour_id = :TourId, sub_tour_id = :SubTourId, content = :Content, creating_time = :CreatingTime where blog_id = :BlogId";
+        private static readonly string INSERT = "insert into stg_blog(blog_id, user_id, tour_id, sub_tour_id, sights_id, title, content, creating_time) values(:BlogId, :UserId, :TourId, :SubTourId, :SightsId, :Title, :Content, :CreatingTime)";
+        private static readonly string UPDATE = "update stg_blog set user_id = :UserId, tour_id = :TourId, sub_tour_id = :SubTourId, sights_id = :SightsId, title = :Title, content = :Content, creating_time = :CreatingTime where blog_id = :BlogId";
         private static readonly string DELETE = "delete from stg_blog where blog_id = :BlogId";
 
         private Blog BuildBlogByReader(DbDataReader r)
         {
             Blog blog = new Blog();
             blog.BlogId = CustomTypeConverter.ToString(r["blog_id"]);
+            blog.Title = CustomTypeConverter.ToString(r["title"]);
             blog.Content = CustomTypeConverter.ToString(r["content"]);
             blog.CreatingTime = CustomTypeConverter.ToDateTimeNull(r["creating_time"]);
             blog.SightsId = CustomTypeConverter.ToString(r["sights_id"]);
@@ -165,6 +166,8 @@ namespace SextantTG.SQLiteDAL
             pars.Add("UserId", blog.UserId);
             pars.Add("TourId", blog.TourId);
             pars.Add("SubTourId", blog.SubTourId);
+            pars.Add("SightsId", blog.SightsId);
+            pars.Add("Title", blog.Title);
             pars.Add("Content", blog.Content);
             pars.Add("CreatingTime", blog.CreatingTime);
             return dbHelper.ExecuteNonQuery(trans, INSERT, pars);
@@ -177,6 +180,8 @@ namespace SextantTG.SQLiteDAL
             pars.Add("UserId", blog.UserId);
             pars.Add("TourId", blog.TourId);
             pars.Add("SubTourId", blog.SubTourId);
+            pars.Add("SightsId", blog.SightsId);
+            pars.Add("Title", blog.Title);
             pars.Add("Content", blog.Content);
             pars.Add("CreatingTime", blog.CreatingTime);
             return dbHelper.ExecuteNonQuery(trans, UPDATE, pars);
@@ -191,7 +196,7 @@ namespace SextantTG.SQLiteDAL
 
         public void Dispose()
         {
-            this.dbHelper = null;
+            this.dbHelper.Dispose();
         }
     }
 }

@@ -122,8 +122,9 @@ namespace SextantTG.SQLiteDAL
 
         public int InsertUserComment(UserComment usercomment, DbTransaction trans)
         {
+            if (string.IsNullOrEmpty(usercomment.CommentId))
+                usercomment.CommentId = Util.StringHelper.CreateGuid();
             usercomment.CreatingTime = DateTime.Now;
-            usercomment.CommentId = Util.StringHelper.CreateGuid();
 
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("UserId", usercomment.UserId);
@@ -154,7 +155,7 @@ namespace SextantTG.SQLiteDAL
 
         public void Dispose()
         {
-            this.dbHelper = null;
+            this.dbHelper.Dispose();
         }
     }
 }

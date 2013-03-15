@@ -13,13 +13,17 @@ namespace SextantTG.Services
     {
         private IDataContext dataContext = null;
         private ITourDAL tourDal = null;
+        private ITourCommentDAL tourCommentDal = null;
         private ISubTourDAL subtourDal = null;
+        private IPictureDAL pictureDal = null;
 
         public TourService()
         {
             dataContext = DALFactory.CreateDAL<IDataContext>();
             tourDal = DALFactory.CreateDAL<ITourDAL>();
+            tourCommentDal = DALFactory.CreateDAL<ITourCommentDAL>();
             subtourDal = DALFactory.CreateDAL<ISubTourDAL>();
+            pictureDal = DALFactory.CreateDAL<IPictureDAL>();
         }
 
         public List<Tour> GetToursByUserId(string userId)
@@ -95,7 +99,7 @@ namespace SextantTG.Services
             }
         }
 
-        public bool DeleteTourByTourId(string tourId, out string message)
+        public bool DeleteTourByTourId(string tourId, bool deletePictures, out string message)
         {
             using (DbConnection conn = dataContext.GetConnection())
             {
@@ -105,6 +109,13 @@ namespace SextantTG.Services
                     try
                     {
                         tourDal.DeleteTourByTourId(tourId, trans);
+                        tourCommentDal.DeleteTourCommentByTourId(tourId, trans);
+                        subtourDal.DeleteSubTourByTourId(tourId, trans);
+                        if (deletePictures)
+                        {
+                            pictureDal.DeletePictureByTourId(tourId, trans);
+                        }
+
                         trans.Commit();
                         message = "";
                         return true;
@@ -193,6 +204,18 @@ namespace SextantTG.Services
             return subtourDal.GetSubTourByTourIdAndSubTourId(tourId, subTourId);
         }
 
+
+
+        public List<Picture> GetPicturesByTourId(string tourId)
+        {
+            return pictureDal.GetPicturesByTourId(tourId);
+        }
+
+        public List<Picture> GetPicturesByTourIdAndSubTourId(string tourId, string subTourId)
+        {
+            return pictureDal.GetPicturesByTourIdAndSubTourId(tourId, subTourId);
+        }
+
         public bool InsertSubTour(SubTour subTour, out string message)
         {
             using (DbConnection conn = dataContext.GetConnection())
@@ -265,19 +288,60 @@ namespace SextantTG.Services
             }
         }
 
+        public bool SavePictures(List<Picture> pictures, List<Picture> removedPictures, out string message)
+        {
+            using (DbConnection conn = dataContext.GetConnection())
+            {
+                conn.Open();
+                using (DbTransaction trans = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        foreach (Picture picture in pictures)
+                        {
+                            if (picture.PictureId.StartsWith("_"))
+                            {
+                                picture.PictureId = picture.PictureId.Substring(1);
+                                pictureDal.InsertPicture(picture, trans);
+                            }
+                            else
+                            {
+                                pictureDal.UpdatePicture(picture, trans);
+                            }
+                        }
+                        foreach (Picture picture in removedPictures)
+                        {
+                            pictureDal.DeletePictureByPictureId(picture.PictureId, trans);
+                        }
+                        trans.Commit();
+                        message = string.Empty;
+                        return true;
+                    }
+                    catch (DbException ex)
+                    {
+                        message = ex.Message;
+                        trans.Rollback();
+                        return false;
+                    }
+                }
+            }
+        }
 
 
         public void Dispose()
         {
             dataContext.Dispose();
             tourDal.Dispose();
+            tourCommentDal.Dispose();
             subtourDal.Dispose();
+            pictureDal.Dispose();
 
             dataContext = null;
             tourDal = null;
+            tourCommentDal = null;
             subtourDal = null;
+            pictureDal = null;
         }
-
 
 
     }

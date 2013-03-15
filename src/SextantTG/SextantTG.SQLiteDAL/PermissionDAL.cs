@@ -72,7 +72,7 @@ namespace SextantTG.SQLiteDAL
 
         public void Dispose()
         {
-            this.dbHelper = null;
+            this.dbHelper.Dispose();
         }
     }
 }

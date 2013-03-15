@@ -284,6 +284,10 @@ namespace SextantTG.Win
             //this.stgReadonlyPictures.SetPicturesForTour(tour.TourId);
 
             //
+            this.dataGridView_SubTour.AutoGenerateColumns = true;
+            this.bindingSource_SubTour.DataSource = null;
+
+            //
             this.dataGridView_Comment.AutoGenerateColumns = true;
             this.bindingSource_Comment.DataSource = null;
 

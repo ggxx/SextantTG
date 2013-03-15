@@ -30,8 +30,9 @@ namespace SextantTG.SQLiteDAL
         private static readonly string SELECT___TOUR_ID__SUB_TOUR_ID = "select * from stg_sub_tour where tour_id = :TourId and sub_tour_id = :SubTourId";
 
         private static readonly string INSERT = "insert into stg_sub_tour(tour_id, sub_tour_id, sub_tour_name, sights_id, begin_date, end_date, creating_time, memos) values(:TourId, :SubTourId, :SubTourName, :SightsId, :BeginDate, :EndDate, :CreatingTime, :Memos)";
-        private static readonly string UPDATE = "update stg_sub_tour set sub_tour_name = :SubTourName, sights_id = :SightsId, begin_date = :BeginDate, end_date = :EndDate, creating_time = :CreatingTime, memos = :Memos where tour_id = :TourId and sub_tour_id =: SubTourId";
-        private static readonly string DELETE = "delete from stg_sub_tour where tour_id = :TourId and sub_tour_id = :SubTourId";
+        private static readonly string UPDATE = "update stg_sub_tour set sub_tour_name = :SubTourName, sights_id = :SightsId, begin_date = :BeginDate, end_date = :EndDate, creating_time = :CreatingTime, memos = :Memos where tour_id = :TourId and sub_tour_id = :SubTourId";
+        private static readonly string DELETE___TOUR_ID__SUB_TOUR_ID = "delete from stg_sub_tour where tour_id = :TourId and sub_tour_id = :SubTourId";
+        private static readonly string DELETE___TOUR_ID = "delete from stg_sub_tour where tour_id = :TourId";
 
         private SubTour BuildSubTourByReader(DbDataReader r)
         {
@@ -128,12 +129,22 @@ namespace SextantTG.SQLiteDAL
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("TourId", tourId);
             pars.Add("SubTourId", subTourId);
-            return dbHelper.ExecuteNonQuery(trans, DELETE, pars);
+            return dbHelper.ExecuteNonQuery(trans, DELETE___TOUR_ID__SUB_TOUR_ID, pars);
+        }
+
+
+        public int DeleteSubTourByTourId(string tourId, DbTransaction trans)
+        {
+            Dictionary<string, object> pars = new Dictionary<string, object>();
+            pars.Add("TourId", tourId);
+            return dbHelper.ExecuteNonQuery(trans, DELETE___TOUR_ID, pars);
         }
 
         public void Dispose()
         {
-            this.dbHelper = null;
+            this.dbHelper.Dispose();
         }
+
+
     }
 }

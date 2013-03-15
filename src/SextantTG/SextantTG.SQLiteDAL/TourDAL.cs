@@ -24,7 +24,7 @@ namespace SextantTG.SQLiteDAL
         {
             this.dbHelper = new DbHelper(connectionString, DbUtil.DbProviderType.SQLite);
         }
-        
+
         private static readonly string SELECT = "select * from stg_tour";
         private static readonly string SELECT___TOUR_ID = "select * from stg_tour where tour_id = :TourId";
         //private static readonly string SELECT___TOUR_NAME = "select * from stg_tour where tour_name = :TourName";
@@ -55,7 +55,7 @@ namespace SextantTG.SQLiteDAL
 
         public List<Tour> GetTours()
         {
-            List<Tour> tour= new List<Tour>();
+            List<Tour> tour = new List<Tour>();
             using (DbDataReader r = dbHelper.ExecuteReader(SELECT))
             {
                 while (r.Read())
@@ -65,7 +65,7 @@ namespace SextantTG.SQLiteDAL
             }
             return tour;
         }
-        
+
         public List<Tour> GetToursByUserId(string userId)
         {
             List<Tour> tour = new List<Tour>();
@@ -209,7 +209,7 @@ namespace SextantTG.SQLiteDAL
         public int UpdateTour(Tour tour, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
-           pars.Add("TourId", tour.TourId);
+            pars.Add("TourId", tour.TourId);
             pars.Add("TourName", tour.TourName);
             pars.Add("UserId", tour.UserId);
             pars.Add("BeginDate", tour.BeginDate);
@@ -230,7 +230,7 @@ namespace SextantTG.SQLiteDAL
 
         public void Dispose()
         {
-            this.dbHelper = null;
+            this.dbHelper.Dispose();
         }
     }
 }

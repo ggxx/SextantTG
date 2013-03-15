@@ -31,6 +31,15 @@
             this.components = new System.ComponentModel.Container();
             this.button_Close = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
+            this.Column_SightsId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_SightsName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_CityId = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column_SightsLevel = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_CreatingTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_Memos = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.button_Delete = new System.Windows.Forms.Button();
             this.button_Edit = new System.Windows.Forms.Button();
             this.button_Add = new System.Windows.Forms.Button();
@@ -42,18 +51,9 @@
             this.label3 = new System.Windows.Forms.Label();
             this.comboBox_City = new System.Windows.Forms.ComboBox();
             this.button_Query = new System.Windows.Forms.Button();
-            this.Column_SightsId = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_SightsName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_CityId = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Column_SightsLevel = new System.Windows.Forms.DataGridViewComboBoxColumn();
-            this.Column_Description = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_CreatingTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Column_Memos = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
-            this.tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
+            this.tableLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
             // button_Close
@@ -90,133 +90,6 @@
             this.dataGridView.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView.Size = new System.Drawing.Size(600, 344);
             this.dataGridView.TabIndex = 21;
-            // 
-            // button_Delete
-            // 
-            this.button_Delete.Location = new System.Drawing.Point(174, 407);
-            this.button_Delete.Name = "button_Delete";
-            this.button_Delete.Size = new System.Drawing.Size(75, 23);
-            this.button_Delete.TabIndex = 25;
-            this.button_Delete.Text = "删除";
-            this.button_Delete.UseVisualStyleBackColor = true;
-            this.button_Delete.Click += new System.EventHandler(this.button_Delete_Click);
-            // 
-            // button_Edit
-            // 
-            this.button_Edit.Location = new System.Drawing.Point(93, 407);
-            this.button_Edit.Name = "button_Edit";
-            this.button_Edit.Size = new System.Drawing.Size(75, 23);
-            this.button_Edit.TabIndex = 24;
-            this.button_Edit.Text = "编辑";
-            this.button_Edit.UseVisualStyleBackColor = true;
-            this.button_Edit.Click += new System.EventHandler(this.button_Edit_Click);
-            // 
-            // button_Add
-            // 
-            this.button_Add.Location = new System.Drawing.Point(12, 407);
-            this.button_Add.Name = "button_Add";
-            this.button_Add.Size = new System.Drawing.Size(75, 23);
-            this.button_Add.TabIndex = 23;
-            this.button_Add.Text = "新增";
-            this.button_Add.UseVisualStyleBackColor = true;
-            this.button_Add.Click += new System.EventHandler(this.button_Add_Click);
-            // 
-            // tableLayoutPanel1
-            // 
-            this.tableLayoutPanel1.ColumnCount = 7;
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 87F));
-            this.tableLayoutPanel1.Controls.Add(this.comboBox_Country, 1, 0);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox_Province, 3, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label1, 4, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
-            this.tableLayoutPanel1.Controls.Add(this.label3, 2, 0);
-            this.tableLayoutPanel1.Controls.Add(this.comboBox_City, 5, 0);
-            this.tableLayoutPanel1.Controls.Add(this.button_Query, 6, 0);
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
-            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
-            this.tableLayoutPanel1.RowCount = 1;
-            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(600, 39);
-            this.tableLayoutPanel1.TabIndex = 26;
-            // 
-            // comboBox_Country
-            // 
-            this.comboBox_Country.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox_Country.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_Country.FormattingEnabled = true;
-            this.comboBox_Country.Location = new System.Drawing.Point(45, 9);
-            this.comboBox_Country.Name = "comboBox_Country";
-            this.comboBox_Country.Size = new System.Drawing.Size(122, 20);
-            this.comboBox_Country.TabIndex = 4;
-            this.comboBox_Country.SelectedIndexChanged += new System.EventHandler(this.comboBox_Country_SelectedIndexChanged);
-            // 
-            // comboBox_Province
-            // 
-            this.comboBox_Province.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox_Province.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_Province.FormattingEnabled = true;
-            this.comboBox_Province.Location = new System.Drawing.Point(215, 9);
-            this.comboBox_Province.Name = "comboBox_Province";
-            this.comboBox_Province.Size = new System.Drawing.Size(122, 20);
-            this.comboBox_Province.TabIndex = 5;
-            this.comboBox_Province.SelectedIndexChanged += new System.EventHandler(this.comboBox_Province_SelectedIndexChanged);
-            // 
-            // label1
-            // 
-            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(350, 13);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(29, 12);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "城市";
-            // 
-            // label2
-            // 
-            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 13);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(29, 12);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "国家";
-            // 
-            // label3
-            // 
-            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(180, 13);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(29, 12);
-            this.label3.TabIndex = 3;
-            this.label3.Text = "省份";
-            // 
-            // comboBox_City
-            // 
-            this.comboBox_City.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.comboBox_City.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.comboBox_City.FormattingEnabled = true;
-            this.comboBox_City.Location = new System.Drawing.Point(385, 9);
-            this.comboBox_City.Name = "comboBox_City";
-            this.comboBox_City.Size = new System.Drawing.Size(122, 20);
-            this.comboBox_City.TabIndex = 6;
-            // 
-            // button_Query
-            // 
-            this.button_Query.Anchor = System.Windows.Forms.AnchorStyles.Right;
-            this.button_Query.Location = new System.Drawing.Point(522, 8);
-            this.button_Query.Name = "button_Query";
-            this.button_Query.Size = new System.Drawing.Size(75, 23);
-            this.button_Query.TabIndex = 7;
-            this.button_Query.Text = "查询";
-            this.button_Query.UseVisualStyleBackColor = true;
-            this.button_Query.Click += new System.EventHandler(this.button_Query_Click);
             // 
             // Column_SightsId
             // 
@@ -285,6 +158,134 @@
             this.Column_Memos.Name = "Column_Memos";
             this.Column_Memos.ReadOnly = true;
             // 
+            // button_Delete
+            // 
+            this.button_Delete.Enabled = false;
+            this.button_Delete.Location = new System.Drawing.Point(174, 407);
+            this.button_Delete.Name = "button_Delete";
+            this.button_Delete.Size = new System.Drawing.Size(75, 23);
+            this.button_Delete.TabIndex = 25;
+            this.button_Delete.Text = "删除";
+            this.button_Delete.UseVisualStyleBackColor = true;
+            this.button_Delete.Click += new System.EventHandler(this.button_Delete_Click);
+            // 
+            // button_Edit
+            // 
+            this.button_Edit.Location = new System.Drawing.Point(93, 407);
+            this.button_Edit.Name = "button_Edit";
+            this.button_Edit.Size = new System.Drawing.Size(75, 23);
+            this.button_Edit.TabIndex = 24;
+            this.button_Edit.Text = "编辑";
+            this.button_Edit.UseVisualStyleBackColor = true;
+            this.button_Edit.Click += new System.EventHandler(this.button_Edit_Click);
+            // 
+            // button_Add
+            // 
+            this.button_Add.Location = new System.Drawing.Point(12, 407);
+            this.button_Add.Name = "button_Add";
+            this.button_Add.Size = new System.Drawing.Size(75, 23);
+            this.button_Add.TabIndex = 23;
+            this.button_Add.Text = "新增";
+            this.button_Add.UseVisualStyleBackColor = true;
+            this.button_Add.Click += new System.EventHandler(this.button_Add_Click);
+            // 
+            // tableLayoutPanel1
+            // 
+            this.tableLayoutPanel1.ColumnCount = 7;
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 8.333333F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
+            this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 90F));
+            this.tableLayoutPanel1.Controls.Add(this.comboBox_Country, 1, 0);
+            this.tableLayoutPanel1.Controls.Add(this.comboBox_Province, 3, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label1, 4, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label2, 0, 0);
+            this.tableLayoutPanel1.Controls.Add(this.label3, 2, 0);
+            this.tableLayoutPanel1.Controls.Add(this.comboBox_City, 5, 0);
+            this.tableLayoutPanel1.Controls.Add(this.button_Query, 6, 0);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
+            this.tableLayoutPanel1.Name = "tableLayoutPanel1";
+            this.tableLayoutPanel1.RowCount = 1;
+            this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(600, 39);
+            this.tableLayoutPanel1.TabIndex = 26;
+            // 
+            // comboBox_Country
+            // 
+            this.comboBox_Country.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox_Country.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_Country.FormattingEnabled = true;
+            this.comboBox_Country.Location = new System.Drawing.Point(45, 9);
+            this.comboBox_Country.Name = "comboBox_Country";
+            this.comboBox_Country.Size = new System.Drawing.Size(121, 20);
+            this.comboBox_Country.TabIndex = 4;
+            this.comboBox_Country.SelectedIndexChanged += new System.EventHandler(this.comboBox_Country_SelectedIndexChanged);
+            // 
+            // comboBox_Province
+            // 
+            this.comboBox_Province.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox_Province.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_Province.FormattingEnabled = true;
+            this.comboBox_Province.Location = new System.Drawing.Point(214, 9);
+            this.comboBox_Province.Name = "comboBox_Province";
+            this.comboBox_Province.Size = new System.Drawing.Size(121, 20);
+            this.comboBox_Province.TabIndex = 5;
+            this.comboBox_Province.SelectedIndexChanged += new System.EventHandler(this.comboBox_Province_SelectedIndexChanged);
+            // 
+            // label1
+            // 
+            this.label1.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(348, 13);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(29, 12);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "城市";
+            // 
+            // label2
+            // 
+            this.label2.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(10, 13);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(29, 12);
+            this.label2.TabIndex = 2;
+            this.label2.Text = "国家";
+            // 
+            // label3
+            // 
+            this.label3.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(179, 13);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(29, 12);
+            this.label3.TabIndex = 3;
+            this.label3.Text = "省份";
+            // 
+            // comboBox_City
+            // 
+            this.comboBox_City.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.comboBox_City.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+            this.comboBox_City.FormattingEnabled = true;
+            this.comboBox_City.Location = new System.Drawing.Point(383, 9);
+            this.comboBox_City.Name = "comboBox_City";
+            this.comboBox_City.Size = new System.Drawing.Size(121, 20);
+            this.comboBox_City.TabIndex = 6;
+            // 
+            // button_Query
+            // 
+            this.button_Query.Anchor = System.Windows.Forms.AnchorStyles.Right;
+            this.button_Query.Location = new System.Drawing.Point(522, 8);
+            this.button_Query.Name = "button_Query";
+            this.button_Query.Size = new System.Drawing.Size(75, 23);
+            this.button_Query.TabIndex = 7;
+            this.button_Query.Text = "查询";
+            this.button_Query.UseVisualStyleBackColor = true;
+            this.button_Query.Click += new System.EventHandler(this.button_Query_Click);
+            // 
             // SightsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -300,9 +301,9 @@
             this.Text = "SightsForm";
             this.Load += new System.EventHandler(this.SightsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }

@@ -21,9 +21,14 @@ namespace SextantTG.ActiveRecord
         public string SightsId { get; set; }
 
         /// <summary>
-        /// 日志ID（可为空）
+        /// 旅行ID（可为空）
         /// </summary>
-        public string BlogId { get; set; }
+        public string TourId { get; set; }
+
+        /// <summary>
+        /// 子旅行ID（可为空）
+        /// </summary>
+        public string SubTourId { get; set; }
 
         /// <summary>
         /// 图片存储的相对路径

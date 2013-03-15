@@ -34,16 +34,17 @@
             this.button_Add = new System.Windows.Forms.Button();
             this.button_Close = new System.Windows.Forms.Button();
             this.dataGridView = new System.Windows.Forms.DataGridView();
-            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             this.Column_ProvinceId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_ProvinceName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_CountryId = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.bindingSource = new System.Windows.Forms.BindingSource(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // button_Delete
             // 
+            this.button_Delete.Enabled = false;
             this.button_Delete.Location = new System.Drawing.Point(174, 407);
             this.button_Delete.Name = "button_Delete";
             this.button_Delete.Size = new System.Drawing.Size(75, 23);

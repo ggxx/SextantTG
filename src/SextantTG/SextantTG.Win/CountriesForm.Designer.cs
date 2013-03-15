@@ -43,6 +43,7 @@
             // 
             // button_Delete
             // 
+            this.button_Delete.Enabled = false;
             this.button_Delete.Location = new System.Drawing.Point(174, 407);
             this.button_Delete.Name = "button_Delete";
             this.button_Delete.Size = new System.Drawing.Size(75, 23);

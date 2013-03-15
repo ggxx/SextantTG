@@ -26,6 +26,11 @@ namespace SextantTG.Win
             removedSubTours = new List<SubTour>();
             statusDict = UIUtil.GetTourStatusDict();
 
+            foreach (KeyValuePair<int, string> kvp in statusDict)
+            {
+                this.comboBox_Status.Items.Add(kvp.Value);
+            }
+
             this.dataGridView_SubTour.AutoGenerateColumns = true;
             this.bindingSource.DataSource = new List<SubTour>();
         }
@@ -47,10 +52,7 @@ namespace SextantTG.Win
 
         private void TourEditForm_Load(object sender, EventArgs e)
         {
-            foreach (KeyValuePair<int, string> kvp in statusDict)
-            {
-                this.comboBox_Status.Items.Add(kvp.Value);
-            }
+
         }
 
         private void button_Add_Click(object sender, EventArgs e)

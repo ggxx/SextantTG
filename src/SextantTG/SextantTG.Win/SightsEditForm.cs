@@ -92,7 +92,7 @@ namespace SextantTG.Win
                 sights.Memos = this.textBox_Memos.Text.Trim();
                 sights.CreatingTime = Util.CustomTypeConverter.ToDateTimeNull(this.textBox_CreatingTime.Text, "yyyy-MM-dd HH:mm:ss");
 
-                val = UIUtil.UpdateSights(sights, this.stgPictures.Pictures, this.stgPictures.RemovedPictures, out msg);
+                val = UIUtil.SaveSights(sights, this.stgPictures.Pictures, this.stgPictures.RemovedPictures, out msg);
             }
 
             if (val)

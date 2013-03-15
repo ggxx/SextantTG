@@ -242,9 +242,9 @@ namespace SextantTG.Win
             return sightsSrv.InsertSights(sights, pictures, out message);
         }
 
-        internal static bool UpdateSights(Sights sights, List<Picture> pictures, List<Picture> removedPictures, out string message)
+        internal static bool SaveSights(Sights sights, List<Picture> pictures, List<Picture> removedPictures, out string message)
         {
-            return sightsSrv.UpdateSights(sights, pictures, removedPictures, out message);
+            return sightsSrv.SaveSights(sights, pictures, removedPictures, out message);
         }
 
         internal static bool DeleteSightsBySightsId(string sightsId, out string message)
@@ -383,19 +383,14 @@ namespace SextantTG.Win
             return blogSrv.GetBlogByBlogId(blogId);
         }
 
-        internal static bool CreateBlog(Blog blog, List<Picture> pics, string userId, out string message)
-        {
-            return blogSrv.CreateBlog(blog, pics, userId, out  message);
-        }
-
-        internal static bool UpdateBlog(Blog blog, List<Picture> pics, string userId, out string message)
-        {
-            return blogSrv.UpdateBlog(blog, pics, userId, out  message);
-        }
-
         internal static bool DeleteBlog(string blogId, bool deletePictures, bool deleteComments, out string message)
         {
             return blogSrv.DeleteBlog(blogId, deletePictures, deleteComments, out  message);
+        }
+
+        internal static bool SaveBlog(Blog blog, out string message)
+        {
+            return blogSrv.SaveBlob(blog, out message);
         }
 
         #endregion
@@ -423,12 +418,42 @@ namespace SextantTG.Win
             return tourSrv.GetSubToursByTourId(tourId);
         }
 
-        internal static bool SaveTour(Tour tour, List<SubTour> subTours, List<SubTour> removedSubTours, out string msg)
+        internal static List<Tour> GetToursByUserId(string userId)
         {
-            return tourSrv.SaveTour( tour, subTours, removedSubTours, out msg);
+            return tourSrv.GetToursByUserId(userId);
+        }
+
+        internal static Tour GetTourByTourId(string tourId)
+        {
+            return tourSrv.GetTourByTourId(tourId);
+        }
+
+        internal static List<Picture> GetPicturesByTourId(string tourId)
+        {
+            return tourSrv.GetPicturesByTourId(tourId);
+        }
+
+        internal static List<Picture> GetPicturesByTourIdAndSubTourId(string tourId, string subTourId)
+        {
+            return tourSrv.GetPicturesByTourIdAndSubTourId(tourId, subTourId);
+        }
+
+        internal static bool SaveTour(Tour tour, List<SubTour> subTours, List<SubTour> removedSubTours, out string message)
+        {
+            return tourSrv.SaveTour(tour, subTours, removedSubTours, out message);
+        }
+
+        internal static bool DeleteTourByTourId(string tourId, bool deletePictures, out string message)
+        {
+            return tourSrv.DeleteTourByTourId(tourId, deletePictures, out message);
         }
 
         #endregion
+
+        internal static bool SavePictures(List<Picture> pictures, List<Picture> removedPictures, out string message)
+        {
+            return tourSrv.SavePictures(pictures, removedPictures, out message);
+        }
 
 
     }

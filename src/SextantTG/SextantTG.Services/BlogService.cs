@@ -53,63 +53,63 @@ namespace SextantTG.Services
             return blogDal.GetBlogById(blogId);
         }
 
-        public bool CreateBlog(Blog blog, List<Picture> pics, string userId, out string message)
-        {
-            using (DbConnection conn = dataContext.GetConnection())
-            {
-                conn.Open();
-                using (DbTransaction trans = conn.BeginTransaction())
-                {
-                    try
-                    {
-                        blogDal.InsertBlog(blog, trans);
-                        foreach (Picture pic in pics)
-                        {
-                            picDal.InsertPicture(pic, trans);
-                        }
-                        trans.Commit();
-                        message = string.Empty;
-                        return true;
-                    }
-                    catch (Exception ex)
-                    {
-                        trans.Rollback();
-                        message = ex.Message;
-                        return false;
-                    }
-                }
-            }
+        //public bool CreateBlog(Blog blog, List<Picture> pics, string userId, out string message)
+        //{
+        //    using (DbConnection conn = dataContext.GetConnection())
+        //    {
+        //        conn.Open();
+        //        using (DbTransaction trans = conn.BeginTransaction())
+        //        {
+        //            try
+        //            {
+        //                blogDal.InsertBlog(blog, trans);
+        //                foreach (Picture pic in pics)
+        //                {
+        //                    picDal.InsertPicture(pic, trans);
+        //                }
+        //                trans.Commit();
+        //                message = string.Empty;
+        //                return true;
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                trans.Rollback();
+        //                message = ex.Message;
+        //                return false;
+        //            }
+        //        }
+        //    }
 
-        }
+        //}
 
-        public bool UpdateBlog(Blog blog, List<Picture> pics, string userId, out string message)
-        {
-            using (DbConnection conn = dataContext.GetConnection())
-            {
-                conn.Open();
-                using (DbTransaction trans = conn.BeginTransaction())
-                {
-                    try
-                    {
-                        blogDal.UpdateBlog(blog, trans);
-                        foreach (Picture pic in pics)
-                        {
-                            picDal.InsertPicture(pic, trans);
-                        }
+        //public bool UpdateBlog(Blog blog, List<Picture> pics, string userId, out string message)
+        //{
+        //    using (DbConnection conn = dataContext.GetConnection())
+        //    {
+        //        conn.Open();
+        //        using (DbTransaction trans = conn.BeginTransaction())
+        //        {
+        //            try
+        //            {
+        //                blogDal.UpdateBlog(blog, trans);
+        //                foreach (Picture pic in pics)
+        //                {
+        //                    picDal.InsertPicture(pic, trans);
+        //                }
 
-                        trans.Commit();
-                        message = string.Empty;
-                        return true;
-                    }
-                    catch (Exception ex)
-                    {
-                        trans.Rollback();
-                        message = ex.Message;
-                        return false;
-                    }
-                }
-            }
-        }
+        //                trans.Commit();
+        //                message = string.Empty;
+        //                return true;
+        //            }
+        //            catch (Exception ex)
+        //            {
+        //                trans.Rollback();
+        //                message = ex.Message;
+        //                return false;
+        //            }
+        //        }
+        //    }
+        //}
 
         public bool DeleteBlog(string blogId, bool deletePictures, bool deleteComments, out string message)
         {
@@ -135,6 +135,37 @@ namespace SextantTG.Services
             }
         }
 
+        public bool SaveBlob(Blog blog, out string message)
+        {
+            using (DbConnection conn = dataContext.GetConnection())
+            {
+                conn.Open();
+                using (DbTransaction trans = conn.BeginTransaction())
+                {
+                    try
+                    {
+                        if (string.IsNullOrEmpty(blog.BlogId))
+                        {
+                            blogDal.InsertBlog(blog, trans);
+                        }
+                        else
+                        {
+                            blogDal.UpdateBlog(blog, trans);
+                        }
+                        trans.Commit();
+                        message = string.Empty;
+                        return true;
+                    }
+                    catch (Exception ex)
+                    {
+                        trans.Rollback();
+                        message = ex.Message;
+                        return false;
+                    }
+                }
+            }
+        }
+
         public void Dispose()
         {
             this.dataContext.Dispose();
@@ -145,5 +176,6 @@ namespace SextantTG.Services
             this.blogDal = null;
             this.picDal = null;
         }
+
     }
 }

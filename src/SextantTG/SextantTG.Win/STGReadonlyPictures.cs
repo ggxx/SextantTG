@@ -37,31 +37,36 @@ namespace SextantTG.Win
             }
         }
 
+        public void SetPicturesForTour(string tourId)
+        {
+            images.Images.Clear();
+            this.listView_Pic.Items.Clear();
+
+            List<Picture> remotePics = UIUtil.GetPicturesByTourId(tourId);
+            foreach (Picture pic in remotePics)
+            {
+                images.Images.Add(pic.PictureId, new System.Drawing.Bitmap(PicPath + pic.Path));
+                this.listView_Pic.Items.Add(pic.PictureId, pic.Description, pic.PictureId);
+            }
+        }
+
+        public void SetPicturesForTour(string tourId, string subTourId)
+        {
+            this.images.Images.Clear();
+            this.listView_Pic.Items.Clear();
+
+            List<Picture> pictures = UIUtil.GetPicturesByTourIdAndSubTourId(tourId, subTourId);
+            foreach (Picture pic in pictures)
+            {
+                images.Images.Add(pic.PictureId, new System.Drawing.Bitmap(PicPath + pic.Path));
+                this.listView_Pic.Items.Add(pic.PictureId, pic.Description, pic.PictureId);
+            }
+        }
+
         public void ResetList()
         {
             this.images.Images.Clear();
             this.listView_Pic.Items.Clear();
         }
-
-        public void SetPicturesForBlog(string blogId)
-        {
-            //List<Picture> remotePics = UIUtil.getpi(sightsId, uploaderId);
-            //foreach (Picture pic in remotePics)
-            //{
-            //    images.Images.Add(pic.PictureId, new System.Drawing.Bitmap(PicPath + pic.Path));
-            //    this.listView_Pic.Items.Add(pic.PictureId, pic.Description, pic.PictureId);
-            //}
-        }
-
-        public void SetPicturesForTour(string blogId)
-        {
-            //List<Picture> remotePics = UIUtil.getpi(sightsId, uploaderId);
-            //foreach (Picture pic in remotePics)
-            //{
-            //    images.Images.Add(pic.PictureId, new System.Drawing.Bitmap(PicPath + pic.Path));
-            //    this.listView_Pic.Items.Add(pic.PictureId, pic.Description, pic.PictureId);
-            //}
-        }
-
     }
 }

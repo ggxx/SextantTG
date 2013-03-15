@@ -106,7 +106,8 @@ namespace SextantTG.SQLiteDAL
 
         public int InsertSightsComment(SightsComment sightscomment, DbTransaction trans)
         {
-            sightscomment.CommentId = Util.StringHelper.CreateGuid();
+            if (string.IsNullOrEmpty(sightscomment.CommentId))
+                sightscomment.CommentId = Util.StringHelper.CreateGuid();
             sightscomment.CreatingTime = DateTime.Now;
 
             Dictionary<string, object> pars = new Dictionary<string, object>();
@@ -138,7 +139,7 @@ namespace SextantTG.SQLiteDAL
 
         public void Dispose()
         {
-            this.dbHelper = null;
+            this.dbHelper.Dispose();
         }
     }
 }

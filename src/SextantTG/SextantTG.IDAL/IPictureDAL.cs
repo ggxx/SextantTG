@@ -11,7 +11,8 @@ namespace SextantTG.IDAL
     {
         List<Picture> GetPicturesBySightsIdAndUploaderId(string sightsId, string uploaderId);
         List<Picture> GetPicturesBySightsId(string sightsId);
-        List<Picture> GetPicturesByBlogId(string blogId);
+        List<Picture> GetPicturesByTourId(string tourId);
+        List<Picture> GetPicturesByTourIdAndSubTourId(string tourId, string subTourId);
         Picture GetPictureByPictureId(string picId);
 
         int InsertPicture(Picture pic, DbTransaction trans);
@@ -19,5 +20,6 @@ namespace SextantTG.IDAL
         int DeletePictureByPictureId(string picId, DbTransaction trans);
         //int DeletePicturesBySightsId(string sightsId, DbTransaction trans);
         //int DeletePicturesByBlogId(string blogId, DbTransaction trans);
+        int DeletePictureByTourId(string tourId, DbTransaction trans);
     }
 }

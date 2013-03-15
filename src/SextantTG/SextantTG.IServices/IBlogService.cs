@@ -18,9 +18,9 @@ namespace SextantTG.IServices
         Blog GetBlogByBlogId(string blogId);
         List<Blog> GetBlogsByTourId(string tourId);
 
-        bool CreateBlog(Blog blog, List<Picture> pics, string userId, out string message);
-        bool UpdateBlog(Blog blog, List<Picture> pics, string userId, out string message);
+        //bool CreateBlog(Blog blog, List<Picture> pics, string userId, out string message);
+        //bool UpdateBlog(Blog blog, List<Picture> pics, string userId, out string message);
         bool DeleteBlog(string blogId, bool deletePictures, bool deleteComments, out string message);
-
+        bool SaveBlob(Blog blog, out string message);
     }
 }
