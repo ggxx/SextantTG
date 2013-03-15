@@ -29,7 +29,7 @@ namespace SextantTG.Util
         /// <returns>输出的字符串</returns>
         public static string JoinStrings(string[] array, string ind, string prefix, string suffix)
         {
-            string val = "";
+            string val = string.Empty;
             int i;
             for (i = 0; i < array.Length - 1; i++)
             {

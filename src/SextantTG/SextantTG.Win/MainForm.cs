@@ -44,11 +44,11 @@ namespace SextantTG.Win
         {
             if (Config.AppConfig.User != null)
             {
-                userDictToolStripMenuItem.Visible = true;
+                myToolStripMenuItem.Visible = true;
             }
             else
             {
-                userDictToolStripMenuItem.Visible = false;
+                myToolStripMenuItem.Visible = false;
             }
 
             if (Config.AppConfig.Permissions != null && Config.AppConfig.Permissions.Exists(delegate(Permission p)
@@ -100,6 +100,26 @@ namespace SextantTG.Win
         private void viewSightsToolStripMenuItem_Click(object sender, EventArgs e)
         {
             this.OpenMdiChildForm(typeof(ViewSightsForm));
+        }
+
+        private void viewTourToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.OpenMdiChildForm(typeof(ViewTourForm));
+        }
+
+        private void myMainToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void newTourToolStripButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void myTourToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.OpenMdiChildForm(typeof(ViewUserTourForm));
         }
     }
 }

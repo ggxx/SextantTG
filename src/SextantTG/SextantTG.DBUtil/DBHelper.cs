@@ -21,7 +21,7 @@ namespace SexTantTG.DbUtil
 
         public DbHelper(string connectionString, DbProviderType providerType)
         {
-            HelperName = "";
+            HelperName = string.Empty;
             ConnectionString = connectionString;
             provider = providerType;
             providerFactory = ProviderFactory.GetDbProviderFactory(providerType);

@@ -72,7 +72,7 @@ namespace SextantTG.Services
                     {
                         picCommentDal.InsertPictureComment(comment, trans);
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         return true;
                     }
                     catch (DbException ex)
@@ -96,7 +96,7 @@ namespace SextantTG.Services
                     {
                         picCommentDal.UpdatePictureComment(comment, trans);
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         return true;
                     }
                     catch (DbException ex)
@@ -120,7 +120,7 @@ namespace SextantTG.Services
                     {
                         picCommentDal.DeletePictureCommentByCommentId(commentId, trans);
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         return true;
                     }
                     catch (DbException ex)
@@ -144,7 +144,7 @@ namespace SextantTG.Services
                     {
                         sigCommentDal.InsertSightsComment(comment, trans);
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         return true;
                     }
                     catch (DbException ex)
@@ -168,7 +168,7 @@ namespace SextantTG.Services
                     {
                         sigCommentDal.UpdateSightsComment(comment, trans);
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         return true;
                     }
                     catch (DbException ex)
@@ -192,7 +192,7 @@ namespace SextantTG.Services
                     {
                         sigCommentDal.DeleteSightsCommentByCommentId(commentId, trans);
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         return true;
                     }
                     catch (DbException ex)
@@ -216,7 +216,7 @@ namespace SextantTG.Services
                     {
                         tourCommentDal.InsertTourComment(comment, trans);
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         return true;
                     }
                     catch (DbException ex)
@@ -240,7 +240,7 @@ namespace SextantTG.Services
                     {
                         tourCommentDal.UpdateTourComment(comment, trans);
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         return true;
                     }
                     catch (DbException ex)
@@ -264,7 +264,7 @@ namespace SextantTG.Services
                     {
                         tourCommentDal.DeleteTourCommentByCommentId(commentId, trans);
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         return true;
                     }
                     catch (DbException ex)
@@ -288,7 +288,7 @@ namespace SextantTG.Services
                     {
                         userCommentDal.InsertUserComment(comment, trans);
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         return true;
                     }
                     catch (DbException ex)
@@ -312,7 +312,7 @@ namespace SextantTG.Services
                     {
                         userCommentDal.UpdateUserComment(comment, trans);
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         return true;
                     }
                     catch (DbException ex)
@@ -336,7 +336,7 @@ namespace SextantTG.Services
                     {
                         userCommentDal.DeleteUserCommentByCommentId(commentId, trans);
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         return true;
                     }
                     catch (DbException ex)

@@ -25,6 +25,7 @@ namespace SextantTG.Win
         public STGPictures()
         {
             InitializeComponent();
+            Pictures = new List<Picture>();
             RemovedPictures = new List<Picture>();
             images.ImageSize = new Size(32, 32);
             this.listView_Pic.LargeImageList = images;
@@ -59,6 +60,14 @@ namespace SextantTG.Win
             //    images.Images.Add(pic.PictureId, new System.Drawing.Bitmap(PicPath + pic.Path));
             //    this.listView_Pic.Items.Add(pic.PictureId, pic.Description, pic.PictureId);
             //}
+        }
+
+        public void ResetList()
+        {
+            this.images.Images.Clear();
+            this.listView_Pic.Items.Clear();
+            this.Pictures.Clear();
+            this.RemovedPictures.Clear();
         }
 
         private void button_Upload_Click(object sender, EventArgs e)

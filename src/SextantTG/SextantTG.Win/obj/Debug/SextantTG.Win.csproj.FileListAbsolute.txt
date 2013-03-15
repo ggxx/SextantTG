@@ -41,3 +41,8 @@ E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\Sextant
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.pdb
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.FavoriteEditForm.resources
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.CommentEditForm.resources
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.ViewTourForm.resources
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.ViewUserMainForm.resources
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.ViewUserTourForm.resources
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.TourEditForm.resources
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.SubTourEditForm.resources

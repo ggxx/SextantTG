@@ -128,7 +128,7 @@ namespace SextantTG.Win
 
         private void BindSightsList()
         {
-            string userId = Config.AppConfig.User != null && this.checkBox_Visited.Checked ? Config.AppConfig.User.UserId : "";
+            string userId = Config.AppConfig.User != null && this.checkBox_Visited.Checked ? Config.AppConfig.User.UserId : string.Empty;
             List<Sights> ds = null;
             if (comboBox_City.SelectedValue != null)
             {
@@ -177,6 +177,10 @@ namespace SextantTG.Win
             {
                 BindItem(this.listBox_Sights.SelectedItem as Sights);
             }
+            else
+            {
+                ClearBindItem();
+            }
         }
 
         private void BindItem(Sights sights)
@@ -211,6 +215,29 @@ namespace SextantTG.Win
                     this.textBox_MyStars.Text = CustomTypeConverter.ToString(fav.Stars, "n0");
                 }
             }
+        }
+
+        private void ClearBindItem()
+        {
+            this.textBox_SightsName.Text = string.Empty;
+            this.textBox_Stars.Text = string.Empty;
+            this.textBox_Country.Text = string.Empty;
+            this.textBox_Province.Text = string.Empty;
+            this.textBox_City.Text = string.Empty;
+            this.textBox_SightsLevel.Text = string.Empty;
+            this.textBox_Price.Text = string.Empty;
+            this.textBox_Description.Text = string.Empty;
+
+            this.stgReadonlyPictures.ResetList();
+
+            this.dataGridView_Comment.AutoGenerateColumns = true;
+            this.bindingSource_Comment.DataSource = null;
+
+            this.dataGridView_Blog.AutoGenerateColumns = true;
+            this.bindingSource_Blog.DataSource = null;
+
+            this.textBox_MyVisited.Text = string.Empty;
+            this.textBox_MyStars.Text = string.Empty;
         }
 
         private void textBox_FilterSightsName_TextChanged(object sender, EventArgs e)

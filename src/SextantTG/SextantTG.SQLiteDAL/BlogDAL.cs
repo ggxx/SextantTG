@@ -24,11 +24,12 @@ namespace SextantTG.SQLiteDAL
         {
             this.dbHelper = new DbHelper(connectionString, DbUtil.DbProviderType.SQLite);
         }
-        
+
         private static readonly string SELECT = "select * from stg_blog";
         private static readonly string SELECT___USER_ID = "select * from stg_blog where user_id = :UserId";
         private static readonly string SELECT___SIGHTS_ID = "select * from stg_blog where sights_id = :SightsId";
         private static readonly string SELECT___USER_ID__SIGHTS_ID = "select * from stg_blog where user_id = :UserId and sights_id = :SightsId";
+        private static readonly string SELECT___TOUR_ID = "select * from stg_blog where tour_id = :TourId";
         private static readonly string SELECT___TOUR_ID__SUB_TOUR_ID = "select * from stg_blog where tour_id = :TourId and sub_tour_id = :SubTourId";
         private static readonly string SELECT___BLOG_ID = "select * from stg_blog where blog_id = :BlogId";
 
@@ -96,9 +97,24 @@ namespace SextantTG.SQLiteDAL
         {
             List<Blog> blogs = new List<Blog>();
             Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("UserId", userId); 
+            pars.Add("UserId", userId);
             pars.Add("SightsId", sightsId);
             using (DbDataReader r = dbHelper.ExecuteReader(SELECT___USER_ID__SIGHTS_ID, pars))
+            {
+                while (r.Read())
+                {
+                    blogs.Add(BuildBlogByReader(r));
+                }
+            }
+            return blogs;
+        }
+
+        public List<Blog> GetBlogsByTourId(string tourId)
+        {
+            List<Blog> blogs = new List<Blog>();
+            Dictionary<string, object> pars = new Dictionary<string, object>();
+            pars.Add("TourId", tourId);
+            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___TOUR_ID, pars))
             {
                 while (r.Read())
                 {

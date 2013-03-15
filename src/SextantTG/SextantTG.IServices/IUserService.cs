@@ -12,6 +12,7 @@ namespace SextantTG.IServices
         User Login(string loginName, string password);
         User GetUserByLoginName(string loginName);
         User GetUserByEmail(string email);
+        User GetUserByUserId(string userId);
         List<Permission> GetPermissionsByUserId(string userId);
         bool InsertUser(User user, string password, out string message);
         bool UpdateUser(User user, out string message);

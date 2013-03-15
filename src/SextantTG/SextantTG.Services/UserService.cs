@@ -53,6 +53,11 @@ namespace SextantTG.Services
             return userDal.GetUserByEmail(email);
         }
 
+        public User GetUserByUserId(string userId)
+        {
+            return userDal.GetUserByUserId(userId);
+        }
+
         public List<User> GetUsers()
         {
             return userDal.GetUsers();
@@ -71,7 +76,7 @@ namespace SextantTG.Services
                         user.Status = 0;
                         userDal.InsertUser(user, password, trans);
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         return true;
                     }
                     catch (DbException ex)
@@ -95,7 +100,7 @@ namespace SextantTG.Services
                     {
                         userDal.UpdateUser(user, trans);
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         return true;
                     }
                     catch (DbException ex)
@@ -123,7 +128,7 @@ namespace SextantTG.Services
                             permissionDal.InsertPermission(p, trans);
                         }
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         return true;
                     }
                     catch (DbException ex)
@@ -164,7 +169,7 @@ namespace SextantTG.Services
                         }
 
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         return true;
                     }
                     catch (DbException ex)

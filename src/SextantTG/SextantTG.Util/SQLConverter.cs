@@ -14,7 +14,7 @@ namespace SextantTG.Util
         /// <returns>转换后的SQL语句</returns>
         public static string ConvertSQL1(string sql)
         {
-            string result = "";
+            string result = string.Empty;
 
             string[] arr = sql.Split(new char[] { '\'' }, StringSplitOptions.None);
 
@@ -69,7 +69,7 @@ namespace SextantTG.Util
         /// <returns>转换后的SQL语句</returns>
         public static string ConvertSQL2(string sql)
         {
-            string result = "";
+            string result = string.Empty;
 
             string[] arr = sql.Split(new char[] { '\'' }, StringSplitOptions.None);
 
@@ -99,7 +99,7 @@ namespace SextantTG.Util
         /// <returns>转换后的SQL语句</returns>
         public static string ConvertSQL3(string sql)
         {
-            string result = "";
+            string result = string.Empty;
 
             string[] arr = sql.Split(new char[] { '\'' }, StringSplitOptions.None);
 

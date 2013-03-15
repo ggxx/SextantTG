@@ -123,7 +123,7 @@ namespace SextantTG.Services
                     {
                         countryDal.InsertCountry(country, trans);
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         countries = null;
                         return true;
                     }
@@ -148,7 +148,7 @@ namespace SextantTG.Services
                     {
                         countryDal.UpdateCountry(country, trans);
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         countries = null;
                         return true;
                     }
@@ -173,7 +173,7 @@ namespace SextantTG.Services
                     {
                         countryDal.DeleteCountryByCountryId(countryId, trans);
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         countries = null;
                         return true;
                     }
@@ -198,7 +198,7 @@ namespace SextantTG.Services
                     {
                         provinceDal.InsertProvince(province, trans);
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         provinces = null;
                         return true;
                     }
@@ -223,7 +223,7 @@ namespace SextantTG.Services
                     {
                         provinceDal.UpdateProvince(province, trans);
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         provinces = null;
                         return true;
                     }
@@ -248,7 +248,7 @@ namespace SextantTG.Services
                     {
                         provinceDal.DeleteProvinceByProvinceId(provinceId, trans);
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         provinces = null;
                         return true;
                     }
@@ -273,7 +273,7 @@ namespace SextantTG.Services
                     {
                         cityDal.InsertCity(city, trans);
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         cities = null;
                         return true;
                     }
@@ -298,7 +298,7 @@ namespace SextantTG.Services
                     {
                         cityDal.UpdateCity(city, trans);
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         cities = null;
                         return true;
                     }
@@ -323,7 +323,7 @@ namespace SextantTG.Services
                     {
                         cityDal.DeleteCityByCityId(cityId, trans);
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         cities = null;
                         return true;
                     }
@@ -355,10 +355,19 @@ namespace SextantTG.Services
         }
 
 
-        public Dictionary<int, string> GetPermissions()
+        public Dictionary<int, string> GetPermissionsDict()
         {
             Dictionary<int, string> p = new Dictionary<int, string>();
             p.Add(9, "管理员");
+            return p;
+        }
+
+        public Dictionary<int, string> GetTourStatusDict()
+        {
+            Dictionary<int, string> p = new Dictionary<int, string>();
+            p.Add(0, "未进行");
+            p.Add(1, "进行中");
+            p.Add(2, "已结束");
             return p;
         }
     }

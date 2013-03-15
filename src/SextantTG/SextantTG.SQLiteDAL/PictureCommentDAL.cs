@@ -36,6 +36,7 @@ namespace SextantTG.SQLiteDAL
         private PictureComment BuildPictureCommentByReader(DbDataReader r)
         {
             PictureComment picturecomment = new PictureComment();
+            picturecomment.CommentId = CustomTypeConverter.ToString(r["comment_id"]);
             picturecomment.PictureId = CustomTypeConverter.ToString(r["picture_id"]);
             picturecomment.CommentUserId = CustomTypeConverter.ToString(r["comm_user_id"]);
             picturecomment.CreatingTime = CustomTypeConverter.ToDateTimeNull(r["creating_time"]);

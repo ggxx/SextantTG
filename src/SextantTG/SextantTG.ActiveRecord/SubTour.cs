@@ -1,13 +1,4 @@
-﻿/*********************************************************
- * 
- *        Author: 郭旭
- * Last Modified: 2013-03-05
- *     File Name: SubTour.cs
- *   Description: 子旅行实体类。对于一次旅行而言，可能游览多个景点，
- *                每个景点的游览称为一个子旅行。
- * 
- * ******************************************************/
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

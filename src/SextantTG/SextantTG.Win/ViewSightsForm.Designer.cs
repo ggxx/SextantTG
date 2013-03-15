@@ -491,7 +491,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(526, 483);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "相关图片";
+            this.tabPage2.Text = "景点图片";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // stgReadonlyPictures

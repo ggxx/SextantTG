@@ -163,7 +163,7 @@ namespace SextantTG.Services
                             pictureDal.InsertPicture(picture, trans);
                         }
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         return true;
                     }
                     catch (DbException ex)
@@ -203,7 +203,7 @@ namespace SextantTG.Services
                             pictureDal.DeletePictureByPictureId(picture.PictureId, trans);
                         }
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         return true;
                     }
                     catch (DbException ex)
@@ -227,7 +227,7 @@ namespace SextantTG.Services
                     {
                         sightsDal.DeleteSightsBySightsId(sightsId, trans);
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         return true;
                     }
                     catch (DbException ex)

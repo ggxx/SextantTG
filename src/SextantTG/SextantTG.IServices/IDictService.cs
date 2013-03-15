@@ -23,7 +23,8 @@ namespace SextantTG.IServices
         Province GetProvinceByProvinceId(string provinceId);
         City GetCityByCityId(string cityId);
 
-        Dictionary<int, string> GetPermissions();
+        Dictionary<int, string> GetPermissionsDict();
+        Dictionary<int, string> GetTourStatusDict();
 
 
         //bool UpdateCountries(List<Country> countries);

@@ -42,6 +42,11 @@ namespace SextantTG.Win
             return userSrv.GetUserByEmail(email);
         }
 
+        internal static User GetUserByUserId(string userId)
+        {
+            return userSrv.GetUserByUserId(userId);
+        }
+
         internal static bool InsertUser(User user, string password, out string message)
         {
             return userSrv.InsertUser(user, password, out message);
@@ -127,9 +132,14 @@ namespace SextantTG.Win
             return dictSrv.GetCityByCityId(cityId);
         }
 
-        internal static Dictionary<int, string> GetPermissions()
+        internal static Dictionary<int, string> GetPermissionsDict()
         {
-            return dictSrv.GetPermissions();
+            return dictSrv.GetPermissionsDict();
+        }
+
+        internal static Dictionary<int, string> GetTourStatusDict()
+        {
+            return dictSrv.GetTourStatusDict();
         }
 
         internal static bool InsertCountry(Country country, out string message)
@@ -180,7 +190,7 @@ namespace SextantTG.Win
         #endregion
 
 
-        #region Sights Service
+        #region Sights
 
         internal static List<Sights> GetSights()
         {
@@ -220,6 +230,11 @@ namespace SextantTG.Win
         internal static List<Sights> GetVisitedSightsByCityId(string cityId, string userId)
         {
             return sightsSrv.GetVisitedSightsByCityId(cityId, userId);
+        }
+
+        internal static Sights GetSightsBySightsId(string sightsId)
+        {
+            return sightsSrv.GetSightsBySightsId(sightsId);
         }
 
         internal static bool InsertSights(Sights sights, List<Picture> pictures, out string message)
@@ -352,10 +367,17 @@ namespace SextantTG.Win
         {
             return blogSrv.GetBlogsByUserIdAndSightsId(userId, sightsId);
         }
+
         internal static List<Blog> GetBlogsByTourIdAndSubTourId(string tourId, string subTourId)
         {
             return blogSrv.GetBlogsByTourIdAndSubTourId(tourId, subTourId);
         }
+
+        internal static List<Blog> GetBlogsByTourId(string tourId)
+        {
+            return blogSrv.GetBlogsByTourId(tourId);
+        }
+
         internal static Blog GetBlogByBlogId(string blogId)
         {
             return blogSrv.GetBlogByBlogId(blogId);
@@ -377,5 +399,37 @@ namespace SextantTG.Win
         }
 
         #endregion
+
+
+        #region Tour
+
+        internal static List<Tour> GetToursBySightsId(string sightsId)
+        {
+            return tourSrv.GetToursBySightsId(sightsId);
+        }
+
+        internal static List<Tour> GetToursByDate(DateTime date)
+        {
+            return tourSrv.GetToursByDate(date);
+        }
+
+        internal static List<Tour> GetToursBySightsIdAndDate(string sightsId, DateTime date)
+        {
+            return tourSrv.GetToursBySightsIdAndDate(sightsId, date);
+        }
+
+        internal static List<SubTour> GetSubToursByTourId(string tourId)
+        {
+            return tourSrv.GetSubToursByTourId(tourId);
+        }
+
+        internal static bool SaveTour(Tour tour, List<SubTour> subTours, List<SubTour> removedSubTours, out string msg)
+        {
+            return tourSrv.SaveTour( tour, subTours, removedSubTours, out msg);
+        }
+
+        #endregion
+
+
     }
 }

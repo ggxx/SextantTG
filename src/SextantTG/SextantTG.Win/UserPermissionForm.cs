@@ -12,7 +12,7 @@ namespace SextantTG.Win
 {
     public partial class UserPermissionForm : Form
     {
-        private string userId = "";
+        private string userId = string.Empty;
         
 
         public UserPermissionForm()
@@ -24,7 +24,7 @@ namespace SextantTG.Win
         {
             this.userId = userId;
             List<Permission> permissions = UIUtil.GetPermissionsByUserId(userId);
-            Dictionary<int, string> all = UIUtil.GetPermissions();
+            Dictionary<int, string> all = UIUtil.GetPermissionsDict();
 
             foreach (KeyValuePair<int, string> p in all)
             {
@@ -78,7 +78,7 @@ namespace SextantTG.Win
 
         private void button_OK_Click(object sender, EventArgs e)
         {
-            Dictionary<int, string> all = UIUtil.GetPermissions();
+            Dictionary<int, string> all = UIUtil.GetPermissionsDict();
             List<Permission> list = new List<Permission>();
             foreach (object item in this.listBox_Current.Items)
             {

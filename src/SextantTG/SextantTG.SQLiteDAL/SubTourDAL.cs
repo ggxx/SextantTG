@@ -29,7 +29,7 @@ namespace SextantTG.SQLiteDAL
         private static readonly string SELECT___TOUR_ID = "select * from stg_sub_tour where tour_id = :TourId";
         private static readonly string SELECT___TOUR_ID__SUB_TOUR_ID = "select * from stg_sub_tour where tour_id = :TourId and sub_tour_id = :SubTourId";
 
-        private static readonly string INSERT = "insert into stg_sub_tour(tour_id, sub_tour_id, sub_tour_name, sights_id, begin_date, end_date, creating_time, memos) values(:TourId, :SubTourId, :SubTourName :SightsId, :BeginDate, :EndDate, :CreatingTime, :Memos)";
+        private static readonly string INSERT = "insert into stg_sub_tour(tour_id, sub_tour_id, sub_tour_name, sights_id, begin_date, end_date, creating_time, memos) values(:TourId, :SubTourId, :SubTourName, :SightsId, :BeginDate, :EndDate, :CreatingTime, :Memos)";
         private static readonly string UPDATE = "update stg_sub_tour set sub_tour_name = :SubTourName, sights_id = :SightsId, begin_date = :BeginDate, end_date = :EndDate, creating_time = :CreatingTime, memos = :Memos where tour_id = :TourId and sub_tour_id =: SubTourId";
         private static readonly string DELETE = "delete from stg_sub_tour where tour_id = :TourId and sub_tour_id = :SubTourId";
 
@@ -91,20 +91,21 @@ namespace SextantTG.SQLiteDAL
             return subtours;
         }
 
-        public int InsertSubTour(SubTour subtour, DbTransaction trans)
+        public int InsertSubTour(SubTour subTour, DbTransaction trans)
         {
-            subtour.SubTourId = StringHelper.CreateGuid();
-            subtour.CreatingTime = DateTime.Now;
+            if(string.IsNullOrEmpty(subTour.SubTourId))
+                subTour.SubTourId = StringHelper.CreateGuid();
+            subTour.CreatingTime = DateTime.Now;
 
             Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("TourId", subtour.TourId);
-            pars.Add("SubTourId", subtour.SubTourId);
-            pars.Add("SubTourName", subtour.SubTourName);
-            pars.Add("SightsId", subtour.SightsId);
-            pars.Add("BeginDate", subtour.BeginDate);
-            pars.Add("EndDate", subtour.EndDate);
-            pars.Add("CreatingTime", subtour.CreatingTime);
-            pars.Add("Memos", subtour.Memos);
+            pars.Add("TourId", subTour.TourId);
+            pars.Add("SubTourId", subTour.SubTourId);
+            pars.Add("SubTourName", subTour.SubTourName);
+            pars.Add("SightsId", subTour.SightsId);
+            pars.Add("BeginDate", subTour.BeginDate);
+            pars.Add("EndDate", subTour.EndDate);
+            pars.Add("CreatingTime", subTour.CreatingTime);
+            pars.Add("Memos", subTour.Memos);
             return dbHelper.ExecuteNonQuery(trans, INSERT, pars);
         }
 

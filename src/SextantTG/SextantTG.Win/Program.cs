@@ -17,7 +17,7 @@ namespace SextantTG.Win
             Application.SetCompatibleTextRenderingDefault(false);
 
             //检测数据库文件
-            //if (!System.IO.File.Exists("")) { }
+            //if (!System.IO.File.Exists(string.Empty)) { }
 
             //登录
             LoginForm loginForm = new LoginForm();

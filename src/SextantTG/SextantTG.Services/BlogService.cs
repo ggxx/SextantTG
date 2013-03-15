@@ -38,6 +38,11 @@ namespace SextantTG.Services
             return blogDal.GetBlogsByUserIdAndSightsId(userId, sightsId);
         }
 
+        public List<Blog> GetBlogsByTourId(string tourId)
+        {
+            return blogDal.GetBlogsByTourId(tourId);
+        }
+
         public List<Blog> GetBlogsByTourIdAndSubTourId(string tourId, string subTourId)
         {
             return blogDal.GetBlogsByTourIdAndSubTourId(tourId, subTourId);
@@ -63,7 +68,7 @@ namespace SextantTG.Services
                             picDal.InsertPicture(pic, trans);
                         }
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         return true;
                     }
                     catch (Exception ex)
@@ -93,7 +98,7 @@ namespace SextantTG.Services
                         }
 
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         return true;
                     }
                     catch (Exception ex)
@@ -117,7 +122,7 @@ namespace SextantTG.Services
                     {
                         blogDal.DeleteBlogById(blogId, trans);
                         trans.Commit();
-                        message = "";
+                        message = string.Empty;
                         return true;
                     }
                     catch (Exception ex)

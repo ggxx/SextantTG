@@ -36,6 +36,7 @@ namespace SextantTG.SQLiteDAL
         private TourComment BuildTourCommentByReader(DbDataReader r)
         {
             TourComment tourcomment = new TourComment();
+            tourcomment.CommentId = CustomTypeConverter.ToString(r["comment_id"]);
             tourcomment.TourId = CustomTypeConverter.ToString(r["tour_id"]);
             tourcomment.CommentUserId = CustomTypeConverter.ToString(r["comm_user_id"]);
             tourcomment.CreatingTime = CustomTypeConverter.ToDateTimeNull(r["creating_time"]);
