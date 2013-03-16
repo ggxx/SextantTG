@@ -53,7 +53,7 @@ namespace SextantTG.Win
         {
             if (string.IsNullOrEmpty(this.textBox.Text.Trim()))
             {
-                MessageBox.Show("评论内容不能为空", "提示");
+                MessageBox.Show("评论内容不能为空", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -103,7 +103,7 @@ namespace SextantTG.Win
             }
             else
             {
-                MessageBox.Show("操作失败\r\n" + msg, "提示");
+                MessageBox.Show("操作失败\r\n" + msg, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }

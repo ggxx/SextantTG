@@ -43,6 +43,7 @@
     <Compile Include="IBlogService.cs" />
     <Compile Include="ICommentService.cs" />
     <Compile Include="IDictService.cs" />
+    <Compile Include="IPictureService.cs" />
     <Compile Include="ISightsService.cs" />
     <Compile Include="ITourService.cs" />
     <Compile Include="IUserService.cs" />

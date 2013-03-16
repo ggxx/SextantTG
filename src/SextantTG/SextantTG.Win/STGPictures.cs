@@ -89,7 +89,7 @@ namespace SextantTG.Win
             using (OpenFileDialog dialog = new OpenFileDialog())
             {
                 dialog.Multiselect = true;
-                dialog.Filter = "Image Files(*.BMP;*.JPG;*.JPEG;*.GIF;*.PNG)|*.BMP;*.JPG;*.JPEG;*.GIF;*.PNG";
+                dialog.Filter = "图片文件(*.BMP;*.JPG;*.JPEG;*.GIF;*.PNG)|*.BMP;*.JPG;*.JPEG;*.GIF;*.PNG";
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     foreach (string p in dialog.FileNames)
@@ -157,6 +157,47 @@ namespace SextantTG.Win
             {
                 this.Pictures[this.listView_Pic.SelectedIndices[0]].Description = this.textBox_Desc.Text.Trim();
             }
+        }
+
+        private void listView_Pic_MouseClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Right && this.listView_Pic.SelectedItems != null)
+            {
+                if (this.Pictures[this.listView_Pic.SelectedIndices[0]].PictureId.StartsWith("_"))
+                {
+                    this.addCommentToolStripMenuItem.Visible = false;
+                }
+                else
+                {
+                    this.addCommentToolStripMenuItem.Visible = true;
+                }
+                this.contextMenuStrip.Show(this.listView_Pic, e.Location);
+            }
+        }
+
+        private void viewPictureToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string picFile = PicPath + this.Pictures[this.listView_Pic.SelectedIndices[0]].Path;
+            string picId = this.Pictures[this.listView_Pic.SelectedIndices[0]].PictureId;
+            using (PictureForm form = new PictureForm(picFile, picId, false))
+            {
+                form.ShowDialog();
+            }
+        }
+
+        private void addCommentToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            using (CommentEditForm form = new CommentEditForm(this.Pictures[this.listView_Pic.SelectedIndices[0]]))
+            {
+                if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                { }
+            }
+        }
+
+        private void saveAsToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            string picFile = PicPath + this.Pictures[this.listView_Pic.SelectedIndices[0]].Path;
+            FileUtil.SaveFile(picFile, true);
         }
     }
 }

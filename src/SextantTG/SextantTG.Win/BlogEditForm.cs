@@ -62,13 +62,13 @@ namespace SextantTG.Win
         {
             if (string.IsNullOrEmpty(this.textBox_Title.Text.Trim()))
             {
-                MessageBox.Show("日志标题不能为空", "提示");
+                MessageBox.Show("日志标题不能为空", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
             if (string.IsNullOrEmpty(this.textBox_Content.Text.Trim()))
             {
-                MessageBox.Show("日志正文不能为空", "提示");
+                MessageBox.Show("日志正文不能为空", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -83,7 +83,7 @@ namespace SextantTG.Win
             }
             else
             {
-                MessageBox.Show("操作失败\r\n" + msg, "提示");
+                MessageBox.Show("操作失败\r\n" + msg, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }

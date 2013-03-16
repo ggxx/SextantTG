@@ -16,6 +16,7 @@ namespace SextantTG.IServices
         private static readonly string COMMENT_SERVICE = ConfigurationManager.AppSettings["COMMENT_SERVICE"];
         private static readonly string SIGHTS_SERVICE = ConfigurationManager.AppSettings["SIGHTS_SERVICE"];
         private static readonly string TOUR_SERVICE = ConfigurationManager.AppSettings["TOUR_SERVICE"];
+        private static readonly string PICTURE_SERVICE = ConfigurationManager.AppSettings["PICTURE_SERVICE"];
 
         public static T CreateService<T>() where T : IBaseService
         {
@@ -27,6 +28,7 @@ namespace SextantTG.IServices
             else if (type.Equals(typeof(ICommentService))) { t = (T)Assembly.Load(SERVICES).CreateInstance(COMMENT_SERVICE); }
             else if (type.Equals(typeof(ISightsService))) { t = (T)Assembly.Load(SERVICES).CreateInstance(SIGHTS_SERVICE); }
             else if (type.Equals(typeof(ITourService))) { t = (T)Assembly.Load(SERVICES).CreateInstance(TOUR_SERVICE); }
+            else if (type.Equals(typeof(IPictureService))) { t = (T)Assembly.Load(SERVICES).CreateInstance(PICTURE_SERVICE); }
             else { throw new ArgumentException("Type of T is unkown"); }
 
             if (t != null) { return t; }

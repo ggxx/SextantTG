@@ -43,7 +43,7 @@ namespace SextantTG.Win
                     user.Status = 1;
                     if (!UIUtil.UpdateUser(user, out msg))
                     {
-                        MessageBox.Show("操作失败\r\n" + msg, "提示");
+                        MessageBox.Show("操作失败\r\n" + msg, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     else
@@ -65,7 +65,7 @@ namespace SextantTG.Win
                     user.Status = 0;
                     if (!UIUtil.UpdateUser(user, out msg))
                     {
-                        MessageBox.Show("操作失败\r\n" + msg, "提示");
+                        MessageBox.Show("操作失败\r\n" + msg, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         return;
                     }
                     else

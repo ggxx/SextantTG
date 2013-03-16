@@ -37,7 +37,7 @@ namespace SextantTG.Win
 
             if (string.IsNullOrEmpty(loginName) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("用户名和口令均不能为空", "提示");
+                MessageBox.Show("用户名和口令均不能为空", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -46,7 +46,7 @@ namespace SextantTG.Win
             {
                 if (Config.AppConfig.User.Status == 1)
                 {
-                    MessageBox.Show("该用户名已被禁止登录", "提示");
+                    MessageBox.Show("该用户名已被禁止登录", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
 
@@ -56,7 +56,7 @@ namespace SextantTG.Win
             }
             else
             {
-                MessageBox.Show("用户名或口令错误", "提示");
+                MessageBox.Show("用户名或口令错误", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
         }

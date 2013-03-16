@@ -3,6 +3,9 @@
   <PropertyGroup>
     <StartupObject>SextantTG.Win.Program</StartupObject>
   </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>Sextant.ico</ApplicationIcon>
+  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -96,6 +99,7 @@
     <Compile Include="FavoriteEditForm.Designer.cs">
       <DependentUpon>FavoriteEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="FileUtil.cs" />
     <Compile Include="FindSubTourForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +117,12 @@
     </Compile>
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="PictureForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="PictureForm.Designer.cs">
+      <DependentUpon>PictureForm.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -263,6 +273,9 @@
     <EmbeddedResource Include="MyTourPicturesForm.resx">
       <DependentUpon>MyTourPicturesForm.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="PictureForm.resx">
+      <DependentUpon>PictureForm.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
@@ -344,36 +357,18 @@
       <Project>{DD4377A0-3082-4F4E-BF11-FD95D6B6B798}</Project>
       <Name>SextantTG.ActiveRecord</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SextantTG.DBUtil\SextantTG.DbUtil.csproj">
-      <Project>{0D10F093-09C6-4F15-B904-8023B55630CF}</Project>
-      <Name>SextantTG.DbUtil</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SextantTG.IDAL\SextantTG.IDAL.csproj">
-      <Project>{7B30ECE6-DFFB-477F-B0DA-58AED795687B}</Project>
-      <Name>SextantTG.IDAL</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SextantTG.IServices\SextantTG.IServices.csproj">
       <Project>{A8D6C61A-6C22-438A-99FF-A598575D6B6B}</Project>
       <Name>SextantTG.IServices</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SextantTG.ServerTest\SextantTG.ServerTest.csproj">
-      <Project>{8DB06A46-1F6A-43B8-B885-E3B8C26F24A6}</Project>
-      <Name>SextantTG.ServerTest</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SextantTG.Services\SextantTG.Services.csproj">
-      <Project>{6067CAE1-406C-44F2-8B68-823595B491C5}</Project>
-      <Name>SextantTG.Services</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SextantTG.SQLiteDAL\SextantTG.SQLiteDAL.csproj">
-      <Project>{E8DB7C60-3532-4CE4-B527-9EE4270B5890}</Project>
-      <Name>SextantTG.SQLiteDAL</Name>
     </ProjectReference>
     <ProjectReference Include="..\SextantTG.Util\SextantTG.Util.csproj">
       <Project>{2BFB5DFD-3BCF-45B9-92D2-E7A24A3343A7}</Project>
       <Name>SextantTG.Util</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Content Include="Sextant.ico" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

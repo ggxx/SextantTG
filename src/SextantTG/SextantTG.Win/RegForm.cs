@@ -28,32 +28,32 @@ namespace SextantTG.Win
             // 口令相同
             if (!password.Equals(password2))
             {
-                MessageBox.Show("两次输入的口令不一致", "提示");
+                MessageBox.Show("两次输入的口令不一致", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             // 非空
             if (string.IsNullOrEmpty(loginName) || string.IsNullOrEmpty(email) || string.IsNullOrEmpty(password))
             {
-                MessageBox.Show("用户信息不能为空", "提示");
+                MessageBox.Show("用户信息不能为空", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             // 唯一
             if (UIUtil.GetUserByLoginName(loginName) != null)
             {
-                MessageBox.Show("用户名已被使用", "提示");
+                MessageBox.Show("用户名已被使用", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
             if (UIUtil.GetUserByEmail(email) != null)
             {
-                MessageBox.Show("Email地址已被使用", "提示");
+                MessageBox.Show("Email地址已被使用", "提示", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             if (!Util.StringHelper.IsEmail(email))
             {
-                MessageBox.Show("Email格式不正确", "提示");
+                MessageBox.Show("Email格式不正确", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -68,7 +68,7 @@ namespace SextantTG.Win
             }
             else
             {
-                MessageBox.Show("操作失败\r\n" + msg, "提示");
+                MessageBox.Show("操作失败\r\n" + msg, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }

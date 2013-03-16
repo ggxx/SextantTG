@@ -132,7 +132,7 @@ namespace SextantTG.SQLiteDAL
             pars.Add("CommUserId", pictureComment.CommentUserId);
             pars.Add("CreatingTime", pictureComment.CreatingTime);
             pars.Add("Comment", pictureComment.Comment);
-
+            pars.Add("CommentId", pictureComment.CommentId);
             return dbHelper.ExecuteNonQuery(trans, INSERT, pars);
         }
 
@@ -143,6 +143,7 @@ namespace SextantTG.SQLiteDAL
             pars.Add("CommUserId", pictureComment.CommentUserId);
             pars.Add("CreatingTime", pictureComment.CreatingTime);
             pars.Add("Comment", pictureComment.Comment);
+            pars.Add("CommentId", pictureComment.CommentId);
             return dbHelper.ExecuteNonQuery(trans, UPDATE, pars);
         }
 

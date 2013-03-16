@@ -18,6 +18,7 @@ namespace SextantTG.Win
         private static readonly ISightsService sightsSrv = ServiceFactory.CreateService<ISightsService>();
         private static readonly ITourService tourSrv = ServiceFactory.CreateService<ITourService>();
         private static readonly IUserService userSrv = ServiceFactory.CreateService<IUserService>();
+        private static readonly IPictureService pictureSrv = ServiceFactory.CreateService<IPictureService>();
 
 
         #region User Services
@@ -460,15 +461,16 @@ namespace SextantTG.Win
 
         #endregion
 
+
         internal static bool SavePictures(List<Picture> pictures, List<Picture> removedPictures, out string message)
         {
-            return tourSrv.SavePictures(pictures, removedPictures, out message);
+            return pictureSrv.SavePictures(pictures, removedPictures, out message);
         }
 
-
-
-
-
+        internal static Picture GetPictureByPictureId(string pictureId)
+        {
+            return pictureSrv.GetPictureByPictureId(pictureId);
+        }
 
     }
 }

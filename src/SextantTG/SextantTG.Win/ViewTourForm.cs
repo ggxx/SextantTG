@@ -204,7 +204,7 @@ namespace SextantTG.Win
                 }
                 else
                 {
-                    MessageBox.Show("请指定一个景点", "提示");
+                    MessageBox.Show("请指定一个景点", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
             }
@@ -216,7 +216,7 @@ namespace SextantTG.Win
                 }
                 else
                 {
-                    MessageBox.Show("请指定一个有效的日期", "提示");
+                    MessageBox.Show("请指定一个有效的日期", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
             }
@@ -230,19 +230,19 @@ namespace SextantTG.Win
                     }
                     else
                     {
-                        MessageBox.Show("请指定一个有效的日期", "提示");
+                        MessageBox.Show("请指定一个有效的日期", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         return;
                     }
                 }
                 else
                 {
-                    MessageBox.Show("请指定一个景点", "提示");
+                    MessageBox.Show("请指定一个景点", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                     return;
                 }
             }
             else
             {
-                MessageBox.Show("至少选择一种查询方式", "提示");
+                MessageBox.Show("至少选择一种查询方式", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
         }

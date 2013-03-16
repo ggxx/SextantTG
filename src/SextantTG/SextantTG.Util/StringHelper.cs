@@ -77,14 +77,14 @@ namespace SextantTG.Util
         }
 
 
-        private static readonly string strRegex = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
-        private static readonly Regex re = new Regex(strRegex);
+        private static readonly string emailRegexString = @"^([a-zA-Z0-9_\-\.]+)@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.)|(([a-zA-Z0-9\-]+\.)+))([a-zA-Z]{2,4}|[0-9]{1,3})(\]?)$";
+        private static readonly Regex emailRegex = new Regex(emailRegexString);
 
         public static bool IsEmail(string inputEmail)
         {
             if (!string.IsNullOrEmpty(inputEmail))
             {
-                if (re.IsMatch(inputEmail))
+                if (emailRegex.IsMatch(inputEmail))
                     return true;
                 else
                     return false;

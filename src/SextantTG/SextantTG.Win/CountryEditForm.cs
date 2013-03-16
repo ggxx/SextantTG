@@ -54,7 +54,7 @@ namespace SextantTG.Win
             }
             else
             {
-                MessageBox.Show("保存失败\r\n" + msg, "提示");
+                MessageBox.Show("操作失败\r\n" + msg, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }

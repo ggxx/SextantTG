@@ -46,8 +46,8 @@ namespace SextantTG.Win
             this.comboBox_Province.SelectedValue = province;
             this.comboBox_City.SelectedValue = city;
             this.comboBox_Sights.SelectedValue = this.SubTour.SightsId;
-            this.dateTimePicker_Begin.Value = this.SubTour.BeginDate.Value;
-            this.dateTimePicker_End.Value = this.SubTour.EndDate.Value;
+            this.dateTimePicker_Begin.Value = this.SubTour.BeginDate.Value.Date;
+            this.dateTimePicker_End.Value = this.SubTour.EndDate.Value.Date;
             this.textBox_Memos.Text = this.SubTour.Memos;
         }
 
@@ -94,12 +94,12 @@ namespace SextantTG.Win
         {
             if (string.IsNullOrEmpty(this.textBox_TourName.Text.Trim()))
             {
-                MessageBox.Show("行程名称不能为空", "提示");
+                MessageBox.Show("行程名称不能为空", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             if (this.comboBox_Sights.SelectedValue == null)
             {
-                MessageBox.Show("景点不能为空", "提示");
+                MessageBox.Show("景点不能为空", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 

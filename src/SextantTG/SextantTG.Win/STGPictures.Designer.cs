@@ -28,13 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label1 = new System.Windows.Forms.Label();
             this.textBox_Desc = new System.Windows.Forms.TextBox();
             this.button_Delete = new System.Windows.Forms.Button();
             this.listView_Pic = new System.Windows.Forms.ListView();
             this.button_Upload = new System.Windows.Forms.Button();
+            this.contextMenuStrip = new System.Windows.Forms.ContextMenuStrip(this.components);
+            this.viewPictureToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.addCommentToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.saveAsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.groupBox1.SuspendLayout();
+            this.contextMenuStrip.SuspendLayout();
             this.SuspendLayout();
             // 
             // groupBox1
@@ -96,6 +102,7 @@
             this.listView_Pic.UseCompatibleStateImageBehavior = false;
             this.listView_Pic.View = System.Windows.Forms.View.Tile;
             this.listView_Pic.SelectedIndexChanged += new System.EventHandler(this.listView_Pic_SelectedIndexChanged);
+            this.listView_Pic.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView_Pic_MouseClick);
             // 
             // button_Upload
             // 
@@ -108,6 +115,36 @@
             this.button_Upload.UseVisualStyleBackColor = true;
             this.button_Upload.Click += new System.EventHandler(this.button_Upload_Click);
             // 
+            // contextMenuStrip
+            // 
+            this.contextMenuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.viewPictureToolStripMenuItem,
+            this.addCommentToolStripMenuItem,
+            this.saveAsToolStripMenuItem});
+            this.contextMenuStrip.Name = "contextMenuStrip";
+            this.contextMenuStrip.Size = new System.Drawing.Size(161, 92);
+            // 
+            // viewPictureToolStripMenuItem
+            // 
+            this.viewPictureToolStripMenuItem.Name = "viewPictureToolStripMenuItem";
+            this.viewPictureToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.viewPictureToolStripMenuItem.Text = "查看大图(&P)";
+            this.viewPictureToolStripMenuItem.Click += new System.EventHandler(this.viewPictureToolStripMenuItem_Click);
+            // 
+            // addCommentToolStripMenuItem
+            // 
+            this.addCommentToolStripMenuItem.Name = "addCommentToolStripMenuItem";
+            this.addCommentToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.addCommentToolStripMenuItem.Text = "添加评论(&C)";
+            this.addCommentToolStripMenuItem.Click += new System.EventHandler(this.addCommentToolStripMenuItem_Click);
+            // 
+            // saveAsToolStripMenuItem
+            // 
+            this.saveAsToolStripMenuItem.Name = "saveAsToolStripMenuItem";
+            this.saveAsToolStripMenuItem.Size = new System.Drawing.Size(160, 22);
+            this.saveAsToolStripMenuItem.Text = "目标另存为(&S)...";
+            this.saveAsToolStripMenuItem.Click += new System.EventHandler(this.saveAsToolStripMenuItem_Click);
+            // 
             // STGPictures
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -117,6 +154,7 @@
             this.Size = new System.Drawing.Size(583, 327);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.contextMenuStrip.ResumeLayout(false);
             this.ResumeLayout(false);
 
         }
@@ -129,5 +167,9 @@
         private System.Windows.Forms.Button button_Upload;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox textBox_Desc;
+        private System.Windows.Forms.ContextMenuStrip contextMenuStrip;
+        private System.Windows.Forms.ToolStripMenuItem viewPictureToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem addCommentToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem saveAsToolStripMenuItem;
     }
 }

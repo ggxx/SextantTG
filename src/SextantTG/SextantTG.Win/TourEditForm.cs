@@ -107,17 +107,17 @@ namespace SextantTG.Win
             List<SubTour> subTours = this.bindingSource.DataSource as List<SubTour>;
             if (string.IsNullOrEmpty(this.textBox_TourName.Text.Trim()))
             {
-                MessageBox.Show("旅行名称不能为空", "提示");
+                MessageBox.Show("旅行名称不能为空", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             if (this.comboBox_Status.SelectedIndex < 0)
             {
-                MessageBox.Show("旅行状态不能为空", "提示");
+                MessageBox.Show("旅行状态不能为空", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             if (subTours.Count < 1)
             {
-                MessageBox.Show("至少填写一项行程", "提示");
+                MessageBox.Show("至少填写一项行程", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -128,8 +128,8 @@ namespace SextantTG.Win
             }
 
             tour.TourName = this.textBox_TourName.Text.Trim();
-            tour.BeginDate = this.dateTimePicker_Begin.Value;
-            tour.EndDate = this.dateTimePicker_End.Value;
+            tour.BeginDate = this.dateTimePicker_Begin.Value.Date;
+            tour.EndDate = this.dateTimePicker_End.Value.Date;
             tour.Cost = (int?)this.numericUpDown_Cost.Value;
             tour.Status = this.comboBox_Status.SelectedIndex;
             tour.Memos = this.textBox_Memos.Text;
@@ -142,7 +142,7 @@ namespace SextantTG.Win
             }
             else
             {
-                MessageBox.Show("操作失败\r\n" + msg, "提示");
+                MessageBox.Show("操作失败\r\n" + msg, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }

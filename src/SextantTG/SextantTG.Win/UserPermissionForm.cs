@@ -13,7 +13,7 @@ namespace SextantTG.Win
     public partial class UserPermissionForm : Form
     {
         private string userId = string.Empty;
-        
+
 
         public UserPermissionForm()
         {
@@ -103,7 +103,7 @@ namespace SextantTG.Win
             }
             else
             {
-                MessageBox.Show("操作失败", "提示");
+                MessageBox.Show("操作失败\r\n" + msg, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }

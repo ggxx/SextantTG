@@ -53,17 +53,17 @@ namespace SextantTG.Win
         {
             if (string.IsNullOrEmpty(this.textBox_SightsName.Text.Trim()))
             {
-                MessageBox.Show("景点名称不能为空", "提示");
+                MessageBox.Show("景点名称不能为空", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             if (this.comboBox_City.SelectedValue == null)
             {
-                MessageBox.Show("所属城市不能为空", "提示");
+                MessageBox.Show("所属城市不能为空", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
             if (string.IsNullOrEmpty(this.comboBox_SightsLevel.Text))
             {
-                MessageBox.Show("景点等级不能为空", "提示");
+                MessageBox.Show("景点等级不能为空", "提示", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 return;
             }
 
@@ -102,7 +102,7 @@ namespace SextantTG.Win
             }
             else
             {
-                MessageBox.Show("保存失败\r\n" + msg, "提示");
+                MessageBox.Show("保存失败\r\n" + msg, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
         }

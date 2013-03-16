@@ -17,7 +17,12 @@ namespace SextantTG.Win
             Application.SetCompatibleTextRenderingDefault(false);
 
             //检测数据库文件
-            //if (!System.IO.File.Exists(string.Empty)) { }
+            if (!System.IO.File.Exists(System.Configuration.ConfigurationManager.AppSettings["DB_FILE"]))
+            {
+                MessageBox.Show("数据库文件丢失", "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
 
             //登录
             LoginForm loginForm = new LoginForm();

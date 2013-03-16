@@ -32,11 +32,6 @@ namespace SextantTG.IServices
         bool DeleteSubTourByTourIdAndSubTourId(string tourId, string subTourId, out string message);
 
 
-        bool SavePictures(List<Picture> pictures, List<Picture> removedPictures, out string message);
-
-
-
-
 
 
     }
