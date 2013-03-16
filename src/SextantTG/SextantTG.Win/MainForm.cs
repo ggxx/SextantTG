@@ -45,10 +45,12 @@ namespace SextantTG.Win
             if (Config.AppConfig.User != null)
             {
                 myToolStripMenuItem.Visible = true;
+                newTourToolStripButton.Enabled = true;
             }
             else
             {
                 myToolStripMenuItem.Visible = false;
+                newTourToolStripButton.Enabled = false;
             }
 
             if (Config.AppConfig.Permissions != null && Config.AppConfig.Permissions.Exists(delegate(Permission p)
@@ -114,7 +116,10 @@ namespace SextantTG.Win
 
         private void newTourToolStripButton_Click(object sender, EventArgs e)
         {
-
+            using (TourEditForm form = new TourEditForm())
+            {
+                form.ShowDialog();
+            }
         }
 
         private void myTourToolStripMenuItem_Click(object sender, EventArgs e)

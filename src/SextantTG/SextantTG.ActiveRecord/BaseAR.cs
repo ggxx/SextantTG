@@ -7,6 +7,5 @@ namespace SextantTG.ActiveRecord
 {
     public class BaseAR
     {
-
     }
 }

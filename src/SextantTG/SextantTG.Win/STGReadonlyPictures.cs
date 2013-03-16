@@ -21,7 +21,7 @@ namespace SextantTG.Win
         {
             InitializeComponent();
             Pictures = new List<Picture>();
-            images.ImageSize = new Size(256, 256);
+            images.ImageSize = new Size(32, 32);
             this.listView_Pic.LargeImageList = images;
         }
 

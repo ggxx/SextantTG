@@ -49,5 +49,10 @@ namespace SextantTG.ActiveRecord
         /// 创建时间
         /// </summary>
         public DateTime? CreatingTime { get; set; }
+
+        public string PrintKey()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

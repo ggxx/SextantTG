@@ -15,7 +15,7 @@ namespace SextantTG.ServerTest
         static void Main(string[] args)
         {
 
-            //这里是Factory设计模式
+            //测试Factory模式
             //IBlogDAL blogDal = IDAL.DALFactory.CreateDAL<IBlogDAL>();
             //if (blogDal != null)
             //{
