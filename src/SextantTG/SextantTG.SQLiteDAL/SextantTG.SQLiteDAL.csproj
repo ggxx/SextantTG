@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AbstractDAL.cs" />
     <Compile Include="BlogDAL.cs" />
     <Compile Include="CityDAL.cs" />
     <Compile Include="CountryDAL.cs" />

@@ -205,6 +205,7 @@
             this.Controls.Add(this.button_OK);
             this.Controls.Add(this.button_Cancel);
             this.Name = "BlogEditForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "日志编辑";
             this.Load += new System.EventHandler(this.BlogEditForm_Load);
             this.groupBox1.ResumeLayout(false);

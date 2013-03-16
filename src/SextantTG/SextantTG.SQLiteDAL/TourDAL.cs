@@ -11,32 +11,11 @@ using System.Configuration;
 
 namespace SextantTG.SQLiteDAL
 {
-    public class TourDAL : ITourDAL
+    public class TourDAL : AbstractDAL<Tour>, ITourDAL
     {
-        private DbHelper dbHelper = null;
+        public TourDAL() { }
 
-        public TourDAL()
-        {
-            this.dbHelper = new DbHelper(ConfigurationManager.ConnectionStrings["SQLiteConnection"].ConnectionString, DbUtil.DbProviderType.SQLite);
-        }
-
-        public TourDAL(string connectionString)
-        {
-            this.dbHelper = new DbHelper(connectionString, DbUtil.DbProviderType.SQLite);
-        }
-
-        private static readonly string SELECT = "select * from stg_tour order by creating_time";
-        private static readonly string SELECT___TOUR_ID = "select * from stg_tour where tour_id = :TourId order by creating_time";
-        private static readonly string SELECT___USER_ID = "select * from stg_tour where user_id = :UserId order by creating_time";
-        private static readonly string SELECT___SIGHTS_ID = "select distinct stg_tour.* from stg_tour, stg_sub_tour where stg_tour.tour_id = stg_sub_tour.tour_id and stg_sub_tour.sights_id = :SightsId order by stg_tour.creating_time";
-        private static readonly string SELECT___SIGHTS_ID___DATE = "select distinct stg_tour.* from stg_tour, stg_sub_tour where stg_tour.tour_id = stg_sub_tour.tour_id and stg_sub_tour.sights_id = :SightsId and :Date between stg_tour.begin_date and stg_tour.end_date order by stg_tour.creating_time";
-        private static readonly string SELECT___DATE = "select * from stg_tour where :Date between begin_date and end_date order by creating_time";
-
-        private static readonly string INSERT = "insert into stg_tour(tour_id, tour_name, user_id, begin_date, end_date, cost, status, creating_time, memos) values(:TourId, :TourName, :UserId, :BeginDate, :EndDate, :Cost, :Status, :CreatingTime, :Memos)";
-        private static readonly string UPDATE = "update stg_tour set tour_name = :TourName, user_id = :UserId, begin_date = :BeginDate, end_date = :EndDate, cost = :Cost, status = :Status, creating_time = :CreatingTime, memos = :Memos where tour_id = :TourId";
-        private static readonly string DELETE = "delete from stg_tour where tour_id = :TourId";
-
-        private Tour BuildTourByReader(DbDataReader r)
+        protected override Tour BuildObjectByReader(DbDataReader r)
         {
             Tour tour = new Tour();
             tour.TourId = CustomTypeConverter.ToString(r["tour_id"]);
@@ -51,92 +30,57 @@ namespace SextantTG.SQLiteDAL
             return tour;
         }
 
+        private static readonly string SELECT = "select * from stg_tour order by begin_date";
+        private static readonly string SELECT___TOUR_ID = "select * from stg_tour where tour_id = :TourId order by begin_date";
+        private static readonly string SELECT___USER_ID = "select * from stg_tour where user_id = :UserId order by begin_date";
+        private static readonly string SELECT___SIGHTS_ID = "select distinct stg_tour.* from stg_tour, stg_sub_tour where stg_tour.tour_id = stg_sub_tour.tour_id and stg_sub_tour.sights_id = :SightsId order by stg_tour.begin_date";
+        private static readonly string SELECT___SIGHTS_ID___DATE = "select distinct stg_tour.* from stg_tour, stg_sub_tour where stg_tour.tour_id = stg_sub_tour.tour_id and stg_sub_tour.sights_id = :SightsId and :Date between stg_tour.begin_date and stg_tour.end_date order by stg_tour.begin_date";
+        private static readonly string SELECT___DATE = "select * from stg_tour where :Date between begin_date and end_date order by begin_date";
+
+        private static readonly string INSERT = "insert into stg_tour(tour_id, tour_name, user_id, begin_date, end_date, cost, status, creating_time, memos) values(:TourId, :TourName, :UserId, :BeginDate, :EndDate, :Cost, :Status, :CreatingTime, :Memos)";
+        private static readonly string UPDATE = "update stg_tour set tour_name = :TourName, user_id = :UserId, begin_date = :BeginDate, end_date = :EndDate, cost = :Cost, status = :Status, creating_time = :CreatingTime, memos = :Memos where tour_id = :TourId";
+        private static readonly string DELETE = "delete from stg_tour where tour_id = :TourId";
+
+
         public List<Tour> GetTours()
         {
-            List<Tour> tour = new List<Tour>();
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT))
-            {
-                while (r.Read())
-                {
-                    tour.Add(BuildTourByReader(r));
-                }
-            }
-            return tour;
+            return this.GetList(SELECT, null);
         }
 
         public List<Tour> GetToursByUserId(string userId)
         {
-            List<Tour> tour = new List<Tour>();
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("UserId", userId);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___USER_ID, pars))
-            {
-                while (r.Read())
-                {
-                    tour.Add(BuildTourByReader(r));
-                }
-            }
-            return tour;
+            return this.GetList(SELECT___USER_ID, pars);
         }
 
         public Tour GetTourByTourId(string tourId)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("TourId", tourId);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___TOUR_ID, pars))
-            {
-                if (r.Read())
-                {
-                    return BuildTourByReader(r);
-                }
-            }
-            return null;
+            return this.GetObject(SELECT___TOUR_ID, pars);
         }
 
         public List<Tour> GetToursBySightsId(string sightsId)
         {
-            List<Tour> tour = new List<Tour>();
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("SightsId", sightsId);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___SIGHTS_ID, pars))
-            {
-                while (r.Read())
-                {
-                    tour.Add(BuildTourByReader(r));
-                }
-            }
-            return tour;
+            return this.GetList(SELECT___SIGHTS_ID, pars);
         }
 
         public List<Tour> GetToursByDate(DateTime date)
         {
-            List<Tour> tour = new List<Tour>();
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("Date", date);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___DATE, pars))
-            {
-                while (r.Read())
-                {
-                    tour.Add(BuildTourByReader(r));
-                }
-            }
-            return tour;
+            return this.GetList(SELECT___DATE, pars);
         }
 
         public List<Tour> GetToursBySightsIdAndDate(string sightsId, DateTime date)
         {
-            List<Tour> tour = new List<Tour>();
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("SightsId", sightsId);
             pars.Add("Date", date);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___SIGHTS_ID___DATE, pars))
-            {
-                while (r.Read())
-                {
-                    tour.Add(BuildTourByReader(r));
-                }
-            }
-            return tour;
+            return this.GetList(SELECT___SIGHTS_ID___DATE, pars);
         }
 
         public int InsertTour(Tour tour, DbTransaction trans)
@@ -155,7 +99,7 @@ namespace SextantTG.SQLiteDAL
             pars.Add("Status", tour.Status);
             pars.Add("CreatingTime", tour.CreatingTime);
             pars.Add("Memos", tour.Memos);
-            return dbHelper.ExecuteNonQuery(trans, INSERT, pars);
+            return this.ExecuteNonQuery(trans, INSERT, pars);
         }
 
         public int UpdateTour(Tour tour, DbTransaction trans)
@@ -170,19 +114,15 @@ namespace SextantTG.SQLiteDAL
             pars.Add("Status", tour.Status);
             pars.Add("CreatingTime", tour.CreatingTime);
             pars.Add("Memos", tour.Memos);
-            return dbHelper.ExecuteNonQuery(trans, UPDATE, pars);
+            return this.ExecuteNonQuery(trans, UPDATE, pars);
         }
 
         public int DeleteTourByTourId(string tourId, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("TourId", tourId);
-            return dbHelper.ExecuteNonQuery(trans, DELETE, pars);
+            return this.ExecuteNonQuery(trans, DELETE, pars);
         }
 
-        public void Dispose()
-        {
-            this.dbHelper.Dispose();
-        }
     }
 }

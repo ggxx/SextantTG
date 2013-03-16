@@ -8,7 +8,7 @@ namespace SextantTG.ActiveRecord
     /// <summary>
     /// 城市
     /// </summary>
-    public class City
+    public class City : BaseAR
     {
         /// <summary>
         /// 城市ID

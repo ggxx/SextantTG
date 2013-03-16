@@ -179,11 +179,11 @@
     <Compile Include="TourEditForm.Designer.cs">
       <DependentUpon>TourEditForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="MyTourPicturesForm.cs">
+    <Compile Include="UploadPicturesForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="MyTourPicturesForm.Designer.cs">
-      <DependentUpon>MyTourPicturesForm.cs</DependentUpon>
+    <Compile Include="UploadPicturesForm.Designer.cs">
+      <DependentUpon>UploadPicturesForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ViewSightsForm.cs">
       <SubType>Form</SubType>
@@ -270,8 +270,8 @@
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="MyTourPicturesForm.resx">
-      <DependentUpon>MyTourPicturesForm.cs</DependentUpon>
+    <EmbeddedResource Include="UploadPicturesForm.resx">
+      <DependentUpon>UploadPicturesForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="PictureForm.resx">
       <DependentUpon>PictureForm.cs</DependentUpon>

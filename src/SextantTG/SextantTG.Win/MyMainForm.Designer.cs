@@ -30,12 +30,13 @@
         {
             this.SuspendLayout();
             // 
-            // ViewUserForm
+            // MyMainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(624, 442);
-            this.Name = "ViewUserForm";
+            this.Name = "MyMainForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "ViewUserForm";
             this.ResumeLayout(false);
 

@@ -134,7 +134,7 @@ namespace SextantTG.Win
             this.textBox_Memos.Text = tour.Memos;
 
             //
-            this.stgReadonlyPictures.SetPicturesForTour(tour.TourId);
+            this.stgReadonlyPictures.SetPicturesForTour(tour.TourId, true);
 
             //
             this.bindingSource_SubTour.DataSource = UIUtil.GetSubToursByTourId(tour.TourId);
@@ -246,13 +246,29 @@ namespace SextantTG.Win
                     form.SetListSelectedItem(tourId, "");
                     if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
-                        using (MyTourPicturesForm picForm = new MyTourPicturesForm(form.SubTour.SightsId, form.SubTour.TourId, form.SubTour.SubTourId, userId))
+                        using (UploadPicturesForm picForm = new UploadPicturesForm(form.SubTour.SightsId, form.SubTour.TourId, form.SubTour.SubTourId, userId))
                         {
                             if (picForm.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                             {
                                 BindItem(this.listBox_Tour.SelectedItem as Tour);
                             }
                         }
+                    }
+                }
+            }
+        }
+
+        private void dataGridView_Blog_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && this.bindingSource_Blog.Current != null)
+            {
+                bool b = (this.listBox_Tour.SelectedItem as Tour).Status != 0;
+
+                using (BlogEditForm form = new BlogEditForm(this.bindingSource_Blog.Current as Blog, b))
+                {
+                    if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        BindItem(this.listBox_Tour.SelectedItem as Tour);
                     }
                 }
             }

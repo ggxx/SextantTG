@@ -319,6 +319,7 @@
             this.Controls.Add(this.button_Close);
             this.Controls.Add(this.dataGridView);
             this.Name = "SightsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "景区字典维护";
             this.Load += new System.EventHandler(this.SightsForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();

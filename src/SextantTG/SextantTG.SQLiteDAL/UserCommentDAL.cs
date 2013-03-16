@@ -11,29 +11,11 @@ using System.Configuration;
 
 namespace SextantTG.SQLiteDAL
 {
-    public class UserCommentDAL : IUserCommentDAL
+    public class UserCommentDAL : AbstractDAL<UserComment>, IUserCommentDAL
     {
-        private DbHelper dbHelper = null;
+        public UserCommentDAL() { }
 
-        public UserCommentDAL()
-        {
-            this.dbHelper = new DbHelper(ConfigurationManager.ConnectionStrings["SQLiteConnection"].ConnectionString, DbUtil.DbProviderType.SQLite);
-        }
-
-        public UserCommentDAL(string connectionString)
-        {
-            this.dbHelper = new DbHelper(connectionString, DbUtil.DbProviderType.SQLite);
-        }
-
-        //private static readonly string SELECT = "select * from stg_user_comment";
-        private static readonly string SELECT___USER_ID = "select * from stg_user_comment where user_id = :UserId  order by creating_time desc";
-        //private static readonly string SELECT___COMM_USER_ID = "select * from stg_user_comment where comm_user_id = :CommUserId";
-
-        private static readonly string INSERT = "insert into stg_user_comment(comment_id, user_id, comm_user_id, creating_time, comment) values(:CommentId, :UserId, :CommUserId, :CreatingTime, :Comment)";
-        private static readonly string UPDATE = "update stg_user_comment set user_id = :UserId, comm_user_id = :CommUserId, creating_time = :CreatingTime, comment = :Comment where comment_id = :CommentId";
-        private static readonly string DELETE = "delete from stg_user_comment where comment_id = :CommentId";
-
-        private UserComment BuildUserCommentByReader(DbDataReader r)
+        protected override UserComment BuildObjectByReader(DbDataReader r)
         {
             UserComment usercomment = new UserComment();
             usercomment.CommentId = CustomTypeConverter.ToString(r["comment_id"]);
@@ -44,81 +26,18 @@ namespace SextantTG.SQLiteDAL
             return usercomment;
         }
 
-        //public List<UserComment> GetUserComments()
-        //{
-        //    List<UserComment> usercomments = new List<UserComment>();
-        //    using (DbDataReader r = dbHelper.ExecuteReader(SELECT))
-        //    {
-        //        while (r.Read())
-        //        {
-        //            usercomments.Add(BuildUserCommentByReader(r));
-        //        }
-        //    }
-        //    return usercomments;
-        //}
+        private static readonly string SELECT___USER_ID = "select * from stg_user_comment where user_id = :UserId  order by creating_time desc";
+        private static readonly string INSERT = "insert into stg_user_comment(comment_id, user_id, comm_user_id, creating_time, comment) values(:CommentId, :UserId, :CommUserId, :CreatingTime, :Comment)";
+        private static readonly string UPDATE = "update stg_user_comment set user_id = :UserId, comm_user_id = :CommUserId, creating_time = :CreatingTime, comment = :Comment where comment_id = :CommentId";
+        private static readonly string DELETE = "delete from stg_user_comment where comment_id = :CommentId";
+
 
         public List<UserComment> GetUserCommentsByUserId(string UserId)
         {
-            List<UserComment> usercomments = new List<UserComment>();
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("UserId", UserId);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___USER_ID, pars))
-            {
-                while (r.Read())
-                {
-                    usercomments.Add(BuildUserCommentByReader(r));
-                }
-            }
-            return usercomments;
+            return this.GetList(SELECT___USER_ID, pars);
         }
-
-
-        //public List<UserComment> GetUserCommentsByCommUserId(string CommUserId)
-        //{
-        //    List<UserComment> usercomments = new List<UserComment>();
-        //    Dictionary<string, object> pars = new Dictionary<string, object>();
-        //    pars.Add("CommUserId", CommUserId);
-        //    using (DbDataReader r = dbHelper.ExecuteReader(SELECT___COMM_USER_ID, pars))
-        //    {
-        //        while (r.Read())
-        //        {
-        //            usercomments.Add(BuildUserCommentByReader(r));
-        //        }
-        //    }
-        //    return usercomments;
-        //}
-
-
-        //public UserComment GetUserCommentByUserId(string UserId)
-        //{
-        //    UserComment usercomment = null;
-        //    Dictionary<string, object> pars = new Dictionary<string, object>();
-        //    pars.Add("UserId", UserId);
-        //    using (DbDataReader r = dbHelper.ExecuteReader(SELECT___USER_ID, pars))
-        //    {
-        //        if (r.Read())
-        //        {
-        //            usercomment = BuildUserCommentByReader(r);
-        //        }
-        //    }
-        //    return usercomment;
-        //}
-
-        //public UserComment GetUserCommentByCommUserId(string CommUserId)
-        //{
-        //    UserComment usercomment = null;
-        //    Dictionary<string, object> pars = new Dictionary<string, object>();
-        //    pars.Add("CommUserId", CommUserId);
-        //    using (DbDataReader r = dbHelper.ExecuteReader(SELECT___COMM_USER_ID, pars))
-        //    {
-        //        if (r.Read())
-        //        {
-        //            usercomment = BuildUserCommentByReader(r);
-        //        }
-        //    }
-        //    return usercomment;
-        //}
-
 
         public int InsertUserComment(UserComment usercomment, DbTransaction trans)
         {
@@ -132,7 +51,7 @@ namespace SextantTG.SQLiteDAL
             pars.Add("CreatingTime", usercomment.CreatingTime);
             pars.Add("Comment", usercomment.Comment);
             pars.Add("CommentId", usercomment.CommentId);
-            return dbHelper.ExecuteNonQuery(trans, INSERT, pars);
+            return this.ExecuteNonQuery(trans, INSERT, pars);
         }
 
         public int UpdateUserComment(UserComment usercomment, DbTransaction trans)
@@ -143,19 +62,14 @@ namespace SextantTG.SQLiteDAL
             pars.Add("CreatingTime", usercomment.CreatingTime);
             pars.Add("Comment", usercomment.Comment);
             pars.Add("CommentId", usercomment.CommentId);
-            return dbHelper.ExecuteNonQuery(trans, UPDATE, pars);
+            return this.ExecuteNonQuery(trans, UPDATE, pars);
         }
 
         public int DeleteUserCommentByCommentId(string commentId, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("CommentId", commentId);
-            return dbHelper.ExecuteNonQuery(trans, DELETE, pars);
-        }
-
-        public void Dispose()
-        {
-            this.dbHelper.Dispose();
+            return this.ExecuteNonQuery(trans, DELETE, pars);
         }
     }
 }

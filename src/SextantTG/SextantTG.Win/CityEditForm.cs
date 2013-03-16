@@ -40,10 +40,15 @@ namespace SextantTG.Win
 
         public void SetCity(City city)
         {
+            this.comboBox_Country.SelectedIndexChanged -= new EventHandler(comboBox_Country_SelectedIndexChanged);
+
             this.city = city;
             this.textBox_CityName.Text = city.CityName;
             this.comboBox_Country.SelectedValue = UIUtil.GetCountryByProvinceId(city.ProvinceId).CountryId;
+            this.comboBox_Country_SelectedIndexChanged(this.comboBox_Country, null);
             this.comboBox_Province.SelectedValue = city.ProvinceId;
+
+            this.comboBox_Country.SelectedIndexChanged += new EventHandler(comboBox_Country_SelectedIndexChanged);
         }
 
         private void button_Cancel_Click(object sender, EventArgs e)

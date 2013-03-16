@@ -8,7 +8,7 @@ namespace SextantTG.ActiveRecord
     /// <summary>
     /// 景点实体类
     /// </summary>
-    public class Sights
+    public class Sights : BaseAR
     {
         /// <summary>
         /// 景点ID

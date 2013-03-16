@@ -11,18 +11,22 @@ using System.Configuration;
 
 namespace SextantTG.SQLiteDAL
 {
-    public class BlogDAL : IBlogDAL
+    public class BlogDAL : AbstractDAL<Blog>, IBlogDAL
     {
-        private DbHelper dbHelper = null;
+        public BlogDAL() { }
 
-        public BlogDAL()
+        protected override Blog BuildObjectByReader(DbDataReader r)
         {
-            this.dbHelper = new DbHelper(ConfigurationManager.ConnectionStrings["SQLiteConnection"].ConnectionString, DbUtil.DbProviderType.SQLite);
-        }
-
-        public BlogDAL(string connectionString)
-        {
-            this.dbHelper = new DbHelper(connectionString, DbUtil.DbProviderType.SQLite);
+            Blog blog = new Blog();
+            blog.BlogId = CustomTypeConverter.ToString(r["blog_id"]);
+            blog.Title = CustomTypeConverter.ToString(r["title"]);
+            blog.Content = CustomTypeConverter.ToString(r["content"]);
+            blog.CreatingTime = CustomTypeConverter.ToDateTimeNull(r["creating_time"]);
+            blog.SightsId = CustomTypeConverter.ToString(r["sights_id"]);
+            blog.SubTourId = CustomTypeConverter.ToString(r["sub_tour_id"]);
+            blog.TourId = CustomTypeConverter.ToString(r["tour_id"]);
+            blog.UserId = CustomTypeConverter.ToString(r["user_id"]);
+            return blog;
         }
 
         private static readonly string SELECT = "select * from stg_blog order by creating_time desc";
@@ -39,128 +43,59 @@ namespace SextantTG.SQLiteDAL
         private static readonly string DELETE___TOUR_ID = "delete from stg_blog where tour_id = :TourId";
         private static readonly string DELETE___SUB_TOUR_ID = "delete from stg_blog where sub_tour_id = :SubTourId";
 
-        private Blog BuildBlogByReader(DbDataReader r)
-        {
-            Blog blog = new Blog();
-            blog.BlogId = CustomTypeConverter.ToString(r["blog_id"]);
-            blog.Title = CustomTypeConverter.ToString(r["title"]);
-            blog.Content = CustomTypeConverter.ToString(r["content"]);
-            blog.CreatingTime = CustomTypeConverter.ToDateTimeNull(r["creating_time"]);
-            blog.SightsId = CustomTypeConverter.ToString(r["sights_id"]);
-            blog.SubTourId = CustomTypeConverter.ToString(r["sub_tour_id"]);
-            blog.TourId = CustomTypeConverter.ToString(r["tour_id"]);
-            blog.UserId = CustomTypeConverter.ToString(r["user_id"]);
-            return blog;
-        }
-
         public List<Blog> GetBlogs()
         {
-            List<Blog> blogs = new List<Blog>();
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT))
-            {
-                while (r.Read())
-                {
-                    blogs.Add(BuildBlogByReader(r));
-                }
-            }
-            return blogs;
+            return this.GetList(SELECT, null);
         }
 
         public List<Blog> GetBlogsByUserId(string userId)
         {
-            List<Blog> blogs = new List<Blog>();
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("UserId", userId);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___USER_ID, pars))
-            {
-                while (r.Read())
-                {
-                    blogs.Add(BuildBlogByReader(r));
-                }
-            }
-            return blogs;
+            return this.GetList(SELECT___USER_ID, pars);
         }
 
         public List<Blog> GetBlogsBySightsId(string sightsId)
         {
-            List<Blog> blogs = new List<Blog>();
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("SightsId", sightsId);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___SIGHTS_ID, pars))
-            {
-                while (r.Read())
-                {
-                    blogs.Add(BuildBlogByReader(r));
-                }
-            }
-            return blogs;
+            return this.GetList(SELECT___SIGHTS_ID, pars);
         }
 
         public List<Blog> GetBlogsByUserIdAndSightsId(string userId, string sightsId)
         {
-            List<Blog> blogs = new List<Blog>();
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("UserId", userId);
             pars.Add("SightsId", sightsId);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___USER_ID__SIGHTS_ID, pars))
-            {
-                while (r.Read())
-                {
-                    blogs.Add(BuildBlogByReader(r));
-                }
-            }
-            return blogs;
+            return this.GetList(SELECT___USER_ID__SIGHTS_ID, pars);
         }
 
         public List<Blog> GetBlogsByTourId(string tourId)
         {
-            List<Blog> blogs = new List<Blog>();
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("TourId", tourId);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___TOUR_ID, pars))
-            {
-                while (r.Read())
-                {
-                    blogs.Add(BuildBlogByReader(r));
-                }
-            }
-            return blogs;
+            return this.GetList(SELECT___TOUR_ID, pars);
         }
 
         public List<Blog> GetBlogsByTourIdAndSubTourId(string tourId, string subTourId)
         {
-            List<Blog> blogs = new List<Blog>();
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("TourId", tourId);
             pars.Add("SubTourId", subTourId);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___TOUR_ID__SUB_TOUR_ID, pars))
-            {
-                while (r.Read())
-                {
-                    blogs.Add(BuildBlogByReader(r));
-                }
-            }
-            return blogs;
+            return this.GetList(SELECT___TOUR_ID__SUB_TOUR_ID, pars);
         }
 
         public Blog GetBlogByBlogId(string blogId)
         {
-            Blog blog = null;
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("BlogId", blogId);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___BLOG_ID, pars))
-            {
-                if (r.Read())
-                {
-                    blog = BuildBlogByReader(r);
-                }
-            }
-            return blog;
+            return this.GetObject(SELECT___BLOG_ID, pars);
         }
 
         public int InsertBlog(Blog blog, DbTransaction trans)
         {
-            blog.BlogId = StringHelper.CreateGuid();
+            if (string.IsNullOrEmpty(blog.BlogId))
+                blog.BlogId = StringHelper.CreateGuid();
             blog.CreatingTime = DateTime.Now;
 
             Dictionary<string, object> pars = new Dictionary<string, object>();
@@ -172,7 +107,7 @@ namespace SextantTG.SQLiteDAL
             pars.Add("Title", blog.Title);
             pars.Add("Content", blog.Content);
             pars.Add("CreatingTime", blog.CreatingTime);
-            return dbHelper.ExecuteNonQuery(trans, INSERT, pars);
+            return this.ExecuteNonQuery(trans, INSERT, pars);
         }
 
         public int UpdateBlog(Blog blog, DbTransaction trans)
@@ -186,36 +121,28 @@ namespace SextantTG.SQLiteDAL
             pars.Add("Title", blog.Title);
             pars.Add("Content", blog.Content);
             pars.Add("CreatingTime", blog.CreatingTime);
-            return dbHelper.ExecuteNonQuery(trans, UPDATE, pars);
+            return this.ExecuteNonQuery(trans, UPDATE, pars);
         }
 
         public int DeleteBlogByBlogId(string blogId, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("BlogId", blogId);
-            return dbHelper.ExecuteNonQuery(trans, DELETE___BLOG_ID, pars);
+            return this.ExecuteNonQuery(trans, DELETE___BLOG_ID, pars);
         }
 
         public int DeleteBlogsByTourId(string tourId, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("TourId", tourId);
-            return dbHelper.ExecuteNonQuery(trans, DELETE___TOUR_ID, pars);
+            return this.ExecuteNonQuery(trans, DELETE___TOUR_ID, pars);
         }
 
         public int DeleteBlogsBySubTourId(string subTourId, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("SubTourId", subTourId);
-            return dbHelper.ExecuteNonQuery(trans, DELETE___SUB_TOUR_ID, pars);
+            return this.ExecuteNonQuery(trans, DELETE___SUB_TOUR_ID, pars);
         }
-
-        public void Dispose()
-        {
-            this.dbHelper.Dispose();
-        }
-
-
-
     }
 }

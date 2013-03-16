@@ -9,9 +9,9 @@ using System.Windows.Forms;
 
 namespace SextantTG.Win
 {
-    public partial class MyTourPicturesForm : Form
+    public partial class UploadPicturesForm : Form
     {
-        public MyTourPicturesForm(string sightsId, string tourId, string subTourId, string uploaderId)
+        public UploadPicturesForm(string sightsId, string tourId, string subTourId, string uploaderId)
         {
             InitializeComponent();
 

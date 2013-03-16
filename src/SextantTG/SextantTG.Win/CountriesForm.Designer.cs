@@ -135,6 +135,7 @@
             this.Controls.Add(this.button_Close);
             this.Controls.Add(this.dataGridView);
             this.Name = "CountriesForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "国家字典";
             this.Load += new System.EventHandler(this.CountriesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();

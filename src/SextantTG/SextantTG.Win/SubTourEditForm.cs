@@ -35,6 +35,10 @@ namespace SextantTG.Win
 
         public void SetSubTour(SubTour subTour)
         {
+            this.comboBox_Country.SelectedIndexChanged -= new EventHandler(comboBox_Country_SelectedIndexChanged);
+            this.comboBox_Province.SelectedIndexChanged -= new EventHandler(comboBox_Province_SelectedIndexChanged);
+            this.comboBox_City.SelectedIndexChanged -= new EventHandler(comboBox_City_SelectedIndexChanged);
+
             string country, province, city;
             city = UIUtil.GetSightsBySightsId(subTour.SightsId).CityId;
             province = UIUtil.GetProvinceByCityId(city).ProvinceId;
@@ -43,12 +47,19 @@ namespace SextantTG.Win
             this.SubTour = subTour;
             this.textBox_TourName.Text = this.SubTour.SubTourName;
             this.comboBox_Country.SelectedValue = country;
+            this.comboBox_Country_SelectedIndexChanged(this.comboBox_Country, null);
             this.comboBox_Province.SelectedValue = province;
+            this.comboBox_Province_SelectedIndexChanged(this.comboBox_Province, null);
             this.comboBox_City.SelectedValue = city;
+            this.comboBox_City_SelectedIndexChanged(this.comboBox_City, null);
             this.comboBox_Sights.SelectedValue = this.SubTour.SightsId;
-            this.dateTimePicker_Begin.Value = this.SubTour.BeginDate.Value.Date;
-            this.dateTimePicker_End.Value = this.SubTour.EndDate.Value.Date;
+            this.dateTimePicker_Begin.Value = this.SubTour.BeginDate.Value;
+            this.dateTimePicker_End.Value = this.SubTour.EndDate.Value;
             this.textBox_Memos.Text = this.SubTour.Memos;
+
+            this.comboBox_Country.SelectedIndexChanged += new EventHandler(comboBox_Country_SelectedIndexChanged);
+            this.comboBox_Province.SelectedIndexChanged += new EventHandler(comboBox_Province_SelectedIndexChanged);
+            this.comboBox_City.SelectedIndexChanged += new EventHandler(comboBox_City_SelectedIndexChanged);
         }
 
         private void comboBox_Country_SelectedIndexChanged(object sender, EventArgs e)
@@ -108,8 +119,8 @@ namespace SextantTG.Win
 
             this.SubTour.SubTourName = this.textBox_TourName.Text.Trim();
             this.SubTour.SightsId = this.comboBox_Sights.SelectedValue.ToString();
-            this.SubTour.BeginDate = this.dateTimePicker_Begin.Value;
-            this.SubTour.EndDate = this.dateTimePicker_End.Value;
+            this.SubTour.BeginDate = this.dateTimePicker_Begin.Value.Date;
+            this.SubTour.EndDate = this.dateTimePicker_End.Value.Date;
             this.SubTour.Memos = this.textBox_Memos.Text;
 
             this.DialogResult = System.Windows.Forms.DialogResult.OK;

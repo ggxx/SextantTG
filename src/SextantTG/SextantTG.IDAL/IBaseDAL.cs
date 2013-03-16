@@ -7,5 +7,6 @@ namespace SextantTG.IDAL
 {
     public interface IBaseDAL : IDisposable
     {
+
     }
 }

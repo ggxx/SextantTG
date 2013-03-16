@@ -1,12 +1,4 @@
-﻿/*********************************************************
- * 
- *        Author: 郭旭
- * Last Modified: 2013-03-05
- *     File Name: DALFactory.cs
- *   Description: 提供静态方法，实例化DAL的工厂类
- * 
- * ******************************************************/
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +7,9 @@ using System.Configuration;
 
 namespace SextantTG.IDAL
 {
+    /// <summary>
+    /// 提供静态方法，实例化DAL的工厂类, using factory pattern
+    /// </summary>
     public sealed class DALFactory
     {
         //private static readonly string DAL = "SextantTG.SQLiteDAL"; 

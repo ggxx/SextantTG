@@ -58,6 +58,7 @@ namespace SextantTG.Win
         {
             this.images.Images.Clear();
             this.listView_Pic.Items.Clear();
+            this.Pictures.Clear();
 
             this.sightsId = sightsId;
             this.tourId = tourId;
@@ -198,6 +199,14 @@ namespace SextantTG.Win
         {
             string picFile = PicPath + this.Pictures[this.listView_Pic.SelectedIndices[0]].Path;
             FileUtil.SaveFile(picFile, true);
+        }
+
+        private void listView_Pic_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            if (e.Button == System.Windows.Forms.MouseButtons.Left && this.listView_Pic.SelectedItems != null)
+            {
+                viewPictureToolStripMenuItem_Click(sender, e);
+            }
         }
     }
 }

@@ -8,7 +8,7 @@ namespace SextantTG.ActiveRecord
     /// <summary>
     /// 权限实体类
     /// </summary>
-    public class Permission
+    public class Permission : BaseAR
     {
         /// <summary>
         /// 用户ID

@@ -32,8 +32,6 @@
             this.pictureBox = new System.Windows.Forms.PictureBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.button_Close = new System.Windows.Forms.Button();
-            this.button_Comment = new System.Windows.Forms.Button();
             this.dataGridView_Comment = new System.Windows.Forms.DataGridView();
             this.Column_C_CommentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_C_CommentUserId = new System.Windows.Forms.DataGridViewComboBoxColumn();
@@ -41,6 +39,8 @@
             this.Column_C_CreatingTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Column_C_PictureId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSource_Comment = new System.Windows.Forms.BindingSource(this.components);
+            this.button_Close = new System.Windows.Forms.Button();
+            this.button_Comment = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -84,28 +84,6 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "评论";
             // 
-            // button_Close
-            // 
-            this.button_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_Close.Location = new System.Drawing.Point(537, 567);
-            this.button_Close.Name = "button_Close";
-            this.button_Close.Size = new System.Drawing.Size(75, 23);
-            this.button_Close.TabIndex = 3;
-            this.button_Close.Text = "关闭";
-            this.button_Close.UseVisualStyleBackColor = true;
-            this.button_Close.Click += new System.EventHandler(this.button_Close_Click);
-            // 
-            // button_Comment
-            // 
-            this.button_Comment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button_Comment.Location = new System.Drawing.Point(12, 567);
-            this.button_Comment.Name = "button_Comment";
-            this.button_Comment.Size = new System.Drawing.Size(75, 23);
-            this.button_Comment.TabIndex = 2;
-            this.button_Comment.Text = "添加评论";
-            this.button_Comment.UseVisualStyleBackColor = true;
-            this.button_Comment.Click += new System.EventHandler(this.button_Comment_Click);
-            // 
             // dataGridView_Comment
             // 
             this.dataGridView_Comment.AllowUserToAddRows = false;
@@ -121,9 +99,11 @@
             this.dataGridView_Comment.DataSource = this.bindingSource_Comment;
             this.dataGridView_Comment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView_Comment.Location = new System.Drawing.Point(3, 17);
+            this.dataGridView_Comment.MultiSelect = false;
             this.dataGridView_Comment.Name = "dataGridView_Comment";
             this.dataGridView_Comment.ReadOnly = true;
             this.dataGridView_Comment.RowTemplate.Height = 23;
+            this.dataGridView_Comment.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView_Comment.Size = new System.Drawing.Size(591, 106);
             this.dataGridView_Comment.TabIndex = 0;
             // 
@@ -172,6 +152,28 @@
             this.Column_C_PictureId.ReadOnly = true;
             this.Column_C_PictureId.Visible = false;
             // 
+            // button_Close
+            // 
+            this.button_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_Close.Location = new System.Drawing.Point(537, 567);
+            this.button_Close.Name = "button_Close";
+            this.button_Close.Size = new System.Drawing.Size(75, 23);
+            this.button_Close.TabIndex = 3;
+            this.button_Close.Text = "关闭";
+            this.button_Close.UseVisualStyleBackColor = true;
+            this.button_Close.Click += new System.EventHandler(this.button_Close_Click);
+            // 
+            // button_Comment
+            // 
+            this.button_Comment.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button_Comment.Location = new System.Drawing.Point(12, 567);
+            this.button_Comment.Name = "button_Comment";
+            this.button_Comment.Size = new System.Drawing.Size(75, 23);
+            this.button_Comment.TabIndex = 2;
+            this.button_Comment.Text = "添加评论";
+            this.button_Comment.UseVisualStyleBackColor = true;
+            this.button_Comment.Click += new System.EventHandler(this.button_Comment_Click);
+            // 
             // PictureForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -182,6 +184,7 @@
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Name = "PictureForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "图片浏览";
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox)).EndInit();
             this.groupBox1.ResumeLayout(false);

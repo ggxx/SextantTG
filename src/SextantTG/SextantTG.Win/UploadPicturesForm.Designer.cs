@@ -1,6 +1,6 @@
 ﻿namespace SextantTG.Win
 {
-    partial class MyTourPicturesForm
+    partial class UploadPicturesForm
     {
         /// <summary>
         /// Required designer variable.
@@ -65,7 +65,7 @@
             this.stgPictures.Size = new System.Drawing.Size(600, 382);
             this.stgPictures.TabIndex = 0;
             // 
-            // MyTourPicturesForm
+            // UploadPicturesForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -73,7 +73,8 @@
             this.Controls.Add(this.button_OK);
             this.Controls.Add(this.button_Cancel);
             this.Controls.Add(this.stgPictures);
-            this.Name = "MyTourPicturesForm";
+            this.Name = "UploadPicturesForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "图片上传";
             this.ResumeLayout(false);
 

@@ -146,6 +146,7 @@
             this.Controls.Add(this.button_Close);
             this.Controls.Add(this.dataGridView);
             this.Name = "ProvincesForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "省份字典维护";
             this.Load += new System.EventHandler(this.ProvincesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();

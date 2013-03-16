@@ -157,6 +157,7 @@
             this.Controls.Add(this.button_Close);
             this.Controls.Add(this.dataGridView);
             this.Name = "UsersForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "用户字典维护";
             this.Load += new System.EventHandler(this.UsersForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();

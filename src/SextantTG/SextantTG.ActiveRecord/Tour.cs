@@ -8,7 +8,7 @@ namespace SextantTG.ActiveRecord
     /// <summary>
     /// 旅行实体类
     /// </summary>
-    public class Tour
+    public class Tour : BaseAR
     {
         /// <summary>
         /// 旅行ID

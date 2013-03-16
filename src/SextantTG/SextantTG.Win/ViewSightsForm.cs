@@ -215,7 +215,7 @@ namespace SextantTG.Win
             this.textBox_Description.Text = sights.Description;
 
             //
-            this.stgReadonlyPictures.SetPicturesForSights(sights.SightsId, "0000");
+            this.stgReadonlyPictures.SetPicturesForSights(sights.SightsId, "0000", false);
 
             //
             this.bindingSource_Comment.DataSource = UIUtil.GetSightsCommentsBySightsId(sights.SightsId);

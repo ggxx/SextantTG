@@ -8,7 +8,7 @@ namespace SextantTG.ActiveRecord
     /// <summary>
     /// 日志记录
     /// </summary>
-    public class Blog
+    public class Blog : BaseAR
     {
         /// <summary>
         /// 日志ID

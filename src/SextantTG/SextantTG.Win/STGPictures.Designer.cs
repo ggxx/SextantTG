@@ -103,6 +103,7 @@
             this.listView_Pic.View = System.Windows.Forms.View.Tile;
             this.listView_Pic.SelectedIndexChanged += new System.EventHandler(this.listView_Pic_SelectedIndexChanged);
             this.listView_Pic.MouseClick += new System.Windows.Forms.MouseEventHandler(this.listView_Pic_MouseClick);
+            this.listView_Pic.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.listView_Pic_MouseDoubleClick);
             // 
             // button_Upload
             // 
@@ -122,7 +123,7 @@
             this.addCommentToolStripMenuItem,
             this.saveAsToolStripMenuItem});
             this.contextMenuStrip.Name = "contextMenuStrip";
-            this.contextMenuStrip.Size = new System.Drawing.Size(161, 92);
+            this.contextMenuStrip.Size = new System.Drawing.Size(161, 70);
             // 
             // viewPictureToolStripMenuItem
             // 

@@ -38,6 +38,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BaseAR.cs" />
     <Compile Include="Blog.cs" />
     <Compile Include="City.cs" />
     <Compile Include="PictureComment.cs" />

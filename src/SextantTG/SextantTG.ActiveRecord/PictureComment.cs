@@ -8,7 +8,7 @@ namespace SextantTG.ActiveRecord
     /// <summary>
     /// 图片评论实体类
     /// </summary>
-    public class PictureComment
+    public class PictureComment : BaseAR
     {
         /// <summary>
         /// 评论ID

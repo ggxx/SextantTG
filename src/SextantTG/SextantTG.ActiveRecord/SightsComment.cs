@@ -8,7 +8,7 @@ namespace SextantTG.ActiveRecord
     /// <summary>
     /// 景点评论
     /// </summary>
-    public class SightsComment
+    public class SightsComment : BaseAR
     {
         /// <summary>
         /// 评论ID

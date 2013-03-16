@@ -14,11 +14,21 @@ namespace SextantTG.Win
     {
         public Blog Blog { get; private set; }
 
-        public BlogEditForm(Blog blog)
+
+        public BlogEditForm(Blog blog, bool allowEdit)
         {
             InitializeComponent();
 
             this.Blog = blog;
+
+            if (!allowEdit)
+            {
+                this.textBox_Title.ReadOnly = true;
+                this.textBox_Content.ReadOnly = true;
+                this.button_Favorite.Visible = false;
+                this.button_OK.Visible = false;
+                this.button_Cancel.Text = "关闭";
+            }
         }
 
         public BlogEditForm(SubTour subTour, string userId)

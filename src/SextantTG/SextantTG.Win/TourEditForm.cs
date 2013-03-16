@@ -23,8 +23,13 @@ namespace SextantTG.Win
         public TourEditForm()
         {
             InitializeComponent();
+
             removedSubTours = new List<SubTour>();
             statusDict = UIUtil.GetTourStatusDict();
+
+            this.Column_ST_SightsId.DisplayMember = "SightsName";
+            this.Column_ST_SightsId.ValueMember = "SightsId";
+            this.Column_ST_SightsId.DataSource = UIUtil.GetSights();
 
             foreach (KeyValuePair<int, string> kvp in statusDict)
             {

@@ -96,6 +96,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "FindSubTourForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "选择一个行程";
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource_Tour)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource_SubTour)).EndInit();

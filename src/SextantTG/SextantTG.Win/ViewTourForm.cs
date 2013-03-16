@@ -326,7 +326,7 @@ namespace SextantTG.Win
                 {
                     if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                     {
-                        
+
                     }
                 }
             }
@@ -335,6 +335,20 @@ namespace SextantTG.Win
         private void button_Close_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dataGridView_Blog_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && this.bindingSource_Blog.Current != null)
+            {
+                using (BlogEditForm form = new BlogEditForm(this.bindingSource_Blog.Current as Blog, false))
+                {
+                    if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
+                    {
+                        BindItem(this.listBox_Tour.SelectedItem as Tour);
+                    }
+                }
+            }
         }
     }
 }

@@ -9,7 +9,7 @@ namespace SextantTG.ActiveRecord
     /// <summary>
     /// 国家
     /// </summary>
-    public class Country
+    public class Country : BaseAR
     {
         /// <summary>
         /// 国家ID

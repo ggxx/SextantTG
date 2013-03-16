@@ -496,9 +496,11 @@
             this.dataGridView_Comment.DataSource = this.bindingSource_Comment;
             this.dataGridView_Comment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView_Comment.Location = new System.Drawing.Point(3, 17);
+            this.dataGridView_Comment.MultiSelect = false;
             this.dataGridView_Comment.Name = "dataGridView_Comment";
             this.dataGridView_Comment.ReadOnly = true;
             this.dataGridView_Comment.RowTemplate.Height = 23;
+            this.dataGridView_Comment.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView_Comment.Size = new System.Drawing.Size(508, 197);
             this.dataGridView_Comment.TabIndex = 0;
             // 
@@ -595,9 +597,11 @@
             this.dataGridView_Blog.DataSource = this.bindingSource_Blog;
             this.dataGridView_Blog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView_Blog.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView_Blog.MultiSelect = false;
             this.dataGridView_Blog.Name = "dataGridView_Blog";
             this.dataGridView_Blog.ReadOnly = true;
             this.dataGridView_Blog.RowTemplate.Height = 23;
+            this.dataGridView_Blog.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView_Blog.Size = new System.Drawing.Size(520, 477);
             this.dataGridView_Blog.TabIndex = 2;
             // 
@@ -788,6 +792,7 @@
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.listBox_Sights);
             this.Name = "ViewSightsForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "景点一览";
             this.Load += new System.EventHandler(this.SightsForm_Load);
             this.tableLayoutPanel2.ResumeLayout(false);

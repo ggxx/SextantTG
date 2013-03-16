@@ -76,6 +76,7 @@
             this.Controls.Add(this.button_Cancel);
             this.Controls.Add(this.textBox);
             this.Name = "CommentEditForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "留言编辑";
             this.ResumeLayout(false);
             this.PerformLayout();

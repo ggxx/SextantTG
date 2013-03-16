@@ -8,7 +8,7 @@ namespace SextantTG.ActiveRecord
     /// <summary>
     /// 用户收藏实体类
     /// </summary>
-    public class Favorite
+    public class Favorite : BaseAR
     {
         /// <summary>
         /// 用户ID

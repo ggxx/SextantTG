@@ -8,7 +8,7 @@ namespace SextantTG.ActiveRecord
     /// <summary>
     /// 省份
     /// </summary>
-    public class Province
+    public class Province : BaseAR
     {
         /// <summary>
         /// 省份ID

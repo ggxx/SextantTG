@@ -8,7 +8,7 @@ namespace SextantTG.ActiveRecord
     /// <summary>
     /// 图片实体类
     /// </summary>
-    public class Picture
+    public class Picture : BaseAR
     {
         /// <summary>
         /// 图片ID

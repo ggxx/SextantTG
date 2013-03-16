@@ -169,9 +169,11 @@
             this.dataGridView_Comment.DataSource = this.bindingSource_Comment;
             this.dataGridView_Comment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView_Comment.Location = new System.Drawing.Point(3, 17);
+            this.dataGridView_Comment.MultiSelect = false;
             this.dataGridView_Comment.Name = "dataGridView_Comment";
             this.dataGridView_Comment.ReadOnly = true;
             this.dataGridView_Comment.RowTemplate.Height = 23;
+            this.dataGridView_Comment.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView_Comment.Size = new System.Drawing.Size(556, 119);
             this.dataGridView_Comment.TabIndex = 7;
             // 
@@ -250,9 +252,11 @@
             this.dataGridView_SubTour.DataSource = this.bindingSource_SubTour;
             this.dataGridView_SubTour.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView_SubTour.Location = new System.Drawing.Point(3, 17);
+            this.dataGridView_SubTour.MultiSelect = false;
             this.dataGridView_SubTour.Name = "dataGridView_SubTour";
             this.dataGridView_SubTour.ReadOnly = true;
             this.dataGridView_SubTour.RowTemplate.Height = 23;
+            this.dataGridView_SubTour.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView_SubTour.Size = new System.Drawing.Size(556, 160);
             this.dataGridView_SubTour.TabIndex = 7;
             // 
@@ -559,11 +563,14 @@
             this.dataGridView_Blog.DataSource = this.bindingSource_Blog;
             this.dataGridView_Blog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView_Blog.Location = new System.Drawing.Point(3, 3);
+            this.dataGridView_Blog.MultiSelect = false;
             this.dataGridView_Blog.Name = "dataGridView_Blog";
             this.dataGridView_Blog.ReadOnly = true;
             this.dataGridView_Blog.RowTemplate.Height = 23;
+            this.dataGridView_Blog.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView_Blog.Size = new System.Drawing.Size(568, 477);
             this.dataGridView_Blog.TabIndex = 1;
+            this.dataGridView_Blog.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Blog_CellDoubleClick);
             // 
             // Column_B_BlogId
             // 
@@ -734,6 +741,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.listBox_Tour);
             this.Name = "MyTourForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "我的旅行";
             this.Load += new System.EventHandler(this.ViewUserTourForm_Load);
             this.tabControl1.ResumeLayout(false);

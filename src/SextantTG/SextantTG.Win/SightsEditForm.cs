@@ -35,10 +35,16 @@ namespace SextantTG.Win
 
         public void SetSights(Sights sights)
         {
+            this.comboBox_Country.SelectedIndexChanged -= new EventHandler(comboBox_Country_SelectedIndexChanged);
+            this.comboBox_Province.SelectedIndexChanged -= new EventHandler(comboBox_Province_SelectedIndexChanged);
+
+
             this.sights = sights;
             this.textBox_SightsName.Text = sights.SightsName;
             this.comboBox_Country.SelectedValue = UIUtil.GetProvinceByCityId(sights.CityId).CountryId;
+            this.comboBox_Country_SelectedIndexChanged(this.comboBox_Country, null);
             this.comboBox_Province.SelectedValue = UIUtil.GetProvinceByCityId(sights.CityId).ProvinceId;
+            this.comboBox_Province_SelectedIndexChanged(this.comboBox_Province, null);
             this.comboBox_City.SelectedValue = sights.CityId;
             this.comboBox_SightsLevel.SelectedItem = sights.SightsLevel;
             this.numericUpDown_Price.Value = sights.Price.HasValue ? (decimal)sights.Price.Value : 0;
@@ -47,6 +53,10 @@ namespace SextantTG.Win
             this.textBox_CreatingTime.Text = Util.CustomTypeConverter.ToString(sights.CreatingTime, "yyyy-MM-dd HH:mm:ss");
 
             this.stgPictures.SetPicturesForSights(sights.SightsId, "0000");
+
+
+            this.comboBox_Country.SelectedIndexChanged += new EventHandler(comboBox_Country_SelectedIndexChanged);
+            this.comboBox_Province.SelectedIndexChanged += new EventHandler(comboBox_Province_SelectedIndexChanged);
         }
 
         private void button_OK_Click(object sender, EventArgs e)

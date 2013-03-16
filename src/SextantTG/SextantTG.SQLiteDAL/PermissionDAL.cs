@@ -11,47 +11,27 @@ using System.Configuration;
 
 namespace SextantTG.SQLiteDAL
 {
-    public class PermissionDAL : IPermissionDAL
+    public class PermissionDAL : AbstractDAL<Permission>, IPermissionDAL
     {
-        private DbHelper dbHelper = null;
+        public PermissionDAL() { }
 
-        public PermissionDAL()
-        {
-            this.dbHelper = new DbHelper(ConfigurationManager.ConnectionStrings["SQLiteConnection"].ConnectionString, DbUtil.DbProviderType.SQLite);
-        }
-
-        public PermissionDAL(string connectionString)
-        {
-            this.dbHelper = new DbHelper(connectionString, DbUtil.DbProviderType.SQLite);
-        }
-        
-        //private static readonly string SELECT = "select * from stg_permission";
-        private static readonly string SELECT___USER_ID = "select * from stg_permission where user_id = :UserId order by permission_type";        
-        private static readonly string INSERT = "insert into stg_permission(user_id, permission_type) values(:UserId, :PermissionType)";
-        //private static readonly string UPDATE = "update stg_permission set Permission_type = :PermissionType where user_id = :UserId";
-        private static readonly string DELETE___USER_ID = "delete from stg_permission where user_id = :UserId";
-
-        private Permission BuildPermissionByReader(DbDataReader r)
+        protected override Permission BuildObjectByReader(DbDataReader r)
         {
             Permission permission = new Permission();
             permission.UserId = CustomTypeConverter.ToString(r["user_id"]);
-            permission.PermissionType = CustomTypeConverter.ToInt32Null(r["permission_type"]);          
+            permission.PermissionType = CustomTypeConverter.ToInt32Null(r["permission_type"]);
             return permission;
         }
 
+        private static readonly string SELECT___USER_ID = "select * from stg_permission where user_id = :UserId order by permission_type";        
+        private static readonly string INSERT = "insert into stg_permission(user_id, permission_type) values(:UserId, :PermissionType)";
+        private static readonly string DELETE___USER_ID = "delete from stg_permission where user_id = :UserId";
+
         public List<Permission> GetPermissionsByUserId(string userID)
         {
-            List<Permission> permission = new List<Permission>();
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("UserId", userID);
-            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___USER_ID , pars))
-            {
-                while (r.Read())
-                {
-                    permission.Add(BuildPermissionByReader(r));
-                }
-            }
-            return permission;
+            return this.GetList(SELECT___USER_ID, pars);
         }
 
 
@@ -60,19 +40,14 @@ namespace SextantTG.SQLiteDAL
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("UserID", permission.UserId);
             pars.Add("PermissionType", permission.PermissionType);
-            return dbHelper.ExecuteNonQuery(trans, INSERT, pars);
+            return this.ExecuteNonQuery(trans, INSERT, pars);
         }
 
         public int DeletePermissionsByUserId(string userId, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("UserID", userId);
-            return dbHelper.ExecuteNonQuery(trans, DELETE___USER_ID, pars);
-        }
-
-        public void Dispose()
-        {
-            this.dbHelper.Dispose();
+            return this.ExecuteNonQuery(trans, DELETE___USER_ID, pars);
         }
     }
 }

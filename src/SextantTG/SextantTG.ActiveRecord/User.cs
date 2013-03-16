@@ -8,7 +8,7 @@ namespace SextantTG.ActiveRecord
     /// <summary>
     /// 用户实体类
     /// </summary>
-    public class User
+    public class User : BaseAR
     {
         /// <summary>
         /// 用户ID
