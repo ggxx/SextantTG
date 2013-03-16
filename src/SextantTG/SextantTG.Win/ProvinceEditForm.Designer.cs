@@ -40,27 +40,32 @@
             // 
             // button_OK
             // 
+            this.button_OK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button_OK.Location = new System.Drawing.Point(176, 127);
             this.button_OK.Name = "button_OK";
             this.button_OK.Size = new System.Drawing.Size(75, 23);
-            this.button_OK.TabIndex = 4;
+            this.button_OK.TabIndex = 1;
             this.button_OK.Text = "确定";
             this.button_OK.UseVisualStyleBackColor = true;
             this.button_OK.Click += new System.EventHandler(this.button_OK_Click);
             // 
             // button_Cancel
             // 
+            this.button_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button_Cancel.Location = new System.Drawing.Point(257, 127);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(75, 23);
-            this.button_Cancel.TabIndex = 3;
+            this.button_Cancel.TabIndex = 2;
             this.button_Cancel.Text = "取消";
             this.button_Cancel.UseVisualStyleBackColor = true;
             this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
@@ -74,7 +79,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 33.33333F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(320, 80);
-            this.tableLayoutPanel1.TabIndex = 5;
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // textBox_ProvinceName
             // 
@@ -82,7 +87,7 @@
             this.textBox_ProvinceName.Location = new System.Drawing.Point(83, 9);
             this.textBox_ProvinceName.Name = "textBox_ProvinceName";
             this.textBox_ProvinceName.Size = new System.Drawing.Size(234, 21);
-            this.textBox_ProvinceName.TabIndex = 0;
+            this.textBox_ProvinceName.TabIndex = 1;
             // 
             // label1
             // 
@@ -91,7 +96,7 @@
             this.label1.Location = new System.Drawing.Point(36, 14);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(41, 12);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 0;
             this.label1.Text = "省份名";
             // 
             // label2
@@ -112,7 +117,7 @@
             this.comboBox_Country.Location = new System.Drawing.Point(83, 50);
             this.comboBox_Country.Name = "comboBox_Country";
             this.comboBox_Country.Size = new System.Drawing.Size(234, 20);
-            this.comboBox_Country.TabIndex = 4;
+            this.comboBox_Country.TabIndex = 3;
             // 
             // ProvinceEditForm
             // 
@@ -122,9 +127,12 @@
             this.Controls.Add(this.tableLayoutPanel1);
             this.Controls.Add(this.button_OK);
             this.Controls.Add(this.button_Cancel);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "ProvinceEditForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "ProvinceEditForm";
+            this.Text = "省份字典编辑";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

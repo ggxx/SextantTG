@@ -41,7 +41,7 @@ namespace SextantTG.Win
             this.comboBox_Province.SelectedValue = UIUtil.GetProvinceByCityId(sights.CityId).ProvinceId;
             this.comboBox_City.SelectedValue = sights.CityId;
             this.comboBox_SightsLevel.SelectedItem = sights.SightsLevel;
-            this.maskedTextBox_Price.Text = Util.CustomTypeConverter.ToString(sights.Price, "n2");
+            this.numericUpDown_Price.Value = sights.Price.HasValue ? (decimal)sights.Price.Value : 0;
             this.textBox_Description.Text = sights.Description;
             this.textBox_Memos.Text = sights.Memos;
             this.textBox_CreatingTime.Text = Util.CustomTypeConverter.ToString(sights.CreatingTime, "yyyy-MM-dd HH:mm:ss");
@@ -75,7 +75,7 @@ namespace SextantTG.Win
                 sights.SightsName = this.textBox_SightsName.Text.Trim();
                 sights.CityId = this.comboBox_City.SelectedValue.ToString();
                 sights.SightsLevel = this.comboBox_SightsLevel.Text;
-                sights.Price = Util.CustomTypeConverter.ToInt32Null(this.maskedTextBox_Price.Text);
+                sights.Price = (int?)this.numericUpDown_Price.Value;
                 sights.Description = this.textBox_Description.Text.Trim();
                 sights.Memos = this.textBox_Memos.Text.Trim();
                 sights.CreatingTime = Util.CustomTypeConverter.ToDateTimeNull(this.textBox_CreatingTime.Text, "yyyy-MM-dd HH:mm:ss");
@@ -87,7 +87,7 @@ namespace SextantTG.Win
                 sights.SightsName = this.textBox_SightsName.Text.Trim();
                 sights.CityId = this.comboBox_City.SelectedValue.ToString();
                 sights.SightsLevel = this.comboBox_SightsLevel.Text;
-                sights.Price = Util.CustomTypeConverter.ToInt32Null(this.maskedTextBox_Price.Text);
+                sights.Price = (int?)this.numericUpDown_Price.Value;
                 sights.Description = this.textBox_Description.Text.Trim();
                 sights.Memos = this.textBox_Memos.Text.Trim();
                 sights.CreatingTime = Util.CustomTypeConverter.ToDateTimeNull(this.textBox_CreatingTime.Text, "yyyy-MM-dd HH:mm:ss");

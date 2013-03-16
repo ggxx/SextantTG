@@ -45,7 +45,7 @@
             this.listBox_Current.Location = new System.Drawing.Point(12, 36);
             this.listBox_Current.Name = "listBox_Current";
             this.listBox_Current.Size = new System.Drawing.Size(120, 172);
-            this.listBox_Current.TabIndex = 0;
+            this.listBox_Current.TabIndex = 1;
             // 
             // listBox_All
             // 
@@ -54,24 +54,26 @@
             this.listBox_All.Location = new System.Drawing.Point(212, 36);
             this.listBox_All.Name = "listBox_All";
             this.listBox_All.Size = new System.Drawing.Size(120, 172);
-            this.listBox_All.TabIndex = 1;
+            this.listBox_All.TabIndex = 5;
             // 
             // button_OK
             // 
+            this.button_OK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button_OK.Location = new System.Drawing.Point(176, 227);
             this.button_OK.Name = "button_OK";
             this.button_OK.Size = new System.Drawing.Size(75, 23);
-            this.button_OK.TabIndex = 2;
+            this.button_OK.TabIndex = 6;
             this.button_OK.Text = "确定";
             this.button_OK.UseVisualStyleBackColor = true;
             this.button_OK.Click += new System.EventHandler(this.button_OK_Click);
             // 
             // button_Cancel
             // 
+            this.button_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button_Cancel.Location = new System.Drawing.Point(257, 227);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(75, 23);
-            this.button_Cancel.TabIndex = 3;
+            this.button_Cancel.TabIndex = 7;
             this.button_Cancel.Text = "取消";
             this.button_Cancel.UseVisualStyleBackColor = true;
             this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
@@ -81,7 +83,7 @@
             this.button_Add.Location = new System.Drawing.Point(138, 73);
             this.button_Add.Name = "button_Add";
             this.button_Add.Size = new System.Drawing.Size(68, 23);
-            this.button_Add.TabIndex = 4;
+            this.button_Add.TabIndex = 2;
             this.button_Add.Text = "<-";
             this.button_Add.UseVisualStyleBackColor = true;
             this.button_Add.Click += new System.EventHandler(this.button_Add_Click);
@@ -91,7 +93,7 @@
             this.button_Remove.Location = new System.Drawing.Point(138, 111);
             this.button_Remove.Name = "button_Remove";
             this.button_Remove.Size = new System.Drawing.Size(68, 23);
-            this.button_Remove.TabIndex = 5;
+            this.button_Remove.TabIndex = 3;
             this.button_Remove.Text = "->";
             this.button_Remove.UseVisualStyleBackColor = true;
             this.button_Remove.Click += new System.EventHandler(this.button_Remove_Click);
@@ -102,7 +104,7 @@
             this.label1.Location = new System.Drawing.Point(13, 13);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
-            this.label1.TabIndex = 6;
+            this.label1.TabIndex = 0;
             this.label1.Text = "当前权限";
             // 
             // label2
@@ -111,7 +113,7 @@
             this.label2.Location = new System.Drawing.Point(212, 12);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(53, 12);
-            this.label2.TabIndex = 7;
+            this.label2.TabIndex = 4;
             this.label2.Text = "所有权限";
             // 
             // UserPermissionForm
@@ -127,8 +129,11 @@
             this.Controls.Add(this.button_OK);
             this.Controls.Add(this.listBox_All);
             this.Controls.Add(this.listBox_Current);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "UserPermissionForm";
-            this.Text = "UserPermissionForm";
+            this.Text = "用户授权";
             this.ResumeLayout(false);
             this.PerformLayout();
 

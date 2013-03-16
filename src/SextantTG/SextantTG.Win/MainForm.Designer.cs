@@ -82,14 +82,14 @@
             // viweSightsToolStripMenuItem
             // 
             this.viweSightsToolStripMenuItem.Name = "viweSightsToolStripMenuItem";
-            this.viweSightsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.viweSightsToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.viweSightsToolStripMenuItem.Text = "景点一览(&V)...";
             this.viweSightsToolStripMenuItem.Click += new System.EventHandler(this.viewSightsToolStripMenuItem_Click);
             // 
             // viewTourToolStripMenuItem
             // 
             this.viewTourToolStripMenuItem.Name = "viewTourToolStripMenuItem";
-            this.viewTourToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.viewTourToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
             this.viewTourToolStripMenuItem.Text = "旅行一览(&T)...";
             this.viewTourToolStripMenuItem.Click += new System.EventHandler(this.viewTourToolStripMenuItem_Click);
             // 
@@ -107,26 +107,26 @@
             // myMainToolStripMenuItem
             // 
             this.myMainToolStripMenuItem.Name = "myMainToolStripMenuItem";
-            this.myMainToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.myMainToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.myMainToolStripMenuItem.Text = "我的主页(&H)...";
             this.myMainToolStripMenuItem.Click += new System.EventHandler(this.myMainToolStripMenuItem_Click);
             // 
             // mySightsToolStripMenuItem
             // 
             this.mySightsToolStripMenuItem.Name = "mySightsToolStripMenuItem";
-            this.mySightsToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.mySightsToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.mySightsToolStripMenuItem.Text = "我的景点(&G)...";
             // 
             // myBlogToolStripMenuItem
             // 
             this.myBlogToolStripMenuItem.Name = "myBlogToolStripMenuItem";
-            this.myBlogToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.myBlogToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.myBlogToolStripMenuItem.Text = "我的日志(&B)...";
             // 
             // myTourToolStripMenuItem
             // 
             this.myTourToolStripMenuItem.Name = "myTourToolStripMenuItem";
-            this.myTourToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.myTourToolStripMenuItem.Size = new System.Drawing.Size(150, 22);
             this.myTourToolStripMenuItem.Text = "我的旅行(&T)...";
             this.myTourToolStripMenuItem.Click += new System.EventHandler(this.myTourToolStripMenuItem_Click);
             // 
@@ -143,45 +143,45 @@
             // dictToolStripMenuItem
             // 
             this.dictToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.cityDictToolStripMenuItem,
+            this.countryDictToolStripMenuItem,
             this.provinceDictToolStripMenuItem,
-            this.countryDictToolStripMenuItem});
+            this.cityDictToolStripMenuItem});
             this.dictToolStripMenuItem.Name = "dictToolStripMenuItem";
-            this.dictToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.dictToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.dictToolStripMenuItem.Text = "字典管理(&D)";
             // 
             // cityDictToolStripMenuItem
             // 
             this.cityDictToolStripMenuItem.Name = "cityDictToolStripMenuItem";
-            this.cityDictToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.cityDictToolStripMenuItem.Text = "国家字典(&C)...";
+            this.cityDictToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.cityDictToolStripMenuItem.Text = "城市字典(&N)...";
             this.cityDictToolStripMenuItem.Click += new System.EventHandler(this.cityDictToolStripMenuItem_Click);
             // 
             // provinceDictToolStripMenuItem
             // 
             this.provinceDictToolStripMenuItem.Name = "provinceDictToolStripMenuItem";
-            this.provinceDictToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.provinceDictToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.provinceDictToolStripMenuItem.Text = "省份字典(&P)...";
             this.provinceDictToolStripMenuItem.Click += new System.EventHandler(this.provinceDictToolStripMenuItem_Click);
             // 
             // countryDictToolStripMenuItem
             // 
             this.countryDictToolStripMenuItem.Name = "countryDictToolStripMenuItem";
-            this.countryDictToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
-            this.countryDictToolStripMenuItem.Text = "城市字典(&I)...";
+            this.countryDictToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.countryDictToolStripMenuItem.Text = "国家字典(&C)...";
             this.countryDictToolStripMenuItem.Click += new System.EventHandler(this.countryDictToolStripMenuItem_Click);
             // 
             // userDictToolStripMenuItem
             // 
             this.userDictToolStripMenuItem.Name = "userDictToolStripMenuItem";
-            this.userDictToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.userDictToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.userDictToolStripMenuItem.Text = "用户管理(&R)...";
             this.userDictToolStripMenuItem.Click += new System.EventHandler(this.userDictToolStripMenuItem_Click);
             // 
             // sightsDictToolStripMenuItem
             // 
             this.sightsDictToolStripMenuItem.Name = "sightsDictToolStripMenuItem";
-            this.sightsDictToolStripMenuItem.Size = new System.Drawing.Size(149, 22);
+            this.sightsDictToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.sightsDictToolStripMenuItem.Text = "景点管理(&E)...";
             this.sightsDictToolStripMenuItem.Click += new System.EventHandler(this.sightsDictToolStripMenuItem_Click);
             // 

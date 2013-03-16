@@ -25,7 +25,7 @@ namespace SextantTG.SQLiteDAL
             this.dbHelper = new DbHelper(connectionString, DbUtil.DbProviderType.SQLite);
         }
         
-        private static readonly string SELECT = "select * from stg_province";
+        private static readonly string SELECT = "select * from stg_province order by country_id, province_id";
         //private static readonly string SELECT___PROVINCE_ID = "select * from stg_province where province_id = :ProvinceId";
         //private static readonly string SELECT___PROVINCE_NAME = "select * from stg_province where province_Name = :ProvinceName";
         //private static readonly string SELECT___COUNTRY_ID = "select * from stg_province where country_id = :countryId";

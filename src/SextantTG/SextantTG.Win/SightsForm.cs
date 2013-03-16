@@ -125,7 +125,28 @@ namespace SextantTG.Win
         {
             if (this.comboBox_City.SelectedValue != null)
             {
-                this.bindingSource.DataSource = UIUtil.GetSightsByCityId(this.comboBox_City.SelectedValue.ToString());
+                if (this.comboBox_City.SelectedValue.ToString() != "*")
+                {
+                    this.bindingSource.DataSource = UIUtil.GetSightsByCityId(this.comboBox_City.SelectedValue.ToString());
+                }
+                else
+                {
+                    if (this.comboBox_Province.SelectedValue.ToString() != "*")
+                    {
+                        this.bindingSource.DataSource = UIUtil.GetSightsByProvinceId(this.comboBox_Province.SelectedValue.ToString());
+                    }
+                    else
+                    {
+                        if (this.comboBox_Country.SelectedValue.ToString() != "*")
+                        {
+                            this.bindingSource.DataSource = UIUtil.GetSightsByCountryId(this.comboBox_Province.SelectedValue.ToString());
+                        }
+                        else
+                        {
+                            this.bindingSource.DataSource = UIUtil.GetSights();
+                        }
+                    }
+                }
             }
         }
 
@@ -180,6 +201,14 @@ namespace SextantTG.Win
         private void button_Close_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void dataGridView_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && this.bindingSource.Current != null)
+            {
+                button_Edit.PerformClick();
+            }
         }
     }
 }

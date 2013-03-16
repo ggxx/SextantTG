@@ -63,20 +63,22 @@
             // 
             // button_Cancel
             // 
+            this.button_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button_Cancel.Location = new System.Drawing.Point(426, 280);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(75, 23);
-            this.button_Cancel.TabIndex = 2;
+            this.button_Cancel.TabIndex = 3;
             this.button_Cancel.Text = "取消";
             this.button_Cancel.UseVisualStyleBackColor = true;
             this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
             // 
             // button_OK
             // 
+            this.button_OK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button_OK.Location = new System.Drawing.Point(345, 280);
             this.button_OK.Name = "button_OK";
             this.button_OK.Size = new System.Drawing.Size(75, 23);
-            this.button_OK.TabIndex = 3;
+            this.button_OK.TabIndex = 2;
             this.button_OK.Text = "确定";
             this.button_OK.UseVisualStyleBackColor = true;
             this.button_OK.Click += new System.EventHandler(this.button_OK_Click);
@@ -90,6 +92,9 @@
             this.Controls.Add(this.button_Cancel);
             this.Controls.Add(this.listBox_SubTour);
             this.Controls.Add(this.listBox_Tour);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "FindSubTourForm";
             this.Text = "选择一个行程";
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource_Tour)).EndInit();

@@ -142,9 +142,10 @@
             // 
             this.label3.AutoSize = true;
             this.label3.BackColor = System.Drawing.Color.Transparent;
-            this.label3.Location = new System.Drawing.Point(28, 9);
+            this.label3.Font = new System.Drawing.Font("微软雅黑", 21.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.label3.Location = new System.Drawing.Point(115, 60);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(113, 12);
+            this.label3.Size = new System.Drawing.Size(286, 38);
             this.label3.TabIndex = 0;
             this.label3.Text = "Sextant Tour Guide";
             // 

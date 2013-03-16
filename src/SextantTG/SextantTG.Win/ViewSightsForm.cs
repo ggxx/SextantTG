@@ -30,6 +30,20 @@ namespace SextantTG.Win
                 this.checkBox_Visited.Enabled = true;
             }
 
+            this.Column_C_CommentUserId.DisplayMember = "LoginName";
+            this.Column_C_CommentUserId.ValueMember = "UserId";
+            this.Column_C_CommentUserId.DataSource = UIUtil.GetUsers();
+
+            this.Column_B_TourId.DisplayMember = "TourName";
+            this.Column_B_TourId.ValueMember = "TourId";
+
+            this.Column_B_SubTourId.DisplayMember = "SubTourName";
+            this.Column_B_SubTourId.ValueMember = "SubTourId";
+
+            this.Column_B_SightsId.DisplayMember = "SightsName";
+            this.Column_B_SightsId.ValueMember = "SightsId";
+            this.Column_B_SightsId.DataSource = UIUtil.GetSights();
+
             this.comboBox_Country.DisplayMember = "CountryName";
             this.comboBox_Country.ValueMember = "CountryId";
 
@@ -185,6 +199,11 @@ namespace SextantTG.Win
 
         private void BindItem(Sights sights)
         {
+            this.bindingSource_Blog.DataSource = null;
+
+            this.Column_B_TourId.DataSource = UIUtil.GetToursBySightsId(sights.SightsId);
+            this.Column_B_SubTourId.DataSource = UIUtil.GetSubToursBySightsId(sights.SightsId);
+
             float? stars = UIUtil.GetAverageStarsBySightsId(sights.SightsId);
             this.textBox_SightsName.Text = sights.SightsName;
             this.textBox_Stars.Text = CustomTypeConverter.ToString(stars, "n2");
@@ -199,11 +218,9 @@ namespace SextantTG.Win
             this.stgReadonlyPictures.SetPicturesForSights(sights.SightsId, "0000");
 
             //
-            this.dataGridView_Comment.AutoGenerateColumns = true;
             this.bindingSource_Comment.DataSource = UIUtil.GetSightsCommentsBySightsId(sights.SightsId);
 
             //
-            this.dataGridView_Blog.AutoGenerateColumns = true;
             this.bindingSource_Blog.DataSource = UIUtil.GetBlogsBySightsId(sights.SightsId);
 
             if (Config.AppConfig.User != null)
@@ -213,6 +230,11 @@ namespace SextantTG.Win
                 {
                     this.textBox_MyVisited.Text = fav.Visited == 1 ? "是" : "否";
                     this.textBox_MyStars.Text = CustomTypeConverter.ToString(fav.Stars, "n0");
+                }
+                else
+                {
+                    this.textBox_MyVisited.Text = string.Empty;
+                    this.textBox_MyStars.Text = string.Empty;
                 }
             }
         }
@@ -227,6 +249,8 @@ namespace SextantTG.Win
             this.textBox_SightsLevel.Text = string.Empty;
             this.textBox_Price.Text = string.Empty;
             this.textBox_Description.Text = string.Empty;
+            this.textBox_MyVisited.Text = string.Empty;
+            this.textBox_MyStars.Text = string.Empty;
 
             this.stgReadonlyPictures.ResetList();
 

@@ -1,5 +1,6 @@
-E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\bin\Debug\SextantTG.Win.exe.config
-E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\bin\Debug\SextantTG.Win.pdb
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\bin\Debug\SextantTG.exe.config
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\bin\Debug\SextantTG.exe
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\bin\Debug\SextantTG.pdb
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\bin\Debug\SextantTG.ActiveRecord.dll
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\bin\Debug\SextantTG.DBUtil.dll
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\bin\Debug\SextantTG.IDAL.dll
@@ -28,6 +29,7 @@ E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\Sextant
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.FindSubTourForm.resources
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.LoginForm.resources
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.MainForm.resources
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.MyTourPicturesForm.resources
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.Properties.Resources.resources
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.ProvinceEditForm.resources
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.ProvincesForm.resources
@@ -45,7 +47,5 @@ E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\Sextant
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.MyMainForm.resources
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.MyTourForm.resources
 E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.csproj.GenerateResource.Cache
-E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.exe
-E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.pdb
-E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\bin\Debug\SextantTG.Win.exe
-E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.Win.MyTourPicturesForm.resources
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.exe
+E:\ggxx\Documents\GitHub\SextantTG\src\SextantTG\SextantTG.Win\obj\Debug\SextantTG.pdb

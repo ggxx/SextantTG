@@ -418,6 +418,16 @@ namespace SextantTG.Win
             return tourSrv.GetSubToursByTourId(tourId);
         }
 
+        internal static List<SubTour> GetSubToursByUserId(string userId)
+        {
+            return tourSrv.GetSubToursByUserId(userId);
+        }
+
+        internal static List<SubTour> GetSubToursBySightsId(string sightsId)
+        {
+            return tourSrv.GetSubToursBySightsId(sightsId);
+        }
+
         internal static List<Tour> GetToursByUserId(string userId)
         {
             return tourSrv.GetToursByUserId(userId);
@@ -454,6 +464,10 @@ namespace SextantTG.Win
         {
             return tourSrv.SavePictures(pictures, removedPictures, out message);
         }
+
+
+
+
 
 
     }

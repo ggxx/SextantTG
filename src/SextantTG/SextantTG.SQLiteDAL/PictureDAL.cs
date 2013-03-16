@@ -24,14 +24,12 @@ namespace SextantTG.SQLiteDAL
         {
             this.dbHelper = new DbHelper(connectionString, DbUtil.DbProviderType.SQLite);
         }
-        
-        private static readonly string SELECT___SIGHTS_ID__USER_ID = "select * from stg_picture where sights_id = :SightsId and user_id = :UserId";
-        private static readonly string SELECT___PICTURE_ID = "select * from stg_picture where picture_id = :PictureId";
-        private static readonly string SELECT___SIGHTS_ID = "select * from stg_picture where sights_id = :SightsId";
-        private static readonly string SELECT___TOUR_ID = "select * from stg_picture where tour_id = :TourId";
-        private static readonly string SELECT___TOUR_ID__SUB_TOUR_ID = "select * from stg_picture where tour_id = :TourId and sub_tour_id = :SubTourId"; 
-        //private static readonly string SELECT___USER_ID = "select * from stg_picture where user_id = :UserId";
-        //private static readonly string SELECT___BLOG_ID__SIGHTS_ID__USER_ID = "select * from stg_picture where blog_id = :BlogId and sights_id = :SightsId and user_id = :UserId";
+
+        private static readonly string SELECT___SIGHTS_ID__USER_ID = "select * from stg_picture where sights_id = :SightsId and user_id = :UserId  order by creating_time desc";
+        private static readonly string SELECT___PICTURE_ID = "select * from stg_picture where picture_id = :PictureId  order by creating_time desc";
+        private static readonly string SELECT___SIGHTS_ID = "select * from stg_picture where sights_id = :SightsId  order by creating_time desc";
+        private static readonly string SELECT___TOUR_ID = "select * from stg_picture where tour_id = :TourId  order by creating_time desc";
+        private static readonly string SELECT___TOUR_ID__SUB_TOUR_ID = "select * from stg_picture where tour_id = :TourId and sub_tour_id = :SubTourId  order by creating_time desc"; 
                 
         private static readonly string INSERT = "insert into stg_picture(picture_id, sights_id, tour_id, sub_tour_id, path, description, user_id, creating_time ) values(:PictureId, :SightsId, :TourId, :SubTourId, :Path, :Description, :UserId, :CreatingTime)";
         private static readonly string UPDATE = "update stg_picture set sights_id = :SightsId, tour_id = :TourId, sub_tour_id = :SubTourId, path = :Path, description = :Description, user_id = :UserId, creating_time = :CreatingTime  where picture_id = :PictureId" ;
@@ -67,21 +65,6 @@ namespace SextantTG.SQLiteDAL
             }
             return pictures;
         }
-
-        //public List<Picture> GetPicturesByUserId(string userId)
-        //{
-        //    List<Picture> pictures = new List<Picture>();
-        //    Dictionary<string, object> pars = new Dictionary<string, object>();
-        //    pars.Add("UserId", userId);
-        //    using (DbDataReader r = dbHelper.ExecuteReader(SELECT___USER_ID, pars))
-        //    {
-        //        while (r.Read())
-        //        {
-        //            pictures.Add(BuildPictureByReader(r));
-        //        }
-        //    }
-        //    return pictures;
-        //}
 
         public List<Picture> GetPicturesBySightsId(string sightsId)
         {

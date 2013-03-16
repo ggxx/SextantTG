@@ -44,6 +44,9 @@
             // 
             // tableLayoutPanel1
             // 
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 75F));
@@ -82,7 +85,7 @@
             this.label2.Location = new System.Drawing.Point(32, 49);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(35, 12);
-            this.label2.TabIndex = 1;
+            this.label2.TabIndex = 2;
             this.label2.Text = "Email";
             // 
             // label3
@@ -92,7 +95,7 @@
             this.label3.Location = new System.Drawing.Point(38, 86);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
-            this.label3.TabIndex = 2;
+            this.label3.TabIndex = 4;
             this.label3.Text = "口令";
             // 
             // label4
@@ -102,7 +105,7 @@
             this.label4.Location = new System.Drawing.Point(14, 124);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
-            this.label4.TabIndex = 3;
+            this.label4.TabIndex = 6;
             this.label4.Text = "确认口令";
             // 
             // textBox_LoginName
@@ -111,7 +114,7 @@
             this.textBox_LoginName.Location = new System.Drawing.Point(73, 8);
             this.textBox_LoginName.Name = "textBox_LoginName";
             this.textBox_LoginName.Size = new System.Drawing.Size(204, 21);
-            this.textBox_LoginName.TabIndex = 4;
+            this.textBox_LoginName.TabIndex = 1;
             // 
             // textBox_Email
             // 
@@ -119,7 +122,7 @@
             this.textBox_Email.Location = new System.Drawing.Point(73, 45);
             this.textBox_Email.Name = "textBox_Email";
             this.textBox_Email.Size = new System.Drawing.Size(204, 21);
-            this.textBox_Email.TabIndex = 5;
+            this.textBox_Email.TabIndex = 3;
             // 
             // textBox_Password
             // 
@@ -127,7 +130,7 @@
             this.textBox_Password.Location = new System.Drawing.Point(73, 82);
             this.textBox_Password.Name = "textBox_Password";
             this.textBox_Password.Size = new System.Drawing.Size(204, 21);
-            this.textBox_Password.TabIndex = 6;
+            this.textBox_Password.TabIndex = 5;
             this.textBox_Password.UseSystemPasswordChar = true;
             // 
             // textBox_Password2
@@ -141,35 +144,43 @@
             // 
             // button_Cancel
             // 
+            this.button_Cancel.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
+            this.button_Cancel.DialogResult = System.Windows.Forms.DialogResult.Cancel;
             this.button_Cancel.Location = new System.Drawing.Point(217, 167);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(75, 23);
-            this.button_Cancel.TabIndex = 1;
+            this.button_Cancel.TabIndex = 2;
             this.button_Cancel.Text = "取消";
             this.button_Cancel.UseVisualStyleBackColor = true;
             this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
             // 
             // button_OK
             // 
+            this.button_OK.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button_OK.Location = new System.Drawing.Point(136, 167);
             this.button_OK.Name = "button_OK";
             this.button_OK.Size = new System.Drawing.Size(75, 23);
-            this.button_OK.TabIndex = 2;
+            this.button_OK.TabIndex = 1;
             this.button_OK.Text = "确定";
             this.button_OK.UseVisualStyleBackColor = true;
             this.button_OK.Click += new System.EventHandler(this.button_OK_Click);
             // 
             // RegForm
             // 
+            this.AcceptButton = this.button_OK;
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.CancelButton = this.button_Cancel;
             this.ClientSize = new System.Drawing.Size(304, 202);
             this.Controls.Add(this.button_OK);
             this.Controls.Add(this.button_Cancel);
             this.Controls.Add(this.tableLayoutPanel1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "RegForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "RegForm";
+            this.Text = "用户注册";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
             this.ResumeLayout(false);

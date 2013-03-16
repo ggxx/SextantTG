@@ -25,9 +25,9 @@ namespace SextantTG.SQLiteDAL
             this.dbHelper = new DbHelper(connectionString, DbUtil.DbProviderType.SQLite);
         }
 
-        private static readonly string SELECT = "select * from stg_favorite";
-        private static readonly string SELECT___USER_ID = "select * from stg_favorite where user_id = :UserId";
-        private static readonly string SELECT___SIGHTS_ID = "select * from stg_favorite where sights_id = :SightsId";
+        private static readonly string SELECT = "select * from stg_favorite order by user_id, creating_time desc";
+        private static readonly string SELECT___USER_ID = "select * from stg_favorite where user_id = :UserId  order by creating_time desc";
+        private static readonly string SELECT___SIGHTS_ID = "select * from stg_favorite where sights_id = :SightsId  order by user_id, creating_time desc";
         private static readonly string SELECT___USER_ID__SIGHTS_ID = "select * from stg_favorite where user_id = :UserId and sights_id = :SightsId";
         private static readonly string SELECT___AVG_STARS___SIGHTS_ID = "select avg(stars) from stg_favorite where sights_id = :SightsId";
 

@@ -34,9 +34,22 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dataGridView_Comment = new System.Windows.Forms.DataGridView();
+            this.Column_C_CommentId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_C_CommentUserId = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column_C_Comment = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_C_CreatingTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_C_TourId = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSource_Comment = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.dataGridView_SubTour = new System.Windows.Forms.DataGridView();
+            this.Column_ST_TourId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_ST_SubTourId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_ST_SubTourName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_ST_SightsId = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column_ST_BeginDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_ST_EndDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_ST_CreatingTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_ST_Memos = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSource_SubTour = new System.Windows.Forms.BindingSource(this.components);
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
@@ -58,6 +71,14 @@
             this.stgReadonlyPictures = new SextantTG.Win.STGReadonlyPictures();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dataGridView_Blog = new System.Windows.Forms.DataGridView();
+            this.Column_B_BlogId = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_B_Title = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_B_TourId = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column_B_SubTourId = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column_B_SightsId = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column_B_Content = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Column_B_UserId = new System.Windows.Forms.DataGridViewComboBoxColumn();
+            this.Column_B_CreatingTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.bindingSource_Blog = new System.Windows.Forms.BindingSource(this.components);
             this.listBox_Tour = new System.Windows.Forms.ListBox();
             this.button_New = new System.Windows.Forms.Button();
@@ -88,7 +109,7 @@
             this.button_Close.Location = new System.Drawing.Point(757, 527);
             this.button_Close.Name = "button_Close";
             this.button_Close.Size = new System.Drawing.Size(75, 23);
-            this.button_Close.TabIndex = 12;
+            this.button_Close.TabIndex = 8;
             this.button_Close.Text = "关闭";
             this.button_Close.UseVisualStyleBackColor = true;
             this.button_Close.Click += new System.EventHandler(this.button_Close_Click);
@@ -105,7 +126,7 @@
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(582, 509);
-            this.tabControl1.TabIndex = 11;
+            this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
             // 
@@ -129,7 +150,7 @@
             this.groupBox3.Location = new System.Drawing.Point(6, 338);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(562, 139);
-            this.groupBox3.TabIndex = 11;
+            this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "留言";
             // 
@@ -139,6 +160,12 @@
             this.dataGridView_Comment.AllowUserToDeleteRows = false;
             this.dataGridView_Comment.AutoGenerateColumns = false;
             this.dataGridView_Comment.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_Comment.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column_C_CommentId,
+            this.Column_C_CommentUserId,
+            this.Column_C_Comment,
+            this.Column_C_CreatingTime,
+            this.Column_C_TourId});
             this.dataGridView_Comment.DataSource = this.bindingSource_Comment;
             this.dataGridView_Comment.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView_Comment.Location = new System.Drawing.Point(3, 17);
@@ -148,6 +175,51 @@
             this.dataGridView_Comment.Size = new System.Drawing.Size(556, 119);
             this.dataGridView_Comment.TabIndex = 7;
             // 
+            // Column_C_CommentId
+            // 
+            this.Column_C_CommentId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_C_CommentId.DataPropertyName = "CommentId";
+            this.Column_C_CommentId.HeaderText = "CommentId";
+            this.Column_C_CommentId.Name = "Column_C_CommentId";
+            this.Column_C_CommentId.ReadOnly = true;
+            this.Column_C_CommentId.Visible = false;
+            // 
+            // Column_C_CommentUserId
+            // 
+            this.Column_C_CommentUserId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_C_CommentUserId.DataPropertyName = "CommentUserId";
+            this.Column_C_CommentUserId.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.Column_C_CommentUserId.HeaderText = "用户";
+            this.Column_C_CommentUserId.Name = "Column_C_CommentUserId";
+            this.Column_C_CommentUserId.ReadOnly = true;
+            this.Column_C_CommentUserId.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column_C_CommentUserId.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic;
+            // 
+            // Column_C_Comment
+            // 
+            this.Column_C_Comment.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_C_Comment.DataPropertyName = "Comment";
+            this.Column_C_Comment.HeaderText = "留言";
+            this.Column_C_Comment.Name = "Column_C_Comment";
+            this.Column_C_Comment.ReadOnly = true;
+            // 
+            // Column_C_CreatingTime
+            // 
+            this.Column_C_CreatingTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_C_CreatingTime.DataPropertyName = "CreatingTime";
+            this.Column_C_CreatingTime.HeaderText = "时间";
+            this.Column_C_CreatingTime.Name = "Column_C_CreatingTime";
+            this.Column_C_CreatingTime.ReadOnly = true;
+            // 
+            // Column_C_TourId
+            // 
+            this.Column_C_TourId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_C_TourId.DataPropertyName = "TourId";
+            this.Column_C_TourId.HeaderText = "TourId";
+            this.Column_C_TourId.Name = "Column_C_TourId";
+            this.Column_C_TourId.ReadOnly = true;
+            this.Column_C_TourId.Visible = false;
+            // 
             // groupBox2
             // 
             this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -156,7 +228,7 @@
             this.groupBox2.Location = new System.Drawing.Point(6, 152);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(562, 180);
-            this.groupBox2.TabIndex = 10;
+            this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "行程安排";
             // 
@@ -166,6 +238,15 @@
             this.dataGridView_SubTour.AllowUserToDeleteRows = false;
             this.dataGridView_SubTour.AutoGenerateColumns = false;
             this.dataGridView_SubTour.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_SubTour.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column_ST_TourId,
+            this.Column_ST_SubTourId,
+            this.Column_ST_SubTourName,
+            this.Column_ST_SightsId,
+            this.Column_ST_BeginDate,
+            this.Column_ST_EndDate,
+            this.Column_ST_CreatingTime,
+            this.Column_ST_Memos});
             this.dataGridView_SubTour.DataSource = this.bindingSource_SubTour;
             this.dataGridView_SubTour.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView_SubTour.Location = new System.Drawing.Point(3, 17);
@@ -175,6 +256,83 @@
             this.dataGridView_SubTour.Size = new System.Drawing.Size(556, 160);
             this.dataGridView_SubTour.TabIndex = 7;
             // 
+            // Column_ST_TourId
+            // 
+            this.Column_ST_TourId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_ST_TourId.DataPropertyName = "TourId";
+            this.Column_ST_TourId.HeaderText = "TourId";
+            this.Column_ST_TourId.Name = "Column_ST_TourId";
+            this.Column_ST_TourId.ReadOnly = true;
+            this.Column_ST_TourId.Visible = false;
+            // 
+            // Column_ST_SubTourId
+            // 
+            this.Column_ST_SubTourId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_ST_SubTourId.DataPropertyName = "SubTourId";
+            this.Column_ST_SubTourId.HeaderText = "SubTourId";
+            this.Column_ST_SubTourId.Name = "Column_ST_SubTourId";
+            this.Column_ST_SubTourId.ReadOnly = true;
+            this.Column_ST_SubTourId.Visible = false;
+            // 
+            // Column_ST_SubTourName
+            // 
+            this.Column_ST_SubTourName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_ST_SubTourName.DataPropertyName = "SubTourName";
+            this.Column_ST_SubTourName.HeaderText = "行程名称";
+            this.Column_ST_SubTourName.Name = "Column_ST_SubTourName";
+            this.Column_ST_SubTourName.ReadOnly = true;
+            // 
+            // Column_ST_SightsId
+            // 
+            this.Column_ST_SightsId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_ST_SightsId.DataPropertyName = "SightsId";
+            this.Column_ST_SightsId.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.Column_ST_SightsId.HeaderText = "景点";
+            this.Column_ST_SightsId.Name = "Column_ST_SightsId";
+            this.Column_ST_SightsId.ReadOnly = true;
+            // 
+            // Column_ST_BeginDate
+            // 
+            this.Column_ST_BeginDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_ST_BeginDate.DataPropertyName = "BeginDate";
+            this.Column_ST_BeginDate.HeaderText = "起始日期";
+            this.Column_ST_BeginDate.Name = "Column_ST_BeginDate";
+            this.Column_ST_BeginDate.ReadOnly = true;
+            this.Column_ST_BeginDate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column_ST_BeginDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column_ST_EndDate
+            // 
+            this.Column_ST_EndDate.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_ST_EndDate.DataPropertyName = "EndDate";
+            this.Column_ST_EndDate.HeaderText = "结束日期";
+            this.Column_ST_EndDate.Name = "Column_ST_EndDate";
+            this.Column_ST_EndDate.ReadOnly = true;
+            this.Column_ST_EndDate.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column_ST_EndDate.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column_ST_CreatingTime
+            // 
+            this.Column_ST_CreatingTime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_ST_CreatingTime.DataPropertyName = "CreatingTime";
+            this.Column_ST_CreatingTime.HeaderText = "CreatingTime";
+            this.Column_ST_CreatingTime.Name = "Column_ST_CreatingTime";
+            this.Column_ST_CreatingTime.ReadOnly = true;
+            this.Column_ST_CreatingTime.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column_ST_CreatingTime.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column_ST_CreatingTime.Visible = false;
+            // 
+            // Column_ST_Memos
+            // 
+            this.Column_ST_Memos.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_ST_Memos.DataPropertyName = "Memos";
+            this.Column_ST_Memos.HeaderText = "Memos";
+            this.Column_ST_Memos.Name = "Column_ST_Memos";
+            this.Column_ST_Memos.ReadOnly = true;
+            this.Column_ST_Memos.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column_ST_Memos.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column_ST_Memos.Visible = false;
+            // 
             // groupBox1
             // 
             this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
@@ -183,7 +341,7 @@
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(562, 140);
-            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "旅行概况";
             // 
@@ -361,7 +519,7 @@
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage2.Size = new System.Drawing.Size(574, 483);
             this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "旅行图片";
+            this.tabPage2.Text = "沿途美景";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // stgReadonlyPictures
@@ -380,7 +538,7 @@
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(574, 483);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "旅行日志";
+            this.tabPage3.Text = "心情分享";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // dataGridView_Blog
@@ -389,6 +547,15 @@
             this.dataGridView_Blog.AllowUserToDeleteRows = false;
             this.dataGridView_Blog.AutoGenerateColumns = false;
             this.dataGridView_Blog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView_Blog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Column_B_BlogId,
+            this.Column_B_Title,
+            this.Column_B_TourId,
+            this.Column_B_SubTourId,
+            this.Column_B_SightsId,
+            this.Column_B_Content,
+            this.Column_B_UserId,
+            this.Column_B_CreatingTime});
             this.dataGridView_Blog.DataSource = this.bindingSource_Blog;
             this.dataGridView_Blog.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView_Blog.Location = new System.Drawing.Point(3, 3);
@@ -397,6 +564,80 @@
             this.dataGridView_Blog.RowTemplate.Height = 23;
             this.dataGridView_Blog.Size = new System.Drawing.Size(568, 477);
             this.dataGridView_Blog.TabIndex = 1;
+            // 
+            // Column_B_BlogId
+            // 
+            this.Column_B_BlogId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_B_BlogId.DataPropertyName = "BlogId";
+            this.Column_B_BlogId.HeaderText = "BlogId";
+            this.Column_B_BlogId.Name = "Column_B_BlogId";
+            this.Column_B_BlogId.ReadOnly = true;
+            this.Column_B_BlogId.Visible = false;
+            // 
+            // Column_B_Title
+            // 
+            this.Column_B_Title.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_B_Title.DataPropertyName = "Title";
+            this.Column_B_Title.HeaderText = "日志标题";
+            this.Column_B_Title.Name = "Column_B_Title";
+            this.Column_B_Title.ReadOnly = true;
+            this.Column_B_Title.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column_B_Title.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            // 
+            // Column_B_TourId
+            // 
+            this.Column_B_TourId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_B_TourId.DataPropertyName = "TourId";
+            this.Column_B_TourId.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.Column_B_TourId.HeaderText = "旅行";
+            this.Column_B_TourId.Name = "Column_B_TourId";
+            this.Column_B_TourId.ReadOnly = true;
+            // 
+            // Column_B_SubTourId
+            // 
+            this.Column_B_SubTourId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_B_SubTourId.DataPropertyName = "SubTourId";
+            this.Column_B_SubTourId.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.Column_B_SubTourId.HeaderText = "行程";
+            this.Column_B_SubTourId.Name = "Column_B_SubTourId";
+            this.Column_B_SubTourId.ReadOnly = true;
+            // 
+            // Column_B_SightsId
+            // 
+            this.Column_B_SightsId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_B_SightsId.DataPropertyName = "SightsId";
+            this.Column_B_SightsId.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.Column_B_SightsId.HeaderText = "景点";
+            this.Column_B_SightsId.Name = "Column_B_SightsId";
+            this.Column_B_SightsId.ReadOnly = true;
+            // 
+            // Column_B_Content
+            // 
+            this.Column_B_Content.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_B_Content.DataPropertyName = "Content";
+            this.Column_B_Content.HeaderText = "日志";
+            this.Column_B_Content.Name = "Column_B_Content";
+            this.Column_B_Content.ReadOnly = true;
+            this.Column_B_Content.Resizable = System.Windows.Forms.DataGridViewTriState.True;
+            this.Column_B_Content.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.NotSortable;
+            this.Column_B_Content.Visible = false;
+            // 
+            // Column_B_UserId
+            // 
+            this.Column_B_UserId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
+            this.Column_B_UserId.DataPropertyName = "UserId";
+            this.Column_B_UserId.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
+            this.Column_B_UserId.HeaderText = "UserId";
+            this.Column_B_UserId.Name = "Column_B_UserId";
+            this.Column_B_UserId.ReadOnly = true;
+            this.Column_B_UserId.Visible = false;
+            // 
+            // Column_B_CreatingTime
+            // 
+            this.Column_B_CreatingTime.DataPropertyName = "CreatingTime";
+            this.Column_B_CreatingTime.HeaderText = "创建时间";
+            this.Column_B_CreatingTime.Name = "Column_B_CreatingTime";
+            this.Column_B_CreatingTime.ReadOnly = true;
             // 
             // listBox_Tour
             // 
@@ -407,7 +648,7 @@
             this.listBox_Tour.Location = new System.Drawing.Point(12, 12);
             this.listBox_Tour.Name = "listBox_Tour";
             this.listBox_Tour.Size = new System.Drawing.Size(232, 532);
-            this.listBox_Tour.TabIndex = 10;
+            this.listBox_Tour.TabIndex = 0;
             this.listBox_Tour.SelectedIndexChanged += new System.EventHandler(this.listBox_Tour_SelectedIndexChanged);
             // 
             // button_New
@@ -416,7 +657,7 @@
             this.button_New.Location = new System.Drawing.Point(250, 527);
             this.button_New.Name = "button_New";
             this.button_New.Size = new System.Drawing.Size(75, 23);
-            this.button_New.TabIndex = 13;
+            this.button_New.TabIndex = 2;
             this.button_New.Text = "新的旅行";
             this.button_New.UseVisualStyleBackColor = true;
             this.button_New.Click += new System.EventHandler(this.button_New_Click);
@@ -427,7 +668,7 @@
             this.button_Edit.Location = new System.Drawing.Point(331, 527);
             this.button_Edit.Name = "button_Edit";
             this.button_Edit.Size = new System.Drawing.Size(75, 23);
-            this.button_Edit.TabIndex = 14;
+            this.button_Edit.TabIndex = 3;
             this.button_Edit.Text = "修改旅行";
             this.button_Edit.UseVisualStyleBackColor = true;
             this.button_Edit.Click += new System.EventHandler(this.button_Edit_Click);
@@ -439,7 +680,7 @@
             this.button_Blog.Location = new System.Drawing.Point(574, 527);
             this.button_Blog.Name = "button_Blog";
             this.button_Blog.Size = new System.Drawing.Size(75, 23);
-            this.button_Blog.TabIndex = 15;
+            this.button_Blog.TabIndex = 6;
             this.button_Blog.Text = "撰写日志";
             this.button_Blog.UseVisualStyleBackColor = true;
             this.button_Blog.Click += new System.EventHandler(this.button_Blog_Click);
@@ -450,7 +691,7 @@
             this.button_Comment.Location = new System.Drawing.Point(493, 527);
             this.button_Comment.Name = "button_Comment";
             this.button_Comment.Size = new System.Drawing.Size(75, 23);
-            this.button_Comment.TabIndex = 16;
+            this.button_Comment.TabIndex = 5;
             this.button_Comment.Text = "我要留言";
             this.button_Comment.UseVisualStyleBackColor = true;
             this.button_Comment.Click += new System.EventHandler(this.button_Comment_Click);
@@ -462,7 +703,7 @@
             this.button_Picture.Location = new System.Drawing.Point(655, 527);
             this.button_Picture.Name = "button_Picture";
             this.button_Picture.Size = new System.Drawing.Size(75, 23);
-            this.button_Picture.TabIndex = 17;
+            this.button_Picture.TabIndex = 7;
             this.button_Picture.Text = "上传图片";
             this.button_Picture.UseVisualStyleBackColor = true;
             this.button_Picture.Click += new System.EventHandler(this.button_Picture_Click);
@@ -470,11 +711,10 @@
             // button_Del
             // 
             this.button_Del.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
-            this.button_Del.Enabled = false;
             this.button_Del.Location = new System.Drawing.Point(412, 527);
             this.button_Del.Name = "button_Del";
             this.button_Del.Size = new System.Drawing.Size(75, 23);
-            this.button_Del.TabIndex = 18;
+            this.button_Del.TabIndex = 4;
             this.button_Del.Text = "删除旅行";
             this.button_Del.UseVisualStyleBackColor = true;
             this.button_Del.Click += new System.EventHandler(this.button_Del_Click);
@@ -554,5 +794,27 @@
         private System.Windows.Forms.Button button_Picture;
         private STGReadonlyPictures stgReadonlyPictures;
         private System.Windows.Forms.Button button_Del;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Column_CommentUserId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_C_CommentId;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Column_C_CommentUserId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_C_Comment;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_C_CreatingTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_C_TourId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_ST_TourId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_ST_SubTourId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_ST_SubTourName;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Column_ST_SightsId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_ST_BeginDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_ST_EndDate;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_ST_CreatingTime;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_ST_Memos;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_B_BlogId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_B_Title;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Column_B_TourId;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Column_B_SubTourId;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Column_B_SightsId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_B_Content;
+        private System.Windows.Forms.DataGridViewComboBoxColumn Column_B_UserId;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Column_B_CreatingTime;
     }
 }

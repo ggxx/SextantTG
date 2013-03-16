@@ -26,7 +26,7 @@ namespace SextantTG.SQLiteDAL
         }
 
         //private static readonly string SELECT = "select * from stg_user_comment";
-        private static readonly string SELECT___USER_ID = "select * from stg_user_comment where user_id = :UserId";
+        private static readonly string SELECT___USER_ID = "select * from stg_user_comment where user_id = :UserId  order by creating_time desc";
         //private static readonly string SELECT___COMM_USER_ID = "select * from stg_user_comment where comm_user_id = :CommUserId";
 
         private static readonly string INSERT = "insert into stg_user_comment(comment_id, user_id, comm_user_id, creating_time, comment) values(:CommentId, :UserId, :CommUserId, :CreatingTime, :Comment)";

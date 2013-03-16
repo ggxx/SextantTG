@@ -25,8 +25,10 @@ namespace SextantTG.SQLiteDAL
             this.dbHelper = new DbHelper(connectionString, DbUtil.DbProviderType.SQLite);
         }
 
-        private static readonly string SELECT = "select * from stg_sub_tour";
-        private static readonly string SELECT___TOUR_ID = "select * from stg_sub_tour where tour_id = :TourId";
+        private static readonly string SELECT = "select * from stg_sub_tour order by creating_time";
+        private static readonly string SELECT___USER_ID = "select stg_sub_tour.*  from stg_tour, stg_sub_tour where stg_tour.tour_id = stg_sub_tour.tour_id and stg_tour.user_id = :UserId order by stg_sub_tour.creating_time";
+        private static readonly string SELECT___TOUR_ID = "select * from stg_sub_tour where tour_id = :TourId order by creating_time";
+        private static readonly string SELECT___SIGHTS_ID = "select * from stg_sub_tour where sights_id = :SightsId order by creating_time";
         private static readonly string SELECT___TOUR_ID__SUB_TOUR_ID = "select * from stg_sub_tour where tour_id = :TourId and sub_tour_id = :SubTourId";
 
         private static readonly string INSERT = "insert into stg_sub_tour(tour_id, sub_tour_id, sub_tour_name, sights_id, begin_date, end_date, creating_time, memos) values(:TourId, :SubTourId, :SubTourName, :SightsId, :BeginDate, :EndDate, :CreatingTime, :Memos)";
@@ -92,6 +94,36 @@ namespace SextantTG.SQLiteDAL
             return subtours;
         }
 
+        public List<SubTour> GetSubToursByUserId(string userId)
+        {
+            List<SubTour> subtours = new List<SubTour>();
+            Dictionary<string, object> pars = new Dictionary<string, object>();
+            pars.Add("UserId", userId);
+            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___USER_ID, pars))
+            {
+                while (r.Read())
+                {
+                    subtours.Add(BuildSubTourByReader(r));
+                }
+            }
+            return subtours;
+        }
+
+        public List<SubTour> GetSubToursBySightsId(string sightsId)
+        {
+            List<SubTour> subtours = new List<SubTour>();
+            Dictionary<string, object> pars = new Dictionary<string, object>();
+            pars.Add("SightsId", sightsId);
+            using (DbDataReader r = dbHelper.ExecuteReader(SELECT___SIGHTS_ID, pars))
+            {
+                while (r.Read())
+                {
+                    subtours.Add(BuildSubTourByReader(r));
+                }
+            }
+            return subtours;
+        }
+
         public int InsertSubTour(SubTour subTour, DbTransaction trans)
         {
             if(string.IsNullOrEmpty(subTour.SubTourId))
@@ -144,6 +176,12 @@ namespace SextantTG.SQLiteDAL
         {
             this.dbHelper.Dispose();
         }
+
+
+
+
+
+
 
 
     }

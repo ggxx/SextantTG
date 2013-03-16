@@ -29,6 +29,24 @@ namespace SextantTG.Win
 
             }
 
+            this.Column_ST_SightsId.DisplayMember = "SightsName";
+            this.Column_ST_SightsId.ValueMember = "SightsId";
+            this.Column_ST_SightsId.DataSource = UIUtil.GetSights();
+
+            this.Column_C_CommentUserId.DisplayMember = "LoginName";
+            this.Column_C_CommentUserId.ValueMember = "UserId";
+            this.Column_C_CommentUserId.DataSource = UIUtil.GetUsers();
+
+            this.Column_B_SightsId.DisplayMember = "SightsName";
+            this.Column_B_SightsId.ValueMember = "SightsId";
+            this.Column_B_SightsId.DataSource = UIUtil.GetSights();
+
+            this.Column_B_SubTourId.DisplayMember = "SubTourName";
+            this.Column_B_SubTourId.ValueMember = "SubTourId";
+
+            this.Column_B_TourId.DisplayMember = "TourName";
+            this.Column_B_TourId.ValueMember = "TourId";
+
             this.comboBox_Country.DisplayMember = "CountryName";
             this.comboBox_Country.ValueMember = "CountryId";
 
@@ -243,6 +261,13 @@ namespace SextantTG.Win
 
         private void BindItem(Tour tour)
         {
+            this.bindingSource_Blog.DataSource = null;
+
+            List<Tour> ds = new List<Tour>();
+            ds.Add(tour);
+            this.Column_B_TourId.DataSource = ds;
+            this.Column_B_SubTourId.DataSource = UIUtil.GetSubToursByTourId(tour.TourId);
+
             string status = string.Empty;
             UIUtil.GetTourStatusDict().TryGetValue(tour.Status.Value, out status);
 
@@ -258,15 +283,12 @@ namespace SextantTG.Win
             //this.stgReadonlyPictures.SetPicturesForTour(tour.TourId);
 
             //
-            this.dataGridView_SubTour.AutoGenerateColumns = true;
             this.bindingSource_SubTour.DataSource = UIUtil.GetSubToursByTourId(tour.TourId);
 
             //
-            this.dataGridView_Comment.AutoGenerateColumns = true;
             this.bindingSource_Comment.DataSource = UIUtil.GetTourCommentsByTourId(tour.TourId);
 
             //
-            this.dataGridView_Blog.AutoGenerateColumns = true;
             this.bindingSource_Blog.DataSource = UIUtil.GetBlogsByTourId(tour.TourId);
         }
 

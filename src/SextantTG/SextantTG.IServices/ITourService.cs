@@ -21,6 +21,8 @@ namespace SextantTG.IServices
 
         List<SubTour> GetSubToursByTourId(string tourId);
         SubTour GetSubTourByTourIdAndSubTourId(string tourId, string subTourId);
+        List<SubTour> GetSubToursByUserId(string userId);
+        List<SubTour> GetSubToursBySightsId(string sightsId);
 
         List<Picture> GetPicturesByTourId(string tourId);
         List<Picture> GetPicturesByTourIdAndSubTourId(string tourId, string subTourId);
@@ -32,6 +34,10 @@ namespace SextantTG.IServices
 
         bool SavePictures(List<Picture> pictures, List<Picture> removedPictures, out string message);
 
-        
+
+
+
+
+
     }
 }

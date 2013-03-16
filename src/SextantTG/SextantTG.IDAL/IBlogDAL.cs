@@ -21,14 +21,16 @@ namespace SextantTG.IDAL
 
         List<Blog> GetBlogsByTourIdAndSubTourId(string tourId, string subTourId);
 
-        Blog GetBlogById(string blogId);
+        Blog GetBlogByBlogId(string blogId);
 
         int InsertBlog(Blog blog, DbTransaction trans);
 
         int UpdateBlog(Blog blog, DbTransaction trans);
 
-        int DeleteBlogById(string blogId, DbTransaction trans);
+        int DeleteBlogByBlogId(string blogId, DbTransaction trans);
 
-        
+        int DeleteBlogsByTourId(string tourId, DbTransaction trans);
+
+        int DeleteBlogsBySubTourId(string subTourId, DbTransaction trans);
     }
 }

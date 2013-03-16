@@ -25,7 +25,7 @@ namespace SextantTG.SQLiteDAL
             this.dbHelper = new DbHelper(connectionString, DbUtil.DbProviderType.SQLite);
         }
         
-        private static readonly string SELECT = "select * from stg_user";
+        private static readonly string SELECT = "select * from stg_user order by login_name";
         private static readonly string SELECT___USER_ID = "select * from stg_user where user_id = :UserId";
         private static readonly string SELECT___LOGIN_NAME = "select * from stg_user where login_name = :LoginName";
         private static readonly string SELECT___EMAIL = "select * from stg_user where email = :Email";

@@ -46,11 +46,12 @@
             this.textBox_Memos = new System.Windows.Forms.TextBox();
             this.textBox_Description = new System.Windows.Forms.TextBox();
             this.comboBox_SightsLevel = new System.Windows.Forms.ComboBox();
-            this.maskedTextBox_Price = new System.Windows.Forms.MaskedTextBox();
+            this.numericUpDown_Price = new System.Windows.Forms.NumericUpDown();
             this.button_OK = new System.Windows.Forms.Button();
             this.button_Cancel = new System.Windows.Forms.Button();
             this.stgPictures = new SextantTG.Win.STGPictures();
             this.tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Price)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -81,7 +82,7 @@
             this.tableLayoutPanel1.Controls.Add(this.textBox_Memos, 1, 4);
             this.tableLayoutPanel1.Controls.Add(this.textBox_Description, 1, 3);
             this.tableLayoutPanel1.Controls.Add(this.comboBox_SightsLevel, 1, 2);
-            this.tableLayoutPanel1.Controls.Add(this.maskedTextBox_Price, 3, 2);
+            this.tableLayoutPanel1.Controls.Add(this.numericUpDown_Price, 3, 2);
             this.tableLayoutPanel1.Location = new System.Drawing.Point(12, 12);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 6;
@@ -92,7 +93,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 30F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(760, 349);
-            this.tableLayoutPanel1.TabIndex = 6;
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label2
             // 
@@ -112,7 +113,7 @@
             this.comboBox_Country.Location = new System.Drawing.Point(78, 35);
             this.comboBox_Country.Name = "comboBox_Country";
             this.comboBox_Country.Size = new System.Drawing.Size(182, 20);
-            this.comboBox_Country.TabIndex = 4;
+            this.comboBox_Country.TabIndex = 3;
             this.comboBox_Country.SelectedIndexChanged += new System.EventHandler(this.comboBox_Country_SelectedIndexChanged);
             // 
             // label4
@@ -122,7 +123,7 @@
             this.label4.Location = new System.Drawing.Point(19, 9);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(53, 12);
-            this.label4.TabIndex = 8;
+            this.label4.TabIndex = 0;
             this.label4.Text = "景区名称";
             // 
             // comboBox_Province
@@ -153,7 +154,7 @@
             this.label3.Location = new System.Drawing.Point(291, 39);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(29, 12);
-            this.label3.TabIndex = 3;
+            this.label3.TabIndex = 4;
             this.label3.Text = "省份";
             // 
             // label1
@@ -163,7 +164,7 @@
             this.label1.Location = new System.Drawing.Point(539, 39);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 12);
-            this.label1.TabIndex = 1;
+            this.label1.TabIndex = 6;
             this.label1.Text = "城市";
             // 
             // label5
@@ -173,7 +174,7 @@
             this.label5.Location = new System.Drawing.Point(43, 69);
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(29, 12);
-            this.label5.TabIndex = 9;
+            this.label5.TabIndex = 8;
             this.label5.Text = "级别";
             // 
             // label7
@@ -183,7 +184,7 @@
             this.label7.Location = new System.Drawing.Point(291, 69);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(29, 12);
-            this.label7.TabIndex = 11;
+            this.label7.TabIndex = 10;
             this.label7.Text = "票价";
             // 
             // label6
@@ -193,7 +194,7 @@
             this.label6.Location = new System.Drawing.Point(43, 183);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(29, 12);
-            this.label6.TabIndex = 10;
+            this.label6.TabIndex = 12;
             this.label6.Text = "简介";
             // 
             // label9
@@ -203,7 +204,7 @@
             this.label9.Location = new System.Drawing.Point(43, 298);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(29, 12);
-            this.label9.TabIndex = 13;
+            this.label9.TabIndex = 14;
             this.label9.Text = "备注";
             // 
             // label8
@@ -213,7 +214,7 @@
             this.label8.Location = new System.Drawing.Point(19, 328);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(53, 12);
-            this.label8.TabIndex = 12;
+            this.label8.TabIndex = 16;
             this.label8.Text = "录入日期";
             // 
             // textBox_SightsName
@@ -223,7 +224,7 @@
             this.textBox_SightsName.Location = new System.Drawing.Point(78, 4);
             this.textBox_SightsName.Name = "textBox_SightsName";
             this.textBox_SightsName.Size = new System.Drawing.Size(679, 21);
-            this.textBox_SightsName.TabIndex = 14;
+            this.textBox_SightsName.TabIndex = 1;
             // 
             // textBox_CreatingTime
             // 
@@ -232,7 +233,7 @@
             this.textBox_CreatingTime.Name = "textBox_CreatingTime";
             this.textBox_CreatingTime.ReadOnly = true;
             this.textBox_CreatingTime.Size = new System.Drawing.Size(182, 21);
-            this.textBox_CreatingTime.TabIndex = 15;
+            this.textBox_CreatingTime.TabIndex = 17;
             // 
             // textBox_Memos
             // 
@@ -242,7 +243,7 @@
             this.textBox_Memos.Multiline = true;
             this.textBox_Memos.Name = "textBox_Memos";
             this.textBox_Memos.Size = new System.Drawing.Size(679, 21);
-            this.textBox_Memos.TabIndex = 16;
+            this.textBox_Memos.TabIndex = 15;
             // 
             // textBox_Description
             // 
@@ -253,7 +254,7 @@
             this.textBox_Description.Name = "textBox_Description";
             this.textBox_Description.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
             this.textBox_Description.Size = new System.Drawing.Size(679, 193);
-            this.textBox_Description.TabIndex = 17;
+            this.textBox_Description.TabIndex = 13;
             // 
             // comboBox_SightsLevel
             // 
@@ -268,15 +269,25 @@
             this.comboBox_SightsLevel.Location = new System.Drawing.Point(78, 65);
             this.comboBox_SightsLevel.Name = "comboBox_SightsLevel";
             this.comboBox_SightsLevel.Size = new System.Drawing.Size(182, 20);
-            this.comboBox_SightsLevel.TabIndex = 18;
+            this.comboBox_SightsLevel.TabIndex = 9;
             // 
-            // maskedTextBox_Price
+            // numericUpDown_Price
             // 
-            this.maskedTextBox_Price.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.maskedTextBox_Price.Location = new System.Drawing.Point(326, 64);
-            this.maskedTextBox_Price.Name = "maskedTextBox_Price";
-            this.maskedTextBox_Price.Size = new System.Drawing.Size(182, 21);
-            this.maskedTextBox_Price.TabIndex = 19;
+            this.numericUpDown_Price.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
+            this.numericUpDown_Price.Increment = new decimal(new int[] {
+            10,
+            0,
+            0,
+            0});
+            this.numericUpDown_Price.Location = new System.Drawing.Point(326, 64);
+            this.numericUpDown_Price.Maximum = new decimal(new int[] {
+            1000,
+            0,
+            0,
+            0});
+            this.numericUpDown_Price.Name = "numericUpDown_Price";
+            this.numericUpDown_Price.Size = new System.Drawing.Size(182, 21);
+            this.numericUpDown_Price.TabIndex = 11;
             // 
             // button_OK
             // 
@@ -284,7 +295,7 @@
             this.button_OK.Location = new System.Drawing.Point(616, 627);
             this.button_OK.Name = "button_OK";
             this.button_OK.Size = new System.Drawing.Size(75, 23);
-            this.button_OK.TabIndex = 5;
+            this.button_OK.TabIndex = 2;
             this.button_OK.Text = "确定";
             this.button_OK.UseVisualStyleBackColor = true;
             this.button_OK.Click += new System.EventHandler(this.button_OK_Click);
@@ -296,7 +307,7 @@
             this.button_Cancel.Location = new System.Drawing.Point(697, 627);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(75, 23);
-            this.button_Cancel.TabIndex = 4;
+            this.button_Cancel.TabIndex = 3;
             this.button_Cancel.Text = "取消";
             this.button_Cancel.UseVisualStyleBackColor = true;
             this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
@@ -309,7 +320,7 @@
             this.stgPictures.Location = new System.Drawing.Point(12, 367);
             this.stgPictures.Name = "stgPictures";
             this.stgPictures.Size = new System.Drawing.Size(757, 254);
-            this.stgPictures.TabIndex = 11;
+            this.stgPictures.TabIndex = 1;
             // 
             // SightsEditForm
             // 
@@ -322,9 +333,10 @@
             this.Controls.Add(this.button_Cancel);
             this.Name = "SightsEditForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "SightsEditForm";
+            this.Text = "景区字典编辑";
             this.tableLayoutPanel1.ResumeLayout(false);
             this.tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.numericUpDown_Price)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -351,7 +363,7 @@
         private System.Windows.Forms.TextBox textBox_Memos;
         private System.Windows.Forms.TextBox textBox_Description;
         private System.Windows.Forms.ComboBox comboBox_SightsLevel;
-        private System.Windows.Forms.MaskedTextBox maskedTextBox_Price;
         private STGPictures stgPictures;
+        private System.Windows.Forms.NumericUpDown numericUpDown_Price;
     }
 }

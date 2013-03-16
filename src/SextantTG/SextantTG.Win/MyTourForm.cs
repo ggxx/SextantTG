@@ -19,6 +19,26 @@ namespace SextantTG.Win
 
             this.listBox_Tour.DisplayMember = "TourName";
             this.listBox_Tour.ValueMember = "TourId";
+
+            this.Column_ST_SightsId.DisplayMember = "SightsName";
+            this.Column_ST_SightsId.ValueMember = "SightsId";
+            this.Column_ST_SightsId.DataSource = UIUtil.GetSights();
+
+            this.Column_C_CommentUserId.DisplayMember = "LoginName";
+            this.Column_C_CommentUserId.ValueMember = "UserId";
+            this.Column_C_CommentUserId.DataSource = UIUtil.GetUsers();
+        
+            this.Column_B_TourId.DisplayMember = "TourName";
+            this.Column_B_TourId.ValueMember = "TourId";
+            this.Column_B_TourId.DataSource = UIUtil.GetToursByUserId(Config.AppConfig.User.UserId);
+
+            this.Column_B_SubTourId.DisplayMember = "SubTourName";
+            this.Column_B_SubTourId.ValueMember = "SubTourId";
+            this.Column_B_SubTourId.DataSource = UIUtil.GetSubToursByUserId(Config.AppConfig.User.UserId);
+
+            this.Column_B_SightsId.DisplayMember = "SightsName";
+            this.Column_B_SightsId.ValueMember = "SightsId";
+            this.Column_B_SightsId.DataSource = UIUtil.GetSights();
         }
 
         private void button_New_Click(object sender, EventArgs e)
@@ -54,7 +74,7 @@ namespace SextantTG.Win
                 string tourId = (listBox_Tour.SelectedItem as Tour).TourId;
                 bool val;
                 string msg;
-                switch (MessageBox.Show("是否删除与行旅行有关的图片？", "提示", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1))
+                switch (MessageBox.Show("是否删除与行旅行有关的图片与日志？", "提示", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1))
                 {
                     case System.Windows.Forms.DialogResult.Yes:
                         val = UIUtil.DeleteTourByTourId(tourId, true, out msg);
@@ -68,7 +88,7 @@ namespace SextantTG.Win
 
                 if (val)
                 {
-                    BindControls();
+                    listBox_Tour_SelectedIndexChanged(sender, e);
                 }
                 else
                 {
@@ -117,15 +137,12 @@ namespace SextantTG.Win
             this.stgReadonlyPictures.SetPicturesForTour(tour.TourId);
 
             //
-            this.dataGridView_SubTour.AutoGenerateColumns = true;
             this.bindingSource_SubTour.DataSource = UIUtil.GetSubToursByTourId(tour.TourId);
 
             //
-            this.dataGridView_Comment.AutoGenerateColumns = true;
             this.bindingSource_Comment.DataSource = UIUtil.GetTourCommentsByTourId(tour.TourId);
 
             //
-            this.dataGridView_Blog.AutoGenerateColumns = true;
             this.bindingSource_Blog.DataSource = UIUtil.GetBlogsByTourId(tour.TourId);
 
             if (tour.Status != 0)

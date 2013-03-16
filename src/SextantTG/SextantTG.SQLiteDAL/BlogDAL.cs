@@ -25,17 +25,19 @@ namespace SextantTG.SQLiteDAL
             this.dbHelper = new DbHelper(connectionString, DbUtil.DbProviderType.SQLite);
         }
 
-        private static readonly string SELECT = "select * from stg_blog";
-        private static readonly string SELECT___USER_ID = "select * from stg_blog where user_id = :UserId";
-        private static readonly string SELECT___SIGHTS_ID = "select * from stg_blog where sights_id = :SightsId";
-        private static readonly string SELECT___USER_ID__SIGHTS_ID = "select * from stg_blog where user_id = :UserId and sights_id = :SightsId";
-        private static readonly string SELECT___TOUR_ID = "select * from stg_blog where tour_id = :TourId";
-        private static readonly string SELECT___TOUR_ID__SUB_TOUR_ID = "select * from stg_blog where tour_id = :TourId and sub_tour_id = :SubTourId";
-        private static readonly string SELECT___BLOG_ID = "select * from stg_blog where blog_id = :BlogId";
+        private static readonly string SELECT = "select * from stg_blog order by creating_time desc";
+        private static readonly string SELECT___USER_ID = "select * from stg_blog where user_id = :UserId order by creating_time desc";
+        private static readonly string SELECT___SIGHTS_ID = "select * from stg_blog where sights_id = :SightsId order by creating_time desc";
+        private static readonly string SELECT___USER_ID__SIGHTS_ID = "select * from stg_blog where user_id = :UserId and sights_id = :SightsId order by creating_time desc";
+        private static readonly string SELECT___TOUR_ID = "select * from stg_blog where tour_id = :TourId order by creating_time desc";
+        private static readonly string SELECT___TOUR_ID__SUB_TOUR_ID = "select * from stg_blog where tour_id = :TourId and sub_tour_id = :SubTourId order by creating_time desc";
+        private static readonly string SELECT___BLOG_ID = "select * from stg_blog where blog_id = :BlogId order by creating_time desc";
 
         private static readonly string INSERT = "insert into stg_blog(blog_id, user_id, tour_id, sub_tour_id, sights_id, title, content, creating_time) values(:BlogId, :UserId, :TourId, :SubTourId, :SightsId, :Title, :Content, :CreatingTime)";
         private static readonly string UPDATE = "update stg_blog set user_id = :UserId, tour_id = :TourId, sub_tour_id = :SubTourId, sights_id = :SightsId, title = :Title, content = :Content, creating_time = :CreatingTime where blog_id = :BlogId";
-        private static readonly string DELETE = "delete from stg_blog where blog_id = :BlogId";
+        private static readonly string DELETE___BLOG_ID = "delete from stg_blog where blog_id = :BlogId";
+        private static readonly string DELETE___TOUR_ID = "delete from stg_blog where tour_id = :TourId";
+        private static readonly string DELETE___SUB_TOUR_ID = "delete from stg_blog where sub_tour_id = :SubTourId";
 
         private Blog BuildBlogByReader(DbDataReader r)
         {
@@ -141,7 +143,7 @@ namespace SextantTG.SQLiteDAL
             return blogs;
         }
 
-        public Blog GetBlogById(string blogId)
+        public Blog GetBlogByBlogId(string blogId)
         {
             Blog blog = null;
             Dictionary<string, object> pars = new Dictionary<string, object>();
@@ -187,16 +189,33 @@ namespace SextantTG.SQLiteDAL
             return dbHelper.ExecuteNonQuery(trans, UPDATE, pars);
         }
 
-        public int DeleteBlogById(string blogId, DbTransaction trans)
+        public int DeleteBlogByBlogId(string blogId, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("BlogId", blogId);
-            return dbHelper.ExecuteNonQuery(trans, DELETE, pars);
+            return dbHelper.ExecuteNonQuery(trans, DELETE___BLOG_ID, pars);
+        }
+
+        public int DeleteBlogsByTourId(string tourId, DbTransaction trans)
+        {
+            Dictionary<string, object> pars = new Dictionary<string, object>();
+            pars.Add("TourId", tourId);
+            return dbHelper.ExecuteNonQuery(trans, DELETE___TOUR_ID, pars);
+        }
+
+        public int DeleteBlogsBySubTourId(string subTourId, DbTransaction trans)
+        {
+            Dictionary<string, object> pars = new Dictionary<string, object>();
+            pars.Add("SubTourId", subTourId);
+            return dbHelper.ExecuteNonQuery(trans, DELETE___SUB_TOUR_ID, pars);
         }
 
         public void Dispose()
         {
             this.dbHelper.Dispose();
         }
+
+
+
     }
 }

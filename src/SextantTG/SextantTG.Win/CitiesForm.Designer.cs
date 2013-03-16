@@ -46,6 +46,9 @@
             // 
             this.dataGridView.AllowUserToAddRows = false;
             this.dataGridView.AllowUserToDeleteRows = false;
+            this.dataGridView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.dataGridView.AutoGenerateColumns = false;
             this.dataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
@@ -64,13 +67,16 @@
             // 
             // Column_CityId
             // 
+            this.Column_CityId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column_CityId.DataPropertyName = "CityId";
             this.Column_CityId.HeaderText = "ID";
             this.Column_CityId.Name = "Column_CityId";
             this.Column_CityId.ReadOnly = true;
+            this.Column_CityId.Visible = false;
             // 
             // Column_CityName
             // 
+            this.Column_CityName.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column_CityName.DataPropertyName = "CityName";
             this.Column_CityName.HeaderText = "城市";
             this.Column_CityName.Name = "Column_CityName";
@@ -78,6 +84,7 @@
             // 
             // Column_ProvinceId
             // 
+            this.Column_ProvinceId.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
             this.Column_ProvinceId.DataPropertyName = "ProvinceId";
             this.Column_ProvinceId.DisplayStyle = System.Windows.Forms.DataGridViewComboBoxDisplayStyle.Nothing;
             this.Column_ProvinceId.HeaderText = "所属省份";
@@ -86,41 +93,45 @@
             // 
             // button_Close
             // 
+            this.button_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
             this.button_Close.Location = new System.Drawing.Point(537, 407);
             this.button_Close.Name = "button_Close";
             this.button_Close.Size = new System.Drawing.Size(75, 23);
-            this.button_Close.TabIndex = 2;
+            this.button_Close.TabIndex = 4;
             this.button_Close.Text = "关闭";
             this.button_Close.UseVisualStyleBackColor = true;
             this.button_Close.Click += new System.EventHandler(this.button_Close_Click);
             // 
             // button_Add
             // 
+            this.button_Add.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button_Add.Location = new System.Drawing.Point(12, 407);
             this.button_Add.Name = "button_Add";
             this.button_Add.Size = new System.Drawing.Size(75, 23);
-            this.button_Add.TabIndex = 3;
+            this.button_Add.TabIndex = 1;
             this.button_Add.Text = "新增";
             this.button_Add.UseVisualStyleBackColor = true;
             this.button_Add.Click += new System.EventHandler(this.button_Add_Click);
             // 
             // button_Edit
             // 
+            this.button_Edit.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button_Edit.Location = new System.Drawing.Point(93, 407);
             this.button_Edit.Name = "button_Edit";
             this.button_Edit.Size = new System.Drawing.Size(75, 23);
-            this.button_Edit.TabIndex = 4;
+            this.button_Edit.TabIndex = 2;
             this.button_Edit.Text = "编辑";
             this.button_Edit.UseVisualStyleBackColor = true;
             this.button_Edit.Click += new System.EventHandler(this.button_Edit_Click);
             // 
             // button_Delete
             // 
+            this.button_Delete.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
             this.button_Delete.Enabled = false;
             this.button_Delete.Location = new System.Drawing.Point(174, 407);
             this.button_Delete.Name = "button_Delete";
             this.button_Delete.Size = new System.Drawing.Size(75, 23);
-            this.button_Delete.TabIndex = 5;
+            this.button_Delete.TabIndex = 3;
             this.button_Delete.Text = "删除";
             this.button_Delete.UseVisualStyleBackColor = true;
             this.button_Delete.Click += new System.EventHandler(this.button_Delete_Click);
@@ -136,7 +147,7 @@
             this.Controls.Add(this.button_Close);
             this.Controls.Add(this.dataGridView);
             this.Name = "CitiesForm";
-            this.Text = "CitiesForm";
+            this.Text = "城市字典管理";
             this.Load += new System.EventHandler(this.CitiesForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.bindingSource)).EndInit();

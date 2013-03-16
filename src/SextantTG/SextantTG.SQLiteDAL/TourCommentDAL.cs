@@ -25,8 +25,8 @@ namespace SextantTG.SQLiteDAL
             this.dbHelper = new DbHelper(connectionString, DbUtil.DbProviderType.SQLite);
         }
 
-        //private static readonly string SELECT = "select * from stg_tour_comment";
-        private static readonly string SELECT___TOUR_ID = "select * from stg_tour_comment where tour_id = :TourId";
+        //private static readonly string SELECT = "select * from stg_tour_comment"; 
+        private static readonly string SELECT___TOUR_ID = "select * from stg_tour_comment where tour_id = :TourId  order by creating_time desc";
         //private static readonly string SELECT___COMM_USER_ID = "select * from stg_tour_comment where comm_user_id = :CommUserId";
 
         private static readonly string INSERT = "insert into stg_tour_comment(comment_id, tour_id, comm_user_id, creating_time, comment) values(:CommentId, :TourId, :CommUserId, :CreatingTime, :Comment)";

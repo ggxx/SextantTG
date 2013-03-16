@@ -50,7 +50,7 @@ namespace SextantTG.Services
 
         public Blog GetBlogByBlogId(string blogId)
         {
-            return blogDal.GetBlogById(blogId);
+            return blogDal.GetBlogByBlogId(blogId);
         }
 
         //public bool CreateBlog(Blog blog, List<Picture> pics, string userId, out string message)
@@ -120,7 +120,7 @@ namespace SextantTG.Services
                 {
                     try
                     {
-                        blogDal.DeleteBlogById(blogId, trans);
+                        blogDal.DeleteBlogByBlogId(blogId, trans);
                         trans.Commit();
                         message = string.Empty;
                         return true;

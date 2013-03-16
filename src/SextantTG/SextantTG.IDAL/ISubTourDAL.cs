@@ -11,10 +11,16 @@ namespace SextantTG.IDAL
     {
         List<SubTour> GetSubToursByTourId(string tourId);
         SubTour GetSubTourByTourIdAndSubTourId(string tourId, string subTourId);
+        List<SubTour> GetSubToursByUserId(string userId);
+        List<SubTour> GetSubToursBySightsId(string sightsId);
 
         int InsertSubTour(SubTour subTour, DbTransaction trans);
         int UpdateSubTour(SubTour subTour, DbTransaction trans);
         int DeleteSubTourByTourIdAndSubTourId(string tourId, string subTourId, DbTransaction trans);
         int DeleteSubTourByTourId(string tourId, DbTransaction trans);
+
+
+
+
     }
 }

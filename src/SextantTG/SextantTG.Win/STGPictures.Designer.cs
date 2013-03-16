@@ -48,7 +48,7 @@
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(583, 327);
-            this.groupBox1.TabIndex = 11;
+            this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "图片";
             // 
@@ -59,7 +59,7 @@
             this.label1.Location = new System.Drawing.Point(6, 302);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(53, 12);
-            this.label1.TabIndex = 12;
+            this.label1.TabIndex = 1;
             this.label1.Text = "图片说明";
             // 
             // textBox_Desc
@@ -69,7 +69,7 @@
             this.textBox_Desc.Name = "textBox_Desc";
             this.textBox_Desc.ReadOnly = true;
             this.textBox_Desc.Size = new System.Drawing.Size(246, 21);
-            this.textBox_Desc.TabIndex = 11;
+            this.textBox_Desc.TabIndex = 2;
             this.textBox_Desc.TextChanged += new System.EventHandler(this.textBox_Desc_TextChanged);
             // 
             // button_Delete
@@ -78,7 +78,7 @@
             this.button_Delete.Location = new System.Drawing.Point(502, 298);
             this.button_Delete.Name = "button_Delete";
             this.button_Delete.Size = new System.Drawing.Size(75, 23);
-            this.button_Delete.TabIndex = 10;
+            this.button_Delete.TabIndex = 4;
             this.button_Delete.Text = "删除";
             this.button_Delete.UseVisualStyleBackColor = true;
             this.button_Delete.Click += new System.EventHandler(this.button_Delete_Click);
@@ -91,7 +91,7 @@
             this.listView_Pic.Location = new System.Drawing.Point(6, 20);
             this.listView_Pic.Name = "listView_Pic";
             this.listView_Pic.Size = new System.Drawing.Size(571, 272);
-            this.listView_Pic.TabIndex = 9;
+            this.listView_Pic.TabIndex = 0;
             this.listView_Pic.TileSize = new System.Drawing.Size(128, 64);
             this.listView_Pic.UseCompatibleStateImageBehavior = false;
             this.listView_Pic.View = System.Windows.Forms.View.Tile;
@@ -103,7 +103,7 @@
             this.button_Upload.Location = new System.Drawing.Point(421, 298);
             this.button_Upload.Name = "button_Upload";
             this.button_Upload.Size = new System.Drawing.Size(75, 23);
-            this.button_Upload.TabIndex = 8;
+            this.button_Upload.TabIndex = 3;
             this.button_Upload.Text = "选择...";
             this.button_Upload.UseVisualStyleBackColor = true;
             this.button_Upload.Click += new System.EventHandler(this.button_Upload_Click);

@@ -53,7 +53,7 @@
             this.button_OK.Location = new System.Drawing.Point(456, 527);
             this.button_OK.Name = "button_OK";
             this.button_OK.Size = new System.Drawing.Size(75, 23);
-            this.button_OK.TabIndex = 5;
+            this.button_OK.TabIndex = 4;
             this.button_OK.Text = "确定";
             this.button_OK.UseVisualStyleBackColor = true;
             this.button_OK.Click += new System.EventHandler(this.button_OK_Click);
@@ -64,7 +64,7 @@
             this.button_Cancel.Location = new System.Drawing.Point(537, 527);
             this.button_Cancel.Name = "button_Cancel";
             this.button_Cancel.Size = new System.Drawing.Size(75, 23);
-            this.button_Cancel.TabIndex = 4;
+            this.button_Cancel.TabIndex = 5;
             this.button_Cancel.Text = "取消";
             this.button_Cancel.UseVisualStyleBackColor = true;
             this.button_Cancel.Click += new System.EventHandler(this.button_Cancel_Click);
@@ -78,7 +78,7 @@
             this.groupBox1.Location = new System.Drawing.Point(12, 122);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(600, 399);
-            this.groupBox1.TabIndex = 7;
+            this.groupBox1.TabIndex = 2;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "日志正文";
             // 
@@ -101,7 +101,7 @@
             this.groupBox3.Location = new System.Drawing.Point(12, 68);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(600, 48);
-            this.groupBox3.TabIndex = 9;
+            this.groupBox3.TabIndex = 1;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "日志标题";
             // 
@@ -121,7 +121,7 @@
             this.groupBox4.Location = new System.Drawing.Point(12, 12);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(600, 50);
-            this.groupBox4.TabIndex = 10;
+            this.groupBox4.TabIndex = 0;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "日志信息";
             // 
@@ -142,7 +142,7 @@
             this.tableLayoutPanel1.RowCount = 1;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel1.Size = new System.Drawing.Size(594, 30);
-            this.tableLayoutPanel1.TabIndex = 1;
+            this.tableLayoutPanel1.TabIndex = 0;
             // 
             // textBox_Sights
             // 
@@ -151,7 +151,7 @@
             this.textBox_Sights.Name = "textBox_Sights";
             this.textBox_Sights.ReadOnly = true;
             this.textBox_Sights.Size = new System.Drawing.Size(231, 21);
-            this.textBox_Sights.TabIndex = 17;
+            this.textBox_Sights.TabIndex = 3;
             // 
             // label2
             // 
@@ -179,7 +179,7 @@
             this.label1.Location = new System.Drawing.Point(325, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(29, 12);
-            this.label1.TabIndex = 8;
+            this.label1.TabIndex = 2;
             this.label1.Text = "景点";
             // 
             // button_Favorite
@@ -188,7 +188,7 @@
             this.button_Favorite.Location = new System.Drawing.Point(12, 527);
             this.button_Favorite.Name = "button_Favorite";
             this.button_Favorite.Size = new System.Drawing.Size(75, 23);
-            this.button_Favorite.TabIndex = 11;
+            this.button_Favorite.TabIndex = 3;
             this.button_Favorite.Text = "景点评分";
             this.button_Favorite.UseVisualStyleBackColor = true;
             this.button_Favorite.Click += new System.EventHandler(this.button_Favorite_Click);

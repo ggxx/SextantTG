@@ -1,5 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <StartupObject>SextantTG.Win.Program</StartupObject>
+  </PropertyGroup>
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -8,7 +11,7 @@
     <OutputType>WinExe</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>SextantTG.Win</RootNamespace>
-    <AssemblyName>SextantTG.Win</AssemblyName>
+    <AssemblyName>SextantTG</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -177,12 +180,6 @@
     </Compile>
     <Compile Include="ViewSightsForm.Designer.cs">
       <DependentUpon>ViewSightsForm.cs</DependentUpon>
-    </Compile>
-    <Compile Include="ToursForm.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ToursForm.Designer.cs">
-      <DependentUpon>ToursForm.cs</DependentUpon>
     </Compile>
     <Compile Include="UIUtil.cs" />
     <Compile Include="UserPermissionForm.cs">

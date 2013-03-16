@@ -26,7 +26,7 @@ namespace SextantTG.SQLiteDAL
         }
         
         //private static readonly string SELECT = "select * from stg_permission";
-        private static readonly string SELECT___USER_ID = "select * from stg_permission where user_id = :UserId";        
+        private static readonly string SELECT___USER_ID = "select * from stg_permission where user_id = :UserId order by permission_type";        
         private static readonly string INSERT = "insert into stg_permission(user_id, permission_type) values(:UserId, :PermissionType)";
         //private static readonly string UPDATE = "update stg_permission set Permission_type = :PermissionType where user_id = :UserId";
         private static readonly string DELETE___USER_ID = "delete from stg_permission where user_id = :UserId";

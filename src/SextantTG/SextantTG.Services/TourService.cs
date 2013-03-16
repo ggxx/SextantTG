@@ -16,6 +16,7 @@ namespace SextantTG.Services
         private ITourCommentDAL tourCommentDal = null;
         private ISubTourDAL subtourDal = null;
         private IPictureDAL pictureDal = null;
+        private IBlogDAL blogDal = null;
 
         public TourService()
         {
@@ -24,6 +25,7 @@ namespace SextantTG.Services
             tourCommentDal = DALFactory.CreateDAL<ITourCommentDAL>();
             subtourDal = DALFactory.CreateDAL<ISubTourDAL>();
             pictureDal = DALFactory.CreateDAL<IPictureDAL>();
+            blogDal = DALFactory.CreateDAL<IBlogDAL>();
         }
 
         public List<Tour> GetToursByUserId(string userId)
@@ -113,9 +115,10 @@ namespace SextantTG.Services
                         subtourDal.DeleteSubTourByTourId(tourId, trans);
                         if (deletePictures)
                         {
+                            blogDal.DeleteBlogsByTourId(tourId, trans);
                             pictureDal.DeletePictureByTourId(tourId, trans);
                         }
-
+                        
                         trans.Commit();
                         message = "";
                         return true;
@@ -204,6 +207,15 @@ namespace SextantTG.Services
             return subtourDal.GetSubTourByTourIdAndSubTourId(tourId, subTourId);
         }
 
+        public List<SubTour> GetSubToursByUserId(string userId)
+        {
+            return subtourDal.GetSubToursByUserId(userId);
+        }
+
+        public List<SubTour> GetSubToursBySightsId(string sightsId)
+        {
+            return subtourDal.GetSubToursBySightsId(sightsId);
+        }
 
 
         public List<Picture> GetPicturesByTourId(string tourId)
@@ -342,6 +354,8 @@ namespace SextantTG.Services
             subtourDal = null;
             pictureDal = null;
         }
+
+
 
 
     }

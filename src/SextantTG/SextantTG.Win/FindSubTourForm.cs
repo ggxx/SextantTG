@@ -18,7 +18,7 @@ namespace SextantTG.Win
         {
             InitializeComponent();
 
-            this.bindingSource_Tour.DataSource = UIUtil.GetToursByUserId(userId);
+            this.bindingSource_Tour.DataSource = UIUtil.GetToursByUserId(userId).FindAll(delegate(Tour t) { return t.Status != 0; });
             this.listBox_Tour.DisplayMember = "TourName";
             this.listBox_Tour.ValueMember = "TourId";
 
@@ -33,7 +33,7 @@ namespace SextantTG.Win
 
             List<Tour> ds = new List<Tour>();
             ds.Add(UIUtil.GetTourByTourId(tourId));
-            this.bindingSource_Tour.DataSource = ds;
+            this.bindingSource_Tour.DataSource = ds.FindAll(delegate(Tour t) { return t.Status != 0; }); ;
             this.listBox_Tour.DisplayMember = "TourName";
             this.listBox_Tour.ValueMember = "TourId";
 

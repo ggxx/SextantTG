@@ -26,7 +26,7 @@ namespace SextantTG.SQLiteDAL
         }
 
         //private static readonly string SELECT = "select * from stg_picture_comment";
-        private static readonly string SELECT___PICTURE_ID = "select * from stg_picture_comment where picture_id = :PictureId";
+        private static readonly string SELECT___PICTURE_ID = "select * from stg_picture_comment where picture_id = :PictureId order by creating_time desc";
         //private static readonly string SELECT___COMM_USER_ID = "select * from stg_picture_comment where comm_user_id = :CommUserId";
 
         private static readonly string INSERT = "insert into stg_picture_comment(comment_id, picture_id, comm_user_id, creating_time, comment) values(:CommentId, :PictureId, :CommUserId, :CreatingTime, :Comment)";
