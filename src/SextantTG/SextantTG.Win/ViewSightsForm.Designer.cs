@@ -604,6 +604,7 @@
             this.dataGridView_Blog.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView_Blog.Size = new System.Drawing.Size(520, 477);
             this.dataGridView_Blog.TabIndex = 2;
+            this.dataGridView_Blog.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Blog_CellDoubleClick);
             // 
             // Column_B_BlogId
             // 

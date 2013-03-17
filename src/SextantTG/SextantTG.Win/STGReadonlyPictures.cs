@@ -13,6 +13,7 @@ namespace SextantTG.Win
 {
     public partial class STGReadonlyPictures : UserControl
     {
+        private bool allowComment = false;
         private ImageList images = new ImageList();
         private static readonly string PicPath = System.Configuration.ConfigurationManager.AppSettings["PIC_PATH"];
         public List<Picture> Pictures { get; private set; }
@@ -39,6 +40,7 @@ namespace SextantTG.Win
             images.Images.Clear();
             this.listView_Pic.Items.Clear();
 
+            this.allowComment = allowComment;
             this.Pictures = UIUtil.GetPicturesBySightsIdAndUploaderId(sightsId, uploaderId);
 
             foreach (Picture pic in this.Pictures)
@@ -62,6 +64,7 @@ namespace SextantTG.Win
             images.Images.Clear();
             this.listView_Pic.Items.Clear();
 
+            this.allowComment = allowComment;
             this.Pictures = UIUtil.GetPicturesByTourId(tourId);
             foreach (Picture pic in this.Pictures)
             {
@@ -103,7 +106,7 @@ namespace SextantTG.Win
         {
             string picFile = PicPath + this.Pictures[this.listView_Pic.SelectedIndices[0]].Path;
             string picId = this.Pictures[this.listView_Pic.SelectedIndices[0]].PictureId;
-            using (PictureForm form = new PictureForm(picFile, picId, true))
+            using (PictureForm form = new PictureForm(picFile, picId, !allowComment))
             {
                 form.ShowDialog();
             }
