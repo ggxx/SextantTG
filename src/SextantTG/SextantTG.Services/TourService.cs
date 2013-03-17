@@ -162,13 +162,10 @@ namespace SextantTG.Services
                             tourDal.UpdateTour(tour, trans);
                             foreach (SubTour subTour in subTours)
                             {
-                                if (string.IsNullOrEmpty(subTour.SubTourId))
+                                subTour.TourId = tour.TourId;
+                                if (subtourDal.UpdateSubTour(subTour, trans) < 1)
                                 {
                                     subtourDal.InsertSubTour(subTour, trans);
-                                }
-                                else
-                                {
-                                    subtourDal.UpdateSubTour(subTour, trans);
                                 }
                             }
                             foreach (SubTour subTour in removedSubTours)
