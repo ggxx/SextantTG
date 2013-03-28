@@ -109,7 +109,7 @@ namespace SextantTG.Services
             }
         }
 
-        public bool DeletePictureCommentByCommentId(string commentId, out string message)
+        public bool DeletePictureComment(PictureComment comment, out string message)
         {
             using (DbConnection conn = dataContext.GetConnection())
             {
@@ -118,7 +118,7 @@ namespace SextantTG.Services
                 {
                     try
                     {
-                        picCommentDal.DeletePictureCommentByCommentId(commentId, trans);
+                        picCommentDal.DeletePictureComment(comment, trans);
                         trans.Commit();
                         message = string.Empty;
                         return true;
@@ -181,7 +181,7 @@ namespace SextantTG.Services
             }
         }
 
-        public bool DeleteSightsCommentByCommentId(string commentId, out string message)
+        public bool DeleteSightsComment(SightsComment comment, out string message)
         {
             using (DbConnection conn = dataContext.GetConnection())
             {
@@ -190,7 +190,7 @@ namespace SextantTG.Services
                 {
                     try
                     {
-                        sigCommentDal.DeleteSightsCommentByCommentId(commentId, trans);
+                        sigCommentDal.DeleteSightsComment(comment, trans);
                         trans.Commit();
                         message = string.Empty;
                         return true;
@@ -253,7 +253,7 @@ namespace SextantTG.Services
             }
         }
 
-        public bool DeleteTourCommentByCommentId(string commentId, out string message)
+        public bool DeleteTourComment(TourComment comment, out string message)
         {
             using (DbConnection conn = dataContext.GetConnection())
             {
@@ -262,7 +262,7 @@ namespace SextantTG.Services
                 {
                     try
                     {
-                        tourCommentDal.DeleteTourCommentByCommentId(commentId, trans);
+                        tourCommentDal.DeleteTourComment(comment, trans);
                         trans.Commit();
                         message = string.Empty;
                         return true;
@@ -325,7 +325,7 @@ namespace SextantTG.Services
             }
         }
 
-        public bool DeleteUserCommentByCommentId(string commentId, out string message)
+        public bool DeleteUserComment(UserComment comment, out string message)
         {
             using (DbConnection conn = dataContext.GetConnection())
             {
@@ -334,7 +334,7 @@ namespace SextantTG.Services
                 {
                     try
                     {
-                        userCommentDal.DeleteUserCommentByCommentId(commentId, trans);
+                        userCommentDal.DeleteUserComment(comment, trans);
                         trans.Commit();
                         message = string.Empty;
                         return true;

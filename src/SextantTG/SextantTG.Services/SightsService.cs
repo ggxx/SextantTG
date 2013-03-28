@@ -176,8 +176,9 @@ namespace SextantTG.Services
             }
         }
 
-        public bool SaveSights(Sights sights, List<Picture> pictures, List<Picture> removedPictures, out string message)
+        public bool UpdateSights(Sights sights, List<Picture> pictures, List<Picture> removedPictures, out string message)
         {
+            Sights oldSights = sightsDal.GetSightBySightsId(sights.SightsId);
             using (DbConnection conn = dataContext.GetConnection())
             {
                 conn.Open();
@@ -185,7 +186,7 @@ namespace SextantTG.Services
                 {
                     try
                     {
-                        sightsDal.UpdateSights(sights, trans);
+                        sightsDal.UpdateSightsFromOld(sights, oldSights, trans);
                         foreach (Picture picture in pictures)
                         {
                             if (picture.PictureId.StartsWith("_"))
@@ -200,7 +201,7 @@ namespace SextantTG.Services
                         }
                         foreach (Picture picture in removedPictures)
                         {
-                            pictureDal.DeletePictureByPictureId(picture.PictureId, trans);
+                            pictureDal.DeletePicture(picture, trans);
                         }
                         trans.Commit();
                         message = string.Empty;
@@ -216,7 +217,7 @@ namespace SextantTG.Services
             }
         }
 
-        public bool DeleteSightsBySightsId(string sightsId, out string message)
+        public bool DeleteSights(Sights sights, out string message)
         {
             using (DbConnection conn = dataContext.GetConnection())
             {
@@ -225,7 +226,7 @@ namespace SextantTG.Services
                 {
                     try
                     {
-                        sightsDal.DeleteSightsBySightsId(sightsId, trans);
+                        sightsDal.DeleteSights(sights, trans);
                         trans.Commit();
                         message = string.Empty;
                         return true;
@@ -252,6 +253,5 @@ namespace SextantTG.Services
             favoriteDal = null;
             pictureDal = null;
         }
-
     }
 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SextantTG.ActiveRecord;
-using SexTantTG.DbUtil;
+using SextantTG.DbUtil;
 using System.Data.Common;
 using SextantTG.Util;
 using System.Configuration;
@@ -65,13 +65,16 @@ namespace SextantTG.SQLiteDAL
             return this.ExecuteNonQuery(trans, UPDATE, pars);
         }
 
-        public int DeleteSightsCommentByCommentId(string commentId, DbTransaction trans)
+        public int DeleteSightsComment(SightsComment comment, DbTransaction trans)
+        {
+            return this.DeleteSightsCommentByCommentId(comment.CommentId, trans);
+        }
+
+        private int DeleteSightsCommentByCommentId(string commentId, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("CommendId", commentId);
             return this.ExecuteNonQuery(trans, DELETE, pars);
         }
-
-
     }
 }

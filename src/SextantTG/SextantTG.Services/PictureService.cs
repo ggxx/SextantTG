@@ -43,7 +43,7 @@ namespace SextantTG.Services
                         }
                         foreach (Picture picture in removedPictures)
                         {
-                            pictureDal.DeletePictureByPictureId(picture.PictureId, trans);
+                            pictureDal.DeletePicture(picture, trans);
                         }
                         trans.Commit();
                         message = string.Empty;

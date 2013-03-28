@@ -17,8 +17,9 @@ namespace SextantTG.IDAL
 
         int InsertFavorite(Favorite favorite, DbTransaction trans);
         int UpdateFavorite(Favorite favorite, DbTransaction trans);
-        int DeleteFavoriteByUserIdAndSightsId(string userId, string sightsId, DbTransaction trans);
-        int DeleteFavoriteByUserId(string userId, DbTransaction trans);
-        int DeleteFavoriteBySightsId(string sightsId, DbTransaction trans);
+        int DeleteFavorite(Favorite favorite, DbTransaction trans);
+        //int DeleteFavoriteByUserIdAndSightsId(string userId, string sightsId, DbTransaction trans);
+        //int DeleteFavoriteByUserId(string userId, DbTransaction trans);
+        //int DeleteFavoriteBySightsId(string sightsId, DbTransaction trans);
     }
 }

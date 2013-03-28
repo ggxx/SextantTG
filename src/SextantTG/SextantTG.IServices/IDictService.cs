@@ -33,12 +33,12 @@ namespace SextantTG.IServices
 
         bool InsertCountry(Country country, out string message);
         bool UpdateCountry(Country country, out string message);
-        bool DeleteCountryByCountryId(string countryId, out string message);
+        bool DeleteCountry(Country country, out string message);
         bool InsertProvince(Province province, out string message);
         bool UpdateProvince(Province province, out string message);
-        bool DeleteProvinceByProvinceId(string provinceId, out string message);
+        bool DeleteProvince(Province province, out string message);
         bool InsertCity(City city, out string message);
         bool UpdateCity(City city, out string message);
-        bool DeleteCityByCityId(string cityId, out string message);
+        bool DeleteCity(City city, out string message);
     }
 }

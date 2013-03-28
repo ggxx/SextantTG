@@ -15,12 +15,14 @@ namespace SextantTG.Services
         private IDataContext dataContext = null;
         private IBlogDAL blogDal = null;
         private IPictureDAL picDal = null;
+        private IPictureCommentDAL picCommentDal = null;
 
         public BlogService()
         {
             dataContext = DALFactory.CreateDAL<IDataContext>();
             blogDal = DALFactory.CreateDAL<IBlogDAL>();
             picDal = DALFactory.CreateDAL<IPictureDAL>();
+            picCommentDal = DALFactory.CreateDAL<IPictureCommentDAL>();
         }
 
         public List<Blog> GetBlogsByUserId(string userId)
@@ -39,7 +41,7 @@ namespace SextantTG.Services
         }
 
         public List<Blog> GetBlogsByTourId(string tourId)
-        {
+        {          
             return blogDal.GetBlogsByTourId(tourId);
         }
 
@@ -111,8 +113,19 @@ namespace SextantTG.Services
         //    }
         //}
 
-        public bool DeleteBlog(string blogId, bool deletePictures, bool deleteComments, out string message)
+        public bool DeleteBlog(Blog blog, bool deletePictures, out string message)
         {
+            List<Picture> oldPictures = new List<Picture>();
+            List<PictureComment> oldComments = new List<PictureComment>();
+            if (deletePictures)
+            {
+                oldPictures = picDal.GetPicturesByTourIdAndSubTourId(blog.TourId, blog.SubTourId);
+                foreach (Picture pic in oldPictures)
+                {
+                    oldComments.AddRange(picCommentDal.GetPictureCommentsByPictureId(pic.PictureId));
+                }
+            }
+
             using (DbConnection conn = dataContext.GetConnection())
             {
                 conn.Open();
@@ -120,7 +133,15 @@ namespace SextantTG.Services
                 {
                     try
                     {
-                        blogDal.DeleteBlogByBlogId(blogId, trans);
+                        blogDal.DeleteBlog(blog, trans);
+                        foreach (Picture pic in oldPictures)
+                        {
+                            picDal.DeletePicture(pic, trans);
+                        }
+                        foreach (PictureComment comm in oldComments)
+                        {
+                            picCommentDal.DeletePictureComment(comm, trans);
+                        }
                         trans.Commit();
                         message = string.Empty;
                         return true;
@@ -137,6 +158,8 @@ namespace SextantTG.Services
 
         public bool SaveBlob(Blog blog, out string message)
         {
+            Blog oldBlog = blogDal.GetBlogByBlogId(blog.BlogId);
+
             using (DbConnection conn = dataContext.GetConnection())
             {
                 conn.Open();
@@ -150,7 +173,7 @@ namespace SextantTG.Services
                         }
                         else
                         {
-                            blogDal.UpdateBlog(blog, trans);
+                            blogDal.UpdateBlogFromOld(blog, oldBlog, trans);
                         }
                         trans.Commit();
                         message = string.Empty;
@@ -171,10 +194,12 @@ namespace SextantTG.Services
             this.dataContext.Dispose();
             this.blogDal.Dispose();
             this.picDal.Dispose();
+            this.picCommentDal.Dispose();
 
             this.dataContext = null;
             this.blogDal = null;
             this.picDal = null;
+            this.picCommentDal = null;
         }
 
     }

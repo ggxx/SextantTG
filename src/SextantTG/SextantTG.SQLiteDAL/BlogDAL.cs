@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SextantTG.ActiveRecord;
-using SexTantTG.DbUtil;
+using SextantTG.DbUtil;
 using System.Data.Common;
 using SextantTG.Util;
 using System.Configuration;
@@ -39,9 +39,9 @@ namespace SextantTG.SQLiteDAL
 
         private static readonly string INSERT = "insert into stg_blog(blog_id, user_id, tour_id, sub_tour_id, sights_id, title, content, creating_time) values(:BlogId, :UserId, :TourId, :SubTourId, :SightsId, :Title, :Content, :CreatingTime)";
         private static readonly string UPDATE = "update stg_blog set user_id = :UserId, tour_id = :TourId, sub_tour_id = :SubTourId, sights_id = :SightsId, title = :Title, content = :Content, creating_time = :CreatingTime where blog_id = :BlogId";
-        private static readonly string DELETE___BLOG_ID = "delete from stg_blog where blog_id = :BlogId";
-        private static readonly string DELETE___TOUR_ID = "delete from stg_blog where tour_id = :TourId";
-        private static readonly string DELETE___SUB_TOUR_ID = "delete from stg_blog where sub_tour_id = :SubTourId";
+        private static readonly string DELETE = "delete from stg_blog where blog_id = :BlogId";
+        //private static readonly string DELETE___TOUR_ID = "delete from stg_blog where tour_id = :TourId";
+        //private static readonly string DELETE___SUB_TOUR_ID = "delete from stg_blog where sub_tour_id = :SubTourId";
 
         public List<Blog> GetBlogs()
         {
@@ -110,6 +110,13 @@ namespace SextantTG.SQLiteDAL
             return this.ExecuteNonQuery(trans, INSERT, pars);
         }
 
+        public int UpdateBlogFromOld(Blog newBlog, Blog oldBlog, DbTransaction trans)
+        {
+            Blog blog = (Blog)newBlog.Clone();
+            blog.BlogId = oldBlog.BlogId;
+            return this.UpdateBlog(blog, trans);
+        }
+
         public int UpdateBlog(Blog blog, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
@@ -124,25 +131,30 @@ namespace SextantTG.SQLiteDAL
             return this.ExecuteNonQuery(trans, UPDATE, pars);
         }
 
-        public int DeleteBlogByBlogId(string blogId, DbTransaction trans)
+        public int DeleteBlog(Blog blog, DbTransaction trans)
+        {
+            return DeleteBlogByBlogId(blog.BlogId, trans);
+        }
+
+        private int DeleteBlogByBlogId(string blogId, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("BlogId", blogId);
-            return this.ExecuteNonQuery(trans, DELETE___BLOG_ID, pars);
+            return this.ExecuteNonQuery(trans, DELETE, pars);
         }
 
-        public int DeleteBlogsByTourId(string tourId, DbTransaction trans)
-        {
-            Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("TourId", tourId);
-            return this.ExecuteNonQuery(trans, DELETE___TOUR_ID, pars);
-        }
+        //public int DeleteBlogsByTourId(string tourId, DbTransaction trans)
+        //{
+        //    Dictionary<string, object> pars = new Dictionary<string, object>();
+        //    pars.Add("TourId", tourId);
+        //    return this.ExecuteNonQuery(trans, DELETE___TOUR_ID, pars);
+        //}
 
-        public int DeleteBlogsBySubTourId(string subTourId, DbTransaction trans)
-        {
-            Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("SubTourId", subTourId);
-            return this.ExecuteNonQuery(trans, DELETE___SUB_TOUR_ID, pars);
-        }
+        //public int DeleteBlogsBySubTourId(string subTourId, DbTransaction trans)
+        //{
+        //    Dictionary<string, object> pars = new Dictionary<string, object>();
+        //    pars.Add("SubTourId", subTourId);
+        //    return this.ExecuteNonQuery(trans, DELETE___SUB_TOUR_ID, pars);
+        //}
     }
 }

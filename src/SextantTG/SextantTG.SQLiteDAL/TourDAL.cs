@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SextantTG.ActiveRecord;
-using SexTantTG.DbUtil;
+using SextantTG.DbUtil;
 using System.Data.Common;
 using SextantTG.Util;
 using System.Configuration;
@@ -117,12 +117,23 @@ namespace SextantTG.SQLiteDAL
             return this.ExecuteNonQuery(trans, UPDATE, pars);
         }
 
-        public int DeleteTourByTourId(string tourId, DbTransaction trans)
+        public int UpdateTourFromOld(Tour newItem, Tour oldItem, DbTransaction trans)
+        {
+            Tour tour = (Tour)newItem.Clone();
+            tour.TourId = oldItem.TourId;
+            return this.UpdateTour(tour, trans);
+        }
+
+        public int DeleteTour(Tour tour, DbTransaction trans)
+        {
+            return this.DeleteTourByTourId(tour.TourId, trans);
+        }
+
+        private int DeleteTourByTourId(string tourId, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("TourId", tourId);
             return this.ExecuteNonQuery(trans, DELETE, pars);
         }
-
     }
 }

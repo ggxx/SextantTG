@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Windows.Forms;
 using System.Linq;
 using System.Text;
 using SextantTG.ActiveRecord;
@@ -19,7 +20,6 @@ namespace SextantTG.Win
         private static readonly ITourService tourSrv = ServiceFactory.CreateService<ITourService>();
         private static readonly IUserService userSrv = ServiceFactory.CreateService<IUserService>();
         private static readonly IPictureService pictureSrv = ServiceFactory.CreateService<IPictureService>();
-
 
         #region User Services
 
@@ -153,9 +153,9 @@ namespace SextantTG.Win
             return dictSrv.UpdateCountry(country, out message);
         }
 
-        internal static bool DeleteCountryByCountryId(string countryId, out string message)
+        internal static bool DeleteCountry(Country country, out string message)
         {
-            return dictSrv.DeleteCountryByCountryId(countryId, out message);
+            return dictSrv.DeleteCountry(country, out message);
         }
 
         internal static bool InsertProvince(Province province, out string message)
@@ -168,9 +168,9 @@ namespace SextantTG.Win
             return dictSrv.UpdateProvince(province, out message);
         }
 
-        internal static bool DeleteProvinceByProvinceId(string provinceId, out string message)
+        internal static bool DeleteProvince(Province province, out string message)
         {
-            return dictSrv.DeleteProvinceByProvinceId(provinceId, out message);
+            return dictSrv.DeleteProvince(province, out message);
         }
 
         internal static bool InsertCity(City city, out string message)
@@ -183,9 +183,9 @@ namespace SextantTG.Win
             return dictSrv.UpdateCity(city, out message);
         }
 
-        internal static bool DeleteCityByCityId(string cityId, out string message)
+        internal static bool DeleteCity(City city, out string message)
         {
-            return dictSrv.DeleteCityByCityId(cityId, out message);
+            return dictSrv.DeleteCity(city, out message);
         }
 
         #endregion
@@ -243,14 +243,14 @@ namespace SextantTG.Win
             return sightsSrv.InsertSights(sights, pictures, out message);
         }
 
-        internal static bool SaveSights(Sights sights, List<Picture> pictures, List<Picture> removedPictures, out string message)
+        internal static bool UpdateSights(Sights sights, List<Picture> pictures, List<Picture> removedPictures, out string message)
         {
-            return sightsSrv.SaveSights(sights, pictures, removedPictures, out message);
+            return sightsSrv.UpdateSights(sights, pictures, removedPictures, out message);
         }
 
-        internal static bool DeleteSightsBySightsId(string sightsId, out string message)
+        internal static bool DeleteSights(Sights sights, out string message)
         {
-            return sightsSrv.DeleteSightsBySightsId(sightsId, out message);
+            return sightsSrv.DeleteSights(sights, out message);
         }
 
         internal static float? GetAverageStarsBySightsId(string sightsId)
@@ -299,9 +299,9 @@ namespace SextantTG.Win
 
         }
 
-        internal static bool DeletePictureCommentByCommentId(string commentId, out string message)
+        internal static bool DeletePictureComment(PictureComment comment, out string message)
         {
-            return commentSrv.DeletePictureCommentByCommentId(commentId, out  message);
+            return commentSrv.DeletePictureComment(comment, out  message);
         }
 
         internal static bool InsertSightsComment(SightsComment comment, out string message)
@@ -314,9 +314,9 @@ namespace SextantTG.Win
             return commentSrv.UpdateSightsComment(comment, out  message);
         }
 
-        internal static bool DeleteSightsCommentByCommentId(string commentId, out string message)
+        internal static bool DeleteSightsComment(SightsComment comment, out string message)
         {
-            return commentSrv.DeleteSightsCommentByCommentId(commentId, out  message);
+            return commentSrv.DeleteSightsComment(comment, out  message);
         }
 
         internal static bool InsertTourComment(TourComment comment, out string message)
@@ -329,9 +329,9 @@ namespace SextantTG.Win
             return commentSrv.UpdateTourComment(comment, out  message);
         }
 
-        internal static bool DeleteTourCommentByCommentId(string commentId, out string message)
+        internal static bool DeleteTourComment(TourComment comment, out string message)
         {
-            return commentSrv.DeleteTourCommentByCommentId(commentId, out  message);
+            return commentSrv.DeleteTourComment(comment, out  message);
         }
 
         internal static bool InsertUserComment(UserComment comment, out string message)
@@ -344,9 +344,9 @@ namespace SextantTG.Win
             return commentSrv.UpdateUserComment(comment, out  message);
         }
 
-        internal static bool DeleteUserCommentByCommentId(string commentId, out string message)
+        internal static bool DeleteUserComment(UserComment comment, out string message)
         {
-            return commentSrv.DeleteUserCommentByCommentId(commentId, out  message);
+            return commentSrv.DeleteUserComment(comment, out  message);
         }
 
         #endregion
@@ -384,9 +384,9 @@ namespace SextantTG.Win
             return blogSrv.GetBlogByBlogId(blogId);
         }
 
-        internal static bool DeleteBlog(string blogId, bool deletePictures, bool deleteComments, out string message)
+        internal static bool DeleteBlog(Blog blog, bool deletePictures, out string message)
         {
-            return blogSrv.DeleteBlog(blogId, deletePictures, deleteComments, out  message);
+            return blogSrv.DeleteBlog(blog, deletePictures, out  message);
         }
 
         internal static bool SaveBlog(Blog blog, out string message)
@@ -454,9 +454,9 @@ namespace SextantTG.Win
             return tourSrv.SaveTour(tour, subTours, removedSubTours, out message);
         }
 
-        internal static bool DeleteTourByTourId(string tourId, bool deletePictures, out string message)
+        internal static bool DeleteTour(Tour tour, bool deletePictures, out string message)
         {
-            return tourSrv.DeleteTourByTourId(tourId, deletePictures, out message);
+            return tourSrv.DeleteTour(tour, deletePictures, out message);
         }
 
         #endregion

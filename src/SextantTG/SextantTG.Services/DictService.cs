@@ -162,7 +162,7 @@ namespace SextantTG.Services
             }
         }
 
-        public bool DeleteCountryByCountryId(string countryId, out string message)
+        public bool DeleteCountry(Country country, out string message)
         {
             using (DbConnection conn = dataContext.GetConnection())
             {
@@ -171,7 +171,7 @@ namespace SextantTG.Services
                 {
                     try
                     {
-                        countryDal.DeleteCountryByCountryId(countryId, trans);
+                        countryDal.DeleteCountry(country, trans);
                         trans.Commit();
                         message = string.Empty;
                         countries = null;
@@ -237,7 +237,7 @@ namespace SextantTG.Services
             }
         }
 
-        public bool DeleteProvinceByProvinceId(string provinceId, out string message)
+        public bool DeleteProvince(Province province, out string message)
         {
             using (DbConnection conn = dataContext.GetConnection())
             {
@@ -246,7 +246,7 @@ namespace SextantTG.Services
                 {
                     try
                     {
-                        provinceDal.DeleteProvinceByProvinceId(provinceId, trans);
+                        provinceDal.DeleteProvince(province, trans);
                         trans.Commit();
                         message = string.Empty;
                         provinces = null;
@@ -312,7 +312,7 @@ namespace SextantTG.Services
             }
         }
 
-        public bool DeleteCityByCityId(string cityId, out string message)
+        public bool DeleteCity(City city, out string message)
         {
             using (DbConnection conn = dataContext.GetConnection())
             {
@@ -321,7 +321,7 @@ namespace SextantTG.Services
                 {
                     try
                     {
-                        cityDal.DeleteCityByCityId(cityId, trans);
+                        cityDal.DeleteCity(city, trans);
                         trans.Commit();
                         message = string.Empty;
                         cities = null;

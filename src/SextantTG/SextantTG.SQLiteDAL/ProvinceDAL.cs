@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SextantTG.ActiveRecord;
-using SexTantTG.DbUtil;
+using SextantTG.DbUtil;
 using System.Data.Common;
 using SextantTG.Util;
 using System.Configuration;
@@ -56,13 +56,17 @@ namespace SextantTG.SQLiteDAL
             return this.ExecuteNonQuery(trans, UPDATE, pars);
         }
 
-        public int DeleteProvinceByProvinceId(string provinceId, DbTransaction trans)
+        public int DeleteProvince(Province province, DbTransaction trans)
+        {
+            return this.DeleteProvinceByProvinceId(province.ProvinceId, trans);
+        }
+
+        private int DeleteProvinceByProvinceId(string provinceId, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("ProvinceId", provinceId);
             return this.ExecuteNonQuery(trans, DELETE, pars);
         }
-
 
     }
 }

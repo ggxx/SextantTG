@@ -20,24 +20,24 @@ namespace SextantTG.IServices
 
         bool UpdatePictureComment(PictureComment comment, out string message);
 
-        bool DeletePictureCommentByCommentId(string commentId, out string message);
+        bool DeletePictureComment(PictureComment comment, out string message);
 
         bool InsertSightsComment(SightsComment comment, out string message);
 
         bool UpdateSightsComment(SightsComment comment, out string message);
 
-        bool DeleteSightsCommentByCommentId(string commentId, out string message);
+        bool DeleteSightsComment(SightsComment comment, out string message);
 
         bool InsertTourComment(TourComment comment, out string message);
 
         bool UpdateTourComment(TourComment comment, out string message);
 
-        bool DeleteTourCommentByCommentId(string commentId, out string message);
+        bool DeleteTourComment(TourComment comment, out string message);
 
         bool InsertUserComment(UserComment comment, out string message);
 
         bool UpdateUserComment(UserComment comment, out string message);
 
-        bool DeleteUserCommentByCommentId(string commentId, out string message);
+        bool DeleteUserComment(UserComment comment, out string message);
     }
 }

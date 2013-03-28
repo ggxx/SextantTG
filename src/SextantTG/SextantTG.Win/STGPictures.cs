@@ -90,7 +90,7 @@ namespace SextantTG.Win
             using (OpenFileDialog dialog = new OpenFileDialog())
             {
                 dialog.Multiselect = true;
-                dialog.Filter = "图片文件(*.BMP;*.JPG;*.JPEG;*.GIF;*.PNG)|*.BMP;*.JPG;*.JPEG;*.GIF;*.PNG";
+                dialog.Filter = "图片文件(*.BMP;*.JPG;*.JPEG;*.GIF;*.PNG;*.TIFF)|*.BMP;*.JPG;*.JPEG;*.GIF;*.PNG;*.TIFF";
                 if (dialog.ShowDialog() == DialogResult.OK)
                 {
                     foreach (string p in dialog.FileNames)

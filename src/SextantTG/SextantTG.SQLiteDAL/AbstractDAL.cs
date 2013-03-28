@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Data.Common;
-using SexTantTG.DbUtil;
+using SextantTG.DbUtil;
 using SextantTG.ActiveRecord;
 using System.Configuration;
 

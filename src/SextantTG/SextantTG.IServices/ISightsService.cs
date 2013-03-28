@@ -22,7 +22,7 @@ namespace SextantTG.IServices
         List<Sights> GetVisitedSightsByCityId(string cityId, string userId);
 
         bool InsertSights(Sights sights, List<Picture> pictures, out string message);
-        bool SaveSights(Sights sights, List<Picture> pictures, List<Picture> removedPictures, out string message);
-        bool DeleteSightsBySightsId(string sightsId, out string message);
+        bool UpdateSights(Sights sights, List<Picture> pictures, List<Picture> removedPictures, out string message);
+        bool DeleteSights(Sights sights, out string message);
     }
 }

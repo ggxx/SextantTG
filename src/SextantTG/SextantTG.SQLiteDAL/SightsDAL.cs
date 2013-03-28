@@ -5,12 +5,13 @@ using System.Data.Common;
 using SextantTG.ActiveRecord;
 using SextantTG.IDAL;
 using SextantTG.Util;
-using SexTantTG.DbUtil;
+using SextantTG.DbUtil;
 
 namespace SextantTG.SQLiteDAL
 {
     public class SightsDAL : AbstractDAL<Sights>, ISightsDAL
     {
+
         public SightsDAL() { }
 
         protected override Sights BuildObjectByReader(DbDataReader r)
@@ -107,24 +108,31 @@ namespace SextantTG.SQLiteDAL
 
         public int UpdateSights(Sights sights, DbTransaction trans)
         {
+            throw new NotImplementedException();
+        }
+
+        public int DeleteSights(Sights sights, DbTransaction trans)
+        {
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("SightsId", sights.SightsId);
-            pars.Add("SightsName", sights.SightsName);
-            pars.Add("CityId", sights.CityId);
-            pars.Add("SightsLevel", sights.SightsLevel);
-            pars.Add("Description", sights.Description);
-            pars.Add("Price", sights.Price);
-            pars.Add("CreatingTime", sights.CreatingTime);
-            pars.Add("Memos", sights.Memos);
+            return this.ExecuteNonQuery(trans, DELETE, pars);
+        }
+
+        public int UpdateSightsFromOld(Sights newItem, Sights oldItem, DbTransaction trans)
+        {
+            Dictionary<string, object> pars = new Dictionary<string, object>();
+            pars.Add("SightsId", oldItem.SightsId);
+            pars.Add("SightsName", newItem.SightsName);
+            pars.Add("CityId", newItem.CityId);
+            pars.Add("SightsLevel", newItem.SightsLevel);
+            pars.Add("Description", newItem.Description);
+            pars.Add("Price", newItem.Price);
+            pars.Add("CreatingTime", newItem.CreatingTime);
+            pars.Add("Memos", newItem.Memos);
             return this.ExecuteNonQuery(trans, UPDATE, pars);
         }
 
-        public int DeleteSightsBySightsId(string sightsId, DbTransaction trans)
-        {
-            Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("SightsId", sightsId);
-            return this.ExecuteNonQuery(trans, DELETE, pars);
-        }
+
 
     }
 }

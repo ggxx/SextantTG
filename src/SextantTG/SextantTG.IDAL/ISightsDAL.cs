@@ -16,7 +16,9 @@ namespace SextantTG.IDAL
         Sights GetSightBySightsId(string sightsId);
 
         int InsertSights(Sights sights, DbTransaction trans);
-        int UpdateSights(Sights sights, DbTransaction trans);
-        int DeleteSightsBySightsId(string sightsId, DbTransaction trans);
+        //int UpdateSights(Sights sights, DbTransaction trans);
+        int UpdateSightsFromOld(Sights newItem, Sights oldItem, DbTransaction trans);
+        int DeleteSights(Sights sights, DbTransaction trans);
+        //int DeleteSightsBySightsId(string sightsId, DbTransaction trans);
     }
 }

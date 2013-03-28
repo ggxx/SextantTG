@@ -6,7 +6,6 @@ using SextantTG.Util;
 using SextantTG.ActiveRecord;
 using SextantTG.DbUtil;
 using SextantTG.IDAL;
-using SexTantTG.DbUtil;
 ﻿
 namespace SextantTG.SQLiteDAL
 {
@@ -54,7 +53,12 @@ namespace SextantTG.SQLiteDAL
             return this.ExecuteNonQuery(trans, UPDATE, pars);
         }
 
-        public int DeleteCityByCityId(string cityId, DbTransaction trans)
+        public int DeleteCity(City city, DbTransaction trans)
+        {
+            return DeleteCityByCityId(city.CityId, trans);
+        }
+
+        private int DeleteCityByCityId(string cityId, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("CityID", cityId);

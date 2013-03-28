@@ -170,6 +170,7 @@ namespace SextantTG.Win
                 }
 
                 string nameFilter = this.textBox_FilterSightsName.Text.Trim();
+
                 if (string.IsNullOrEmpty(nameFilter))
                 {
                     this.listBox_Sights.DataSource = ds;

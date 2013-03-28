@@ -71,16 +71,16 @@ namespace SextantTG.Win
         {
             if (this.listBox_Tour.SelectedItem != null)
             {
-                string tourId = (listBox_Tour.SelectedItem as Tour).TourId;
+                Tour tour = listBox_Tour.SelectedItem as Tour;
                 bool val;
                 string msg;
                 switch (MessageBox.Show("是否删除与行旅行有关的图片与日志？", "提示", MessageBoxButtons.YesNoCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1))
                 {
                     case System.Windows.Forms.DialogResult.Yes:
-                        val = UIUtil.DeleteTourByTourId(tourId, true, out msg);
+                        val = UIUtil.DeleteTour(tour, true, out msg);
                         break;
                     case System.Windows.Forms.DialogResult.No:
-                        val = UIUtil.DeleteTourByTourId(tourId, false, out msg);
+                        val = UIUtil.DeleteTour(tour, false, out msg);
                         break;
                     default:
                         return;

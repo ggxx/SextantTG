@@ -67,7 +67,7 @@ namespace SextantTG.Win
             if (province != null)
             {
                 string msg;
-                if (UIUtil.DeleteProvinceByProvinceId(province.ProvinceId, out msg))
+                if (UIUtil.DeleteProvince(province, out msg))
                 {
                     LoadData();
                 }

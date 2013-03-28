@@ -6,7 +6,7 @@ using System.Data;
 using SextantTG.Util;
 using SextantTG.DbUtil;
 
-namespace SexTantTG.DbUtil
+namespace SextantTG.DbUtil
 {
     /// <summary>  
     /// 通用数据库访问类，封装了对数据库的常见操作   

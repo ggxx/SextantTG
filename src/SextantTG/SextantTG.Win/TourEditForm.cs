@@ -126,11 +126,29 @@ namespace SextantTG.Win
                 return;
             }
 
+            #warning 这样不能保证一定取到原旅行
+            ///保存原来的旅行状态
+            //Tour oldTour = null;
+
             if (tour == null)
             {
                 tour = new Tour();
                 tour.UserId = Config.AppConfig.User.UserId;
             }
+            //else
+            //{
+            //    ///////////////////////////////////////////////////////////////////
+            //    oldTour = new Tour();
+            //    oldTour.BeginDate = tour.BeginDate;
+            //    oldTour.Cost = tour.Cost;
+            //    oldTour.EndDate = tour.EndDate;
+            //    oldTour.Status = tour.Status;
+            //    oldTour.TourId = tour.TourId;
+            //    oldTour.TourName = tour.TourName;
+            //    oldTour.UserId = tour.UserId;
+            //    ////////////////////////////////////////////////////////////////////
+            //}
+
 
             tour.TourName = this.textBox_TourName.Text.Trim();
             tour.BeginDate = this.dateTimePicker_Begin.Value.Date;

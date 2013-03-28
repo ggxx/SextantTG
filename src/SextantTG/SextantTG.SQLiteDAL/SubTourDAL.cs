@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SextantTG.ActiveRecord;
-using SexTantTG.DbUtil;
+using SextantTG.DbUtil;
 using System.Data.Common;
 using SextantTG.Util;
 using System.Configuration;
@@ -38,15 +38,15 @@ namespace SextantTG.SQLiteDAL
 
         private static readonly string INSERT = "insert into stg_sub_tour(tour_id, sub_tour_id, sub_tour_name, sights_id, begin_date, end_date, creating_time, memos) values(:TourId, :SubTourId, :SubTourName, :SightsId, :BeginDate, :EndDate, :CreatingTime, :Memos)";
         private static readonly string UPDATE = "update stg_sub_tour set sub_tour_name = :SubTourName, sights_id = :SightsId, begin_date = :BeginDate, end_date = :EndDate, creating_time = :CreatingTime, memos = :Memos where tour_id = :TourId and sub_tour_id = :SubTourId";
-        private static readonly string DELETE___TOUR_ID__SUB_TOUR_ID = "delete from stg_sub_tour where tour_id = :TourId and sub_tour_id = :SubTourId";
-        private static readonly string DELETE___TOUR_ID = "delete from stg_sub_tour where tour_id = :TourId";
+        private static readonly string DELETE = "delete from stg_sub_tour where tour_id = :TourId and sub_tour_id = :SubTourId";
+        //private static readonly string DELETE___TOUR_ID = "delete from stg_sub_tour where tour_id = :TourId";
 
 
         public List<SubTour> GetSubTours()
         {
             return this.GetList(SELECT, null);
         }
-        
+
         public SubTour GetSubTourByTourIdAndSubTourId(string tourId, string subTourId)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
@@ -78,7 +78,7 @@ namespace SextantTG.SQLiteDAL
 
         public int InsertSubTour(SubTour subTour, DbTransaction trans)
         {
-            if(string.IsNullOrEmpty(subTour.SubTourId))
+            if (string.IsNullOrEmpty(subTour.SubTourId))
                 subTour.SubTourId = StringHelper.CreateGuid();
             subTour.CreatingTime = DateTime.Now;
 
@@ -92,6 +92,14 @@ namespace SextantTG.SQLiteDAL
             pars.Add("CreatingTime", subTour.CreatingTime);
             pars.Add("Memos", subTour.Memos);
             return this.ExecuteNonQuery(trans, INSERT, pars);
+        }
+
+        public int UpdateSubTourFromOld(SubTour newItem, SubTour oldItem, DbTransaction trans)
+        {
+            SubTour subTour = (SubTour)newItem.Clone();
+            subTour.TourId = oldItem.TourId;
+            subTour.SubTourId = oldItem.SubTourId;
+            return UpdateSubTour(subTour, trans);
         }
 
         public int UpdateSubTour(SubTour subtour, DbTransaction trans)
@@ -108,24 +116,24 @@ namespace SextantTG.SQLiteDAL
             return this.ExecuteNonQuery(trans, UPDATE, pars);
         }
 
-        public int DeleteSubTourByTourIdAndSubTourId(string tourId, string subTourId, DbTransaction trans)
+        public int DeleteSubTour(SubTour subTour, DbTransaction trans)
+        {
+            return this.DeleteSubTourByTourIdAndSubTourId(subTour.TourId, subTour.SubTourId, trans);
+        }
+
+        private int DeleteSubTourByTourIdAndSubTourId(string tourId, string subTourId, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("TourId", tourId);
             pars.Add("SubTourId", subTourId);
-            return this.ExecuteNonQuery(trans, DELETE___TOUR_ID__SUB_TOUR_ID, pars);
+            return this.ExecuteNonQuery(trans, DELETE, pars);
         }
 
-
-        public int DeleteSubTourByTourId(string tourId, DbTransaction trans)
-        {
-            Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("TourId", tourId);
-            return this.ExecuteNonQuery(trans, DELETE___TOUR_ID, pars);
-        }
-
-
-
-
+        //private int DeleteSubTourByTourId(string tourId, DbTransaction trans)
+        //{
+        //    Dictionary<string, object> pars = new Dictionary<string, object>();
+        //    pars.Add("TourId", tourId);
+        //    return this.ExecuteNonQuery(trans, DELETE___TOUR_ID, pars);
+        //}
     }
 }

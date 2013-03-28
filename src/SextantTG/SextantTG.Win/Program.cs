@@ -23,11 +23,12 @@ namespace SextantTG.Win
                 return;
             }
 
+            //SextantTG.Util.LogHelper.InitLogConfig();
 
             //登录
             LoginForm loginForm = new LoginForm();
             if (loginForm.ShowDialog() != DialogResult.OK)
-            {
+            {          
                 return;
             }
 

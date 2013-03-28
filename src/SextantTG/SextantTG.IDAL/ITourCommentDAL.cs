@@ -13,7 +13,8 @@ namespace SextantTG.IDAL
 
         int InsertTourComment(TourComment comment, DbTransaction trans);
         int UpdateTourComment(TourComment comment, DbTransaction trans);
-        int DeleteTourCommentByCommentId(string commentId, DbTransaction trans);
-        int DeleteTourCommentByTourId(string tourId, DbTransaction trans);
+        int DeleteTourComment(TourComment comment, DbTransaction trans);        
+        //int DeleteTourCommentByCommentId(string commentId, DbTransaction trans);
+        //int DeleteTourCommentByTourId(string tourId, DbTransaction trans);
     }
 }

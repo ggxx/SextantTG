@@ -14,7 +14,7 @@ namespace SextantTG.ActiveRecord
         /// 所属旅行ID
         /// </summary>
         public string TourId { get; set; }
-        
+
         /// <summary>
         /// 子旅行ID
         /// </summary>
@@ -50,5 +50,9 @@ namespace SextantTG.ActiveRecord
         /// </summary>
         public string Memos { get; set; }
 
+        public override string ToString()
+        {
+            return string.Format("ID:{0}/{1}, 名称:{2}, 景点ID:{3}", TourId, SubTourId, SubTourName, SightsId);
+        }
     }
 }

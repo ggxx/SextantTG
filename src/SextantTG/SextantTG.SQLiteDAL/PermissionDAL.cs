@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SextantTG.ActiveRecord;
-using SexTantTG.DbUtil;
+using SextantTG.DbUtil;
 using System.Data.Common;
 using SextantTG.Util;
 using System.Configuration;
@@ -25,7 +25,8 @@ namespace SextantTG.SQLiteDAL
 
         private static readonly string SELECT___USER_ID = "select * from stg_permission where user_id = :UserId order by permission_type";        
         private static readonly string INSERT = "insert into stg_permission(user_id, permission_type) values(:UserId, :PermissionType)";
-        private static readonly string DELETE___USER_ID = "delete from stg_permission where user_id = :UserId";
+        private static readonly string DELETE = "delete from stg_permission where user_id = :UserId and permission_type = :PermissionType";
+        //private static readonly string DELETE___USER_ID = "delete from stg_permission where user_id = :UserId";
 
         public List<Permission> GetPermissionsByUserId(string userID)
         {
@@ -43,11 +44,19 @@ namespace SextantTG.SQLiteDAL
             return this.ExecuteNonQuery(trans, INSERT, pars);
         }
 
-        public int DeletePermissionsByUserId(string userId, DbTransaction trans)
+        public int DeletePermission(Permission permission, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("UserID", userId);
-            return this.ExecuteNonQuery(trans, DELETE___USER_ID, pars);
+            pars.Add("UserID", permission.UserId);
+            pars.Add("PermissionType", permission.PermissionType);
+            return this.ExecuteNonQuery(trans, DELETE, pars);
         }
+
+        //private int DeletePermissionsByUserId(string userId, DbTransaction trans)
+        //{
+        //    Dictionary<string, object> pars = new Dictionary<string, object>();
+        //    pars.Add("UserID", userId);
+        //    return this.ExecuteNonQuery(trans, DELETE___USER_ID, pars);
+        //}
     }
 }

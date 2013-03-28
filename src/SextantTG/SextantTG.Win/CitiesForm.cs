@@ -69,7 +69,7 @@ namespace SextantTG.Win
             if (city != null)
             {
                 string msg;
-                if (UIUtil.DeleteCityByCityId(city.CityId, out msg))
+                if (UIUtil.DeleteCity(city, out msg))
                 {
                     LoadData();
                 }

@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SextantTG.ActiveRecord;
-using SexTantTG.DbUtil;
+using SextantTG.DbUtil;
 using System.Data.Common;
 using SextantTG.Util;
 using System.Configuration;
@@ -53,7 +53,12 @@ namespace SextantTG.SQLiteDAL
             return this.ExecuteNonQuery(trans, UPDATE, pars);
         }
 
-        public int DeleteCountryByCountryId(string countryId, DbTransaction trans)
+        public int DeleteCountry(Country country, DbTransaction trans)
+        {
+            return DeleteCountryByCountryId(country.CountryId, trans);
+        }
+
+        private int DeleteCountryByCountryId(string countryId, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("CountryId", countryId);

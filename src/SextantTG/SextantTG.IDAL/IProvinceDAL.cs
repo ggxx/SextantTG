@@ -13,6 +13,7 @@ namespace SextantTG.IDAL
 
         int InsertProvince(Province province, DbTransaction trans);
         int UpdateProvince(Province province, DbTransaction trans);
-        int DeleteProvinceByProvinceId(string provinceId, DbTransaction trans);
+        int DeleteProvince(Province province, DbTransaction trans);
+        //int DeleteProvinceByProvinceId(string provinceId, DbTransaction trans);
     }
 }

@@ -54,5 +54,10 @@ namespace SextantTG.ActiveRecord
         /// 备注
         /// </summary>
         public string Memos { get; set; }
+
+        public override string ToString()
+        {
+            return string.Format("ID:{0}, 名称:{1}, 时间:{2}-{3}, 状态:{4}, 金额:{5}", TourId, TourName, BeginDate, EndDate, Status, Cost);
+        }
     }
 }

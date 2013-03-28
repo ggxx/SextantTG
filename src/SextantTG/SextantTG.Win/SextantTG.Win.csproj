@@ -361,6 +361,10 @@
       <Project>{A8D6C61A-6C22-438A-99FF-A598575D6B6B}</Project>
       <Name>SextantTG.IServices</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SextantTG.Services\SextantTG.Services.csproj">
+      <Project>{6067CAE1-406C-44F2-8B68-823595B491C5}</Project>
+      <Name>SextantTG.Services</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SextantTG.Util\SextantTG.Util.csproj">
       <Project>{2BFB5DFD-3BCF-45B9-92D2-E7A24A3343A7}</Project>
       <Name>SextantTG.Util</Name>

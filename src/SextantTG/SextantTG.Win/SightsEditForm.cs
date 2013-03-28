@@ -94,6 +94,17 @@ namespace SextantTG.Win
             }
             else
             {
+                /////保存编辑前的景点信息
+                //Sights oldSights = new Sights();
+                //oldSights.SightsId = sights.SightsId;
+                //oldSights.SightsName = sights.SightsName;
+                //oldSights.CityId = sights.CityId;
+                //oldSights.SightsLevel = sights.SightsLevel;
+                //oldSights.Price = sights.Price;
+                //oldSights.Description = sights.Description;
+                //oldSights.Memos = sights.Memos;
+                /////////////////////////////////////////////////
+
                 sights.SightsName = this.textBox_SightsName.Text.Trim();
                 sights.CityId = this.comboBox_City.SelectedValue.ToString();
                 sights.SightsLevel = this.comboBox_SightsLevel.Text;
@@ -102,7 +113,7 @@ namespace SextantTG.Win
                 sights.Memos = this.textBox_Memos.Text.Trim();
                 sights.CreatingTime = Util.CustomTypeConverter.ToDateTimeNull(this.textBox_CreatingTime.Text, "yyyy-MM-dd HH:mm:ss");
 
-                val = UIUtil.SaveSights(sights, this.stgPictures.Pictures, this.stgPictures.RemovedPictures, out msg);
+                val = UIUtil.UpdateSights(sights, this.stgPictures.Pictures, this.stgPictures.RemovedPictures, out msg);
             }
 
             if (val)

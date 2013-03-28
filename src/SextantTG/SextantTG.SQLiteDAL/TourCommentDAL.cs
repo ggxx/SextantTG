@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SextantTG.ActiveRecord;
-using SexTantTG.DbUtil;
+using SextantTG.DbUtil;
 using System.Data.Common;
 using SextantTG.Util;
 using System.Configuration;
@@ -30,8 +30,8 @@ namespace SextantTG.SQLiteDAL
         private static readonly string SELECT___TOUR_ID = "select * from stg_tour_comment where tour_id = :TourId  order by creating_time desc";
         private static readonly string INSERT = "insert into stg_tour_comment(comment_id, tour_id, comm_user_id, creating_time, comment) values(:CommentId, :TourId, :CommUserId, :CreatingTime, :Comment)";
         private static readonly string UPDATE = "update stg_tour_comment set tour_id = :TourId, comm_user_id = :CommUserId, creating_time = :CreatingTime, comment = :Comment where comment_id = :CommentId";
-        private static readonly string DELETE___COMMENT_ID = "delete from stg_tour_comment where comment_id = :CommentId";
-        private static readonly string DELETE___TOUR_ID = "delete from stg_tour_comment where tour_id = :TourId";
+        private static readonly string DELETE = "delete from stg_tour_comment where comment_id = :CommentId";
+        //private static readonly string DELETE___TOUR_ID = "delete from stg_tour_comment where tour_id = :TourId";
 
         public List<TourComment> GetTourCommentsByTourId(string TourId)
         {
@@ -70,19 +70,19 @@ namespace SextantTG.SQLiteDAL
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("CommentId", commentId);
-            return this.ExecuteNonQuery(trans, DELETE___COMMENT_ID, pars);
+            return this.ExecuteNonQuery(trans, DELETE, pars);
         }
 
-        public int DeleteTourCommentByTourId(string tourId, DbTransaction trans)
+        public int DeleteTourComment(TourComment comment, DbTransaction trans)
+        {
+            return this.DeleteTourCommentByTourId(comment.CommentId, trans);
+        }
+
+        private int DeleteTourCommentByTourId(string tourId, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("TourId", tourId);
-            return this.ExecuteNonQuery(trans, DELETE___TOUR_ID, pars);
+            return this.ExecuteNonQuery(trans, DELETE, pars);
         }
-
-
-
-
-
     }
 }

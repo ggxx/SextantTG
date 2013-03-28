@@ -17,6 +17,6 @@ namespace SextantTG.IDAL
 
         int InsertUser(User user, string password, DbTransaction trans);
         int UpdateUser(User user, DbTransaction trans);
-        int DeleteUserByUserId(string userId, DbTransaction trans);
+        int DeleteUser(User user, DbTransaction trans);
     }
 }

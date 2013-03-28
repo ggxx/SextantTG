@@ -16,7 +16,7 @@ namespace SextantTG.IServices
         
         bool InsertTour(Tour tour, out string message);
         bool UpdateTour(Tour tour, out string message);
-        bool DeleteTourByTourId(string tourId, bool deletePictures, out string message);
+        bool DeleteTour(Tour tour, bool deletePictures, out string message);
         bool SaveTour(Tour tour, List<SubTour> subTours, List<SubTour> removedSubTours, out string msg);
 
         List<SubTour> GetSubToursByTourId(string tourId);
@@ -29,7 +29,7 @@ namespace SextantTG.IServices
 
         bool InsertSubTour(SubTour subTour, out string message);
         bool UpdateSubTour(SubTour subTour, out string message);
-        bool DeleteSubTourByTourIdAndSubTourId(string tourId, string subTourId, out string message);
+        bool DeleteSubTour(SubTour subTour, out string message);
 
 
 

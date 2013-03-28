@@ -152,15 +152,16 @@ namespace SextantTG.Win
 
         private void button_Add_Click(object sender, EventArgs e)
         {
-            if (this.bindingSource.Current != null)
+            if (this.bindingSource.DataSource == null)
             {
-                using (SightsEditForm form = new SightsEditForm())
+                this.bindingSource.DataSource = new List<Sights>();
+            }
+            using (SightsEditForm form = new SightsEditForm())
+            {
+                form.BindControls();
+                if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
                 {
-                    form.BindControls();
-                    if (form.ShowDialog() == System.Windows.Forms.DialogResult.OK)
-                    {
-                        LoadData();
-                    }
+                    LoadData();
                 }
             }
         }
@@ -186,7 +187,7 @@ namespace SextantTG.Win
             if (this.bindingSource.Current != null)
             {
                 string msg;
-                if (UIUtil.DeleteSightsBySightsId((this.bindingSource.Current as Sights).SightsId, out msg))
+                if (UIUtil.DeleteSights(this.bindingSource.Current as Sights, out msg))
                 {
                     LoadData();
                 }

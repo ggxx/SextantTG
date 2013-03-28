@@ -13,6 +13,7 @@ namespace SextantTG.IDAL
 
         int InsertUserComment(UserComment comment, DbTransaction trans);
         int UpdateUserComment(UserComment comment, DbTransaction trans);
-        int DeleteUserCommentByCommentId(string commentId, DbTransaction trans);
+        int DeleteUserComment(UserComment comment, DbTransaction trans);
+        //int DeleteUserCommentByCommentId(string commentId, DbTransaction trans);
     }
 }

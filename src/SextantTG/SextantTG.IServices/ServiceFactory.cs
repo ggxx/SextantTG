@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 using System.Configuration;
+using Spring.Aop.Framework;
+using SextantTG.AopAdvice;
 
 namespace SextantTG.IServices
 {
@@ -22,17 +24,46 @@ namespace SextantTG.IServices
         {
             T t;
             Type type = typeof(T);
-            if (type.Equals(typeof(IBlogService))) { t = (T)Assembly.Load(SERVICES).CreateInstance(BLOG_SERVICE); }
-            else if (type.Equals(typeof(IDictService))) { t = (T)Assembly.Load(SERVICES).CreateInstance(DICT_SERVICE); }
-            else if (type.Equals(typeof(IUserService))) { t = (T)Assembly.Load(SERVICES).CreateInstance(USER_SERVICE); }
-            else if (type.Equals(typeof(ICommentService))) { t = (T)Assembly.Load(SERVICES).CreateInstance(COMMENT_SERVICE); }
-            else if (type.Equals(typeof(ISightsService))) { t = (T)Assembly.Load(SERVICES).CreateInstance(SIGHTS_SERVICE); }
-            else if (type.Equals(typeof(ITourService))) { t = (T)Assembly.Load(SERVICES).CreateInstance(TOUR_SERVICE); }
-            else if (type.Equals(typeof(IPictureService))) { t = (T)Assembly.Load(SERVICES).CreateInstance(PICTURE_SERVICE); }
-            else { throw new ArgumentException("Type of T is unkown"); }
+            if (type.Equals(typeof(IBlogService)))
+            {
+                t = (T)Assembly.Load(SERVICES).CreateInstance(BLOG_SERVICE);
+            }
+            else if (type.Equals(typeof(IDictService)))
+            {
+                t = (T)Assembly.Load(SERVICES).CreateInstance(DICT_SERVICE);
+            }
+            else if (type.Equals(typeof(IUserService)))
+            {
+                t = (T)Assembly.Load(SERVICES).CreateInstance(USER_SERVICE);
+            }
+            else if (type.Equals(typeof(ICommentService)))
+            {
+                t = (T)Assembly.Load(SERVICES).CreateInstance(COMMENT_SERVICE);
+            }
+            else if (type.Equals(typeof(ISightsService)))
+            {
+                t = (T)Assembly.Load(SERVICES).CreateInstance(SIGHTS_SERVICE);
+            }
 
-            if (t != null) { return t; }
-            else { throw new Exception(string.Format("Cannot create service, Interface Name: {0}", type.ToString())); }
+            else if (type.Equals(typeof(ITourService)))
+            {
+                t = (T)Assembly.Load(SERVICES).CreateInstance(TOUR_SERVICE);
+            }
+            else if (type.Equals(typeof(IPictureService)))
+            {
+                t = (T)Assembly.Load(SERVICES).CreateInstance(PICTURE_SERVICE);
+            }
+            else { 
+                throw new ArgumentException("Type of T is unkown"); }
+
+            if (t != null)
+            {
+                return t;
+            }
+            else
+            {
+                throw new Exception(string.Format("Cannot create service, Interface Name: {0}", type.ToString()));
+            }
         }
     }
 }

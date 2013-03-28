@@ -17,9 +17,10 @@ namespace SextantTG.IDAL
 
         int InsertPicture(Picture pic, DbTransaction trans);
         int UpdatePicture(Picture pic, DbTransaction trans);
-        int DeletePictureByPictureId(string picId, DbTransaction trans);
+        int DeletePicture(Picture pic, DbTransaction trans);
+        //int DeletePictureByPictureId(string picId, DbTransaction trans);
         //int DeletePicturesBySightsId(string sightsId, DbTransaction trans);
         //int DeletePicturesByBlogId(string blogId, DbTransaction trans);
-        int DeletePictureByTourId(string tourId, DbTransaction trans);
+        //int DeletePictureByTourId(string tourId, DbTransaction trans);
     }
 }

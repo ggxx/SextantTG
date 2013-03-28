@@ -61,7 +61,7 @@ namespace SextantTG.Win
             if (country != null)
             {
                 string msg;
-                if (UIUtil.DeleteCountryByCountryId(country.CountryId, out msg))
+                if (UIUtil.DeleteCountry(country, out msg))
                 {
                     LoadData();
                 }

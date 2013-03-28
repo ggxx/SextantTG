@@ -37,6 +37,7 @@ namespace SextantTG.Win
             fav.Stars = (int?)this.numericUpDown.Value;
             fav.Visited = this.radioButton_Yes.Checked ? 1 : 0;
 
+
             if (UIUtil.SaveFavorite(fav, out msg))
             {
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;

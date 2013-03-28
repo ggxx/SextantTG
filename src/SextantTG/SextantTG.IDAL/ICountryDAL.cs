@@ -13,6 +13,6 @@ namespace SextantTG.IDAL
 
         int InsertCountry(Country country, DbTransaction trans);
         int UpdateCountry(Country country, DbTransaction trans);
-        int DeleteCountryByCountryId(string countryId, DbTransaction trans);
+        int DeleteCountry(Country country, DbTransaction trans);
     }
 }

@@ -115,6 +115,8 @@ namespace SextantTG.Services
 
         public bool UpdatePermissionsByUserId(string userId, List<Permission> permissions, out string message)
         {
+            List<Permission> oldPermissions = permissionDal.GetPermissionsByUserId(userId);
+
             using (DbConnection conn = dataContext.GetConnection())
             {
                 conn.Open();
@@ -122,7 +124,10 @@ namespace SextantTG.Services
                 {
                     try
                     {
-                        permissionDal.DeletePermissionsByUserId(userId, trans);
+                        foreach (Permission p in oldPermissions)
+                        {
+                            permissionDal.DeletePermission(p, trans);
+                        }
                         foreach (Permission p in permissions)
                         {
                             permissionDal.InsertPermission(p, trans);

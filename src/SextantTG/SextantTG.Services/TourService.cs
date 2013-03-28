@@ -14,6 +14,7 @@ namespace SextantTG.Services
         private IDataContext dataContext = null;
         private ITourDAL tourDal = null;
         private ITourCommentDAL tourCommentDal = null;
+        private IPictureCommentDAL pictureCommentDal = null;
         private ISubTourDAL subtourDal = null;
         private IPictureDAL pictureDal = null;
         private IBlogDAL blogDal = null;
@@ -23,6 +24,7 @@ namespace SextantTG.Services
             dataContext = DALFactory.CreateDAL<IDataContext>();
             tourDal = DALFactory.CreateDAL<ITourDAL>();
             tourCommentDal = DALFactory.CreateDAL<ITourCommentDAL>();
+            pictureCommentDal = DALFactory.CreateDAL<IPictureCommentDAL>();
             subtourDal = DALFactory.CreateDAL<ISubTourDAL>();
             pictureDal = DALFactory.CreateDAL<IPictureDAL>();
             blogDal = DALFactory.CreateDAL<IBlogDAL>();
@@ -79,6 +81,7 @@ namespace SextantTG.Services
 
         public bool UpdateTour(Tour tour, out string message)
         {
+            Tour oldTour = tourDal.GetTourByTourId(tour.TourId);
             using (DbConnection conn = dataContext.GetConnection())
             {
                 conn.Open();
@@ -86,7 +89,7 @@ namespace SextantTG.Services
                 {
                     try
                     {
-                        tourDal.UpdateTour(tour, trans);
+                        tourDal.UpdateTourFromOld(tour, oldTour, trans);
                         trans.Commit();
                         message = "";
                         return true;
@@ -101,8 +104,24 @@ namespace SextantTG.Services
             }
         }
 
-        public bool DeleteTourByTourId(string tourId, bool deletePictures, out string message)
+        public bool DeleteTour(Tour tour, bool deletePictures, out string message)
         {
+            List<TourComment> oldComments = tourCommentDal.GetTourCommentsByTourId(tour.TourId);
+            List<SubTour> oldSubTours = subtourDal.GetSubToursByTourId(tour.TourId);
+            List<Blog> oldBlogs = new List<Blog>();
+            List<Picture> oldPictures = new List<Picture>();
+            List<PictureComment> oldPicComments = new List<PictureComment>();
+
+            if (deletePictures)
+            {
+                oldBlogs.AddRange(blogDal.GetBlogsByTourId(tour.TourId));
+                oldPictures.AddRange(pictureDal.GetPicturesByTourId(tour.TourId));
+                foreach(Picture pic in oldPictures)
+                {
+                    oldPicComments.AddRange(pictureCommentDal.GetPictureCommentsByPictureId(pic.PictureId));
+                }
+            }
+
             using (DbConnection conn = dataContext.GetConnection())
             {
                 conn.Open();
@@ -110,13 +129,29 @@ namespace SextantTG.Services
                 {
                     try
                     {
-                        tourDal.DeleteTourByTourId(tourId, trans);
-                        tourCommentDal.DeleteTourCommentByTourId(tourId, trans);
-                        subtourDal.DeleteSubTourByTourId(tourId, trans);
+                        tourDal.DeleteTour(tour, trans);
+                        foreach (TourComment comm in oldComments)
+                        {
+                            tourCommentDal.DeleteTourComment(comm, trans);
+                        }
+                        foreach (SubTour st in oldSubTours)
+                        {
+                            subtourDal.DeleteSubTour(st, trans);
+                        }
                         if (deletePictures)
                         {
-                            blogDal.DeleteBlogsByTourId(tourId, trans);
-                            pictureDal.DeletePictureByTourId(tourId, trans);
+                            foreach (Blog blog in oldBlogs)
+                            {
+                                blogDal.DeleteBlog(blog, trans);
+                            }
+                            foreach (Picture pic in oldPictures)
+                            {
+                                pictureDal.DeletePicture(pic, trans);
+                            }
+                            foreach (PictureComment comm in oldPicComments)
+                            {
+                                pictureCommentDal.DeletePictureComment(comm, trans);
+                            }
                         }
                         
                         trans.Commit();
@@ -135,6 +170,9 @@ namespace SextantTG.Services
 
         public bool SaveTour(Tour tour, List<SubTour> subTours, List<SubTour> removedSubTours, out string message)
         {
+            Tour oldTour = tourDal.GetTourByTourId(tour.TourId);
+            List<SubTour> oldSubTours = subtourDal.GetSubToursByTourId(tour.TourId);
+
             using (DbConnection conn = dataContext.GetConnection())
             {
                 conn.Open();
@@ -159,11 +197,12 @@ namespace SextantTG.Services
                         }
                         else
                         {
-                            tourDal.UpdateTour(tour, trans);
+                            tourDal.UpdateTourFromOld(tour, oldTour, trans);
                             foreach (SubTour subTour in subTours)
                             {
+                                SubTour oldSubTour = oldSubTours.Find(delegate(SubTour st) { return st.TourId == tour.TourId && st.SubTourId == subTour.SubTourId; });
                                 subTour.TourId = tour.TourId;
-                                if (subtourDal.UpdateSubTour(subTour, trans) < 1)
+                                if (subtourDal.UpdateSubTourFromOld(subTour, oldSubTour, trans) < 1)
                                 {
                                     subtourDal.InsertSubTour(subTour, trans);
                                 }
@@ -172,7 +211,7 @@ namespace SextantTG.Services
                             {
                                 if (!string.IsNullOrEmpty(subTour.SubTourId))
                                 {
-                                    subtourDal.DeleteSubTourByTourIdAndSubTourId(subTour.TourId, subTour.SubTourId, trans);
+                                    subtourDal.DeleteSubTour(subTour, trans);
                                 }
                             }
                             trans.Commit();
@@ -251,6 +290,7 @@ namespace SextantTG.Services
 
         public bool UpdateSubTour(SubTour subTour, out string message)
         {
+            SubTour oldSubTour = subtourDal.GetSubTourByTourIdAndSubTourId(subTour.TourId, subTour.SubTourId);
             using (DbConnection conn = dataContext.GetConnection())
             {
                 conn.Open();
@@ -258,7 +298,7 @@ namespace SextantTG.Services
                 {
                     try
                     {
-                        subtourDal.UpdateSubTour(subTour, trans);
+                        subtourDal.UpdateSubTourFromOld(subTour, oldSubTour, trans);
                         trans.Commit();
                         message = "";
                         return true;
@@ -273,7 +313,7 @@ namespace SextantTG.Services
             }
         }
 
-        public bool DeleteSubTourByTourIdAndSubTourId(string tourId, string subTourId, out string message)
+        public bool DeleteSubTour(SubTour subTour, out string message)
         {
             using (DbConnection conn = dataContext.GetConnection())
             {
@@ -282,7 +322,7 @@ namespace SextantTG.Services
                 {
                     try
                     {
-                        subtourDal.DeleteSubTourByTourIdAndSubTourId(tourId, subTourId, trans);
+                        subtourDal.DeleteSubTour(subTour, trans);
                         trans.Commit();
                         message = "";
                         return true;

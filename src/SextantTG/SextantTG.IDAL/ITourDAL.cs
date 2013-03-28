@@ -16,7 +16,9 @@ namespace SextantTG.IDAL
         List<Tour> GetToursBySightsIdAndDate(string sightsId, DateTime date);
 
         int InsertTour(Tour tour, DbTransaction trans);
-        int UpdateTour(Tour tour, DbTransaction trans);
-        int DeleteTourByTourId(string tourId, DbTransaction trans);
+        //int UpdateTour(Tour tour, DbTransaction trans);
+        int UpdateTourFromOld(Tour newItem, Tour oldItem, DbTransaction trans);
+        int DeleteTour(Tour tour, DbTransaction trans);
+        //int DeleteTourByTourId(string tourId, DbTransaction trans);
     }
 }

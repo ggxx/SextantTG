@@ -13,6 +13,6 @@ namespace SextantTG.IDAL
 
         int InsertCity(City city, DbTransaction trans);
         int UpdateCity(City city, DbTransaction trans);
-        int DeleteCityByCityId(string cityId, DbTransaction trans);
+        int DeleteCity(City city, DbTransaction trans);
     }
 }

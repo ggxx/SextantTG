@@ -49,5 +49,11 @@ namespace SextantTG.ActiveRecord
         /// 上传时间
         /// </summary>
         public DateTime? CreatingTime { get; set; }
+
+
+        public override string ToString()
+        {
+            return string.Format("ID:{0}, 描述:{1}, 上传用户ID:{2}", PictureId, Description, UploaderId);
+        }
     }
 }

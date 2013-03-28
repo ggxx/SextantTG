@@ -31,8 +31,8 @@ namespace SextantTG.SQLiteDAL
         private static readonly string INSERT = "insert into stg_favorite(user_id, sights_id, visited, stars, creating_time) values(:UserId, :SightsId, :Visited, :Stars, :CreatingTime)";
         private static readonly string UPDATE = "update stg_favorite set visited = :Visited, stars = :Stars, creating_time = :CreatingTime  where user_id = :UserId and sights_id = :SightsId";
         private static readonly string DELETE = "delete from stg_favorite where user_id = :UserId and sights_id = :SightsId";
-        private static readonly string DELETE___USER_ID = "delete from stg_favorite where user_id = :UserId";
-        private static readonly string DELETE___SIGHTS_ID = "delete from stg_favorite where sights_id = :SightsId";
+        //private static readonly string DELETE___USER_ID = "delete from stg_favorite where user_id = :UserId";
+        //private static readonly string DELETE___SIGHTS_ID = "delete from stg_favorite where sights_id = :SightsId";
 
 
         public List<Favorite> GetFavorites()
@@ -93,7 +93,12 @@ namespace SextantTG.SQLiteDAL
             return this.ExecuteNonQuery(trans, UPDATE, pars);
         }
 
-        public int DeleteFavoriteByUserIdAndSightsId(string userId, string sightsId, DbTransaction trans)
+        public int DeleteFavorite(Favorite favorite, DbTransaction trans)
+        {
+            return DeleteFavoriteByUserIdAndSightsId(favorite.UserId, favorite.SightsId, trans);
+        }
+
+        private int DeleteFavoriteByUserIdAndSightsId(string userId, string sightsId, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("UserId", userId);
@@ -101,19 +106,18 @@ namespace SextantTG.SQLiteDAL
             return this.ExecuteNonQuery(trans, DELETE, pars);
         }
 
-        public int DeleteFavoriteByUserId(string userId, DbTransaction trans)
-        {
-            Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("UserId", userId);
-            return this.ExecuteNonQuery(trans, DELETE___USER_ID, pars);
-        }
+        //public int DeleteFavoriteByUserId(string userId, DbTransaction trans)
+        //{
+        //    Dictionary<string, object> pars = new Dictionary<string, object>();
+        //    pars.Add("UserId", userId);
+        //    return this.ExecuteNonQuery(trans, DELETE___USER_ID, pars);
+        //}
 
-        public int DeleteFavoriteBySightsId(string sightsId, DbTransaction trans)
-        {
-            Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("SightsId", sightsId);
-            return this.ExecuteNonQuery(trans, DELETE___SIGHTS_ID, pars);
-        }
-
+        //public int DeleteFavoriteBySightsId(string sightsId, DbTransaction trans)
+        //{
+        //    Dictionary<string, object> pars = new Dictionary<string, object>();
+        //    pars.Add("SightsId", sightsId);
+        //    return this.ExecuteNonQuery(trans, DELETE___SIGHTS_ID, pars);
+        //}
     }
 }

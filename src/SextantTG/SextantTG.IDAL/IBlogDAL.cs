@@ -25,12 +25,14 @@ namespace SextantTG.IDAL
 
         int InsertBlog(Blog blog, DbTransaction trans);
 
-        int UpdateBlog(Blog blog, DbTransaction trans);
+        //int UpdateBlog(Blog blog, DbTransaction trans);
 
-        int DeleteBlogByBlogId(string blogId, DbTransaction trans);
+        int UpdateBlogFromOld(Blog newBlog, Blog oldBlog, DbTransaction trans);
 
-        int DeleteBlogsByTourId(string tourId, DbTransaction trans);
+        int DeleteBlog(Blog blog, DbTransaction trans);
 
-        int DeleteBlogsBySubTourId(string subTourId, DbTransaction trans);
+        //int DeleteBlogsByTourId(string tourId, DbTransaction trans);
+
+        //int DeleteBlogsBySubTourId(string subTourId, DbTransaction trans);
     }
 }

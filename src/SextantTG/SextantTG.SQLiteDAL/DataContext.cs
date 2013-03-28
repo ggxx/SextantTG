@@ -1,5 +1,5 @@
 ﻿using SextantTG.IDAL;
-using SexTantTG.DbUtil;
+using SextantTG.DbUtil;
 using System;
 using System.Collections.Generic;
 using System.Data.Common;

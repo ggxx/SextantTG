@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SextantTG.ActiveRecord;
-using SexTantTG.DbUtil;
+using SextantTG.DbUtil;
 using System.Data.Common;
 using SextantTG.Util;
 using System.Configuration;
@@ -33,12 +33,12 @@ namespace SextantTG.SQLiteDAL
         private static readonly string SELECT___PICTURE_ID = "select * from stg_picture where picture_id = :PictureId  order by creating_time desc";
         private static readonly string SELECT___SIGHTS_ID = "select * from stg_picture where sights_id = :SightsId  order by creating_time desc";
         private static readonly string SELECT___TOUR_ID = "select * from stg_picture where tour_id = :TourId  order by creating_time desc";
-        private static readonly string SELECT___TOUR_ID__SUB_TOUR_ID = "select * from stg_picture where tour_id = :TourId and sub_tour_id = :SubTourId  order by creating_time desc"; 
-                
+        private static readonly string SELECT___TOUR_ID__SUB_TOUR_ID = "select * from stg_picture where tour_id = :TourId and sub_tour_id = :SubTourId  order by creating_time desc";
+
         private static readonly string INSERT = "insert into stg_picture(picture_id, sights_id, tour_id, sub_tour_id, path, description, user_id, creating_time ) values(:PictureId, :SightsId, :TourId, :SubTourId, :Path, :Description, :UserId, :CreatingTime)";
-        private static readonly string UPDATE = "update stg_picture set sights_id = :SightsId, tour_id = :TourId, sub_tour_id = :SubTourId, path = :Path, description = :Description, user_id = :UserId, creating_time = :CreatingTime  where picture_id = :PictureId" ;
+        private static readonly string UPDATE = "update stg_picture set sights_id = :SightsId, tour_id = :TourId, sub_tour_id = :SubTourId, path = :Path, description = :Description, user_id = :UserId, creating_time = :CreatingTime  where picture_id = :PictureId";
         private static readonly string DELETE___PICTURE_ID = "delete from stg_picture where picture_id = :PictureId";
-        private static readonly string DELETE___TOUR_ID = "delete from stg_picture where tour_id = :TourId";
+        //private static readonly string DELETE___TOUR_ID = "delete from stg_picture where tour_id = :TourId";
 
 
         public List<Picture> GetPicturesBySightsIdAndUploaderId(string sightsId, string uploaderId)
@@ -111,18 +111,31 @@ namespace SextantTG.SQLiteDAL
             return this.ExecuteNonQuery(trans, UPDATE, pars);
         }
 
-        public int DeletePictureByPictureId(string pictureId, DbTransaction trans)
+        //public int UpdatePictureFromOld(Picture newItem, Picture oldItem, DbTransaction trans)
+        //{
+        //    Picture pic = (Picture)newItem.Clone();
+        //    pic.PictureId = oldItem.PictureId;
+        //    return UpdatePicture(pic, trans);
+        //}
+
+        public int DeletePicture(Picture pic, DbTransaction trans)
+        {
+            return DeletePictureByPictureId(pic.PictureId, trans);
+        }
+
+        private int DeletePictureByPictureId(string pictureId, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("PictureId", pictureId);
             return this.ExecuteNonQuery(trans, DELETE___PICTURE_ID, pars);
         }
 
-        public int DeletePictureByTourId(string tourId, DbTransaction trans)
-        {
-            Dictionary<string, object> pars = new Dictionary<string, object>();
-            pars.Add("TourId", tourId);
-            return this.ExecuteNonQuery(trans, DELETE___TOUR_ID, pars);
-        }
+        //public int DeletePictureByTourId(string tourId, DbTransaction trans)
+        //{
+        //    Dictionary<string, object> pars = new Dictionary<string, object>();
+        //    pars.Add("TourId", tourId);
+        //    return this.ExecuteNonQuery(trans, DELETE___TOUR_ID, pars);
+        //}
+
     }
 }

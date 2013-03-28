@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SextantTG.ActiveRecord;
-using SexTantTG.DbUtil;
+using SextantTG.DbUtil;
 using System.Data.Common;
 using SextantTG.Util;
 using System.Configuration;
@@ -72,7 +72,7 @@ namespace SextantTG.SQLiteDAL
         public int InsertUser(User user, string password, DbTransaction trans)
         {
             user.UserId = StringHelper.CreateGuid();
-            
+
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("UserId", user.UserId);
             pars.Add("LoginName", user.LoginName);
@@ -92,12 +92,16 @@ namespace SextantTG.SQLiteDAL
             return this.ExecuteNonQuery(trans, UPDATE, pars);
         }
 
-        public int DeleteUserByUserId(string userId, DbTransaction trans)
+        public int DeleteUser(User user, DbTransaction trans)
+        {
+            return this.DeleteUserByUserId(user.UserId, trans);
+        }
+
+        private int DeleteUserByUserId(string userId, DbTransaction trans)
         {
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("UserId", userId);
             return this.ExecuteNonQuery(trans, DELETE, pars);
         }
-
     }
 }
