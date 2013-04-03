@@ -24,16 +24,17 @@ namespace SextantTG.SQLiteDAL
             user.Status = CustomTypeConverter.ToInt32Null(r["status"]);
             return user;
         }
-        
+
         private static readonly string SELECT = "select * from stg_user order by login_name";
         private static readonly string SELECT___USER_ID = "select * from stg_user where user_id = :UserId";
         private static readonly string SELECT___LOGIN_NAME = "select * from stg_user where login_name = :LoginName";
         private static readonly string SELECT___EMAIL = "select * from stg_user where email = :Email";
         private static readonly string SELECT___LOGIN_NAME__PASSWORD = "select * from stg_user where login_name = :LoginName and password = :Password";
-        
+
         private static readonly string INSERT = "insert into stg_user(user_id, login_name, password, email, status) values(:UserId, :LoginName, :Password, :Email, :Status)";
-        private static readonly string UPDATE = "update stg_user set login_name = :LoginName, email = :Email, status = :Status where user_id = :UserId" ;
+        private static readonly string UPDATE = "update stg_user set login_name = :LoginName, email = :Email, status = :Status where user_id = :UserId";
         private static readonly string DELETE = "delete from stg_user where user_id = :UserId";
+        private static readonly string UPDATE___PASSWORD = "update stg_user set password = :Password where user_id = :UserId";
 
         public List<User> GetUsers()
         {
@@ -102,6 +103,19 @@ namespace SextantTG.SQLiteDAL
             Dictionary<string, object> pars = new Dictionary<string, object>();
             pars.Add("UserId", userId);
             return this.ExecuteNonQuery(trans, DELETE, pars);
+        }
+
+        public int UpdateUserPassword(User user, string newPassword, DbTransaction trans)
+        {
+            return this.UpdatePasswordByUserId(user.UserId, newPassword, trans);
+        }
+
+        private int UpdatePasswordByUserId(string userId, string newPassword, DbTransaction trans)
+        {
+            Dictionary<string, object> pars = new Dictionary<string, object>();
+            pars.Add("Password", newPassword);
+            pars.Add("UserId", userId);
+            return this.ExecuteNonQuery(trans, UPDATE___PASSWORD, pars);
         }
     }
 }
