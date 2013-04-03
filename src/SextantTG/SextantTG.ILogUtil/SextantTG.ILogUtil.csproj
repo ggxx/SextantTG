@@ -5,11 +5,11 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{7B30ECE6-DFFB-477F-B0DA-58AED795687B}</ProjectGuid>
+    <ProjectGuid>{E60E6F01-09CD-4F26-9D6D-FAAD5245765D}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SextantTG.IDAL</RootNamespace>
-    <AssemblyName>SextantTG.IDAL</AssemblyName>
+    <RootNamespace>SextantTG.ILogUtil</RootNamespace>
+    <AssemblyName>SextantTG.ILogUtil</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -31,15 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Common.Logging">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Spring.NET\bin\net\2.0\release\Common.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="Spring.Aop">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Spring.NET\bin\net\2.0\release\Spring.Aop.dll</HintPath>
-    </Reference>
-    <Reference Include="Spring.Core">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Spring.NET\bin\net\2.0\release\Spring.Core.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -49,35 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DALFactory.cs" />
-    <Compile Include="IBaseDAL.cs" />
-    <Compile Include="IBlogDAL.cs" />
-    <Compile Include="ICityDAL.cs" />
-    <Compile Include="ICountryDAL.cs" />
-    <Compile Include="IDataContext.cs" />
-    <Compile Include="IFavoriteDAL.cs" />
-    <Compile Include="IPermissionDAL.cs" />
-    <Compile Include="IPictureCommentDAL.cs" />
-    <Compile Include="IPictureDAL.cs" />
-    <Compile Include="IProvinceDAL.cs" />
-    <Compile Include="ISightsCommentDAL.cs" />
-    <Compile Include="ISightsDAL.cs" />
-    <Compile Include="ISubTourDAL.cs" />
-    <Compile Include="ITourCommentDAL.cs" />
-    <Compile Include="ITourDAL.cs" />
-    <Compile Include="IUserCommentDAL.cs" />
-    <Compile Include="IUserDAL.cs" />
+    <Compile Include="ILogHelper.cs" />
+    <Compile Include="LogFactory.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\SextantTG.ActiveRecord\SextantTG.ActiveRecord.csproj">
-      <Project>{dd4377a0-3082-4f4e-bf11-fd95d6b6b798}</Project>
-      <Name>SextantTG.ActiveRecord</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SexTantTG.AopAdvice\SextantTG.AopAdvice.csproj">
-      <Project>{c47e46ee-4183-4c46-a9cd-6ee7f5947ff3}</Project>
-      <Name>SextantTG.AopAdvice</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

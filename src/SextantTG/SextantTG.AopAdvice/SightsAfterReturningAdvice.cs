@@ -11,18 +11,20 @@ namespace SextantTG.AopAdvice
 {
     public class SightsAfterReturningAdvice : IAfterReturningAdvice
     {
+        private ILogUtil.ILogHelper logHelper = ILogUtil.LogFactory.CreateLogHelper();
+
         public void AfterReturning(object returnValue, MethodInfo method, object[] args, object target)
         {
             switch (method.Name)
             {
                 case "InsertSights":
-                    LogHelper.Info(LogHelper.GetLogTimeString() + "用户新增了一个景点，" + (args[0] as Sights).ToString());
+                    logHelper.Info(logHelper.GetLogTimeString() + "用户新增了一个景点，" + (args[0] as Sights).ToString());
                     break;
                 case "UpdateSightsFromOld":
-                    LogHelper.Info(LogHelper.GetLogTimeString() + "用户更改了一个景点，原景点是" + (args[1] as Sights).ToString() + "。新景点是" + (args[0] as Sights).ToString());
+                    logHelper.Info(logHelper.GetLogTimeString() + "用户更改了一个景点，原景点是" + (args[1] as Sights).ToString() + "。新景点是" + (args[0] as Sights).ToString());
                     break;
                 case "DeleteSights":
-                    LogHelper.Info(LogHelper.GetLogTimeString() + "用户删除了一个景点，" + (args[0] as Sights).ToString());
+                    logHelper.Info(logHelper.GetLogTimeString() + "用户删除了一个景点，" + (args[0] as Sights).ToString());
                     break;
                 default:
                     break;

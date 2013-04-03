@@ -16,7 +16,11 @@ namespace SextantTG.Win
         private bool allowComment = false;
         private ImageList images = new ImageList();
         private static readonly string PicPath = System.Configuration.ConfigurationManager.AppSettings["PIC_PATH"];
-        public List<Picture> Pictures { get; private set; }
+        
+        /// <summary>
+        /// 设置或获取控件中的所有图片
+        /// </summary>
+        internal List<Picture> Pictures { get; private set; }
 
         public STGReadonlyPictures()
         {
@@ -26,7 +30,13 @@ namespace SextantTG.Win
             this.listView_Pic.LargeImageList = images;
         }
 
-        public void SetPicturesForSights(string sightsId, string uploaderId, bool allowComment)
+        /// <summary>
+        /// 设置控件，显示指定用户上传的关于指定景点所有的图片
+        /// </summary>
+        /// <param name="sightsId">景点ID</param>
+        /// <param name="uploaderId">用户ID</param>
+        /// <param name="allowComment">是否允许添加图片评论</param>
+        internal void SetPicturesForSights(string sightsId, string uploaderId, bool allowComment)
         {
             if (allowComment)
             {
@@ -50,7 +60,12 @@ namespace SextantTG.Win
             }
         }
 
-        public void SetPicturesForTour(string tourId,  bool allowComment)
+        /// <summary>
+        /// 设置控件，显示指定用户上传的关于指定旅行的所有图片
+        /// </summary>
+        /// <param name="tourId">旅行ID</param>
+        /// <param name="allowComment">是否允许添加图片评论</param>
+        internal void SetPicturesForTour(string tourId, bool allowComment)
         {
             if (allowComment)
             {
@@ -73,21 +88,10 @@ namespace SextantTG.Win
             }
         }
 
-        public void SetPicturesForTour(string tourId, string subTourId)
-        {
-            this.images.Images.Clear();
-            this.listView_Pic.Items.Clear();
-            this.Pictures.Clear();
-
-            List<Picture> pictures = UIUtil.GetPicturesByTourIdAndSubTourId(tourId, subTourId);
-            foreach (Picture pic in pictures)
-            {
-                images.Images.Add(pic.PictureId, new System.Drawing.Bitmap(PicPath + pic.Path));
-                this.listView_Pic.Items.Add(pic.PictureId, pic.Description, pic.PictureId);
-            }
-        }
-
-        public void ResetList()
+        /// <summary>
+        /// 重置控件，清除所有图片
+        /// </summary>
+        internal void ResetList()
         {
             this.images.Images.Clear();
             this.listView_Pic.Items.Clear();

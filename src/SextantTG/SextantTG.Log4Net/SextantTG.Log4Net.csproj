@@ -5,14 +5,13 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProductVersion>8.0.30703</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
-    <ProjectGuid>{C47E46EE-4183-4C46-A9CD-6EE7F5947FF3}</ProjectGuid>
+    <ProjectGuid>{75AC75D6-9DA9-40BF-9AC5-381C95DE4742}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>SextantTG.AopAdvice</RootNamespace>
-    <AssemblyName>SextantTG.AopAdvice</AssemblyName>
+    <RootNamespace>SextantTG.Log4Net</RootNamespace>
+    <AssemblyName>SextantTG.Log4Net</AssemblyName>
     <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
-    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -32,14 +31,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Common.Logging">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Spring.NET\bin\net\2.0\release\Common.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="Spring.Aop">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Spring.NET\bin\net\2.0\release\Spring.Aop.dll</HintPath>
-    </Reference>
-    <Reference Include="Spring.Core">
-      <HintPath>..\..\..\..\..\..\..\Program Files\Spring.NET\bin\net\2.0\release\Spring.Core.dll</HintPath>
+    <Reference Include="log4net">
+      <HintPath>..\..\..\..\..\..\..\Program Files\log4net\bin\net\3.5\release\log4net.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -49,36 +42,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="PictureMethodInterceptor.cs" />
-    <Compile Include="SubTourMethodInterceptor.cs" />
-    <Compile Include="TourMethodInterceptor.cs" />
-    <Compile Include="UserMethodInterceptor.cs" />
-    <Compile Include="SightsMethodInterceptor.cs" />
-    <Compile Include="ExceptionAdvice.cs" />
-    <Compile Include="PictureAfterReturningAdvice.cs" />
+    <Compile Include="LogHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SightsAfterReturningAdvice.cs" />
-    <Compile Include="SubTourAfterReturningAdvice.cs" />
-    <Compile Include="TourAfterReturningAdvice.cs" />
-    <Compile Include="FavoriteAfterReturningAdvice.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\SextantTG.ActiveRecord\SextantTG.ActiveRecord.csproj">
-      <Project>{DD4377A0-3082-4F4E-BF11-FD95D6B6B798}</Project>
-      <Name>SextantTG.ActiveRecord</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SextantTG.Assertion\SextantTG.Assertion.csproj">
-      <Project>{aeb75258-2317-42d3-8dff-e0591123dc6f}</Project>
-      <Name>SextantTG.Assertion</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SextantTG.ILogUtil\SextantTG.ILogUtil.csproj">
       <Project>{E60E6F01-09CD-4F26-9D6D-FAAD5245765D}</Project>
       <Name>SextantTG.ILogUtil</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SextantTG.Util\SextantTG.Util.csproj">
-      <Project>{2bfb5dfd-3bcf-45b9-92d2-e7a24a3343a7}</Project>
-      <Name>SextantTG.Util</Name>
-    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="log4net.config">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

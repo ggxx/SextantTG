@@ -12,18 +12,20 @@ namespace SextantTG.AopAdvice
 {
     public class FavoriteAfterReturningAdvice : IAfterReturningAdvice
     {
+        private ILogUtil.ILogHelper logHelper = ILogUtil.LogFactory.CreateLogHelper();
+
         public void AfterReturning(object returnValue, MethodInfo method, object[] args, object target)
         {
             switch (method.Name)
             {
                 case "InsertFavorite":
-                    LogHelper.Info(LogHelper.GetLogTimeString() + "用户新增了一个景点评分，" + (args[0] as Favorite).ToString());
+                    logHelper.Info(logHelper.GetLogTimeString() + "用户新增了一个景点评分，" + (args[0] as Favorite).ToString());
                     break;
                 case "UpdateFavorite":
-                    LogHelper.Info(LogHelper.GetLogTimeString() + "用户修改了一个景点评分，" + (args[0] as Favorite).ToString());
+                    logHelper.Info(logHelper.GetLogTimeString() + "用户修改了一个景点评分，" + (args[0] as Favorite).ToString());
                     break;
                 case "DeleteFavorite":
-                    LogHelper.Info(LogHelper.GetLogTimeString() + "用户删除了一个景点评分，" + (args[0] as Favorite).ToString());
+                    logHelper.Info(logHelper.GetLogTimeString() + "用户删除了一个景点评分，" + (args[0] as Favorite).ToString());
                     break;
                 default:
                     break;

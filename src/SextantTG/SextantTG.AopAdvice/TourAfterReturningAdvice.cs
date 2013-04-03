@@ -12,18 +12,20 @@ namespace SextantTG.AopAdvice
 {
     public class TourAfterReturningAdvice : IAfterReturningAdvice
     {
+        private ILogUtil.ILogHelper logHelper = ILogUtil.LogFactory.CreateLogHelper();
+
         public void AfterReturning(object returnValue, MethodInfo method, object[] args, object target)
         {
             switch (method.Name)
             {
                 case "InsertTour":
-                    LogHelper.Info(LogHelper.GetLogTimeString() + "用户增加了一次旅行计划，" + (args[0] as Tour).ToString());
+                    logHelper.Info(logHelper.GetLogTimeString() + "用户增加了一次旅行计划，" + (args[0] as Tour).ToString());
                     break;
                 case "UpdateTourFromOld":
-                    LogHelper.Info(LogHelper.GetLogTimeString() + "用户修改了一次旅行计划，原旅行是" + (args[1] as Tour).ToString() + "。新旅行是" + (args[0] as Tour).ToString());
+                    logHelper.Info(logHelper.GetLogTimeString() + "用户修改了一次旅行计划，原旅行是" + (args[1] as Tour).ToString() + "。新旅行是" + (args[0] as Tour).ToString());
                     break;
                 case "DeleteTour":
-                    LogHelper.Info(LogHelper.GetLogTimeString() + "用户删除了一次旅行计划，" + (args[0] as Tour).ToString());
+                    logHelper.Info(logHelper.GetLogTimeString() + "用户删除了一次旅行计划，" + (args[0] as Tour).ToString());
                     break;
                 default:
                     break;
