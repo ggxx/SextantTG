@@ -55,55 +55,6 @@ namespace SextantTG.Services
             return tourDal.GetToursBySightsIdAndDate(sightsId, date);
         }
 
-        public bool InsertTour(Tour tour, out string message)
-        {
-            using (DbConnection conn = dataContext.GetConnection())
-            {
-                conn.Open();
-                using (DbTransaction trans = conn.BeginTransaction())
-                {
-                    try
-                    {
-                        tourDal.InsertTour(tour, trans);
-                        trans.Commit();
-                        message = "";
-                        return true;
-                    }
-                    catch (DbException ex)
-                    {
-                        message = ex.Message;
-                        trans.Rollback();
-                        return false;
-                    }
-                }
-            }
-        }
-
-        public bool UpdateTour(Tour tour, out string message)
-        {
-            Tour oldTour = tourDal.GetTourByTourId(tour.TourId);
-            using (DbConnection conn = dataContext.GetConnection())
-            {
-                conn.Open();
-                using (DbTransaction trans = conn.BeginTransaction())
-                {
-                    try
-                    {
-                        tourDal.UpdateTourFromOld(tour, oldTour, trans);
-                        trans.Commit();
-                        message = "";
-                        return true;
-                    }
-                    catch (DbException ex)
-                    {
-                        message = ex.Message;
-                        trans.Rollback();
-                        return false;
-                    }
-                }
-            }
-        }
-
         public bool DeleteTour(Tour tour, bool deletePictures, out string message)
         {
             List<TourComment> oldComments = tourCommentDal.GetTourCommentsByTourId(tour.TourId);
@@ -263,80 +214,6 @@ namespace SextantTG.Services
         {
             return pictureDal.GetPicturesByTourIdAndSubTourId(tourId, subTourId);
         }
-
-        public bool InsertSubTour(SubTour subTour, out string message)
-        {
-            using (DbConnection conn = dataContext.GetConnection())
-            {
-                conn.Open();
-                using (DbTransaction trans = conn.BeginTransaction())
-                {
-                    try
-                    {
-                        subtourDal.InsertSubTour(subTour, trans);
-                        trans.Commit();
-                        message = "";
-                        return true;
-                    }
-                    catch (DbException ex)
-                    {
-                        message = ex.Message;
-                        trans.Rollback();
-                        return false;
-                    }
-                }
-            }
-        }
-
-        public bool UpdateSubTour(SubTour subTour, out string message)
-        {
-            SubTour oldSubTour = subtourDal.GetSubTourByTourIdAndSubTourId(subTour.TourId, subTour.SubTourId);
-            using (DbConnection conn = dataContext.GetConnection())
-            {
-                conn.Open();
-                using (DbTransaction trans = conn.BeginTransaction())
-                {
-                    try
-                    {
-                        subtourDal.UpdateSubTourFromOld(subTour, oldSubTour, trans);
-                        trans.Commit();
-                        message = "";
-                        return true;
-                    }
-                    catch (DbException ex)
-                    {
-                        message = ex.Message;
-                        trans.Rollback();
-                        return false;
-                    }
-                }
-            }
-        }
-
-        public bool DeleteSubTour(SubTour subTour, out string message)
-        {
-            using (DbConnection conn = dataContext.GetConnection())
-            {
-                conn.Open();
-                using (DbTransaction trans = conn.BeginTransaction())
-                {
-                    try
-                    {
-                        subtourDal.DeleteSubTour(subTour, trans);
-                        trans.Commit();
-                        message = "";
-                        return true;
-                    }
-                    catch (DbException ex)
-                    {
-                        message = ex.Message;
-                        trans.Rollback();
-                        return false;
-                    }
-                }
-            }
-        }
-
 
         public void Dispose()
         {

@@ -35,7 +35,7 @@ namespace SextantTG.IDAL
         private static readonly bool ENABLE_AOP = bool.Parse(ConfigurationManager.AppSettings["ENABLE_AOP"]);
 
         /// <summary>
-        /// 初始化一个数据连接层的实例
+        /// 创建一个数据连接层的实例
         /// </summary>
         /// <typeparam name="T">指定的数据类型</typeparam>
         /// <returns>指定数据类型的实例</returns>
