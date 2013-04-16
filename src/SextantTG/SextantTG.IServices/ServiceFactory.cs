@@ -4,7 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 using System.Configuration;
-using SextantTG.AopAdvice;
 
 namespace SextantTG.IServices
 {

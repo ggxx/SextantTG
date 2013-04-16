@@ -8,13 +8,16 @@ using SextantTG.DbUtil;
 using System.Data.Common;
 using SextantTG.Util;
 using System.Configuration;
+using SextantTG.PSAop;
 
 namespace SextantTG.SQLiteDAL
 {
+    [MethodAspect]
     public class PermissionDAL : AbstractDAL<Permission>, IPermissionDAL
     {
         public PermissionDAL() { }
 
+        [MethodAspect(AttributeExclude = true)]
         protected override Permission BuildObjectByReader(DbDataReader r)
         {
             Permission permission = new Permission();

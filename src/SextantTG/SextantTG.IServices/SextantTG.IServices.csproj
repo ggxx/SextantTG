@@ -55,10 +55,6 @@
       <Project>{dd4377a0-3082-4f4e-bf11-fd95d6b6b798}</Project>
       <Name>SextantTG.ActiveRecord</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SexTantTG.AopAdvice\SextantTG.AopAdvice.csproj">
-      <Project>{c47e46ee-4183-4c46-a9cd-6ee7f5947ff3}</Project>
-      <Name>SextantTG.AopAdvice</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

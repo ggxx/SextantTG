@@ -8,13 +8,16 @@ using SextantTG.DbUtil;
 using System.Data.Common;
 using SextantTG.Util;
 using System.Configuration;
+using SextantTG.PSAop;
 
 namespace SextantTG.SQLiteDAL
 {
+    [MethodAspect]
     public class UserDAL : AbstractDAL<User>, IUserDAL
     {
         public UserDAL() { }
 
+        [MethodAspect(AttributeExclude = true)]
         protected override User BuildObjectByReader(DbDataReader r)
         {
             User user = new User();

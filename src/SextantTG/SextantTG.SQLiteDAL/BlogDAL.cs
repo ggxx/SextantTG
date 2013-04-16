@@ -8,13 +8,16 @@ using SextantTG.DbUtil;
 using System.Data.Common;
 using SextantTG.Util;
 using System.Configuration;
+using SextantTG.PSAop;
 
 namespace SextantTG.SQLiteDAL
 {
+    [MethodAspect]
     public class BlogDAL : AbstractDAL<Blog>, IBlogDAL
     {
         public BlogDAL() { }
 
+        [MethodAspect(AttributeExclude = true)]
         protected override Blog BuildObjectByReader(DbDataReader r)
         {
             Blog blog = new Blog();

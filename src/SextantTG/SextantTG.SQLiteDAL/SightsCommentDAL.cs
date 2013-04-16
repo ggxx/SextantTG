@@ -8,13 +8,16 @@ using SextantTG.DbUtil;
 using System.Data.Common;
 using SextantTG.Util;
 using System.Configuration;
+using SextantTG.PSAop;
 
 namespace SextantTG.SQLiteDAL
 {
+    [MethodAspect]
     public class SightsCommentDAL : AbstractDAL<SightsComment>, ISightsCommentDAL
     {
         public SightsCommentDAL() { }
 
+        [MethodAspect(AttributeExclude = true)]
         protected override SightsComment BuildObjectByReader(DbDataReader r)
         {
             SightsComment sightscomment = new SightsComment();

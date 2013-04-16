@@ -35,7 +35,7 @@
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite">
-      <HintPath>..\..\..\..\..\..\..\Program Files\SQLiteForNet\2008\bin\System.Data.SQLite.dll</HintPath>
+      <HintPath>D:\Program Files\SQLite\2008\bin\System.Data.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -50,10 +50,6 @@
     <ProjectReference Include="..\SextantTG.ActiveRecord\SextantTG.ActiveRecord.csproj">
       <Project>{dd4377a0-3082-4f4e-bf11-fd95d6b6b798}</Project>
       <Name>SextantTG.ActiveRecord</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\SexTantTG.AopAdvice\SextantTG.AopAdvice.csproj">
-      <Project>{c47e46ee-4183-4c46-a9cd-6ee7f5947ff3}</Project>
-      <Name>SextantTG.AopAdvice</Name>
     </ProjectReference>
     <ProjectReference Include="..\SextantTG.Assertion\SextantTG.Assertion.csproj">
       <Project>{aeb75258-2317-42d3-8dff-e0591123dc6f}</Project>
@@ -78,6 +74,14 @@
     <ProjectReference Include="..\SextantTG.Log4Net\SextantTG.Log4Net.csproj">
       <Project>{75AC75D6-9DA9-40BF-9AC5-381C95DE4742}</Project>
       <Name>SextantTG.Log4Net</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SextantTG.OracleDAL\SextantTG.OracleDAL.csproj">
+      <Project>{8777c63d-9d38-4f10-a013-f64a50beaf7a}</Project>
+      <Name>SextantTG.OracleDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SextantTG.PSAop\SextantTG.PSAop.csproj">
+      <Project>{5841261d-aae8-4187-815b-1dfba59367f7}</Project>
+      <Name>SextantTG.PSAop</Name>
     </ProjectReference>
     <ProjectReference Include="..\SextantTG.Services\SextantTG.Services.csproj">
       <Project>{6067cae1-406c-44f2-8b68-823595b491c5}</Project>

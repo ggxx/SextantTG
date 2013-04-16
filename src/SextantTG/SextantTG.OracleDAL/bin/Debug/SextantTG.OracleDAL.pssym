@@ -1,0 +1,475 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Symbols xmlns="http://schemas.postsharp.org/2.0/symbols">
+  <Class Class="#1=T:[SextantTG.PSAop]SextantTG.PSAop.MethodAspectAttribute">
+    <Instance Declaration="#2=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.BlogDAL" Id="16fd0c6fab43275b">
+      <Target Target="#3=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.BlogDAL::#ctor()">
+        <JoinPoint Advising="#1" Description="#4=Wrapped by advice(s) OnEntry, OnSuccess, OnException, OnExit" />
+      </Target>
+      <Target Target="#5=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.BlogDAL::GetBlogs()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#6=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.BlogDAL::GetBlogsByUserId(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#7=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.BlogDAL::GetBlogsBySightsId(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#8=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.BlogDAL::GetBlogsByUserIdAndSightsId(System.String, System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#9=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.BlogDAL::GetBlogsByTourId(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#10=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.BlogDAL::GetBlogsByTourIdAndSubTourId(System.String, System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#11=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.BlogDAL::GetBlogByBlogId(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#12=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.BlogDAL::InsertBlog(SextantTG.ActiveRecord.Blog, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#13=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.BlogDAL::UpdateBlogFromOld(SextantTG.ActiveRecord.Blog, SextantTG.ActiveRecord.Blog, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#14=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.BlogDAL::UpdateBlog(SextantTG.ActiveRecord.Blog, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#15=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.BlogDAL::DeleteBlog(SextantTG.ActiveRecord.Blog, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#16=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.BlogDAL::DeleteBlogByBlogId(System.String, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#17=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.BlogDAL::#cctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#18=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.CityDAL" Id="16fd0c6fbcb6fdb8">
+      <Target Target="#19=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.CityDAL::#ctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#20=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.CityDAL::GetCities()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#21=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.CityDAL::InsertCity(SextantTG.ActiveRecord.City, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#22=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.CityDAL::UpdateCity(SextantTG.ActiveRecord.City, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#23=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.CityDAL::DeleteCity(SextantTG.ActiveRecord.City, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#24=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.CityDAL::DeleteCityByCityId(System.String, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#25=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.CityDAL::#cctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#26=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.CountryDAL" Id="16fd0c6f8a7a7345">
+      <Target Target="#27=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.CountryDAL::#ctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#28=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.CountryDAL::GetCountries()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#29=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.CountryDAL::InsertCountry(SextantTG.ActiveRecord.Country, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#30=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.CountryDAL::UpdateCountry(SextantTG.ActiveRecord.Country, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#31=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.CountryDAL::DeleteCountry(SextantTG.ActiveRecord.Country, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#32=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.CountryDAL::DeleteCountryByCountryId(System.String, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#33=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.CountryDAL::#cctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#34=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.DataContext" Id="16fd0c6feb31d69a">
+      <Target Target="#35=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.DataContext::#ctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#36=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.DataContext::#ctor(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#37=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.DataContext::GetConnection()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#38=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.DataContext::Dispose()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#39=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.FavoriteDAL" Id="16fd0c6fcbc7fb39">
+      <Target Target="#40=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.FavoriteDAL::#ctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#41=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.FavoriteDAL::GetFavorites()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#42=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.FavoriteDAL::GetFavoritesByUserId(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#43=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.FavoriteDAL::GetFavoritesBySightsId(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#44=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.FavoriteDAL::GetFavoriteByUserIdAndSightsId(System.String, System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#45=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.FavoriteDAL::GetAverageStarsBySightsId(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#46=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.FavoriteDAL::InsertFavorite(SextantTG.ActiveRecord.Favorite, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#47=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.FavoriteDAL::UpdateFavorite(SextantTG.ActiveRecord.Favorite, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#48=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.FavoriteDAL::DeleteFavorite(SextantTG.ActiveRecord.Favorite, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#49=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.FavoriteDAL::DeleteFavoriteByUserIdAndSightsId(System.String, System.String, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#50=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.FavoriteDAL::#cctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#51=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.PermissionDAL" Id="16fd0c6fa4fa5a00">
+      <Target Target="#52=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.PermissionDAL::#ctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#53=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.PermissionDAL::GetPermissionsByUserId(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#54=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.PermissionDAL::InsertPermission(SextantTG.ActiveRecord.Permission, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#55=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.PermissionDAL::DeletePermission(SextantTG.ActiveRecord.Permission, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#56=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.PermissionDAL::#cctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#57=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.PictureCommentDAL" Id="16fd0c6f8006e057">
+      <Target Target="#58=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.PictureCommentDAL::#ctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#59=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.PictureCommentDAL::GetPictureCommentsByPictureId(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#60=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.PictureCommentDAL::InsertPictureComment(SextantTG.ActiveRecord.PictureComment, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#61=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.PictureCommentDAL::UpdatePictureComment(SextantTG.ActiveRecord.PictureComment, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#62=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.PictureCommentDAL::DeletePictureComment(SextantTG.ActiveRecord.PictureComment, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#63=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.PictureCommentDAL::DeletePictureCommentByCommentId(System.String, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#64=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.PictureCommentDAL::#cctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#65=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.PictureDAL" Id="16fd0c6f4e71ad28">
+      <Target Target="#66=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.PictureDAL::#ctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#67=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.PictureDAL::GetPicturesBySightsIdAndUploaderId(System.String, System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#68=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.PictureDAL::GetPicturesBySightsId(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#69=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.PictureDAL::GetPicturesByTourId(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#70=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.PictureDAL::GetPicturesByTourIdAndSubTourId(System.String, System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#71=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.PictureDAL::GetPictureByPictureId(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#72=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.PictureDAL::InsertPicture(SextantTG.ActiveRecord.Picture, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#73=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.PictureDAL::UpdatePicture(SextantTG.ActiveRecord.Picture, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#74=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.PictureDAL::DeletePicture(SextantTG.ActiveRecord.Picture, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#75=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.PictureDAL::DeletePictureByPictureId(System.String, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#76=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.PictureDAL::#cctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#77=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.ProvinceDAL" Id="16fd0c6f943c29de">
+      <Target Target="#78=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.ProvinceDAL::#ctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#79=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.ProvinceDAL::GetProvinces()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#80=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.ProvinceDAL::InsertProvince(SextantTG.ActiveRecord.Province, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#81=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.ProvinceDAL::UpdateProvince(SextantTG.ActiveRecord.Province, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#82=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.ProvinceDAL::DeleteProvince(SextantTG.ActiveRecord.Province, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#83=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.ProvinceDAL::DeleteProvinceByProvinceId(System.String, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#84=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.ProvinceDAL::#cctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#85=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsCommentDAL" Id="16fd0c6f1b46489f">
+      <Target Target="#86=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsCommentDAL::#ctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#87=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsCommentDAL::GetSightsCommentsBySightsId(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#88=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsCommentDAL::InsertSightsComment(SextantTG.ActiveRecord.SightsComment, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#89=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsCommentDAL::UpdateSightsComment(SextantTG.ActiveRecord.SightsComment, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#90=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsCommentDAL::DeleteSightsComment(SextantTG.ActiveRecord.SightsComment, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#91=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsCommentDAL::DeleteSightsCommentByCommentId(System.String, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#92=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsCommentDAL::#cctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#93=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsDAL" Id="16fd0c6f1580cd48">
+      <Target Target="#94=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsDAL::#ctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#95=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsDAL::GetSights()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#96=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsDAL::GetSightBySightsId(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#97=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsDAL::GetSightsByCityId(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#98=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsDAL::GetSightsByProvinceId(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#99=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsDAL::GetSightsByCountryId(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#100=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsDAL::GetSightsBySightsName(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#101=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsDAL::GetSightsBySightsLevel(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#102=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsDAL::InsertSights(SextantTG.ActiveRecord.Sights, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#103=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsDAL::UpdateSights(SextantTG.ActiveRecord.Sights, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#104=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsDAL::DeleteSights(SextantTG.ActiveRecord.Sights, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#105=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsDAL::UpdateSightsFromOld(SextantTG.ActiveRecord.Sights, SextantTG.ActiveRecord.Sights, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#106=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsDAL::#cctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#107=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.SubTourDAL" Id="16fd0c6f2895dbe6">
+      <Target Target="#108=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SubTourDAL::#ctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#109=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SubTourDAL::GetSubTours()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#110=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SubTourDAL::GetSubTourByTourIdAndSubTourId(System.String, System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#111=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SubTourDAL::GetSubToursByTourId(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#112=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SubTourDAL::GetSubToursByUserId(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#113=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SubTourDAL::GetSubToursBySightsId(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#114=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SubTourDAL::InsertSubTour(SextantTG.ActiveRecord.SubTour, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#115=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SubTourDAL::UpdateSubTourFromOld(SextantTG.ActiveRecord.SubTour, SextantTG.ActiveRecord.SubTour, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#116=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SubTourDAL::UpdateSubTour(SextantTG.ActiveRecord.SubTour, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#117=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SubTourDAL::DeleteSubTour(SextantTG.ActiveRecord.SubTour, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#118=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SubTourDAL::DeleteSubTourByTourIdAndSubTourId(System.String, System.String, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#119=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SubTourDAL::#cctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#120=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourCommentDAL" Id="16fd0c6f67d23453">
+      <Target Target="#121=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourCommentDAL::#ctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#122=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourCommentDAL::GetTourCommentsByTourId(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#123=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourCommentDAL::InsertTourComment(SextantTG.ActiveRecord.TourComment, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#124=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourCommentDAL::UpdateTourComment(SextantTG.ActiveRecord.TourComment, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#125=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourCommentDAL::DeleteTourCommentByCommentId(System.String, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#126=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourCommentDAL::DeleteTourComment(SextantTG.ActiveRecord.TourComment, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#127=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourCommentDAL::DeleteTourCommentByTourId(System.String, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#128=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourCommentDAL::#cctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#129=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourDAL" Id="16fd0c6f2a2ff881">
+      <Target Target="#130=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourDAL::#ctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#131=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourDAL::GetTours()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#132=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourDAL::GetToursByUserId(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#133=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourDAL::GetTourByTourId(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#134=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourDAL::GetToursBySightsId(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#135=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourDAL::GetToursByDate(System.DateTime)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#136=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourDAL::GetToursBySightsIdAndDate(System.String, System.DateTime)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#137=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourDAL::InsertTour(SextantTG.ActiveRecord.Tour, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#138=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourDAL::UpdateTour(SextantTG.ActiveRecord.Tour, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#139=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourDAL::UpdateTourFromOld(SextantTG.ActiveRecord.Tour, SextantTG.ActiveRecord.Tour, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#140=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourDAL::DeleteTour(SextantTG.ActiveRecord.Tour, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#141=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourDAL::DeleteTourByTourId(System.String, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#142=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourDAL::#cctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#143=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserCommentDAL" Id="16fd0c6fdc757b10">
+      <Target Target="#144=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserCommentDAL::#ctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#145=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserCommentDAL::GetUserCommentsByUserId(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#146=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserCommentDAL::InsertUserComment(SextantTG.ActiveRecord.UserComment, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#147=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserCommentDAL::UpdateUserComment(SextantTG.ActiveRecord.UserComment, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#148=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserCommentDAL::DeleteUserComment(SextantTG.ActiveRecord.UserComment, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#149=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserCommentDAL::DeleteUserCommentByCommentId(System.String, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#150=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserCommentDAL::#cctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+    </Instance>
+    <Instance Declaration="#151=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserDAL" Id="16fd0c6f7e6194ad">
+      <Target Target="#152=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserDAL::#ctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#153=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserDAL::GetUsers()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#154=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserDAL::GetUserByUserId(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#155=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserDAL::GetUserByEmail(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#156=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserDAL::GetUserByLoginName(System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#157=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserDAL::GetUserByLoginNameAndPassword(System.String, System.String)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#158=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserDAL::InsertUser(SextantTG.ActiveRecord.User, System.String, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#159=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserDAL::UpdateUser(SextantTG.ActiveRecord.User, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#160=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserDAL::DeleteUser(SextantTG.ActiveRecord.User, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#161=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserDAL::DeleteUserByUserId(System.String, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#162=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserDAL::UpdateUserPassword(SextantTG.ActiveRecord.User, System.String, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#163=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserDAL::UpdatePasswordByUserId(System.String, System.String, System.Data.Common.DbTransaction)">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+      <Target Target="#164=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserDAL::#cctor()">
+        <JoinPoint Advising="#1" Description="#4" />
+      </Target>
+    </Instance>
+  </Class>
+</Symbols>

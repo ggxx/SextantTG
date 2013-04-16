@@ -1,6 +1,4 @@
-﻿using SextantTG.AopAdvice;
-using Spring.Aop.Framework;
-using System;
+﻿using System;
 using System.Configuration;
 using System.Reflection;
 
@@ -32,7 +30,7 @@ namespace SextantTG.IDAL
         /// <summary>
         /// 是否使用AOP
         /// </summary>
-        private static readonly bool ENABLE_AOP = bool.Parse(ConfigurationManager.AppSettings["ENABLE_AOP"]);
+        //private static readonly bool ENABLE_AOP = bool.Parse(ConfigurationManager.AppSettings["ENABLE_AOP"]);
 
         /// <summary>
         /// 创建一个数据连接层的实例
@@ -112,53 +110,6 @@ namespace SextantTG.IDAL
             {
                 throw new ArgumentException("Type of T is unkown");
             }
-
-            //以下为AOP阶段新增代码
-            if (ENABLE_AOP)
-            {
-                //Reflection
-                //object o = System.Reflection.Assembly.Load("Spring.Aop").CreateInstance("Spring.Aop.Framework.ProxyFactory", false, BindingFlags.Default, null, new object[] { t }, null, new object[] { });
-                //Type pf = o.GetType();
-                //MethodInfo addAdvice = pf.GetMethod("AddAdvice", new Type[] { typeof(AopAlliance.Aop.IAdvice) });
-                //addAdvice.Invoke(o, new object[] { new ExceptionAdvice() });
-                //MethodInfo getProxy = pf.GetMethod("GetProxy", new Type[] { });
-                //t = (T)getProxy.Invoke(o, null);
-
-                ProxyFactory factory = new ProxyFactory(t);
-                factory.AddAdvice(new ExceptionAdvice());
-
-                if (type.Equals(typeof(ISightsDAL)))
-                {
-                    factory.AddAdvice(new SightsMethodInterceptor());
-                    factory.AddAdvice(new SightsAfterReturningAdvice());
-                }
-                else if (type.Equals(typeof(ITourDAL)))
-                {
-                    factory.AddAdvice(new TourMethodInterceptor());
-                    factory.AddAdvice(new TourAfterReturningAdvice());
-                }
-                else if (type.Equals(typeof(ISubTourDAL)))
-                {
-                    factory.AddAdvice(new SubTourMethodInterceptor());
-                    factory.AddAdvice(new SubTourAfterReturningAdvice());
-                }
-                else if (type.Equals(typeof(IPictureDAL)))
-                {
-                    factory.AddAdvice(new PictureMethodInterceptor());
-                    factory.AddAdvice(new PictureAfterReturningAdvice());
-                }
-                else if (type.Equals(typeof(IUserDAL)))
-                {
-                    factory.AddAdvice(new UserMethodInterceptor());
-                }
-                else if (type.Equals(typeof(IFavoriteDAL)))
-                {
-                    factory.AddAdvice(new FavoriteAfterReturningAdvice());
-                }
-
-                t = (T)factory.GetProxy();
-            }
-            //以上为AOP阶段新增代码
 
             if (t != null)
             {

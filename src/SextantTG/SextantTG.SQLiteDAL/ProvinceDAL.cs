@@ -8,13 +8,16 @@ using SextantTG.DbUtil;
 using System.Data.Common;
 using SextantTG.Util;
 using System.Configuration;
+using SextantTG.PSAop;
 
 namespace SextantTG.SQLiteDAL
 {
+    [MethodAspect]
     public class ProvinceDAL : AbstractDAL<Province>, IProvinceDAL
     {
         public ProvinceDAL() { }
 
+        [MethodAspect(AttributeExclude = true)]
         protected override Province BuildObjectByReader(DbDataReader r)
         {
             Province province = new Province();
