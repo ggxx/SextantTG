@@ -35,6 +35,9 @@
 * Log4Net  
 [http://logging.apache.org/log4net/download_log4net.cgi](http://logging.apache.org/log4net/download_log4net.cgi)  
 
+* NLog  
+[http://nlog-project.org/](http://nlog-project.org/)
+
 ### AOP工具
 
 * Spring.NET 1.3.2  

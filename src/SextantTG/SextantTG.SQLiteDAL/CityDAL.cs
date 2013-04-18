@@ -6,13 +6,17 @@ using SextantTG.Util;
 using SextantTG.ActiveRecord;
 using SextantTG.DbUtil;
 using SextantTG.IDAL;
+using SextantTG.PSAop;
+using PostSharp.Constraints;
 ﻿
 namespace SextantTG.SQLiteDAL
 {
+    [MethodAspect]
     public class CityDAL : AbstractDAL<City>, ICityDAL
     {
         public CityDAL() { }
 
+        [MethodAspect(AttributeExclude=true)]
         protected override City BuildObjectByReader(DbDataReader r)
         {
             City city = new City();

@@ -8,14 +8,17 @@ using SextantTG.DbUtil;
 using System.Data.Common;
 using SextantTG.Util;
 using System.Configuration;
+using SextantTG.PSAop;
 
 namespace SextantTG.SQLiteDAL
 {
+    [MethodAspect]
     public class TourCommentDAL : AbstractDAL<TourComment>, ITourCommentDAL
     {
 
         public TourCommentDAL() { }
 
+        [MethodAspect(AttributeExclude = true)]
         protected override TourComment BuildObjectByReader(DbDataReader r)
         {
             TourComment tourcomment = new TourComment();

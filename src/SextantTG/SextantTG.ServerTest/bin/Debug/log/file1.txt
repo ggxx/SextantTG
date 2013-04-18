@@ -1,0 +1,1 @@
+123|16:49:30|Info|AppDomain._nExecuteAssembly => Program.Main => LogHelper.Info

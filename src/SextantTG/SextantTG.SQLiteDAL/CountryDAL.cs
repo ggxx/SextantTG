@@ -8,13 +8,16 @@ using SextantTG.DbUtil;
 using System.Data.Common;
 using SextantTG.Util;
 using System.Configuration;
+using SextantTG.PSAop;
 
 namespace SextantTG.SQLiteDAL
 {
+    [MethodAspect]
     public class CountryDAL : AbstractDAL<Country>, ICountryDAL
     {
         public CountryDAL() { }
 
+        [MethodAspect(AttributeExclude = true)]
         protected override Country BuildObjectByReader(DbDataReader r)
         {
             Country country = new Country();

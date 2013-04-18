@@ -32,26 +32,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Common.Logging, Version=1.2.0.0, Culture=neutral, PublicKeyToken=af08829b84f0328e">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\Program Files\Spring.NET 1.3.2\bin\net\2.0\release\Common.Logging.dll</HintPath>
-    </Reference>
-    <Reference Include="log4net, Version=1.2.11.0, Culture=neutral, PublicKeyToken=669e0ddf0bb1aa2a, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\Program Files\log4net-1.2.11\bin\net\3.5\release\log4net.dll</HintPath>
-    </Reference>
-    <Reference Include="Spring.Aop, Version=1.3.2.20943, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\Program Files\Spring.NET 1.3.2\bin\net\2.0\release\Spring.Aop.dll</HintPath>
-    </Reference>
-    <Reference Include="Spring.Core, Version=1.3.2.20943, Culture=neutral, PublicKeyToken=65e474d141e25e07, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>D:\Program Files\Spring.NET 1.3.2\bin\net\2.0\release\Spring.Core.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.SQLite">
-      <HintPath>D:\Program Files\SQLite\2008\bin\System.Data.SQLite.dll</HintPath>
+      <HintPath>..\..\..\..\..\..\..\Program Files\SQLiteForNet\2008\bin\System.Data.SQLite.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
@@ -67,10 +51,6 @@
       <Project>{dd4377a0-3082-4f4e-bf11-fd95d6b6b798}</Project>
       <Name>SextantTG.ActiveRecord</Name>
     </ProjectReference>
-    <ProjectReference Include="..\SexTantTG.AopAdvice\SextantTG.AopAdvice.csproj">
-      <Project>{c47e46ee-4183-4c46-a9cd-6ee7f5947ff3}</Project>
-      <Name>SextantTG.AopAdvice</Name>
-    </ProjectReference>
     <ProjectReference Include="..\SextantTG.Assertion\SextantTG.Assertion.csproj">
       <Project>{aeb75258-2317-42d3-8dff-e0591123dc6f}</Project>
       <Name>SextantTG.Assertion</Name>
@@ -83,9 +63,25 @@
       <Project>{7b30ece6-dffb-477f-b0da-58aed795687b}</Project>
       <Name>SextantTG.IDAL</Name>
     </ProjectReference>
+    <ProjectReference Include="..\SextantTG.ILogUtil\SextantTG.ILogUtil.csproj">
+      <Project>{E60E6F01-09CD-4F26-9D6D-FAAD5245765D}</Project>
+      <Name>SextantTG.ILogUtil</Name>
+    </ProjectReference>
     <ProjectReference Include="..\SextantTG.IServices\SextantTG.IServices.csproj">
       <Project>{a8d6c61a-6c22-438a-99ff-a598575d6b6b}</Project>
       <Name>SextantTG.IServices</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SextantTG.Log4Net\SextantTG.Log4Net.csproj">
+      <Project>{75AC75D6-9DA9-40BF-9AC5-381C95DE4742}</Project>
+      <Name>SextantTG.Log4Net</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SextantTG.OracleDAL\SextantTG.OracleDAL.csproj">
+      <Project>{8777c63d-9d38-4f10-a013-f64a50beaf7a}</Project>
+      <Name>SextantTG.OracleDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SextantTG.PSAop\SextantTG.PSAop.csproj">
+      <Project>{5841261d-aae8-4187-815b-1dfba59367f7}</Project>
+      <Name>SextantTG.PSAop</Name>
     </ProjectReference>
     <ProjectReference Include="..\SextantTG.Services\SextantTG.Services.csproj">
       <Project>{6067cae1-406c-44f2-8b68-823595b491c5}</Project>
@@ -94,6 +90,10 @@
     <ProjectReference Include="..\SextantTG.SQLiteDAL\SextantTG.SQLiteDAL.csproj">
       <Project>{e8db7c60-3532-4ce4-b527-9ee4270b5890}</Project>
       <Name>SextantTG.SQLiteDAL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\SextantTG.STGNLog\SextantTG.STGNLog.csproj">
+      <Project>{DC9CEF40-87C5-46FB-AB71-9316F50D2804}</Project>
+      <Name>SextantTG.STGNLog</Name>
     </ProjectReference>
     <ProjectReference Include="..\SextantTG.Util\SextantTG.Util.csproj">
       <Project>{2bfb5dfd-3bcf-45b9-92d2-e7a24a3343a7}</Project>

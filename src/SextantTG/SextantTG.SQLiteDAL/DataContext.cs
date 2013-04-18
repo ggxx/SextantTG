@@ -6,9 +6,11 @@ using System.Data.Common;
 using System.Linq;
 using System.Text;
 using System.Configuration;
+using SextantTG.PSAop;
 
 namespace SextantTG.SQLiteDAL
 {
+    [MethodAspect]
     public class DataContext : IDataContext
     {
         private DbHelper dbHelper = null;

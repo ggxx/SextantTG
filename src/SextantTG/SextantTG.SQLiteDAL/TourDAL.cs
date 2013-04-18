@@ -8,13 +8,16 @@ using SextantTG.DbUtil;
 using System.Data.Common;
 using SextantTG.Util;
 using System.Configuration;
+using SextantTG.PSAop;
 
 namespace SextantTG.SQLiteDAL
 {
+    [MethodAspect]
     public class TourDAL : AbstractDAL<Tour>, ITourDAL
     {
         public TourDAL() { }
 
+        [MethodAspect(AttributeExclude = true)]
         protected override Tour BuildObjectByReader(DbDataReader r)
         {
             Tour tour = new Tour();
