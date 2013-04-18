@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2011/10/nuspec.xsd">
   <metadata>
     <id>PostSharp</id>
-    <version>3.0.19-beta</version>
+    <version>3.0.20-rc</version>
     <title>PostSharp</title>
     <authors>SharpCrafters s.r.o.</authors>
     <owners>SharpCrafters s.r.o.</owners>

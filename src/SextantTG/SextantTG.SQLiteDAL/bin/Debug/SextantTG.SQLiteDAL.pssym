@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Symbols xmlns="http://schemas.postsharp.org/2.0/symbols">
   <Class Class="#1=T:[SextantTG.PSAop]SextantTG.PSAop.MethodAspectAttribute">
-    <Instance Declaration="#2=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.BlogDAL" Id="19dcca6592475716">
+    <Instance Declaration="#2=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.BlogDAL" Id="19dcca65eb532d13">
       <Target Target="#3=M:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.BlogDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4=Wrapped by advice(s) OnEntry, OnSuccess, OnException, OnExit" />
       </Target>
@@ -45,7 +45,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#18=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.CityDAL" Id="19dcca6518de99fc">
+    <Instance Declaration="#18=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.CityDAL" Id="19dcca6502bf920b">
       <Target Target="#19=M:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.CityDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -68,7 +68,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#26=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.CountryDAL" Id="19dcca658afb9fba">
+    <Instance Declaration="#26=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.CountryDAL" Id="19dcca65ed571aaf">
       <Target Target="#27=M:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.CountryDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -91,7 +91,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#34=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.DataContext" Id="19dcca6506b1bd52">
+    <Instance Declaration="#34=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.DataContext" Id="19dcca65c99483aa">
       <Target Target="#35=M:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.DataContext::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -105,7 +105,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#39=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.FavoriteDAL" Id="19dcca651f206ec1">
+    <Instance Declaration="#39=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.FavoriteDAL" Id="19dcca65be4733e3">
       <Target Target="#40=M:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.FavoriteDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -140,7 +140,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#51=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.PermissionDAL" Id="19dcca65465e699b">
+    <Instance Declaration="#51=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.PermissionDAL" Id="19dcca65cfe8e3ea">
       <Target Target="#52=M:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.PermissionDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -157,7 +157,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#57=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.PictureCommentDAL" Id="19dcca65d8389754">
+    <Instance Declaration="#57=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.PictureCommentDAL" Id="19dcca65c3cf5632">
       <Target Target="#58=M:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.PictureCommentDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -180,7 +180,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#65=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.PictureDAL" Id="19dcca65ad92379d">
+    <Instance Declaration="#65=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.PictureDAL" Id="19dcca6530ae9485">
       <Target Target="#66=M:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.PictureDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -215,7 +215,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#77=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.ProvinceDAL" Id="19dcca65572e26c4">
+    <Instance Declaration="#77=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.ProvinceDAL" Id="19dcca653b9e98e2">
       <Target Target="#78=M:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.ProvinceDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -238,7 +238,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#85=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.SightsCommentDAL" Id="19dcca652a813d47">
+    <Instance Declaration="#85=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.SightsCommentDAL" Id="19dcca655c3a5405">
       <Target Target="#86=M:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.SightsCommentDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -261,7 +261,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#93=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.SightsDAL" Id="19dcca65341d7185">
+    <Instance Declaration="#93=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.SightsDAL" Id="19dcca65b00bde8c">
       <Target Target="#94=M:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.SightsDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -302,7 +302,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#107=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.SubTourDAL" Id="19dcca65d2872737">
+    <Instance Declaration="#107=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.SubTourDAL" Id="19dcca65d996cf0f">
       <Target Target="#108=M:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.SubTourDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -340,7 +340,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#120=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.TourCommentDAL" Id="19dcca653b5e552e">
+    <Instance Declaration="#120=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.TourCommentDAL" Id="19dcca6513f901e9">
       <Target Target="#121=M:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.TourCommentDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -366,7 +366,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#129=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.TourDAL" Id="19dcca657233577d">
+    <Instance Declaration="#129=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.TourDAL" Id="19dcca65ffe168a3">
       <Target Target="#130=M:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.TourDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -407,7 +407,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#143=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.UserCommentDAL" Id="19dcca655c7038fd">
+    <Instance Declaration="#143=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.UserCommentDAL" Id="19dcca65c48bb3f4">
       <Target Target="#144=M:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.UserCommentDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -430,7 +430,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#151=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.UserDAL" Id="19dcca65c5fdad55">
+    <Instance Declaration="#151=T:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.UserDAL" Id="19dcca650870486a">
       <Target Target="#152=M:[SextantTG.SQLiteDAL]SextantTG.SQLiteDAL.UserDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>

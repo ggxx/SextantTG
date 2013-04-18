@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Symbols xmlns="http://schemas.postsharp.org/2.0/symbols">
   <Class Class="#1=T:[SextantTG.PSAop]SextantTG.PSAop.MethodAspectAttribute">
-    <Instance Declaration="#2=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.BlogDAL" Id="16fd0c6fab43275b">
+    <Instance Declaration="#2=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.BlogDAL" Id="16fd0c6f429a25a2">
       <Target Target="#3=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.BlogDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4=Wrapped by advice(s) OnEntry, OnSuccess, OnException, OnExit" />
       </Target>
@@ -45,7 +45,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#18=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.CityDAL" Id="16fd0c6fbcb6fdb8">
+    <Instance Declaration="#18=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.CityDAL" Id="16fd0c6fe5b969f7">
       <Target Target="#19=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.CityDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -68,7 +68,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#26=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.CountryDAL" Id="16fd0c6f8a7a7345">
+    <Instance Declaration="#26=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.CountryDAL" Id="16fd0c6fd0b28c78">
       <Target Target="#27=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.CountryDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -91,7 +91,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#34=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.DataContext" Id="16fd0c6feb31d69a">
+    <Instance Declaration="#34=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.DataContext" Id="16fd0c6fb3f5c3b3">
       <Target Target="#35=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.DataContext::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -105,7 +105,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#39=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.FavoriteDAL" Id="16fd0c6fcbc7fb39">
+    <Instance Declaration="#39=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.FavoriteDAL" Id="16fd0c6f3f17fa8c">
       <Target Target="#40=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.FavoriteDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -140,7 +140,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#51=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.PermissionDAL" Id="16fd0c6fa4fa5a00">
+    <Instance Declaration="#51=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.PermissionDAL" Id="16fd0c6f14ea15af">
       <Target Target="#52=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.PermissionDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -157,7 +157,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#57=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.PictureCommentDAL" Id="16fd0c6f8006e057">
+    <Instance Declaration="#57=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.PictureCommentDAL" Id="16fd0c6fc3e8fef7">
       <Target Target="#58=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.PictureCommentDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -180,7 +180,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#65=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.PictureDAL" Id="16fd0c6f4e71ad28">
+    <Instance Declaration="#65=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.PictureDAL" Id="16fd0c6f0d93cbdc">
       <Target Target="#66=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.PictureDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -215,7 +215,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#77=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.ProvinceDAL" Id="16fd0c6f943c29de">
+    <Instance Declaration="#77=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.ProvinceDAL" Id="16fd0c6f730f46a2">
       <Target Target="#78=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.ProvinceDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -238,7 +238,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#85=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsCommentDAL" Id="16fd0c6f1b46489f">
+    <Instance Declaration="#85=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsCommentDAL" Id="16fd0c6f6c58c1c7">
       <Target Target="#86=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsCommentDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -261,7 +261,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#93=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsDAL" Id="16fd0c6f1580cd48">
+    <Instance Declaration="#93=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsDAL" Id="16fd0c6f2a136df4">
       <Target Target="#94=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SightsDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -302,7 +302,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#107=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.SubTourDAL" Id="16fd0c6f2895dbe6">
+    <Instance Declaration="#107=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.SubTourDAL" Id="16fd0c6f6f20691f">
       <Target Target="#108=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.SubTourDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -340,7 +340,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#120=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourCommentDAL" Id="16fd0c6f67d23453">
+    <Instance Declaration="#120=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourCommentDAL" Id="16fd0c6f74c575f6">
       <Target Target="#121=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourCommentDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -366,7 +366,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#129=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourDAL" Id="16fd0c6f2a2ff881">
+    <Instance Declaration="#129=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourDAL" Id="16fd0c6f35cdc01e">
       <Target Target="#130=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.TourDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -407,7 +407,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#143=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserCommentDAL" Id="16fd0c6fdc757b10">
+    <Instance Declaration="#143=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserCommentDAL" Id="16fd0c6fd0783e3e">
       <Target Target="#144=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserCommentDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
@@ -430,7 +430,7 @@
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
     </Instance>
-    <Instance Declaration="#151=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserDAL" Id="16fd0c6f7e6194ad">
+    <Instance Declaration="#151=T:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserDAL" Id="16fd0c6f3ffd0d90">
       <Target Target="#152=M:[SextantTG.OracleDAL]SextantTG.OracleDAL.UserDAL::#ctor()">
         <JoinPoint Advising="#1" Description="#4" />
       </Target>
