@@ -6,14 +6,17 @@ using SextantTG.ActiveRecord;
 using SextantTG.IDAL;
 using SextantTG.Util;
 using SextantTG.DbUtil;
+using SextantTG.PSAop;
 
 namespace SextantTG.SQLiteDAL
 {
+    [MethodAspect]
     public class SightsDAL : AbstractDAL<Sights>, ISightsDAL
     {
 
         public SightsDAL() { }
 
+        [MethodAspect(AttributeExclude = true)]
         protected override Sights BuildObjectByReader(DbDataReader r)
         {
             Sights sights = new Sights();

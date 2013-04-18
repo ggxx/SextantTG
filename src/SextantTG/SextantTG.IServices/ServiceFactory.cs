@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Reflection;
 using System.Configuration;
-using Spring.Aop.Framework;
-using SextantTG.AopAdvice;
 
 namespace SextantTG.IServices
 {
@@ -20,6 +18,11 @@ namespace SextantTG.IServices
         private static readonly string TOUR_SERVICE = ConfigurationManager.AppSettings["TOUR_SERVICE"];
         private static readonly string PICTURE_SERVICE = ConfigurationManager.AppSettings["PICTURE_SERVICE"];
 
+        /// <summary>
+        /// 创建一个服务（业务逻辑）层的实例
+        /// </summary>
+        /// <typeparam name="T"></typeparam>
+        /// <returns></returns>
         public static T CreateService<T>() where T : IBaseService
         {
             T t;
@@ -53,8 +56,10 @@ namespace SextantTG.IServices
             {
                 t = (T)Assembly.Load(SERVICES).CreateInstance(PICTURE_SERVICE);
             }
-            else { 
-                throw new ArgumentException("Type of T is unkown"); }
+            else
+            {
+                throw new ArgumentException("Type of T is unkown");
+            }
 
             if (t != null)
             {

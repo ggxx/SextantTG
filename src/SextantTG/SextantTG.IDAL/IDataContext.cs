@@ -8,6 +8,10 @@ namespace SextantTG.IDAL
 {
     public interface IDataContext : IBaseDAL
     {
+        /// <summary>
+        /// 获取数据库连接
+        /// </summary>
+        /// <returns>数据库连接</returns>
         DbConnection GetConnection();
     }
 }

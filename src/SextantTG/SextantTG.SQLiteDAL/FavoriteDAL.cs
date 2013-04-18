@@ -4,13 +4,16 @@ using System.Data.Common;
 using SextantTG.ActiveRecord;
 using SextantTG.IDAL;
 using SextantTG.Util;
+using SextantTG.PSAop;
 
 namespace SextantTG.SQLiteDAL
 {
+    [MethodAspect]
     public class FavoriteDAL : AbstractDAL<Favorite>, IFavoriteDAL
     {
         public FavoriteDAL() { }
 
+        [MethodAspect(AttributeExclude = true)]
         protected override Favorite BuildObjectByReader(DbDataReader r)
         {
             Favorite favorite = new Favorite();

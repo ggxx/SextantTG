@@ -802,7 +802,6 @@
         private System.Windows.Forms.Button button_Picture;
         private STGReadonlyPictures stgReadonlyPictures;
         private System.Windows.Forms.Button button_Del;
-        private System.Windows.Forms.DataGridViewComboBoxColumn Column_CommentUserId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_C_CommentId;
         private System.Windows.Forms.DataGridViewComboBoxColumn Column_C_CommentUserId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_C_Comment;

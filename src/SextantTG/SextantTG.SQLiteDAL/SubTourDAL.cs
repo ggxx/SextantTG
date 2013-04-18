@@ -8,14 +8,17 @@ using SextantTG.DbUtil;
 using System.Data.Common;
 using SextantTG.Util;
 using System.Configuration;
+using SextantTG.PSAop;
 
 namespace SextantTG.SQLiteDAL
 {
+    [MethodAspect]
     public class SubTourDAL : AbstractDAL<SubTour>, ISubTourDAL
     {
 
         public SubTourDAL() { }
 
+        [MethodAspect(AttributeExclude = true)]
         protected override SubTour BuildObjectByReader(DbDataReader r)
         {
             SubTour subtour = new SubTour();

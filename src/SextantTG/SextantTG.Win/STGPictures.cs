@@ -18,8 +18,16 @@ namespace SextantTG.Win
 
         private string uploaderId, tourId, subTourId;
         private string sightsId;
-        public List<Picture> Pictures { get; private set; }
-        public List<Picture> RemovedPictures { get; private set; }
+        
+        /// <summary>
+        /// 设置或获取控件中的所有图片
+        /// </summary>
+        internal List<Picture> Pictures { get; private set; }
+        
+        /// <summary>
+        /// 设置或获取控件中所有已删除的图片
+        /// </summary>
+        internal List<Picture> RemovedPictures { get; private set; }
 
 
         public STGPictures()
@@ -31,7 +39,12 @@ namespace SextantTG.Win
             this.listView_Pic.LargeImageList = images;
         }
 
-        public void SetPicturesForSights(string sightsId, string uploaderId)
+        /// <summary>
+        /// 设置控件，显示指定用户上传的关于指定景点所有的图片
+        /// </summary>
+        /// <param name="sightsId">景点ID</param>
+        /// <param name="uploaderId">用户ID</param>
+        internal void SetPicturesForSights(string sightsId, string uploaderId)
         {
             this.images.Images.Clear();
             this.listView_Pic.Items.Clear();
@@ -54,7 +67,14 @@ namespace SextantTG.Win
             }
         }
 
-        public void SetPicturesForTour(string sightsId, string tourId, string subTourId, string uploaderId)
+        /// <summary>
+        /// 设置控件，显示指定用户上传的关于指定景点和指定旅行的所有图片
+        /// </summary>
+        /// <param name="sightsId">景点ID</param>
+        /// <param name="tourId">旅行ID</param>
+        /// <param name="subTourId">子旅行ID</param>
+        /// <param name="uploaderId">用户ID</param>
+        internal void SetPicturesForTour(string sightsId, string tourId, string subTourId, string uploaderId)
         {
             this.images.Images.Clear();
             this.listView_Pic.Items.Clear();
@@ -73,7 +93,10 @@ namespace SextantTG.Win
             }
         }
 
-        public void ResetList()
+        /// <summary>
+        /// 重置控件，清除所有图片
+        /// </summary>
+        internal void ResetList()
         {
             this.uploaderId = string.Empty;
             this.tourId = string.Empty;

@@ -8,13 +8,16 @@ using SextantTG.DbUtil;
 using System.Data.Common;
 using SextantTG.Util;
 using System.Configuration;
+using SextantTG.PSAop;
 
 namespace SextantTG.SQLiteDAL
 {
+    [MethodAspect]
     public class PictureDAL : AbstractDAL<Picture>, IPictureDAL
     {
         public PictureDAL() { }
 
+        [MethodAspect(AttributeExclude = true)]
         protected override Picture BuildObjectByReader(DbDataReader r)
         {
             Picture picture = new Picture();
