@@ -175,5 +175,21 @@ namespace SextantTG.Util
             else
                 return tag ? DateTime.MinValue : new DateTime?();
         }
+
+        public static bool? ToBooleanNull(object obj)
+        {
+            return ToBooleanNull(obj, false);
+        }
+
+        public static bool? ToBooleanNull(object obj, bool tag)
+        {
+            if (obj == null || obj == DBNull.Value)
+                return tag ? false : new bool?();
+            bool p;
+            if (bool.TryParse(obj.ToString(), out p))
+                return p;
+            else
+                return tag ? false : new bool?();
+        }
     }
 }

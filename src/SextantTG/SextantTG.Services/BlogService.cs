@@ -99,7 +99,7 @@ namespace SextantTG.Services
             }
         }
 
-        public bool SaveBlob(Blog blog, out string message)
+        public bool SaveBlog(Blog blog, out string message)
         {
             Blog oldBlog = blogDal.GetBlogByBlogId(blog.BlogId);
 

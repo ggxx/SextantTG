@@ -1,6 +1,6 @@
 ﻿
-Microsoft Visual Studio Solution File, Format Version 11.00
-# Visual Studio 2010
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 2012
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Server", "Server", "{8D435E3F-331D-4C47-8DF7-C7EB37B4018F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Client", "Client", "{8ECE2436-400E-4192-A762-13D9393B8005}"
@@ -34,6 +34,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SextantTG.OracleDAL", "SextantTG.OracleDAL\SextantTG.OracleDAL.csproj", "{8777C63D-9D38-4F10-A013-F64A50BEAF7A}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SextantTG.PSAop", "SextantTG.PSAop\SextantTG.PSAop.csproj", "{5841261D-AAE8-4187-815B-1DFBA59367F7}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SextantTG.WebServices", "SextantTG.WebServices\SextantTG.WebServices.csproj", "{7E296499-2FAD-4184-BC39-A755B9EC13FF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -227,6 +229,18 @@ Global
 		{5841261D-AAE8-4187-815B-1DFBA59367F7}.Release|Mixed Platforms.Build.0 = Release|Any CPU
 		{5841261D-AAE8-4187-815B-1DFBA59367F7}.Release|Win32.ActiveCfg = Release|Any CPU
 		{5841261D-AAE8-4187-815B-1DFBA59367F7}.Release|x86.ActiveCfg = Release|Any CPU
+		{7E296499-2FAD-4184-BC39-A755B9EC13FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7E296499-2FAD-4184-BC39-A755B9EC13FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7E296499-2FAD-4184-BC39-A755B9EC13FF}.Debug|Mixed Platforms.ActiveCfg = Debug|Any CPU
+		{7E296499-2FAD-4184-BC39-A755B9EC13FF}.Debug|Mixed Platforms.Build.0 = Debug|Any CPU
+		{7E296499-2FAD-4184-BC39-A755B9EC13FF}.Debug|Win32.ActiveCfg = Debug|Any CPU
+		{7E296499-2FAD-4184-BC39-A755B9EC13FF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{7E296499-2FAD-4184-BC39-A755B9EC13FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7E296499-2FAD-4184-BC39-A755B9EC13FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7E296499-2FAD-4184-BC39-A755B9EC13FF}.Release|Mixed Platforms.ActiveCfg = Release|Any CPU
+		{7E296499-2FAD-4184-BC39-A755B9EC13FF}.Release|Mixed Platforms.Build.0 = Release|Any CPU
+		{7E296499-2FAD-4184-BC39-A755B9EC13FF}.Release|Win32.ActiveCfg = Release|Any CPU
+		{7E296499-2FAD-4184-BC39-A755B9EC13FF}.Release|x86.ActiveCfg = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -246,6 +260,7 @@ Global
 		{DC9CEF40-87C5-46FB-AB71-9316F50D2804} = {8D435E3F-331D-4C47-8DF7-C7EB37B4018F}
 		{8777C63D-9D38-4F10-A013-F64A50BEAF7A} = {8D435E3F-331D-4C47-8DF7-C7EB37B4018F}
 		{5841261D-AAE8-4187-815B-1DFBA59367F7} = {8D435E3F-331D-4C47-8DF7-C7EB37B4018F}
+		{7E296499-2FAD-4184-BC39-A755B9EC13FF} = {8D435E3F-331D-4C47-8DF7-C7EB37B4018F}
 		{AB930CED-76D7-4789-9EC9-F1BEA06F7ED0} = {8ECE2436-400E-4192-A762-13D9393B8005}
 	EndGlobalSection
 EndGlobal

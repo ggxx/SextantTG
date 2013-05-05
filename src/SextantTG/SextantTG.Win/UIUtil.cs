@@ -391,7 +391,7 @@ namespace SextantTG.Win
 
         internal static bool SaveBlog(Blog blog, out string message)
         {
-            return blogSrv.SaveBlob(blog, out message);
+            return blogSrv.SaveBlog(blog, out message);
         }
 
         #endregion

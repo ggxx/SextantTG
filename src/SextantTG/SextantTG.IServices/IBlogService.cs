@@ -70,6 +70,6 @@ namespace SextantTG.IServices
         /// <param name="blog">日志</param>
         /// <param name="message">操作信息</param>
         /// <returns>操作是否成功</returns>
-        bool SaveBlob(Blog blog, out string message);
+        bool SaveBlog(Blog blog, out string message);
     }
 }
