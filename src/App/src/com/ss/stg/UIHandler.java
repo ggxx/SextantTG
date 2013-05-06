@@ -1,9 +1,5 @@
 package com.ss.stg;
 
-import java.util.List;
-
-import com.ss.stg.R;
-import com.ss.stg.model.User;
 import com.ss.stg.ws.ISTGService;
 
 import android.app.Activity;
@@ -11,7 +7,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.os.Handler;
 import android.os.Message;
-import android.widget.TextView;
 
 public class UIHandler extends Handler {
 

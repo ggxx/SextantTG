@@ -312,7 +312,6 @@ public class STGService implements ISTGService {
 
 	@Override
 	public boolean insertUser(User user, String password) {
-		// TODO Auto-generated method stub
 		HashMap<String, Object> params = new HashMap<String, Object>();
 		params.put(ISTGService.PARAM__INSERTUSER__INPUTUSER, ModelAPI.convertToString(user));
 		params.put(ISTGService.PARAM__INSERTUSER__PASSWORD, password);
@@ -644,8 +643,12 @@ public class STGService implements ISTGService {
 
 	@Override
 	public List<Sights> getSights() {
-		// TODO Auto-generated method stub
-		return null;
+		SoapObject response = GetSoapResponse(ISTGService.ID__GETSIGHTS, null);
+		if (response != null) {
+			return ModelAPI.parseSightsList(response);
+		} else {
+			return null;
+		}
 	}
 
 	@Override
@@ -728,8 +731,14 @@ public class STGService implements ISTGService {
 
 	@Override
 	public List<Tour> getToursByUserId(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put(ISTGService.PARAM__GETTOURSBYUSERID, userId);
+		SoapObject response = GetSoapResponse(ISTGService.ID__GETTOURSBYUSERID, params);
+		if (response != null) {
+			return ModelAPI.parseTours(response);
+		} else {
+			return null;
+		}
 	}
 
 	@Override

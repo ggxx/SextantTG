@@ -17,6 +17,10 @@ public class Sights implements Serializable {
 	private int price;
 	private Date creatingTime;
 	private String memos;
+	
+	//private float stars;
+	//private String cityName;
+	//private String countryName;
 
 	public Sights() {
 	}

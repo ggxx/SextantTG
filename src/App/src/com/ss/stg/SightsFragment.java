@@ -1,8 +1,10 @@
 package com.ss.stg;
 
-import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
+
+import com.ss.stg.model.Sights;
+import com.ss.stg.ws.ISTGService;
+import com.ss.stg.ws.WebServiceThread;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -16,29 +18,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
-import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
+import android.widget.AdapterView.OnItemLongClickListener;
 
-import com.ss.stg.R;
-import com.ss.stg.model.Sights;
-import com.ss.stg.model.Tour;
-import com.ss.stg.ws.ISTGService;
-import com.ss.stg.ws.WebServiceThread;
-
-/**
- * A fragment representing a list of Items.
- * <p />
- * Large screen devices (such as tablets) are supported by replacing the
- * ListView with a GridView.
- * <p />
- * Activities containing this fragment MUST implement the {@link Callbacks}
- * interface.
- */
-public class ToursFragment extends Fragment implements AbsListView.OnItemClickListener, OnItemLongClickListener {
+public class SightsFragment extends Fragment implements AbsListView.OnItemClickListener, OnItemLongClickListener {
 
 	private Handler handler = null;
 
-	private OnTourFragmentInteractionListener mListener;
+	private OnSightsFragmentInteractionListener mListener;
 
 	/**
 	 * The fragment's ListView/GridView.
@@ -49,13 +36,13 @@ public class ToursFragment extends Fragment implements AbsListView.OnItemClickLi
 	 * The Adapter which will be used to populate the ListView/GridView with
 	 * Views.
 	 */
-	private ToursAdapter mAdapter;
+	private SightsAdapter mAdapter;
 
 	/**
 	 * Mandatory empty constructor for the fragment manager to instantiate the
 	 * fragment (e.g. upon screen orientation changes).
 	 */
-	public ToursFragment() {
+	public SightsFragment() {
 	}
 
 	@Override
@@ -65,22 +52,24 @@ public class ToursFragment extends Fragment implements AbsListView.OnItemClickLi
 		if (getArguments() != null) {
 		}
 
-		handler = new TourHandler(getActivity());
-
-		HashMap<String, Object> params = new HashMap<String, Object>();
-		params.put(ISTGService.PARAM__GETTOURSBYUSERID, "A480A4C31D2D49DB9C93B1116CA3FF4A");
-
-		WebServiceThread thread = new WebServiceThread(handler, ISTGService.ID__GETTOURSBYUSERID, params);
-		thread.startWithProgressDialog(getActivity());
+		handler = new SightsHandler(getActivity());
+		WebServiceThread thread = new WebServiceThread(handler, ISTGService.ID__GETSIGHTS);
+		thread.start();//.startWithProgressDialog(getActivity());
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		View view = inflater.inflate(R.layout.fragment_tours_list, container, false);
+
+		View view = inflater.inflate(R.layout.fragment_sights_list, container, false);
 
 		// Set the adapter
-		mListView = (ListView) view.findViewById(R.id.tours_list);
-		mListView.setAdapter(mAdapter);
+		mListView = (ListView) view.findViewById(R.id.sights_list);
+
+		// TextView tv = new TextView(getActivity());
+		// tv.setText("Empty!");
+		// mListView.setEmptyView(tv);
+
+		// mListView.setAdapter(mAdapter);
 
 		// Set OnItemClickListener so we can be notified on item clicks
 		mListView.setOnItemClickListener(this);
@@ -93,7 +82,7 @@ public class ToursFragment extends Fragment implements AbsListView.OnItemClickLi
 	public void onAttach(Activity activity) {
 		super.onAttach(activity);
 		try {
-			mListener = (OnTourFragmentInteractionListener) activity;
+			mListener = (OnSightsFragmentInteractionListener) activity;
 		} catch (ClassCastException e) {
 			throw new ClassCastException(activity.toString() + " must implement OnTourFragmentInteractionListener");
 		}
@@ -111,45 +100,44 @@ public class ToursFragment extends Fragment implements AbsListView.OnItemClickLi
 			// Notify the active callbacks interface (the activity, if the
 			// fragment is attached to one) that an item has been selected.
 
-			String id2 = mAdapter.getItem(position).getTourId();
+			String id2 = mAdapter.getItem(position).getSightsId();
 
-			mListener.onTourFragmentInteraction(id2);
+			mListener.onSightsFragmentInteraction(id2);
 		}
 	}
 
 	@Override
 	public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
-		// final Context context = this.layoutInflater.getContext();
-		final CharSequence[] items = { "浏览", "编辑", "删除" };
-		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
-		builder.setTitle("操作列表");
-		builder.setItems(items, new DialogInterface.OnClickListener() {
-			@Override
-			public void onClick(DialogInterface dialog, int which) {
-				switch (which) {
+		if (null != mListener) {
+			// final Context context = this.layoutInflater.getContext();
+			final CharSequence[] items = { "浏览", "编辑", "删除" };
+			AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
+			builder.setTitle("操作列表");
+			builder.setItems(items, new DialogInterface.OnClickListener() {
+				@Override
+				public void onClick(DialogInterface dialog, int which) {
+					switch (which) {
 
-				// 浏览
-				case 0:
+					// 浏览
+					case 0:
+						break;
 
-					break;
+					// 编辑
+					case 1:
+						break;
 
-				// 编辑
-				case 1:
+					// 删除
+					case 2:
 
-					break;
-
-				// 删除
-				case 2:
-
-					break;
+						break;
+					}
 				}
-			}
-		});
-		AlertDialog alertDialog = builder.create();
-		alertDialog.setView(null, 0, 0, 0, 0);
-		alertDialog.show();
-
+			});
+			AlertDialog alertDialog = builder.create();
+			alertDialog.setView(null, 0, 0, 0, 0);
+			alertDialog.show();
+		}
 		return false;
 	}
 
@@ -175,16 +163,15 @@ public class ToursFragment extends Fragment implements AbsListView.OnItemClickLi
 	 * "https://developer.android.com/training/basics/fragments/communicating.html"
 	 * >Communicating with Other Fragments</a> for more information.
 	 */
-	public interface OnTourFragmentInteractionListener {
-		// TODO: Update argument type and name
-		public void onTourFragmentInteraction(String id);
+	public interface OnSightsFragmentInteractionListener {
+		public void onSightsFragmentInteraction(String id);
 	}
 
-	private class TourHandler extends Handler {
+	private class SightsHandler extends Handler {
 
 		private Activity activity = null;
 
-		private TourHandler(Activity activity) {
+		private SightsHandler(Activity activity) {
 			this.activity = activity;
 		}
 
@@ -193,9 +180,9 @@ public class ToursFragment extends Fragment implements AbsListView.OnItemClickLi
 
 			super.handleMessage(msg);
 
-			if (msg.what == ISTGService.ID__GETTOURSBYUSERID) {
-				List<Tour> list = (List<Tour>) msg.getData().getSerializable(ISTGService.WS_RETURN);
-				mAdapter = new ToursAdapter(activity, list);
+			if (msg.what == ISTGService.ID__GETSIGHTS) {
+				List<Sights> list = (List<Sights>) msg.getData().getSerializable(ISTGService.WS_RETURN);
+				mAdapter = new SightsAdapter(activity, list);
 				mListView.setAdapter(mAdapter);
 			} else {
 				showNetworkErrorDialog();
@@ -213,5 +200,4 @@ public class ToursFragment extends Fragment implements AbsListView.OnItemClickLi
 
 		}
 	}
-
 }

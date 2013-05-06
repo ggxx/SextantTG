@@ -1,7 +1,6 @@
 package com.ss.stg;
 
-import java.util.Locale;
-
+import com.ss.stg.SightsFragment.OnSightsFragmentInteractionListener;
 import com.ss.stg.ToursFragment.OnTourFragmentInteractionListener;
 
 import android.app.ActionBar;
@@ -11,17 +10,11 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.app.NavUtils;
 import android.support.v4.view.ViewPager;
-import android.view.Gravity;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.TextView;
 
-public class MainActivity extends FragmentActivity implements ActionBar.TabListener, OnTourFragmentInteractionListener {
+import android.view.Menu;
+
+public class MainActivity extends FragmentActivity implements ActionBar.TabListener, OnTourFragmentInteractionListener, OnSightsFragmentInteractionListener {
 
 	/**
 	 * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -66,17 +59,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		});
 
 		// For each of the sections in the app, add a tab to the action bar.
-		actionBar.addTab(actionBar.newTab().setText("AAA").setTabListener(this));
-		actionBar.addTab(actionBar.newTab().setText("BBB").setTabListener(this));
-		actionBar.addTab(actionBar.newTab().setText("CCC").setTabListener(this));
-
-		// for (int i = 0; i < mSectionsPagerAdapter.getCount(); i++) {
-		// Create a tab with text corresponding to the page title defined by
-		// the adapter. Also specify this Activity object, which implements
-		// the TabListener interface, as the callback (listener) for when
-		// this tab is selected.
-		// actionBar.addTab(actionBar.newTab().setText(mSectionsPagerAdapter.getPageTitle(i)).setTabListener(this));
-		// }
+		actionBar.addTab(actionBar.newTab().setText(R.string.tab_sights).setTabListener(this));
+		actionBar.addTab(actionBar.newTab().setText(R.string.tab_tours).setTabListener(this));
+		actionBar.addTab(actionBar.newTab().setText(R.string.tab_blogs).setTabListener(this));
 	}
 
 	@Override
@@ -118,6 +103,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			// below) with the page number as its lone argument.
 			switch (position) {
 			case 0:
+				Fragment sightsfFragment = new SightsFragment();
+				return sightsfFragment;
+			case 1:
 				Fragment toursfragment = new ToursFragment();
 				return toursfragment;
 			default:
@@ -138,26 +126,18 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			// Show 3 total pages.
 			return 3;
 		}
-
-		// @Override
-		// public CharSequence getPageTitle(int position) {
-		// Locale l = Locale.getDefault();
-		// switch (position) {
-		// case 0:
-		// return getString(R.string.title_section1).toUpperCase(l);
-		// case 1:
-		// return getString(R.string.title_section2).toUpperCase(l);
-		// case 2:
-		// return getString(R.string.title_section3).toUpperCase(l);
-		// }
-		// return null;
-		// }
 	}
 
 	@Override
 	public void onTourFragmentInteraction(String id) {
 		// TODO Auto-generated method stub
 
+	}
+
+	@Override
+	public void onSightsFragmentInteraction(String id) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }

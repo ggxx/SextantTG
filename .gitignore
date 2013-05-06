@@ -1,0 +1,17 @@
+~*
+*~
+*.bak
+*.pyc
+tags
+*.pdb
+*.cache
+*.force
+*.resources
+*csproj*.txt
+*.manifest
+*.class
+*.Cache
+/src/App/gen/
+/src/App/bin/
+/src/SextantTG/SextantTG*/obj/
+/src/SextantTG/SextantTG*/bin/Debug/
