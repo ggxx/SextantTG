@@ -10,6 +10,8 @@ import java.util.List;
 
 import org.ksoap2.serialization.SoapObject;
 
+import android.util.Log;
+
 import com.ss.stg.model.*;
 
 public class ModelAPI {
@@ -73,11 +75,12 @@ public class ModelAPI {
 	}
 
 	public static User parseUser(SoapObject obj) {
+		SoapObject tmps = (SoapObject) obj.getProperty(0);
 		User user = new User();
-		user.setUserId(obj.getPropertySafelyAsString("UserId"));
-		user.setLoginName(obj.getPropertySafelyAsString("LoginName"));
-		user.setEmail(obj.getPropertySafelyAsString("Email"));
-		user.setStatus(toInteger(obj.getPropertySafelyAsString("Status")));
+		user.setUserId(tmps.getPropertySafelyAsString("UserId"));
+		user.setLoginName(tmps.getPropertySafelyAsString("LoginName"));
+		user.setEmail(tmps.getPropertySafelyAsString("Email"));
+		user.setStatus(toInteger(tmps.getPropertySafelyAsString("Status")));
 		return user;
 	}
 
@@ -106,15 +109,16 @@ public class ModelAPI {
 	}
 
 	public static Sights parseSights(SoapObject obj) {
+		SoapObject tmps = (SoapObject) obj.getProperty(0);
 		Sights sights = new Sights();
-		sights.setCityId(obj.getPropertySafelyAsString("CityId"));
-		sights.setCreatingTime(toDateTime(obj.getPropertySafelyAsString("CreatingTime")));
-		sights.setDescription(obj.getPropertySafelyAsString("Description"));
-		sights.setMemos(obj.getPropertySafelyAsString("Memos"));
-		sights.setPrice(toInteger(obj.getPropertySafelyAsString("Price")));
-		sights.setSightsId(obj.getPropertySafelyAsString("SightsId"));
-		sights.setSightsLevel(obj.getPropertySafelyAsString("SightsLevel"));
-		sights.setSightsName(obj.getPropertySafelyAsString("SightsName"));
+		sights.setCityId(tmps.getPropertySafelyAsString("CityId"));
+		sights.setCreatingTime(toDateTime(tmps.getPropertySafelyAsString("CreatingTime")));
+		sights.setDescription(tmps.getPropertySafelyAsString("Description"));
+		sights.setMemos(tmps.getPropertySafelyAsString("Memos"));
+		sights.setPrice(toInteger(tmps.getPropertySafelyAsString("Price")));
+		sights.setSightsId(tmps.getPropertySafelyAsString("SightsId"));
+		sights.setSightsLevel(tmps.getPropertySafelyAsString("SightsLevel"));
+		sights.setSightsName(tmps.getPropertySafelyAsString("SightsName"));
 		return sights;
 	}
 

@@ -671,8 +671,10 @@ public class STGService implements ISTGService {
 
 	@Override
 	public Sights getSightsBySightsId(String sightsId) {
-		// TODO Auto-generated method stub
-		return null;
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put(ISTGService.PARAM__GETSIGHTSBYSIGHTSID,sightsId);
+		SoapObject response = GetSoapResponse(ISTGService.ID__GETSIGHTSBYSIGHTSID, params);
+		return ModelAPI.parseSights(response);
 	}
 
 	@Override

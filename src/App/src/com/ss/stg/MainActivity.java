@@ -5,6 +5,7 @@ import com.ss.stg.ToursFragment.OnTourFragmentInteractionListener;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
@@ -137,7 +138,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	@Override
 	public void onSightsFragmentInteraction(String id) {
 		// TODO Auto-generated method stub
-		
+		Intent intent = new Intent(this, SightsActivity.class);
+		intent.putExtra("id", id);
+		startActivity(intent);
 	}
-
 }

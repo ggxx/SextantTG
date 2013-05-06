@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical" >
+
+        <TextView
+            android:id="@+id/sights_1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="景区" >
+        </TextView>
+        
+        <TextView
+            android:id="@+id/sights_2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="评分" >
+        </TextView>
+        
+        <TextView
+            android:id="@+id/sights_3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="国家-省份-城市" >
+        </TextView>
+        
+        <TextView
+            android:id="@+id/sights_4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="级别" >
+        </TextView>
+        
+        <TextView
+            android:id="@+id/sights_5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="票价" >
+        </TextView>
+        
+        <TextView
+            android:id="@+id/sights_6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="简介" >
+        </TextView>
+        
+        <TextView
+            android:id="@+id/sights_7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="留言" >
+        </TextView>
+        
+        <TextView
+            android:id="@+id/sights_8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="日志" >
+        </TextView>
+        
+        <TextView
+            android:id="@+id/sights_9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="我的足迹" >
+        </TextView>
+
+        <Gallery
+            android:id="@+id/sights_gallery"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+        
+    </LinearLayout>
+
+</ScrollView>

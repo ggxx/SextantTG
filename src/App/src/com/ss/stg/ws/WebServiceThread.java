@@ -353,7 +353,7 @@ public class WebServiceThread extends Thread {
 				message.setData(bundle);
 				handler.sendMessage(message);
 			} else {
-				// System.out.println("return result--->null");
+				System.out.println("return result--->null");
 			}
 		} catch (Exception e) {
 			Message message = handler.obtainMessage();

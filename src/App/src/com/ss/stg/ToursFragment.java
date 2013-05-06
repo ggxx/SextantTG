@@ -213,5 +213,4 @@ public class ToursFragment extends Fragment implements AbsListView.OnItemClickLi
 
 		}
 	}
-
 }

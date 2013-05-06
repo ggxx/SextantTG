@@ -54,7 +54,7 @@ public class SightsFragment extends Fragment implements AbsListView.OnItemClickL
 
 		handler = new SightsHandler(getActivity());
 		WebServiceThread thread = new WebServiceThread(handler, ISTGService.ID__GETSIGHTS);
-		thread.start();//.startWithProgressDialog(getActivity());
+		thread.startWithProgressDialog(getActivity());
 	}
 
 	@Override
@@ -101,7 +101,6 @@ public class SightsFragment extends Fragment implements AbsListView.OnItemClickL
 			// fragment is attached to one) that an item has been selected.
 
 			String id2 = mAdapter.getItem(position).getSightsId();
-
 			mListener.onSightsFragmentInteraction(id2);
 		}
 	}
