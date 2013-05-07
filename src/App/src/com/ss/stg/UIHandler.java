@@ -40,7 +40,7 @@ public class UIHandler extends Handler {
 			// msg.getData().getSerializable(ISTGService.WS_RETURN);
 			// tip.setText(tip.getText().toString() + users.size());
 		}
-
+		
 	}
 
 	private void showNetworkErrorDialog() {
