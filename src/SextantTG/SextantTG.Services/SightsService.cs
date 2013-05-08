@@ -49,11 +49,16 @@ namespace SextantTG.Services
             return sightsDal.GetSightBySightsId(sightsId);
         }
 
+        public List<Picture> GetPicturesBySightsId(string sightsId)
+        {
+            return pictureDal.GetPicturesBySightsId(sightsId);
+        }
+
         public List<Picture> GetPicturesBySightsIdAndUploaderId(string sightsId, string uploaderId)
         {
             if (string.IsNullOrEmpty(uploaderId))
             {
-                return pictureDal.GetPicturesBySightsId(sightsId);
+                return GetPicturesBySightsId(sightsId);
             }
             return pictureDal.GetPicturesBySightsIdAndUploaderId(sightsId, uploaderId);
         }

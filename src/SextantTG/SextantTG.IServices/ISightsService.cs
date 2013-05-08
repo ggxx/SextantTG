@@ -47,6 +47,13 @@ namespace SextantTG.IServices
         float? GetAverageStarsBySightsId(string sightsId);
         
         /// <summary>
+        /// 获取指定景点的图片
+        /// </summary>
+        /// <param name="sightsId">景点ID</param>
+        /// <returns></returns>
+        List<Picture> GetPicturesBySightsId(string sightsId);
+
+        /// <summary>
         /// 获取指定用户上传的指定景点的图片
         /// </summary>
         /// <param name="sightsId">景点ID</param>

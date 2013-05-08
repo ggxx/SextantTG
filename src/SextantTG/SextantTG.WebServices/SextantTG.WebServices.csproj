@@ -61,11 +61,29 @@
       <DependentUpon>Web.config</DependentUpon>
     </Content>
     <Content Include="WS.asmx" />
+    <Content Include="WS2.asmx" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DTO\BlogObject.cs" />
+    <Compile Include="DTO\BlogItem.cs" />
+    <Compile Include="DTO\CommentItem.cs" />
+    <Compile Include="DTO\DTO.cs" />
+    <Compile Include="DTO\PictureObject.cs" />
+    <Compile Include="DTO\PictureItem.cs" />
+    <Compile Include="DTO\SightsItem.cs" />
+    <Compile Include="DTO\SightsObject.cs" />
+    <Compile Include="DTO\SubtourObject.cs" />
+    <Compile Include="DTO\SubtourItem.cs" />
+    <Compile Include="DTO\TourObject.cs" />
+    <Compile Include="DTO\TourItem.cs" />
+    <Compile Include="DTO\UserObject.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="WS.asmx.cs">
       <DependentUpon>WS.asmx</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="WS2.asmx.cs">
+      <DependentUpon>WS2.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
     <Compile Include="XmlUtil.cs" />

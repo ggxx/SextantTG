@@ -10,7 +10,7 @@ namespace SextantTG.WebServices
     public class XmlUtil
     {
         /// <summary>
-        /// 
+        /// 读取指定节点
         /// </summary>
         /// <param name="xml"></param>
         /// <param name="xpath"></param>
@@ -49,7 +49,7 @@ namespace SextantTG.WebServices
         }
 
         /// <summary>
-        /// 读取指定节点，并转换成Int?
+        /// 读取指定节点，并转换成int?
         /// </summary>
         /// <param name="xml"></param>
         /// <param name="xpath"></param>
@@ -71,7 +71,7 @@ namespace SextantTG.WebServices
         }
 
         /// <summary>
-        /// 
+        /// 读取指定节点，并转换成float?
         /// </summary>
         /// <param name="xml"></param>
         /// <param name="xpath"></param>
@@ -82,7 +82,7 @@ namespace SextantTG.WebServices
         }
 
         /// <summary>
-        /// 
+        /// 读取指定节点，并转换成bool?
         /// </summary>
         /// <param name="xml"></param>
         /// <param name="xpath"></param>
