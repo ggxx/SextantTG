@@ -18,19 +18,19 @@ namespace SextantTG.WebServices.DTO
         public string PictureId { get; set; }
 
         /// <summary>
-        /// 景点ID
+        /// 景点
         /// </summary>
-        public string SightsId { get; set; }
+        public string SightsName { get; set; }
 
         /// <summary>
-        /// 旅行ID（可为空）
+        /// 旅行（可为空）
         /// </summary>
-        public string TourId { get; set; }
+        public string TourName { get; set; }
 
         /// <summary>
-        /// 子旅行ID（可为空）
+        /// 子旅行（可为空）
         /// </summary>
-        public string SubTourId { get; set; }
+        public string SubTourName { get; set; }
 
         /// <summary>
         /// 图片存储的相对路径

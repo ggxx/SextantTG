@@ -1,5 +1,8 @@
 package com.ss.stg.dto;
 
-public class DTO {
+import java.io.Serializable;
 
+public class DTO implements Serializable {
+	public DTO() {
+	}
 }

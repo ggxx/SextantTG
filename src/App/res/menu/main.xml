@@ -4,11 +4,11 @@
         android:id="@+id/action_settings"
         android:orderInCategory="100"
         android:showAsAction="ifRoom|withText"
-        android:title="@string/menu_addtour"/>
+        android:title="11"/>
 
     <item 
         android:id="@+id/action_addtour"
         android:orderInCategory="100"
         android:showAsAction="ifRoom|withText"
-        android:title="@string/menu_setting"/>
+        android:title="22"/>
 </menu>

@@ -10,7 +10,7 @@ namespace SextantTG.WebServices.DTO
         public string TourId { get; set; }
         public string TourName { get; set; }
         public string Status { get; set; }
-        public DateTime StartDate { get; set; }
+        public DateTime BeginDate { get; set; }
         public DateTime EndDate { get; set; }
     }
 }

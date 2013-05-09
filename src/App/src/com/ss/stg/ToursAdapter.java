@@ -3,7 +3,7 @@ package com.ss.stg;
 import java.util.List;
 
 import com.ss.stg.R;
-import com.ss.stg.model.Tour;
+import com.ss.stg.dto.TourItem;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -11,12 +11,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
-public class ToursAdapter extends ArrayAdapter<Tour> {
+public class ToursAdapter extends ArrayAdapter<TourItem> {
 
 	private LayoutInflater layoutInflater = null;
 	private TourViewWrapper tourViewWrapper = null;
 
-	public ToursAdapter(Context context, List<Tour> objects) {
+	public ToursAdapter(Context context, List<TourItem> objects) {
 		super(context, R.id.tour_item_name, objects);
 		this.layoutInflater = LayoutInflater.from(context);
 	}
@@ -24,7 +24,7 @@ public class ToursAdapter extends ArrayAdapter<Tour> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 
-		Tour tour = getItem(position);
+		TourItem tour = getItem(position);
 		
 		if (convertView == null) {
 			convertView = this.layoutInflater.inflate(R.layout.layout_tour_item, parent, false);

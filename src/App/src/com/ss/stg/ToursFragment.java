@@ -20,10 +20,9 @@ import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 
 import com.ss.stg.R;
-import com.ss.stg.model.Sights;
-import com.ss.stg.model.Tour;
-import com.ss.stg.ws.ISTGService;
-import com.ss.stg.ws.WebServiceThread;
+import com.ss.stg.dto.TourItem;
+import com.ss.stg.ws2.IWebService;
+import com.ss.stg.ws2.WSThread;
 
 /**
  * A fragment representing a list of Items.
@@ -68,10 +67,10 @@ public class ToursFragment extends Fragment implements AbsListView.OnItemClickLi
 		handler = new TourHandler(getActivity());
 
 		HashMap<String, Object> params = new HashMap<String, Object>();
-		params.put(ISTGService.PARAM__GETTOURSBYUSERID, "A480A4C31D2D49DB9C93B1116CA3FF4A");
+		params.put(IWebService.PARAM__GET_TOURS_BY_USERID, "A480A4C31D2D49DB9C93B1116CA3FF4A");
 
-		WebServiceThread thread = new WebServiceThread(handler, ISTGService.ID__GETTOURSBYUSERID, params);
-		thread.startWithProgressDialog(getActivity());
+		//WSThread thread = new WSThread(handler, IWebService.ID__GET_TOURS_BY_USERID, params);
+		//thread.startWithProgressDialog(getActivity());
 	}
 
 	@Override
@@ -193,8 +192,8 @@ public class ToursFragment extends Fragment implements AbsListView.OnItemClickLi
 
 			super.handleMessage(msg);
 
-			if (msg.what == ISTGService.ID__GETTOURSBYUSERID) {
-				List<Tour> list = (List<Tour>) msg.getData().getSerializable(ISTGService.WS_RETURN);
+			if (msg.what == IWebService.ID__GET_TOURS_BY_USERID) {
+				List<TourItem> list = (List<TourItem>) msg.getData().getSerializable(IWebService.WS_RETURN);
 				mAdapter = new ToursAdapter(activity, list);
 				mListView.setAdapter(mAdapter);
 			} else {

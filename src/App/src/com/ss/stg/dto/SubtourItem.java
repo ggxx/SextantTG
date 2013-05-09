@@ -1,6 +1,5 @@
-package com.ss.stg.model;
+package com.ss.stg.dto;
 
-import java.io.Serializable;
 import java.util.Date;
 
 /**
@@ -9,23 +8,17 @@ import java.util.Date;
  * @author ggxx
  * 
  */
-public class SubTour implements Serializable {
+public class SubtourItem extends DTO {
 
-	/**
-	 * 
-	 */
-	private static final long serialVersionUID = -4411878684644222925L;
+	public SubtourItem() {
+	}
+
 	private String tourId;
 	private String subTourId;
 	private String subTourName;
-	private String sightsId;
+	private String sightsName;
 	private Date beginDate;
 	private Date endDate;
-	private Date creatingTime;
-	private String memos;
-
-	public SubTour() {
-	}
 
 	public String getTourId() {
 		return tourId;
@@ -51,12 +44,12 @@ public class SubTour implements Serializable {
 		this.subTourName = subTourName;
 	}
 
-	public String getSightsId() {
-		return sightsId;
+	public String getSightsName() {
+		return sightsName;
 	}
 
-	public void setSightsId(String sightsId) {
-		this.sightsId = sightsId;
+	public void setSightsName(String sightsName) {
+		this.sightsName = sightsName;
 	}
 
 	public Date getBeginDate() {
@@ -73,21 +66,5 @@ public class SubTour implements Serializable {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
-	}
-
-	public Date getCreatingTime() {
-		return creatingTime;
-	}
-
-	public void setCreatingTime(Date creatingTime) {
-		this.creatingTime = creatingTime;
-	}
-
-	public String getMemos() {
-		return memos;
-	}
-
-	public void setMemos(String memos) {
-		this.memos = memos;
 	}
 }

@@ -2,9 +2,9 @@ package com.ss.stg;
 
 import java.util.List;
 
-import com.ss.stg.model.Sights;
-import com.ss.stg.ws.ISTGService;
-import com.ss.stg.ws.WebServiceThread;
+import com.ss.stg.dto.SightItem;
+import com.ss.stg.ws2.IWebService;
+import com.ss.stg.ws2.WSThread;
 
 import android.app.Activity;
 import android.app.AlertDialog;
@@ -33,14 +33,12 @@ public class SightsFragment extends Fragment implements AbsListView.OnItemClickL
 	private ListView mListView;
 
 	/**
-	 * The Adapter which will be used to populate the ListView/GridView with
-	 * Views.
+	 * The Adapter which will be used to populate the ListView/GridView with Views.
 	 */
 	private SightsAdapter mAdapter;
 
 	/**
-	 * Mandatory empty constructor for the fragment manager to instantiate the
-	 * fragment (e.g. upon screen orientation changes).
+	 * Mandatory empty constructor for the fragment manager to instantiate the fragment (e.g. upon screen orientation changes).
 	 */
 	public SightsFragment() {
 	}
@@ -53,8 +51,8 @@ public class SightsFragment extends Fragment implements AbsListView.OnItemClickL
 		}
 
 		handler = new SightsHandler(getActivity());
-		WebServiceThread thread = new WebServiceThread(handler, ISTGService.ID__GETSIGHTS);
-		thread.startWithProgressDialog(getActivity());
+		//WSThread thread = new WSThread(handler, IWebService.ID__GET_SIGHTS);
+		//thread.startWithProgressDialog(getActivity());
 	}
 
 	@Override
@@ -141,9 +139,7 @@ public class SightsFragment extends Fragment implements AbsListView.OnItemClickL
 	}
 
 	/**
-	 * The default content for this Fragment has a TextView that is shown when
-	 * the list is empty. If you would like to change the text, call this method
-	 * to supply the text it should use.
+	 * The default content for this Fragment has a TextView that is shown when the list is empty. If you would like to change the text, call this method to supply the text it should use.
 	 */
 	// public void setEmptyText(CharSequence emptyText) {
 	// View emptyView = mListView.getEmptyView();
@@ -154,13 +150,9 @@ public class SightsFragment extends Fragment implements AbsListView.OnItemClickL
 	// }
 
 	/**
-	 * This interface must be implemented by activities that contain this
-	 * fragment to allow an interaction in this fragment to be communicated to
-	 * the activity and potentially other fragments contained in that activity.
+	 * This interface must be implemented by activities that contain this fragment to allow an interaction in this fragment to be communicated to the activity and potentially other fragments contained in that activity.
 	 * <p>
-	 * See the Android Training lesson <a href=
-	 * "https://developer.android.com/training/basics/fragments/communicating.html"
-	 * >Communicating with Other Fragments</a> for more information.
+	 * See the Android Training lesson <a href= "https://developer.android.com/training/basics/fragments/communicating.html" >Communicating with Other Fragments</a> for more information.
 	 */
 	public interface OnSightsFragmentInteractionListener {
 		public void onSightsFragmentInteraction(String id);
@@ -179,8 +171,8 @@ public class SightsFragment extends Fragment implements AbsListView.OnItemClickL
 
 			super.handleMessage(msg);
 
-			if (msg.what == ISTGService.ID__GETSIGHTS) {
-				List<Sights> list = (List<Sights>) msg.getData().getSerializable(ISTGService.WS_RETURN);
+			if (msg.what == IWebService.ID__GET_SIGHTS) {
+				List<SightItem> list = (List<SightItem>) msg.getData().getSerializable(IWebService.WS_RETURN);
 				mAdapter = new SightsAdapter(activity, list);
 				mListView.setAdapter(mAdapter);
 			} else {

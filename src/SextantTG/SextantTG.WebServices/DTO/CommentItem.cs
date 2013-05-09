@@ -20,7 +20,7 @@ namespace SextantTG.WebServices.DTO
         /// <summary>
         /// 创建时间
         /// </summary>
-        public DateTime? CreatingTime { get; set; }
+        public DateTime CreatingTime { get; set; }
 
         /// <summary>
         /// 被评论ID

@@ -1,7 +1,10 @@
 package com.ss.stg;
 
+import com.ss.stg.LoginFragment.OnLoginFragmentInteractionListener;
+import com.ss.stg.LogoutFragment.OnLogoutFragmentInteractionListener;
 import com.ss.stg.SightsFragment.OnSightsFragmentInteractionListener;
 import com.ss.stg.ToursFragment.OnTourFragmentInteractionListener;
+import com.ss.stg.dto.UserObject;
 
 import android.app.ActionBar;
 import android.app.FragmentTransaction;
@@ -13,16 +16,15 @@ import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 import android.support.v4.view.ViewPager;
 
+import android.util.Log;
 import android.view.Menu;
 
-public class MainActivity extends FragmentActivity implements ActionBar.TabListener, OnTourFragmentInteractionListener, OnSightsFragmentInteractionListener {
+public class MainActivity extends FragmentActivity implements ActionBar.TabListener, OnTourFragmentInteractionListener, OnSightsFragmentInteractionListener, OnLoginFragmentInteractionListener, OnLogoutFragmentInteractionListener {
+
+	private boolean isLogin = false;
 
 	/**
-	 * The {@link android.support.v4.view.PagerAdapter} that will provide
-	 * fragments for each of the sections. We use a
-	 * {@link android.support.v4.app.FragmentPagerAdapter} derivative, which
-	 * will keep every loaded fragment in memory. If this becomes too memory
-	 * intensive, it may be best to switch to a
+	 * The {@link android.support.v4.view.PagerAdapter} that will provide fragments for each of the sections. We use a {@link android.support.v4.app.FragmentPagerAdapter} derivative, which will keep every loaded fragment in memory. If this becomes too memory intensive, it may be best to switch to a
 	 * {@link android.support.v4.app.FragmentStatePagerAdapter}.
 	 */
 	SectionsPagerAdapter mSectionsPagerAdapter;
@@ -60,9 +62,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		});
 
 		// For each of the sections in the app, add a tab to the action bar.
+		actionBar.addTab(actionBar.newTab().setText(R.string.tab_login).setTabListener(this));
 		actionBar.addTab(actionBar.newTab().setText(R.string.tab_sights).setTabListener(this));
 		actionBar.addTab(actionBar.newTab().setText(R.string.tab_tours).setTabListener(this));
-		actionBar.addTab(actionBar.newTab().setText(R.string.tab_blogs).setTabListener(this));
+
 	}
 
 	@Override
@@ -88,8 +91,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	}
 
 	/**
-	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
-	 * one of the sections/tabs/pages.
+	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to one of the sections/tabs/pages.
 	 */
 	public class SectionsPagerAdapter extends FragmentPagerAdapter {
 
@@ -104,9 +106,19 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			// below) with the page number as its lone argument.
 			switch (position) {
 			case 0:
+				if (!isLogin) {
+					Log.d("MyLog", "ShowLogin");
+					Fragment loginFragment = new LoginFragment();
+					return loginFragment;
+				} else {
+					Log.d("MyLog", "ShowLogout");
+					Fragment logoutFragment = new LogoutFragment();
+					return logoutFragment;
+				}
+			case 1:
 				Fragment sightsfFragment = new SightsFragment();
 				return sightsfFragment;
-			case 1:
+			case 2:
 				Fragment toursfragment = new ToursFragment();
 				return toursfragment;
 			default:
@@ -141,5 +153,28 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		Intent intent = new Intent(this, SightsActivity.class);
 		intent.putExtra("id", id);
 		startActivity(intent);
+	}
+
+	@Override
+	public void onLoginFragmentInteraction(UserObject user) {
+		Log.d("MyLog", "Loginnnnnn");
+		// TODO Auto-generated method stub
+		if (user != null) {
+			Log.d("MyLog", "Loginnnnnn11");
+			this.isLogin = true;
+			this.getActionBar().selectTab(this.getActionBar().getTabAt(0));
+			//mViewPager.setCurrentItem(0);
+		} else {
+			Log.d("MyLog", "Loginnnnnn22");
+			this.isLogin = false;
+		}
+	}
+
+	@Override
+	public void onLogoutFragmentInteraction() {
+		Log.d("MyLog", "Logouttttt");
+		// TODO Auto-generated method stub
+		this.isLogin = false;
+		mViewPager.setCurrentItem(0);
 	}
 }

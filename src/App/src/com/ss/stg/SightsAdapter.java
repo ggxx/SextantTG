@@ -8,14 +8,14 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 
-import com.ss.stg.model.Sights;
+import com.ss.stg.dto.SightItem;
 
-public class SightsAdapter extends ArrayAdapter<Sights> {
+public class SightsAdapter extends ArrayAdapter<SightItem> {
 
 	private LayoutInflater layoutInflater = null;
 	private SightsViewWrapper sightsViewWrapper = null;
 
-	public SightsAdapter(Context context, List<Sights> objects) {
+	public SightsAdapter(Context context, List<SightItem> objects) {
 		super(context, R.id.sights_item_name, objects);
 		this.layoutInflater = LayoutInflater.from(context);
 	}
@@ -23,7 +23,7 @@ public class SightsAdapter extends ArrayAdapter<Sights> {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 
-		Sights sights = getItem(position);
+		SightItem sights = getItem(position);
 
 		if (convertView == null) {
 			convertView = this.layoutInflater.inflate(R.layout.layout_sights_item, parent, false);

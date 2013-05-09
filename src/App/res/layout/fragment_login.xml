@@ -9,7 +9,7 @@
         android:orientation="vertical" >
 
         <EditText
-            android:id="@+id/loginname"
+            android:id="@+id/fl_loginname_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Name"
@@ -18,7 +18,7 @@
             android:singleLine="true" />
 
         <EditText
-            android:id="@+id/email"
+            android:id="@+id/fl_email_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
@@ -27,26 +27,35 @@
             android:singleLine="true" />
 
         <EditText
-            android:id="@+id/password"
+            android:id="@+id/fl_password_edit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Password"
             android:imeActionId="@+id/login"
-            android:imeActionLabel="@string/action_sign_in_short"
             android:imeOptions="actionUnspecified"
             android:inputType="textPassword"
             android:maxLines="1"
             android:singleLine="true" />
 
         <Button
-            android:id="@+id/sign_in_button"
+            android:id="@+id/fl_login_button"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"
             android:layout_marginTop="16dp"
             android:paddingLeft="32dp"
             android:paddingRight="32dp"
-            android:text="@string/action_sign_in_register" />
+            android:text="登录" />
+        
+        <Button
+            android:id="@+id/fl_regist_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="16dp"
+            android:paddingLeft="32dp"
+            android:paddingRight="32dp"
+            android:text="注册" />
     </LinearLayout>
 
 </FrameLayout>

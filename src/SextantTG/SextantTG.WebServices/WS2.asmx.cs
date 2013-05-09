@@ -538,7 +538,7 @@ namespace SextantTG.WebServices
                     Comment = comment.Comment,
                     CommentId = comment.CommentId,
                     CommentUserName = userSrv.GetUserByUserId(comment.CommentUserId).LoginName,
-                    CreatingTime = comment.CreatingTime.HasValue ? comment.CreatingTime : DateTime.MinValue,
+                    CreatingTime = comment.CreatingTime ?? DateTime.MinValue,
                     TargetId = sightId
                 };
                 commentList.Add(item2);
@@ -575,7 +575,10 @@ namespace SextantTG.WebServices
                 Description = pic.Description,
                 Path = pic.Path,
                 PictureId = pic.PictureId,
-                UploaderName = userSrv.GetUserByUserId(pic.UploaderId).LoginName
+                UploaderName = userSrv.GetUserByUserId(pic.UploaderId).LoginName,
+                SightsName = sightsSrv.GetSightsBySightsId(pic.SightsId).SightsName,
+                SubTourName = tourSrv.GetSubTourByTourIdAndSubTourId(pic.TourId, pic.SubTourId).SubTourName,
+                TourName = tourSrv.GetTourByTourId(pic.TourId).TourName
             };
             return CreateReturnXmlDocument(item);
         }
@@ -598,15 +601,153 @@ namespace SextantTG.WebServices
             return CreateReturnXmlDocument(item);
         }
 
+        [WebMethod(Description = "获取所有旅行")]
+        public XmlDocument GetToursByUserId(string userId)
+        {
+            List<TourItem> list = new List<TourItem>();
+            foreach (Tour tour in tourSrv.GetToursByUserId(userId))
+            {
+                TourItem item = new TourItem()
+                {
+                    EndDate = tour.EndDate.HasValue ? tour.EndDate.Value : DateTime.MinValue,
+                    BeginDate = tour.BeginDate.HasValue ? tour.BeginDate.Value : DateTime.MinValue,
+                    Status = tour.Status == 0 ? "未进行" : tour.Status == 1 ? "进行中" : tour.Status == 2 ? "已结束" : "",
+                    TourId = tour.TourId,
+                    TourName = tour.TourName
+                };
+                list.Add(item);
+            }
+            return CreateReturnXmlDocument(list);
+        }
 
+        [WebMethod(Description = "获取指定旅行")]
+        public XmlDocument GetTourByTourId(string tourId)
+        {
+            Tour tour = tourSrv.GetTourByTourId(tourId);
+            List<BlogItem> blogList = new List<BlogItem>();
+            List<CommentItem> commentList = new List<CommentItem>();
+            List<PictureItem> pictureList = new List<PictureItem>();
+            List<SubtourItem> subtourList = new List<SubtourItem>();
 
+            foreach (Blog blog in blogSrv.GetBlogsByTourId(tourId))
+            {
+                BlogItem item = new BlogItem()
+                {
+                    Anthor = userSrv.GetUserByUserId(blog.UserId).LoginName,
+                    BlogId = blog.BlogId,
+                    Content = blog.Content,
+                    CreatingTime = blog.CreatingTime.HasValue ? blog.CreatingTime.Value : DateTime.MinValue,
+                    SightName = sightsSrv.GetSightsBySightsId(blog.SightsId).SightsName,
+                    SubtourName = tourSrv.GetSubTourByTourIdAndSubTourId(blog.TourId, blog.SubTourId).SubTourName,
+                    Title = blog.Title,
+                    TourName = tourSrv.GetTourByTourId(blog.TourId).TourName
+                };
+                blogList.Add(item);
+            }
+            foreach (TourComment comment in commentSrv.GetTourCommentsByTourId(tourId))
+            {
+                CommentItem item = new CommentItem()
+                {
+                    Comment = comment.Comment,
+                    CommentId = comment.CommentId,
+                    CommentUserName = userSrv.GetUserByUserId(comment.CommentUserId).LoginName,
+                    CreatingTime = comment.CreatingTime.HasValue ? comment.CreatingTime.Value : DateTime.MinValue,
+                    TargetId = comment.TourId
+                };
+                commentList.Add(item);
+            }
+            foreach (Picture pic in tourSrv.GetPicturesByTourId(tourId))
+            {
+                PictureItem item = new PictureItem()
+                {
+                    CreatingTime = pic.CreatingTime,
+                    Description = pic.Description,
+                    Path = pic.Path,
+                    PictureId = pic.PictureId,
+                    UploaderName = userSrv.GetUserByUserId(pic.UploaderId).LoginName
+                };
+                pictureList.Add(item);
+            }
+            foreach (SubTour subtour in tourSrv.GetSubToursByTourId(tourId))
+            {
+                SubtourItem item = new SubtourItem()
+                {
+                    BeginDate = subtour.BeginDate ?? DateTime.MinValue,
+                    EndDate = subtour.EndDate ?? DateTime.MinValue,
+                    SightsName = sightsSrv.GetSightsBySightsId(subtour.SightsId).SightsName,
+                    SubTourId = subtour.SightsId,
+                    SubTourName = subtour.SubTourName,
+                    TourId = tourId
+                };
+                subtourList.Add(item);
+            }
 
+            TourObject tourObject = new TourObject()
+            {
+                BlogList = blogList,
+                CommentList = commentList,
+                EndDate = tour.EndDate ?? DateTime.MinValue,
+                PictureList = pictureList,
+                Cost = tour.Cost ?? 0,
+                BeginDate = tour.BeginDate ?? DateTime.MinValue,
+                Status = tour.Status == 0 ? "未进行" : tour.Status == 1 ? "进行中" : tour.Status == 2 ? "已结束" : "",
+                SubtourList = subtourList,
+                TourId = tour.TourId,
+                TourName = tour.TourName
+            };
 
+            return CreateReturnXmlDocument(tourObject);
+        }
 
+        [WebMethod(Description = "获取指定子旅行")]
+        public XmlDocument GetSubtourByTourIdAndSubtourId(string tourId, string subtourId)
+        {
+            SubTour subtour = tourSrv.GetSubTourByTourIdAndSubTourId(tourId, subtourId);
+            List<BlogItem> blogList = new List<BlogItem>();
+            List<PictureItem> pictureList = new List<PictureItem>();
 
+            foreach (Blog blog in blogSrv.GetBlogsByTourIdAndSubTourId(tourId, subtourId))
+            {
+                BlogItem item = new BlogItem()
+                {
+                    Anthor = userSrv.GetUserByUserId(blog.UserId).LoginName,
+                    BlogId = blog.BlogId,
+                    Content = blog.Content,
+                    CreatingTime = blog.CreatingTime.HasValue ? blog.CreatingTime.Value : DateTime.MinValue,
+                    SightName = sightsSrv.GetSightsBySightsId(blog.SightsId).SightsName,
+                    SubtourName = tourSrv.GetSubTourByTourIdAndSubTourId(blog.TourId, blog.SubTourId).SubTourName,
+                    Title = blog.Title,
+                    TourName = tourSrv.GetTourByTourId(blog.TourId).TourName
+                };
+                blogList.Add(item);
+            }
+            foreach (Picture pic in tourSrv.GetPicturesByTourIdAndSubTourId(tourId, subtourId))
+            {
+                PictureItem item = new PictureItem()
+                {
+                    CreatingTime = pic.CreatingTime,
+                    Description = pic.Description,
+                    Path = pic.Path,
+                    PictureId = pic.PictureId,
+                    UploaderName = userSrv.GetUserByUserId(pic.UploaderId).LoginName
+                };
+                pictureList.Add(item);
+            }
 
+            SubtourObject subtourObject = new SubtourObject()
+            {
+                BeginDate = subtour.BeginDate ?? DateTime.MinValue,
+                BlogList = blogList,
+                EndDate = subtour.EndDate ?? DateTime.MinValue,
+                PictureList = pictureList,
+                SightsName = sightsSrv.GetSightsBySightsId(subtour.SightsId).SightsName,
+                SubTourId = subtourId,
+                SubTourName = subtour.SubTourName,
+                TourId = tourId
+            };
 
-
+            return CreateReturnXmlDocument(subtourObject);
+        }
 
 
         [WebMethod(Description = "获取所有景点(已登录)")]
@@ -689,7 +830,7 @@ namespace SextantTG.WebServices
                     Comment = comment.Comment,
                     CommentId = comment.CommentId,
                     CommentUserName = userSrv.GetUserByUserId(comment.CommentUserId).LoginName,
-                    CreatingTime = comment.CreatingTime.HasValue ? comment.CreatingTime : DateTime.MinValue,
+                    CreatingTime = comment.CreatingTime.HasValue ? comment.CreatingTime.Value : DateTime.MinValue,
                     TargetId = sightId
                 };
                 commentList.Add(item2);
