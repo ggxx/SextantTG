@@ -26,14 +26,14 @@ public interface IWebService {
 	String METHOD__LOGIN = "Login";
 	String METHOD__REGIST = "Regist";
 	String METHOD__GET_SIGHTS = "GetSights";
-	String METHOD__GET_SIGHTS_BY_USERID = "GetSightsByUserId";
+	String METHOD__GET_SIGHTS_BY_USERID = "GetSights2";
 	String METHOD__GET_SIGHT_BY_SIGHTID = "GetSightBySightId";
+	String METHOD__GET_SIGHT_BY_SIGHTID_AND_USERID = "GetSightBySightId2";
 	String METHOD__GET_PICTURE_BY_PICTUREID = "GetPictureByPictureId";
 	String METHOD__GET_BLOG_BY_BLOGID = "GetBlogByBlogId";
 	String METHOD__GET_TOURS_BY_USERID = "GetToursByUserId";
 	String METHOD__GET_TOUR_BY_TOURID = "GetTourByTourId";
 	String METHOD__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID = "GetSubtourByTourIdAndSubtourId";
-	String METHOD__GET_SIGHT_BY_SIGHTID_AND_USERID = "GetSightBySightIdAndUserId";
 
 	String PARAM__LOGIN__LOGIN_NAME = "loginName";
 	String PARAM__LOGIN__PASSWORD = "password";
@@ -64,7 +64,7 @@ public interface IWebService {
 
 	PictureObject getPictureByPictureId(String pictureId);
 
-	List<BlogItem> getBlogByBlogId(String blogId);
+	BlogObject getBlogByBlogId(String blogId);
 
 	List<TourItem> getToursByUserId(String userId);
 
@@ -72,6 +72,6 @@ public interface IWebService {
 
 	SubtourObject getSubtourByTourIdAndSubtourId(String tourId, String subtourId);
 
-	List<SightItem> getSightBySightIdAndUserId(String sightId, String userId);
+	SightObject getSightBySightIdAndUserId(String sightId, String userId);
 
 }

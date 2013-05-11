@@ -1,5 +1,6 @@
 package com.ss.stg;
 
+import java.util.HashMap;
 import java.util.List;
 
 import com.ss.stg.dto.SightItem;
@@ -13,11 +14,13 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AbsListView;
 import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.AdapterView.OnItemLongClickListener;
 
@@ -33,31 +36,45 @@ public class SightsFragment extends Fragment implements AbsListView.OnItemClickL
 	private ListView mListView;
 
 	/**
-	 * The Adapter which will be used to populate the ListView/GridView with Views.
+	 * The Adapter which will be used to populate the ListView/GridView with
+	 * Views.
 	 */
 	private SightsAdapter mAdapter;
 
 	/**
-	 * Mandatory empty constructor for the fragment manager to instantiate the fragment (e.g. upon screen orientation changes).
+	 * Mandatory empty constructor for the fragment manager to instantiate the
+	 * fragment (e.g. upon screen orientation changes).
 	 */
 	public SightsFragment() {
 	}
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		Log.d("MyLog", "SightsFragment_onCreate");
+		
 		super.onCreate(savedInstanceState);
 
 		if (getArguments() != null) {
 		}
 
 		handler = new SightsHandler(getActivity());
-		//WSThread thread = new WSThread(handler, IWebService.ID__GET_SIGHTS);
-		//thread.startWithProgressDialog(getActivity());
+		WSThread thread = null;
+		String userId = ((MainActivity) getActivity()).getLoginUserId();
+		if (userId.equals("")) {
+			thread = new WSThread(handler, IWebService.ID__GET_SIGHTS);
+		} else {
+			HashMap<String, Object> params = new HashMap<String, Object>();
+			params.put(IWebService.PARAM__GET_SIGHTS_BY_USERID, userId);
+			thread = new WSThread(handler, IWebService.ID__GET_SIGHTS_BY_USERID, params);
+		}
+		thread.startWithProgressDialog(getActivity());
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-
+		Log.d("MyLog", "SightsFragment_onCreateView");
+		
+		
 		View view = inflater.inflate(R.layout.fragment_sights_list, container, false);
 
 		// Set the adapter
@@ -139,7 +156,9 @@ public class SightsFragment extends Fragment implements AbsListView.OnItemClickL
 	}
 
 	/**
-	 * The default content for this Fragment has a TextView that is shown when the list is empty. If you would like to change the text, call this method to supply the text it should use.
+	 * The default content for this Fragment has a TextView that is shown when
+	 * the list is empty. If you would like to change the text, call this method
+	 * to supply the text it should use.
 	 */
 	// public void setEmptyText(CharSequence emptyText) {
 	// View emptyView = mListView.getEmptyView();
@@ -150,9 +169,13 @@ public class SightsFragment extends Fragment implements AbsListView.OnItemClickL
 	// }
 
 	/**
-	 * This interface must be implemented by activities that contain this fragment to allow an interaction in this fragment to be communicated to the activity and potentially other fragments contained in that activity.
+	 * This interface must be implemented by activities that contain this
+	 * fragment to allow an interaction in this fragment to be communicated to
+	 * the activity and potentially other fragments contained in that activity.
 	 * <p>
-	 * See the Android Training lesson <a href= "https://developer.android.com/training/basics/fragments/communicating.html" >Communicating with Other Fragments</a> for more information.
+	 * See the Android Training lesson <a href=
+	 * "https://developer.android.com/training/basics/fragments/communicating.html"
+	 * >Communicating with Other Fragments</a> for more information.
 	 */
 	public interface OnSightsFragmentInteractionListener {
 		public void onSightsFragmentInteraction(String id);
@@ -171,7 +194,7 @@ public class SightsFragment extends Fragment implements AbsListView.OnItemClickL
 
 			super.handleMessage(msg);
 
-			if (msg.what == IWebService.ID__GET_SIGHTS) {
+			if (msg.what == IWebService.ID__GET_SIGHTS || msg.what == IWebService.ID__GET_SIGHTS_BY_USERID) {
 				List<SightItem> list = (List<SightItem>) msg.getData().getSerializable(IWebService.WS_RETURN);
 				mAdapter = new SightsAdapter(activity, list);
 				mListView.setAdapter(mAdapter);

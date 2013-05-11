@@ -18,12 +18,12 @@ namespace SextantTG.Win
 
         private string uploaderId, tourId, subTourId;
         private string sightsId;
-        
+
         /// <summary>
         /// 设置或获取控件中的所有图片
         /// </summary>
         internal List<Picture> Pictures { get; private set; }
-        
+
         /// <summary>
         /// 设置或获取控件中所有已删除的图片
         /// </summary>

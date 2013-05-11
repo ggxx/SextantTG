@@ -15,12 +15,12 @@ namespace SextantTG.WebServices.DTO
         /// <summary>
         /// 子旅行ID
         /// </summary>
-        public string SubTourId { get; set; }
+        public string SubtourId { get; set; }
 
         /// <summary>
         /// 子旅行名称
         /// </summary>
-        public string SubTourName { get; set; }
+        public string SubtourName { get; set; }
 
         /// <summary>
         /// 相关景点ID

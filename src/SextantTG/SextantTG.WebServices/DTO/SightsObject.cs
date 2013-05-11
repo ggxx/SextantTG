@@ -9,9 +9,9 @@ namespace SextantTG.WebServices.DTO
     {
         public SightsObject()
         {
-            this.BlogList = new List<BlogItem>();
-            this.CommentList = new List<CommentItem>();
-            this.PictureList = new List<PictureItem>();
+            this.BlogItemList = new List<BlogItem>();
+            this.CommentItemList = new List<CommentItem>();
+            this.PictureItemList = new List<PictureItem>();
         }
 
         /// <summary>
@@ -72,17 +72,17 @@ namespace SextantTG.WebServices.DTO
         /// <summary>
         /// 图片
         /// </summary>
-        public List<PictureItem> PictureList { get; set; }
+        public List<PictureItem> PictureItemList { get; set; }
 
         /// <summary>
         /// 评论
         /// </summary>
-        public List<CommentItem> CommentList { get; set; }
+        public List<CommentItem> CommentItemList { get; set; }
 
         /// <summary>
         /// 日志
         /// </summary>
-        public List<BlogItem> BlogList { get; set; }
+        public List<BlogItem> BlogItemList { get; set; }
 
 
     }

@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -59,22 +60,27 @@ public class ToursFragment extends Fragment implements AbsListView.OnItemClickLi
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
+		Log.d("MyLog", "ToursFragment_onCreate");
 		super.onCreate(savedInstanceState);
 
 		if (getArguments() != null) {
 		}
 
 		handler = new TourHandler(getActivity());
-
-		HashMap<String, Object> params = new HashMap<String, Object>();
-		params.put(IWebService.PARAM__GET_TOURS_BY_USERID, "A480A4C31D2D49DB9C93B1116CA3FF4A");
-
-		//WSThread thread = new WSThread(handler, IWebService.ID__GET_TOURS_BY_USERID, params);
-		//thread.startWithProgressDialog(getActivity());
+		WSThread thread = null;
+		String userId = ((MainActivity) getActivity()).getLoginUserId();
+		if (!userId.equals("")) {
+			HashMap<String, Object> params = new HashMap<String, Object>();
+			params.put(IWebService.PARAM__GET_TOURS_BY_USERID, userId);
+			thread = new WSThread(handler, IWebService.ID__GET_TOURS_BY_USERID, params);
+			thread.startWithProgressDialog(getActivity());
+		}
 	}
 
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+		Log.d("MyLog", "ToursFragment_onCreateView");
+
 		View view = inflater.inflate(R.layout.fragment_tours_list, container, false);
 
 		// Set the adapter
@@ -111,7 +117,6 @@ public class ToursFragment extends Fragment implements AbsListView.OnItemClickLi
 			// fragment is attached to one) that an item has been selected.
 
 			String id2 = mAdapter.getItem(position).getTourId();
-
 			mListener.onTourFragmentInteraction(id2);
 		}
 	}

@@ -1,14 +1,18 @@
 package com.ss.stg;
 
 import android.view.View;
+import android.widget.CheckBox;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class SightsViewWrapper {
 
 	private View view;
 	private String id;
+	private ImageView visitedImageView;
 	private TextView nameTextView;
-	private TextView dateTextView;
+	private TextView cityTextView;
+	private TextView starsTextView;
 
 	public SightsViewWrapper(View view) {
 		this.view = view;
@@ -26,17 +30,31 @@ public class SightsViewWrapper {
 		return view;
 	}
 
+	public ImageView getVisitedImageView() {
+		if (this.visitedImageView == null) {
+			this.visitedImageView = (ImageView) this.view.findViewById(R.id.sight_item_image);
+		}
+		return this.visitedImageView;
+	}
+
 	public TextView getNameTextView() {
 		if (this.nameTextView == null) {
-			this.nameTextView = (TextView) this.view.findViewById(R.id.sights_item_name);
+			this.nameTextView = (TextView) this.view.findViewById(R.id.sight_item_name);
 		}
 		return this.nameTextView;
 	}
 
-	public TextView getDateTextView() {
-		if (this.dateTextView == null) {
-			this.dateTextView = (TextView) this.view.findViewById(R.id.sights_item_date);
+	public TextView getCityTextView() {
+		if (this.cityTextView == null) {
+			this.cityTextView = (TextView) this.view.findViewById(R.id.sight_item_city);
 		}
-		return dateTextView;
+		return cityTextView;
+	}
+
+	public TextView getStarsTextView() {
+		if (this.starsTextView == null) {
+			this.starsTextView = (TextView) this.view.findViewById(R.id.sight_item_stars);
+		}
+		return starsTextView;
 	}
 }

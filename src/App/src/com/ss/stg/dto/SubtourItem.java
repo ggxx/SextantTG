@@ -14,8 +14,8 @@ public class SubtourItem extends DTO {
 	}
 
 	private String tourId;
-	private String subTourId;
-	private String subTourName;
+	private String subtourId;
+	private String subtourName;
 	private String sightsName;
 	private Date beginDate;
 	private Date endDate;
@@ -28,20 +28,20 @@ public class SubtourItem extends DTO {
 		this.tourId = tourId;
 	}
 
-	public String getSubTourId() {
-		return subTourId;
+	public String getSubtourId() {
+		return subtourId;
 	}
 
-	public void setSubTourId(String subTourId) {
-		this.subTourId = subTourId;
+	public void setSubtourId(String subtourId) {
+		this.subtourId = subtourId;
 	}
 
-	public String getSubTourName() {
-		return subTourName;
+	public String getSubtourName() {
+		return subtourName;
 	}
 
-	public void setSubTourName(String subTourName) {
-		this.subTourName = subTourName;
+	public void setSubtourName(String subtourName) {
+		this.subtourName = subtourName;
 	}
 
 	public String getSightsName() {

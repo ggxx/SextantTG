@@ -9,8 +9,8 @@ namespace SextantTG.WebServices.DTO
     {
         public SubtourObject()
         {
-            this.BlogList = new List<BlogItem>();
-            this.PictureList = new List<PictureItem>();
+            this.BlogItemList = new List<BlogItem>();
+            this.PictureItemList = new List<PictureItem>();
         }
 
         /// <summary>
@@ -21,12 +21,12 @@ namespace SextantTG.WebServices.DTO
         /// <summary>
         /// 子旅行ID
         /// </summary>
-        public string SubTourId { get; set; }
+        public string SubtourId { get; set; }
 
         /// <summary>
         /// 子旅行名称
         /// </summary>
-        public string SubTourName { get; set; }
+        public string SubtourName { get; set; }
 
         /// <summary>
         /// 相关景点ID
@@ -43,8 +43,8 @@ namespace SextantTG.WebServices.DTO
         /// </summary>
         public DateTime EndDate { get; set; }
 
-        public List<PictureItem> PictureList { get; set; }
+        public List<PictureItem> PictureItemList { get; set; }
 
-        public List<BlogItem> BlogList { get; set; }
+        public List<BlogItem> BlogItemList { get; set; }
     }
 }

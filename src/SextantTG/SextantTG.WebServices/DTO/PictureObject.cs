@@ -9,7 +9,7 @@ namespace SextantTG.WebServices.DTO
     {
         public PictureObject()
         {
-            this.CommentList = new List<CommentItem>();
+            this.CommentItemList = new List<CommentItem>();
         }
 
         /// <summary>
@@ -53,6 +53,6 @@ namespace SextantTG.WebServices.DTO
         public DateTime? CreatingTime { get; set; }
 
 
-        List<CommentItem> CommentList { get; set; } 
+        List<CommentItem> CommentItemList { get; set; } 
     }
 }

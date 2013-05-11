@@ -16,7 +16,7 @@ public class SightsAdapter extends ArrayAdapter<SightItem> {
 	private SightsViewWrapper sightsViewWrapper = null;
 
 	public SightsAdapter(Context context, List<SightItem> objects) {
-		super(context, R.id.sights_item_name, objects);
+		super(context, R.id.sight_item_name, objects);
 		this.layoutInflater = LayoutInflater.from(context);
 	}
 
@@ -34,8 +34,11 @@ public class SightsAdapter extends ArrayAdapter<SightItem> {
 		}
 
 		if (sights != null) {
+			sightsViewWrapper.setId(sights.getSightsId());
 			sightsViewWrapper.getNameTextView().setText(sights.getSightsName());
-			sightsViewWrapper.getDateTextView().setText(sights.getSightsId());
+			sightsViewWrapper.getCityTextView().setText(sights.getCountryName() + "-" + sights.getProvinceName() + "-" + sights.getCityName());
+			sightsViewWrapper.getStarsTextView().setText(String.valueOf(sights.getStars()));
+			sightsViewWrapper.getVisitedImageView().setImageResource(sights.getHasVisited() ? R.drawable.tstar : R.drawable.fstar);
 		}
 		return convertView;
 	}

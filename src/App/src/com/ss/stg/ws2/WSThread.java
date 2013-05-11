@@ -63,7 +63,31 @@ public class WSThread extends Thread {
 				String loginName = this.params.get(IWebService.PARAM__LOGIN__LOGIN_NAME).toString();
 				String password = this.params.get(IWebService.PARAM__LOGIN__PASSWORD).toString();
 				returnObject = ws.login(loginName, password);
-			} else {
+			} else if (this.methodId == IWebService.ID__REGIST) {
+				UserObject user = (UserObject) this.params.get(IWebService.PARAM__REGIST__USER);
+				String password = this.params.get(IWebService.PARAM__REGIST__PASSWORD).toString();
+				returnObject = ws.regist(user, password);
+			} else if (this.methodId == IWebService.ID__GET_SIGHTS) {
+				returnObject = ws.getSights();
+			} else if (this.methodId == IWebService.ID__GET_SIGHTS_BY_USERID) {
+				String userId = this.params.get(IWebService.PARAM__GET_SIGHTS_BY_USERID).toString();
+				returnObject = ws.getSightsByUserId(userId);
+			} else if (this.methodId == IWebService.ID__GET_SIGHT_BY_SIGHTID) {
+				String sightsId = this.params.get(IWebService.PARAM__GET_SIGHT_BY_SIGHTID).toString();
+				returnObject = ws.getSightBySightId(sightsId);
+			} else if (this.methodId == IWebService.ID__GET_SIGHT_BY_SIGHTID_AND_USERID) {
+				String sightsId = this.params.get(IWebService.PARAM__GET_SIGHT_BY_SIGHTID_AND_USERID__SIGHTID).toString();
+				String userId = this.params.get(IWebService.PARAM__GET_SIGHT_BY_SIGHTID_AND_USERID__USERID).toString();
+				returnObject = ws.getSightBySightIdAndUserId(sightsId, userId);
+			} else if (this.methodId == IWebService.ID__GET_TOURS_BY_USERID) {
+				String userId = this.params.get(IWebService.PARAM__GET_TOURS_BY_USERID).toString();
+				returnObject = ws.getToursByUserId(userId);
+			} else if (this.methodId == IWebService.ID__GET_TOUR_BY_TOURID) {
+				String tourId = this.params.get(IWebService.PARAM__GET_TOUR_BY_TOURID).toString();
+				returnObject = ws.getTourByTourId(tourId);
+			}
+
+			else {
 
 			}
 

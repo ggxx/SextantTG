@@ -6,6 +6,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using SextantTG.STGNLog;
+using SextantTG.DbUtil;
 
 namespace SextantTG.ServerTest
 {
@@ -48,16 +49,9 @@ namespace SextantTG.ServerTest
             //System.Console.WriteLine("dictSrv.GetCities().count=" + dictSrv.GetCities().Count);
             //System.Console.WriteLine("all_city.count=" + allCity.Count);
             //System.Console.WriteLine("china_city.count=" + list.Count);
-            System.Console.WriteLine("1");
-            LogHelper log = new LogHelper();
-            log.Info("123");
-
-            System.Console.WriteLine("2");
-
-
-            System.Console.Read();
+            DbHelper db = new DbHelper("Data Source=db/sgt.db3;Version=3;", DbProviderType.SQLite);
+            db.ExecuteDataTable("select * from stg_user");
 
         }
-
     }
 }

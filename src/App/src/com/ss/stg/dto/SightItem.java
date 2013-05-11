@@ -26,7 +26,7 @@ public class SightItem extends DTO {
 		return sightsName;
 	}
 
-	public void setSightsName(String sightsName) {
+	public void setSightName(String sightsName) {
 		this.sightsName = sightsName;
 	}
 
@@ -62,7 +62,7 @@ public class SightItem extends DTO {
 		this.sightsLevel = sightsLevel;
 	}
 
-	public boolean isHasVisited() {
+	public boolean getHasVisited() {
 		return hasVisited;
 	}
 

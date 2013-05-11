@@ -2,6 +2,8 @@ package com.ss.stg.dto;
 
 import java.util.Date;
 
+import android.graphics.Bitmap;
+
 public class PictureItem extends DTO {
 
 	public PictureItem() {
@@ -12,6 +14,7 @@ public class PictureItem extends DTO {
 	private String description;
 	private String uploaderName;
 	private Date creatingTime;
+	private Bitmap bitmap;
 
 	public String getPictureId() {
 		return pictureId;
@@ -51,5 +54,13 @@ public class PictureItem extends DTO {
 
 	public void setCreatingTime(Date creatingTime) {
 		this.creatingTime = creatingTime;
+	}
+
+	public Bitmap getBitmap() {
+		return bitmap;
+	}
+
+	public void setBitmap(Bitmap bitmap) {
+		this.bitmap = bitmap;
 	}
 }

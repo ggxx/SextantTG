@@ -32,6 +32,7 @@ namespace SextantTG.WebServices
         private static readonly ITourService tourSrv = ServiceFactory.CreateService<ITourService>();
         private static readonly IUserService userSrv = ServiceFactory.CreateService<IUserService>();
         private static readonly IPictureService pictureSrv = ServiceFactory.CreateService<IPictureService>();
+        private static readonly string PicPath = System.Configuration.ConfigurationManager.AppSettings["PIC_PATH"];
 
         private static XmlWriterSettings settings = null;
 
@@ -523,9 +524,9 @@ namespace SextantTG.WebServices
             {
                 PictureItem item = new PictureItem()
                 {
-                    CreatingTime = pic.CreatingTime,
+                    CreatingTime = pic.CreatingTime ?? DateTime.MinValue,
                     Description = pic.Description,
-                    Path = pic.Path,
+                    Path = PicPath + pic.Path,
                     PictureId = pic.PictureId,
                     UploaderName = userSrv.GetUserByUserId(pic.UploaderId).LoginName
                 };
@@ -546,15 +547,15 @@ namespace SextantTG.WebServices
 
             SightsObject sightObject = new SightsObject()
             {
-                BlogList = blogList,
+                BlogItemList = blogList,
                 CityName = dictSrv.GetCityByCityId(sights.CityId).CityName,
                 ProvinceName = province.ProvinceName,
                 CountryName = dictSrv.GetCountryByProvinceId(province.ProvinceId).CountryName,
-                CommentList = commentList,
+                CommentItemList = commentList,
                 Description = sights.Description,
                 HasVisited = false,
                 MyStar = 0,
-                PictureList = pictureList,
+                PictureItemList = pictureList,
                 Price = sights.Price.HasValue ? sights.Price.Value : 0,
                 SightsId = sights.SightsId,
                 SightsLevel = sights.SightsLevel,
@@ -573,7 +574,7 @@ namespace SextantTG.WebServices
             {
                 CreatingTime = pic.CreatingTime,
                 Description = pic.Description,
-                Path = pic.Path,
+                Path = PicPath + pic.Path,
                 PictureId = pic.PictureId,
                 UploaderName = userSrv.GetUserByUserId(pic.UploaderId).LoginName,
                 SightsName = sightsSrv.GetSightsBySightsId(pic.SightsId).SightsName,
@@ -660,9 +661,9 @@ namespace SextantTG.WebServices
             {
                 PictureItem item = new PictureItem()
                 {
-                    CreatingTime = pic.CreatingTime,
+                    CreatingTime = pic.CreatingTime ?? DateTime.MinValue,
                     Description = pic.Description,
-                    Path = pic.Path,
+                    Path = PicPath + pic.Path,
                     PictureId = pic.PictureId,
                     UploaderName = userSrv.GetUserByUserId(pic.UploaderId).LoginName
                 };
@@ -675,8 +676,8 @@ namespace SextantTG.WebServices
                     BeginDate = subtour.BeginDate ?? DateTime.MinValue,
                     EndDate = subtour.EndDate ?? DateTime.MinValue,
                     SightsName = sightsSrv.GetSightsBySightsId(subtour.SightsId).SightsName,
-                    SubTourId = subtour.SightsId,
-                    SubTourName = subtour.SubTourName,
+                    SubtourId = subtour.SightsId,
+                    SubtourName = subtour.SubTourName,
                     TourId = tourId
                 };
                 subtourList.Add(item);
@@ -684,14 +685,14 @@ namespace SextantTG.WebServices
 
             TourObject tourObject = new TourObject()
             {
-                BlogList = blogList,
-                CommentList = commentList,
+                BlogItemList = blogList,
+                CommentItemList = commentList,
                 EndDate = tour.EndDate ?? DateTime.MinValue,
-                PictureList = pictureList,
+                PictureItemList = pictureList,
                 Cost = tour.Cost ?? 0,
                 BeginDate = tour.BeginDate ?? DateTime.MinValue,
                 Status = tour.Status == 0 ? "未进行" : tour.Status == 1 ? "进行中" : tour.Status == 2 ? "已结束" : "",
-                SubtourList = subtourList,
+                SubtourItemList = subtourList,
                 TourId = tour.TourId,
                 TourName = tour.TourName
             };
@@ -725,9 +726,9 @@ namespace SextantTG.WebServices
             {
                 PictureItem item = new PictureItem()
                 {
-                    CreatingTime = pic.CreatingTime,
+                    CreatingTime = pic.CreatingTime ?? DateTime.MinValue,
                     Description = pic.Description,
-                    Path = pic.Path,
+                    Path = PicPath + pic.Path,
                     PictureId = pic.PictureId,
                     UploaderName = userSrv.GetUserByUserId(pic.UploaderId).LoginName
                 };
@@ -737,12 +738,12 @@ namespace SextantTG.WebServices
             SubtourObject subtourObject = new SubtourObject()
             {
                 BeginDate = subtour.BeginDate ?? DateTime.MinValue,
-                BlogList = blogList,
+                BlogItemList = blogList,
                 EndDate = subtour.EndDate ?? DateTime.MinValue,
-                PictureList = pictureList,
+                PictureItemList = pictureList,
                 SightsName = sightsSrv.GetSightsBySightsId(subtour.SightsId).SightsName,
-                SubTourId = subtourId,
-                SubTourName = subtour.SubTourName,
+                SubtourId = subtourId,
+                SubtourName = subtour.SubTourName,
                 TourId = tourId
             };
 
@@ -815,9 +816,9 @@ namespace SextantTG.WebServices
             {
                 PictureItem item = new PictureItem()
                 {
-                    CreatingTime = pic.CreatingTime,
+                    CreatingTime = pic.CreatingTime ?? DateTime.MinValue,
                     Description = pic.Description,
-                    Path = pic.Path,
+                    Path = PicPath + pic.Path,
                     PictureId = pic.PictureId,
                     UploaderName = userSrv.GetUserByUserId(pic.UploaderId).LoginName
                 };
@@ -838,15 +839,15 @@ namespace SextantTG.WebServices
 
             SightsObject sightObject = new SightsObject()
             {
-                BlogList = blogList,
+                BlogItemList = blogList,
                 CityName = dictSrv.GetCityByCityId(sights.CityId).CityName,
                 ProvinceName = province.ProvinceName,
                 CountryName = dictSrv.GetCountryByProvinceId(province.ProvinceId).CountryName,
-                CommentList = commentList,
+                CommentItemList = commentList,
                 Description = sights.Description,
                 HasVisited = fav != null ? fav.Visited == 1 : false,
                 MyStar = fav != null ? fav.Stars.HasValue ? fav.Stars.Value : 0 : 0,
-                PictureList = pictureList,
+                PictureItemList = pictureList,
                 Price = sights.Price.HasValue ? sights.Price.Value : 0,
                 SightsId = sights.SightsId,
                 SightsLevel = sights.SightsLevel,

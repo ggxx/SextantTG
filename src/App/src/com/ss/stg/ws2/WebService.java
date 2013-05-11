@@ -1,6 +1,5 @@
 package com.ss.stg.ws2;
 
-import java.io.Serializable;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -10,11 +9,6 @@ import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
-
-import android.os.Bundle;
-import android.os.Handler;
-import android.os.Message;
-
 import com.ss.stg.dto.*;
 
 public class WebService implements IWebService {
@@ -24,9 +18,10 @@ public class WebService implements IWebService {
 	}
 
 	private static final String WS_NAMESPACE = "http://github.com/ggxx/SextantTG/";
-	//private static final String WS_URL = "http://172.16.101.217:1153/WS2.asmx";
+	// private static final String WS_URL =
+	// "http://172.16.101.217:1153/WS2.asmx";
 	private static final String WS_URL = "http://10.0.2.2:1153/WS2.asmx";
-	
+
 	private String getMethodName(int methodId) {
 		if (methodId == IWebService.ID__HELLO_WORLD) {
 			return IWebService.METHOD__HELLO_WORLD;
@@ -71,6 +66,7 @@ public class WebService implements IWebService {
 				while (iter.hasNext()) {
 					Entry<String, Object> entry = iter.next();
 					request.addProperty(entry.getKey(), entry.getValue());
+					System.out.println("访问WebService参数---->" + entry.getKey() + " : " + entry.getValue());
 				}
 			}
 
@@ -106,7 +102,7 @@ public class WebService implements IWebService {
 
 	@Override
 	public String helloWorld() {
-		
+
 		SoapObject response = GetSoapResponse(IWebService.ID__HELLO_WORLD, null);
 		if (response != null) {
 			return DTOApi.parseString(response);
@@ -117,11 +113,11 @@ public class WebService implements IWebService {
 
 	@Override
 	public UserObject login(String loginName, String password) {
-		
+
 		HashMap<String, Object> params = new HashMap<String, Object>();
 		params.put(IWebService.PARAM__LOGIN__LOGIN_NAME, loginName);
 		params.put(IWebService.PARAM__LOGIN__PASSWORD, password);
-		
+
 		SoapObject response = GetSoapResponse(IWebService.ID__LOGIN, params);
 		if (response != null) {
 			return DTOApi.parseUserObject(response);
@@ -132,26 +128,84 @@ public class WebService implements IWebService {
 
 	@Override
 	public boolean regist(UserObject user, String password) {
-		// TODO Auto-generated method stub
-		return false;
+
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put(IWebService.PARAM__REGIST__USER, DTOApi.convertToString(user));
+		params.put(IWebService.PARAM__REGIST__PASSWORD, password);
+
+		SoapObject response = GetSoapResponse(IWebService.ID__REGIST, params);
+		if (response != null) {
+			return DTOApi.parseBoolean(response);
+		} else {
+			return false;
+		}
 	}
 
 	@Override
 	public List<SightItem> getSights() {
-		// TODO Auto-generated method stub
-		return null;
+		SoapObject response = GetSoapResponse(IWebService.ID__GET_SIGHTS, null);
+		if (response != null) {
+			return DTOApi.parseSightItems(response);
+		} else {
+			return null;
+		}
 	}
 
 	@Override
 	public List<SightItem> getSightsByUserId(String userId) {
-		// TODO Auto-generated method stub
-		return null;
+
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put(IWebService.PARAM__GET_SIGHTS_BY_USERID, userId);
+
+		SoapObject response = GetSoapResponse(IWebService.ID__GET_SIGHTS_BY_USERID, params);
+		if (response != null) {
+			return DTOApi.parseSightItems(response);
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	public List<TourItem> getToursByUserId(String userId) {
+
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put(IWebService.PARAM__GET_TOURS_BY_USERID, userId);
+
+		SoapObject response = GetSoapResponse(IWebService.ID__GET_TOURS_BY_USERID, params);
+		if (response != null) {
+			return DTOApi.parseTourItems(response);
+		} else {
+			return null;
+		}
 	}
 
 	@Override
 	public SightObject getSightBySightId(String sightId) {
-		// TODO Auto-generated method stub
-		return null;
+
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put(IWebService.PARAM__GET_SIGHT_BY_SIGHTID, sightId);
+
+		SoapObject response = GetSoapResponse(IWebService.ID__GET_SIGHT_BY_SIGHTID, params);
+		if (response != null) {
+			return DTOApi.parseSightObject(response);
+		} else {
+			return null;
+		}
+	}
+
+	@Override
+	public SightObject getSightBySightIdAndUserId(String sightId, String userId) {
+
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put(IWebService.PARAM__GET_SIGHT_BY_SIGHTID_AND_USERID__SIGHTID, sightId);
+		params.put(IWebService.PARAM__GET_SIGHT_BY_SIGHTID_AND_USERID__USERID, userId);
+
+		SoapObject response = GetSoapResponse(IWebService.ID__GET_SIGHT_BY_SIGHTID_AND_USERID, params);
+		if (response != null) {
+			return DTOApi.parseSightObject(response);
+		} else {
+			return null;
+		}
 	}
 
 	@Override
@@ -161,31 +215,27 @@ public class WebService implements IWebService {
 	}
 
 	@Override
-	public List<BlogItem> getBlogByBlogId(String blogId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<TourItem> getToursByUserId(String userId) {
+	public BlogObject getBlogByBlogId(String blogId) {
 		// TODO Auto-generated method stub
 		return null;
 	}
 
 	@Override
 	public TourObject getTourByTourId(String tourId) {
-		// TODO Auto-generated method stub
-		return null;
+
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put(IWebService.PARAM__GET_TOUR_BY_TOURID, tourId);
+
+		SoapObject response = GetSoapResponse(IWebService.ID__GET_TOUR_BY_TOURID, params);
+		if (response != null) {
+			return DTOApi.parseTourObject(response);
+		} else {
+			return null;
+		}
 	}
 
 	@Override
 	public SubtourObject getSubtourByTourIdAndSubtourId(String tourId, String subtourId) {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public List<SightItem> getSightBySightIdAndUserId(String sightId, String userId) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -9,10 +9,10 @@ namespace SextantTG.WebServices.DTO
     {
         public TourObject()
         {
-            this.BlogList = new List<BlogItem>();
-            this.CommentList = new List<CommentItem>();
-            this.PictureList = new List<PictureItem>();
-            this.SubtourList = new List<SubtourItem>();
+            this.BlogItemList = new List<BlogItem>();
+            this.CommentItemList = new List<CommentItem>();
+            this.PictureItemList = new List<PictureItem>();
+            this.SubtourItemList = new List<SubtourItem>();
         }
 
         public string TourId { get; set; }
@@ -21,9 +21,9 @@ namespace SextantTG.WebServices.DTO
         public DateTime BeginDate { get; set; }
         public DateTime EndDate { get; set; }
         public float Cost { get; set; }
-        public List<SubtourItem> SubtourList { get; set; }
-        public List<PictureItem> PictureList { get; set; }
-        public List<BlogItem> BlogList { get; set; }
-        public List<CommentItem> CommentList { get; set; }
+        public List<SubtourItem> SubtourItemList { get; set; }
+        public List<PictureItem> PictureItemList { get; set; }
+        public List<BlogItem> BlogItemList { get; set; }
+        public List<CommentItem> CommentItemList { get; set; }
     }
 }

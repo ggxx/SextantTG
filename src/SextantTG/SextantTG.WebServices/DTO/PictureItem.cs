@@ -30,6 +30,6 @@ namespace SextantTG.WebServices.DTO
         /// <summary>
         /// 上传时间
         /// </summary>
-        public DateTime? CreatingTime { get; set; }
+        public DateTime CreatingTime { get; set; }
     }
 }

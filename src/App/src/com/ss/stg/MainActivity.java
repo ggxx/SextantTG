@@ -1,30 +1,43 @@
 package com.ss.stg;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import com.ss.stg.LoginFragment.OnLoginFragmentInteractionListener;
-import com.ss.stg.LogoutFragment.OnLogoutFragmentInteractionListener;
+import com.ss.stg.LoginFragment.OnLogoutFragmentInteractionListener;
 import com.ss.stg.SightsFragment.OnSightsFragmentInteractionListener;
 import com.ss.stg.ToursFragment.OnTourFragmentInteractionListener;
-import com.ss.stg.dto.UserObject;
 
 import android.app.ActionBar;
-import android.app.FragmentTransaction;
+import android.app.ActionBar.Tab;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
+import android.support.v4.app.FragmentStatePagerAdapter;
 import android.support.v4.view.ViewPager;
 
 import android.util.Log;
 import android.view.Menu;
+import android.view.ViewGroup;
 
-public class MainActivity extends FragmentActivity implements ActionBar.TabListener, OnTourFragmentInteractionListener, OnSightsFragmentInteractionListener, OnLoginFragmentInteractionListener, OnLogoutFragmentInteractionListener {
+public class MainActivity extends FragmentActivity implements ActionBar.TabListener, OnTourFragmentInteractionListener, OnSightsFragmentInteractionListener, OnLoginFragmentInteractionListener,
+		OnLogoutFragmentInteractionListener {
 
-	private boolean isLogin = false;
+	private String loginUserId = "";
+
+	public String getLoginUserId() {
+		return this.loginUserId;
+	}
 
 	/**
-	 * The {@link android.support.v4.view.PagerAdapter} that will provide fragments for each of the sections. We use a {@link android.support.v4.app.FragmentPagerAdapter} derivative, which will keep every loaded fragment in memory. If this becomes too memory intensive, it may be best to switch to a
+	 * The {@link android.support.v4.view.PagerAdapter} that will provide
+	 * fragments for each of the sections. We use a
+	 * {@link android.support.v4.app.FragmentPagerAdapter} derivative, which
+	 * will keep every loaded fragment in memory. If this becomes too memory
+	 * intensive, it may be best to switch to a
 	 * {@link android.support.v4.app.FragmentStatePagerAdapter}.
 	 */
 	SectionsPagerAdapter mSectionsPagerAdapter;
@@ -42,13 +55,21 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		// Set up the action bar.
 		final ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-
+		
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the app.
-		mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager());
+		List<Fragment> fragments = new ArrayList<Fragment>();
+		Fragment loginFragment = new LoginFragment();
+		Fragment sightsfFragment = new SightsFragment();
+		Fragment toursfragment = new ToursFragment();
+		fragments.add(loginFragment);
+		fragments.add(sightsfFragment);
+		fragments.add(toursfragment);
+		mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), fragments);
 
 		// Set up the ViewPager with the sections adapter.
 		mViewPager = (ViewPager) findViewById(R.id.pager);
+		mViewPager.setOffscreenPageLimit(2);
 		mViewPager.setAdapter(mSectionsPagerAdapter);
 
 		// When swiping between different sections, select the corresponding
@@ -64,117 +85,123 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		// For each of the sections in the app, add a tab to the action bar.
 		actionBar.addTab(actionBar.newTab().setText(R.string.tab_login).setTabListener(this));
 		actionBar.addTab(actionBar.newTab().setText(R.string.tab_sights).setTabListener(this));
-		actionBar.addTab(actionBar.newTab().setText(R.string.tab_tours).setTabListener(this));
-
+		actionBar.addTab(actionBar.newTab().setText(R.string.tab_tours).setTabListener(this)); 
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
-		// Inflate the menu; this adds items to the action bar if it is present.
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
 	}
 
 	@Override
-	public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-		// When the given tab is selected, switch to the corresponding page in
-		// the ViewPager.
+	public void onTabReselected(Tab tab, android.app.FragmentTransaction ft) {
+	}
+
+	@Override
+	public void onTabSelected(Tab tab, android.app.FragmentTransaction ft) {
+		System.out.println("tabPosition=" + tab.getPosition());
 		mViewPager.setCurrentItem(tab.getPosition());
 	}
 
 	@Override
-	public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
-	}
-
-	@Override
-	public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+	public void onTabUnselected(Tab tab, android.app.FragmentTransaction ft) {
 	}
 
 	/**
-	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to one of the sections/tabs/pages.
+	 * A {@link FragmentPagerAdapter} that returns a fragment corresponding to
+	 * one of the sections/tabs/pages.
 	 */
-	public class SectionsPagerAdapter extends FragmentPagerAdapter {
+	public class SectionsPagerAdapter extends FragmentStatePagerAdapter {
 
-		public SectionsPagerAdapter(FragmentManager fm) {
+		private List<Fragment> fragments = null;
+
+		public SectionsPagerAdapter(FragmentManager fm, List<Fragment> fragments) {
 			super(fm);
-		}
-
-		@Override
-		public Fragment getItem(int position) {
-			// getItem is called to instantiate the fragment for the given page.
-			// Return a DummySectionFragment (defined as a static inner class
-			// below) with the page number as its lone argument.
-			switch (position) {
-			case 0:
-				if (!isLogin) {
-					Log.d("MyLog", "ShowLogin");
-					Fragment loginFragment = new LoginFragment();
-					return loginFragment;
-				} else {
-					Log.d("MyLog", "ShowLogout");
-					Fragment logoutFragment = new LogoutFragment();
-					return logoutFragment;
-				}
-			case 1:
-				Fragment sightsfFragment = new SightsFragment();
-				return sightsfFragment;
-			case 2:
-				Fragment toursfragment = new ToursFragment();
-				return toursfragment;
-			default:
-				Fragment fragment = new ToursFragment();
-				return fragment;
-			}
-
-			// Fragment fragment = new DummySectionFragment();
-			// Bundle args = new Bundle();
-			// args.putInt(DummySectionFragment.ARG_SECTION_NUMBER, position +
-			// 1);
-			// fragment.setArguments(args);
-			// return fragment;
+			this.fragments = fragments;
 		}
 
 		@Override
 		public int getCount() {
-			// Show 3 total pages.
-			return 3;
+			if (this.fragments == null) {
+				return 0;
+			}
+			return this.fragments.size();
+		}
+
+		@Override
+		public Fragment getItem(int position) {
+			System.out.println("SectionsPagerAdapter_getItem:" + position);
+			return this.fragments.get(position);
+		}
+
+		@Override
+		public Object instantiateItem(ViewGroup container, int position) {
+			System.out.println("SectionsPagerAdapter_instantiateItem:" + position);
+			return super.instantiateItem(container, position);
+		}
+
+		@Override
+		public int getItemPosition(Object object) {
+			return POSITION_NONE;
 		}
 	}
 
 	@Override
 	public void onTourFragmentInteraction(String id) {
 		// TODO Auto-generated method stub
-
-	}
-
-	@Override
-	public void onSightsFragmentInteraction(String id) {
-		// TODO Auto-generated method stub
-		Intent intent = new Intent(this, SightsActivity.class);
-		intent.putExtra("id", id);
+		Intent intent = new Intent(this, TourActivity.class);
+		intent.putExtra("tourid", id);
+		//intent.putExtra("userid", loginUserId);
 		startActivity(intent);
 	}
 
 	@Override
-	public void onLoginFragmentInteraction(UserObject user) {
-		Log.d("MyLog", "Loginnnnnn");
-		// TODO Auto-generated method stub
-		if (user != null) {
-			Log.d("MyLog", "Loginnnnnn11");
-			this.isLogin = true;
-			this.getActionBar().selectTab(this.getActionBar().getTabAt(0));
-			//mViewPager.setCurrentItem(0);
-		} else {
-			Log.d("MyLog", "Loginnnnnn22");
-			this.isLogin = false;
+	public void onSightsFragmentInteraction(String id) {
+		Intent intent = new Intent(this, SightsActivity.class);
+		intent.putExtra("sightsid", id);
+		intent.putExtra("userid", loginUserId);
+		startActivity(intent);
+	}
+
+	@Override
+	public void onLoginFragmentInteraction(String id) {
+		Log.d("MyLog", "LoginButtonClick");
+		if (id != null && !id.trim().equals("")) {
+			this.loginUserId = id;
+
+			// 刷新页面缓存
+			List<Fragment> fragments = new ArrayList<Fragment>();
+			Fragment loginFragment = new LoginFragment();
+			Fragment sightsfFragment = new SightsFragment();
+			Fragment toursfragment = new ToursFragment();
+			fragments.add(loginFragment);
+			fragments.add(sightsfFragment);
+			fragments.add(toursfragment);
+			mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), fragments);
+			mViewPager = (ViewPager) findViewById(R.id.pager);
+			mViewPager.setOffscreenPageLimit(2);
+			mViewPager.setAdapter(mSectionsPagerAdapter);
 		}
 	}
 
 	@Override
 	public void onLogoutFragmentInteraction() {
-		Log.d("MyLog", "Logouttttt");
-		// TODO Auto-generated method stub
-		this.isLogin = false;
-		mViewPager.setCurrentItem(0);
+		Log.d("MyLog", "LogoutButtonClick");
+		this.loginUserId = "";
+
+		// 刷新页面缓存
+		List<Fragment> fragments = new ArrayList<Fragment>();
+		Fragment loginFragment = new LoginFragment();
+		Fragment sightsfFragment = new SightsFragment();
+		Fragment toursfragment = new ToursFragment();
+		fragments.add(loginFragment);
+		fragments.add(sightsfFragment);
+		fragments.add(toursfragment);
+		mSectionsPagerAdapter = new SectionsPagerAdapter(getSupportFragmentManager(), fragments);
+		mViewPager = (ViewPager) findViewById(R.id.pager);
+		mViewPager.setOffscreenPageLimit(2);
+		mViewPager.setAdapter(mSectionsPagerAdapter);
 	}
+
 }
