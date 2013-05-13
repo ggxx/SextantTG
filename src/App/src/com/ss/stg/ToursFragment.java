@@ -124,6 +124,7 @@ public class ToursFragment extends Fragment implements AbsListView.OnItemClickLi
 	@Override
 	public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
+		final int pos = position;
 		// final Context context = this.layoutInflater.getContext();
 		final CharSequence[] items = { "浏览", "编辑", "删除" };
 		AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
@@ -135,7 +136,8 @@ public class ToursFragment extends Fragment implements AbsListView.OnItemClickLi
 
 				// 浏览
 				case 0:
-
+					String id2 = mAdapter.getItem(pos).getTourId();
+					mListener.onTourFragmentInteraction(id2);
 					break;
 
 				// 编辑

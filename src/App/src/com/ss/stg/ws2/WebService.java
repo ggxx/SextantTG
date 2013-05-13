@@ -18,9 +18,9 @@ public class WebService implements IWebService {
 	}
 
 	private static final String WS_NAMESPACE = "http://github.com/ggxx/SextantTG/";
-	// private static final String WS_URL =
-	// "http://172.16.101.217:1153/WS2.asmx";
-	private static final String WS_URL = "http://10.0.2.2:1153/WS2.asmx";
+	private static final String WS_URL = "http://192.168.137.1:19867/WS2.asmx";
+
+	// private static final String WS_URL = "http://10.0.2.2:1153/WS2.asmx";
 
 	private String getMethodName(int methodId) {
 		if (methodId == IWebService.ID__HELLO_WORLD) {

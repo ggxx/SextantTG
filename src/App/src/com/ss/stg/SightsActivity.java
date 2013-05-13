@@ -13,10 +13,15 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.AbsListView;
 import android.widget.Gallery;
+import android.widget.HorizontalScrollView;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.RatingBar;
 import android.widget.Toast;
@@ -80,6 +85,7 @@ public class SightsActivity extends Activity {
 				ListView blogListView = (ListView) findViewById(R.id.sights_view_bloglist);
 				TextView picTextView = (TextView) findViewById(R.id.sights_view_pictures);
 				Gallery gallery = (Gallery) findViewById(R.id.sights_view_gallery);
+				LinearLayout imagesLayout = (LinearLayout) findViewById(R.id.sights_view_imagesLayout);
 
 				starTextView.setText(String.valueOf(sights.getStars()));
 				nameTextView.setText(MessageFormat.format("{0}({1})", sights.getSightsName(), sights.getSightsLevel()));
@@ -101,24 +107,51 @@ public class SightsActivity extends Activity {
 
 				commTextView.setText(MessageFormat.format("留言({0})", sights.getCommentList().size()));
 
-				ViewGroup.LayoutParams params = commentListView.getLayoutParams();
-				params.height = sights.getCommentList().size() * 60;
-				commentListView.setLayoutParams(params);
+				// ViewGroup.LayoutParams params =
+				// commentListView.getLayoutParams();
+				// params.height = sights.getCommentList().size() * 60;
+				// commentListView.setLayoutParams(params);
 
 				CommentAdapter commentAdapter = new CommentAdapter(activity, sights.getCommentList());
 				commentListView.setAdapter(commentAdapter);
+				setListViewHeightBasedOnChildren(commentListView);
 
 				picTextView.setText(MessageFormat.format("图片({0})", sights.getPictureList().size()));
 				ImageAdapter imageAdapter = new ImageAdapter(activity, sights.getPictureList());
 				gallery.setAdapter(imageAdapter);
+				// for (int i = 0; i < imageAdapter.getCount(); i++) {
+				// ImageView imageView = new ImageView(getApplicationContext());
+				// imageView.setLayoutParams(new ViewGroup.LayoutParams(200,
+				// 200));
+				// imageView.setScaleType(ImageView.ScaleType.FIT_CENTER);
+				// imageView.setImageBitmap(imageAdapter.getItem(i).getBitmap());
+				// imageView.setOnClickListener(new View.OnClickListener() {
+				// @Override
+				// public void onClick(View view) {
+				//
+				// }
+				// });
+				// imagesLayout.addView(imageView);
+				// }
 
 				blogTextView.setText(MessageFormat.format("日志({0})", sights.getBlogList().size()));
-				ViewGroup.LayoutParams params2 = blogListView.getLayoutParams();
-				params2.height = sights.getBlogList().size() * 60;
-				blogListView.setLayoutParams(params2);
-
 				BlogAdapter blogAdapter = new BlogAdapter(activity, sights.getBlogList());
 				blogListView.setAdapter(blogAdapter);
+
+				// ViewGroup.LayoutParams params2 =
+				// blogListView.getLayoutParams();
+				//
+				// int totalHeight = 0;
+				// for (int i = 0; i < commentAdapter.getCount(); i++) {
+				// View listItem = commentAdapter.getView(i, null,
+				// commentListView);
+				// listItem.measure(0, 0);
+				// totalHeight += listItem.getMeasuredHeight();
+				// }
+				//
+				// params2.height = totalHeight;// sights.getBlogList().size() *
+				// 60;
+				// blogListView.setLayoutParams(params2);
 
 				// gallery.setAdapter(imageAdapter);
 				// gallery.setOnItemSelectedListener((SightsActivity) activity);
@@ -132,13 +165,6 @@ public class SightsActivity extends Activity {
 				// imageSwitcher.setOutAnimation(AnimationUtils.loadAnimation(activity,
 				// android.R.anim.fade_out));
 
-				// int totalHeight = 0;
-				// for (int i = 0; i < commentAdapter.getCount(); i++) {
-				// View listItem = commentAdapter.getView(i, null,
-				// commentListView);
-				// listItem.measure(0, 0);
-				// totalHeight += listItem.getMeasuredHeight();
-				// }
 				//
 				// ViewGroup.LayoutParams params =
 				// commentListView.getLayoutParams();
@@ -152,6 +178,25 @@ public class SightsActivity extends Activity {
 			} else {
 				showNetworkErrorDialog();
 			}
+		}
+
+		public void setListViewHeightBasedOnChildren(ListView listView) {
+			ListAdapter listAdapter = listView.getAdapter();
+			if (listAdapter == null) {
+				return;
+			}
+
+			int totalHeight = 0;
+			for (int i = 0; i < listAdapter.getCount(); i++) {
+				View listItem = listAdapter.getView(i, null, listView);
+				listItem.measure(0, 0);
+				totalHeight += listItem.getMeasuredHeight() + 4;
+			}
+
+			ViewGroup.LayoutParams params = listView.getLayoutParams();
+			params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+			((MarginLayoutParams) params).setMargins(4, 4, 4, 4);
+			listView.setLayoutParams(params);
 		}
 
 		private void showNetworkErrorDialog() {

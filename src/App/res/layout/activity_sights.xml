@@ -2,7 +2,7 @@
 <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:padding="8dp" >
+    android:padding="8dp">
 
     <RelativeLayout
         android:layout_width="match_parent"
@@ -118,6 +118,18 @@
                 android:id="@+id/sights_view_gallery"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content" />
+
+            <HorizontalScrollView
+                android:id="@+id/sights_view_imagesView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <LinearLayout
+                    android:id="@+id/sights_view_imagesLayout"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" >
+                </LinearLayout>
+            </HorizontalScrollView>
 
             <View
                 android:layout_width="fill_parent"

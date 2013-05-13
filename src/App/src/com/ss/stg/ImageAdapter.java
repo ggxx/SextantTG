@@ -3,6 +3,7 @@ package com.ss.stg;
 import java.util.List;
 import com.ss.stg.dto.PictureItem;
 import android.content.Context;
+import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -34,7 +35,9 @@ public class ImageAdapter extends ArrayAdapter<PictureItem> {
 		if (pictureItem != null) {
 			imageViewWrapper.setId(pictureItem.getPictureId());
 			imageViewWrapper.getTextView().setText(pictureItem.getDescription());
+			//imageViewWrapper.getTextView().setCompoundDrawables(null, Drawable.createFromPath(pictureItem.getPath()), null, null);
 			imageViewWrapper.getImageView().setImageBitmap(pictureItem.getBitmap());
+			//imageViewWrapper.getImageView().setContentDescription(pictureItem.getDescription());
 		}
 		return convertView;
 	}

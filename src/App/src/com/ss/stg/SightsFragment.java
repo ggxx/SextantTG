@@ -51,7 +51,7 @@ public class SightsFragment extends Fragment implements AbsListView.OnItemClickL
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		Log.d("MyLog", "SightsFragment_onCreate");
-		
+
 		super.onCreate(savedInstanceState);
 
 		if (getArguments() != null) {
@@ -73,8 +73,7 @@ public class SightsFragment extends Fragment implements AbsListView.OnItemClickL
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		Log.d("MyLog", "SightsFragment_onCreateView");
-		
-		
+
 		View view = inflater.inflate(R.layout.fragment_sights_list, container, false);
 
 		// Set the adapter
@@ -124,8 +123,9 @@ public class SightsFragment extends Fragment implements AbsListView.OnItemClickL
 	public boolean onItemLongClick(AdapterView<?> parent, View view, int position, long id) {
 
 		if (null != mListener) {
+			final int pos = position;
 			// final Context context = this.layoutInflater.getContext();
-			final CharSequence[] items = { "浏览", "编辑", "删除" };
+			final CharSequence[] items = { "浏览" };// , "编辑", "删除" };
 			AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
 			builder.setTitle("操作列表");
 			builder.setItems(items, new DialogInterface.OnClickListener() {
@@ -135,10 +135,13 @@ public class SightsFragment extends Fragment implements AbsListView.OnItemClickL
 
 					// 浏览
 					case 0:
+						String id2 = mAdapter.getItem(pos).getSightsId();
+						mListener.onSightsFragmentInteraction(id2);
 						break;
 
 					// 编辑
 					case 1:
+
 						break;
 
 					// 删除
