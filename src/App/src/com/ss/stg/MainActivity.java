@@ -21,6 +21,7 @@ import android.support.v4.view.ViewPager;
 
 import android.util.Log;
 import android.view.Menu;
+import android.view.MenuItem;
 import android.view.ViewGroup;
 
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener, OnTourFragmentInteractionListener, OnSightsFragmentInteractionListener, OnLoginFragmentInteractionListener,
@@ -55,7 +56,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		// Set up the action bar.
 		final ActionBar actionBar = getActionBar();
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
-		
+
 		// Create the adapter that will return a fragment for each of the three
 		// primary sections of the app.
 		List<Fragment> fragments = new ArrayList<Fragment>();
@@ -85,13 +86,28 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		// For each of the sections in the app, add a tab to the action bar.
 		actionBar.addTab(actionBar.newTab().setText(R.string.tab_login).setTabListener(this));
 		actionBar.addTab(actionBar.newTab().setText(R.string.tab_sights).setTabListener(this));
-		actionBar.addTab(actionBar.newTab().setText(R.string.tab_tours).setTabListener(this)); 
+		actionBar.addTab(actionBar.newTab().setText(R.string.tab_tours).setTabListener(this));
 	}
 
 	@Override
 	public boolean onCreateOptionsMenu(Menu menu) {
 		getMenuInflater().inflate(R.menu.main, menu);
 		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.action_addtour:
+			Intent intent = new Intent(this, TourEditActivity.class);
+			startActivity(intent);
+			break;
+
+		case R.id.action_settings:
+			break;
+		}
+
+		return false;
 	}
 
 	@Override
@@ -152,7 +168,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		// TODO Auto-generated method stub
 		Intent intent = new Intent(this, TourActivity.class);
 		intent.putExtra("tourid", id);
-		//intent.putExtra("userid", loginUserId);
+		// intent.putExtra("userid", loginUserId);
 		startActivity(intent);
 	}
 

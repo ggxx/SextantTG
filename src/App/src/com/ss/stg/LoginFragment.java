@@ -131,7 +131,7 @@ public class LoginFragment extends Fragment {
 
 		@Override
 		public void onClick(View v) {
-			
+
 			String loginName = nameEditText.getText().toString();
 			String password = passwordEditText.getText().toString();
 			if (loginName.equals("") || password.equals("")) {

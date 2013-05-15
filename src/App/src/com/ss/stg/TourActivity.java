@@ -84,7 +84,7 @@ public class TourActivity extends Activity {
 				ViewGroup.LayoutParams params0 = subtourListView.getLayoutParams();
 				params0.height = tour.getSubtourList().size() * 50;
 				subtourListView.setLayoutParams(params0);
-				SubtourAdapter subtourAdapter = new SubtourAdapter(activity, tour.getSubtourList());
+				SubtourAdapter subtourAdapter = new SubtourAdapter(activity, SubtourAdapter.READONLY, tour.getSubtourList());
 				subtourListView.setAdapter(subtourAdapter);
 
 				ViewGroup.LayoutParams params = commentListView.getLayoutParams();

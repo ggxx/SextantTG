@@ -7,6 +7,7 @@ import java.util.List;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -142,7 +143,9 @@ public class ToursFragment extends Fragment implements AbsListView.OnItemClickLi
 
 				// 编辑
 				case 1:
-
+					Intent intent2 = new Intent(getActivity(), TourEditActivity.class);
+					intent2.putExtra("tourid", mAdapter.getItem(pos).getTourId());
+					startActivity(intent2);
 					break;
 
 				// 删除

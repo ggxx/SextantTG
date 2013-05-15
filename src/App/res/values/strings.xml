@@ -12,5 +12,10 @@
     <string name="title_section1">Section 1</string>
     <string name="title_section2">Section 2</string>
     <string name="title_section3">Section 3</string>
+    <string-array name="tour_status_dict">
+        <item >未进行</item>
+        <item >进行中</item>
+        <item >已结束</item>
+    </string-array>
 
 </resources>

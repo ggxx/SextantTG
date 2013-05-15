@@ -3,12 +3,12 @@
     <item
         android:id="@+id/action_settings"
         android:orderInCategory="100"
-        android:showAsAction="never"
+        android:showAsAction="ifRoom|collapseActionView"
         android:title="settings"/>
     <item
         android:id="@+id/action_addtour"
         android:orderInCategory="100"
-        android:showAsAction="never"
+        android:showAsAction="ifRoom|collapseActionView"
         android:title="addTour"/>
 
 </menu>
