@@ -38,6 +38,7 @@ public class RegistActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_regist);
 
+		
 		registButton = (Button) findViewById(R.id.ar_regist_button);
 		nameEditText = (EditText) findViewById(R.id.ar_loginname_edit);
 		passwordEditText = (EditText) findViewById(R.id.ar_password_edit);

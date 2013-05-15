@@ -8,6 +8,7 @@ import com.ss.stg.ws2.WSThread;
 
 import android.app.Activity;
 import android.app.AlertDialog;
+import android.support.v4.app.DialogFragment;
 import android.support.v4.app.Fragment;
 import android.content.DialogInterface;
 import android.content.Intent;
@@ -130,6 +131,7 @@ public class LoginFragment extends Fragment {
 
 		@Override
 		public void onClick(View v) {
+			
 			String loginName = nameEditText.getText().toString();
 			String password = passwordEditText.getText().toString();
 			if (loginName.equals("") || password.equals("")) {
