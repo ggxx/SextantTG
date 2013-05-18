@@ -99,8 +99,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.action_addtour:
-			Intent intent = new Intent(this, TourEditActivity.class);
-			startActivity(intent);
+			//Intent intent = new Intent(this, TourEditActivity.class);
+			//startActivity(intent);
 			break;
 
 		case R.id.action_settings:
@@ -165,10 +165,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
 	@Override
 	public void onTourFragmentInteraction(String id) {
-		// TODO Auto-generated method stub
 		Intent intent = new Intent(this, TourActivity.class);
 		intent.putExtra("tourid", id);
-		// intent.putExtra("userid", loginUserId);
 		startActivity(intent);
 	}
 

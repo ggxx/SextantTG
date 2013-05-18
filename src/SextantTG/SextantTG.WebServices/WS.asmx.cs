@@ -27,7 +27,7 @@ namespace SextantTG.WebServices
         private static readonly IBlogService blogSrv = ServiceFactory.CreateService<IBlogService>();
         private static readonly IDictService dictSrv = ServiceFactory.CreateService<IDictService>();
         private static readonly ICommentService commentSrv = ServiceFactory.CreateService<ICommentService>();
-        private static readonly ISightsService sightsSrv = ServiceFactory.CreateService<ISightsService>();
+        private static readonly ISightsService SightSrv = ServiceFactory.CreateService<ISightsService>();
         private static readonly ITourService tourSrv = ServiceFactory.CreateService<ITourService>();
         private static readonly IUserService userSrv = ServiceFactory.CreateService<IUserService>();
         private static readonly IPictureService pictureSrv = ServiceFactory.CreateService<IPictureService>();
@@ -513,11 +513,11 @@ namespace SextantTG.WebServices
         }
 
         [WebMethod(Description = "获取指定的收藏景点")]
-        public XmlDocument GetFavoriteByUserIdAndSightsId(string userId, string sightsId)
+        public XmlDocument GetFavoriteByUserIdAndSightId(string userId, string SightId)
         {
             try
             {
-                return CreateReturnXmlDocument(userSrv.GetFavoriteByUserIdAndSightsId(userId, sightsId));
+                return CreateReturnXmlDocument(userSrv.GetFavoriteByUserIdAndSightId(userId, SightId));
             }
             catch (Exception ex)
             {
@@ -588,11 +588,11 @@ namespace SextantTG.WebServices
         }
 
         [WebMethod(Description = "获取指定景点的所有日志")]
-        public XmlDocument GetBlogsBySightsId(string sightsId)
+        public XmlDocument GetBlogsBySightId(string SightId)
         {
             try
             {
-                return CreateReturnXmlDocument(blogSrv.GetBlogsBySightsId(sightsId));
+                return CreateReturnXmlDocument(blogSrv.GetBlogsBySightId(SightId));
             }
             catch (Exception ex)
             {
@@ -601,11 +601,11 @@ namespace SextantTG.WebServices
         }
 
         [WebMethod(Description = "获取指定用户与指定景点的所有日志")]
-        public XmlDocument GetBlogsByUserIdAndSightsId(string userId, string sightsId)
+        public XmlDocument GetBlogsByUserIdAndSightId(string userId, string SightId)
         {
             try
             {
-                return CreateReturnXmlDocument(blogSrv.GetBlogsByUserIdAndSightsId(userId, sightsId));
+                return CreateReturnXmlDocument(blogSrv.GetBlogsByUserIdAndSightId(userId, SightId));
             }
             catch (Exception ex)
             {
@@ -715,11 +715,11 @@ namespace SextantTG.WebServices
         }
 
         [WebMethod(Description = "获取指定景点的评论")]
-        public XmlDocument GetSightsCommentsBySightsId(string sightsId)
+        public XmlDocument GetSightCommentsBySightId(string SightId)
         {
             try
             {
-                return CreateReturnXmlDocument(commentSrv.GetSightsCommentsBySightsId(sightsId));
+                return CreateReturnXmlDocument(commentSrv.GetSightCommentsBySightId(SightId));
             }
             catch (Exception ex)
             {
@@ -820,13 +820,13 @@ namespace SextantTG.WebServices
         }
 
         [WebMethod(Description = "新增一条景点评论")]
-        public XmlDocument InsertSightsComment(string inputComment)
+        public XmlDocument InsertSightComment(string inputComment)
         {
             try
             {
                 string msg;
-                SightsComment comment = ReadModel<SightsComment>(inputComment);
-                if (commentSrv.InsertSightsComment(comment, out msg))
+                SightComment comment = ReadModel<SightComment>(inputComment);
+                if (commentSrv.InsertSightComment(comment, out msg))
                 {
                     return CreateReturnXmlDocument(true);
                 }
@@ -842,13 +842,13 @@ namespace SextantTG.WebServices
         }
 
         [WebMethod(Description = "更新一条景点评论")]
-        public XmlDocument UpdateSightsComment(string inputComment)
+        public XmlDocument UpdateSightComment(string inputComment)
         {
             try
             {
                 string msg;
-                SightsComment comment = ReadModel<SightsComment>(inputComment);
-                if (commentSrv.UpdateSightsComment(comment, out msg))
+                SightComment comment = ReadModel<SightComment>(inputComment);
+                if (commentSrv.UpdateSightComment(comment, out msg))
                 {
                     return CreateReturnXmlDocument(true);
                 }
@@ -864,13 +864,13 @@ namespace SextantTG.WebServices
         }
 
         [WebMethod(Description = "删除一条景点评论")]
-        public XmlDocument DeleteSightsComment(string inputComment)
+        public XmlDocument DeleteSightComment(string inputComment)
         {
             try
             {
                 string msg;
-                SightsComment comment = ReadModel<SightsComment>(inputComment);
-                if (commentSrv.DeleteSightsComment(comment, out msg))
+                SightComment comment = ReadModel<SightComment>(inputComment);
+                if (commentSrv.DeleteSightComment(comment, out msg))
                 {
                     return CreateReturnXmlDocument(true);
                 }
@@ -1435,14 +1435,14 @@ namespace SextantTG.WebServices
         #endregion
 
 
-        #region Sights Service
+        #region Sight Service
 
         [WebMethod(Description = "获取所有景点")]
-        public XmlDocument GetSights()
+        public XmlDocument GetSight()
         {
             try
             {
-                return CreateReturnXmlDocument(sightsSrv.GetSights());
+                return CreateReturnXmlDocument(SightSrv.GetSight());
             }
             catch (Exception ex)
             {
@@ -1451,11 +1451,11 @@ namespace SextantTG.WebServices
         }
 
         [WebMethod(Description = "获取指定国家的景点")]
-        public XmlDocument GetSightsByCountryId(string countryId)
+        public XmlDocument GetSightByCountryId(string countryId)
         {
             try
             {
-                return CreateReturnXmlDocument(sightsSrv.GetSightsByCountryId(countryId));
+                return CreateReturnXmlDocument(SightSrv.GetSightByCountryId(countryId));
             }
             catch (Exception ex)
             {
@@ -1464,11 +1464,11 @@ namespace SextantTG.WebServices
         }
 
         [WebMethod(Description = "获取指定省份的景点")]
-        public XmlDocument GetSightsByProvinceId(string provinceId)
+        public XmlDocument GetSightByProvinceId(string provinceId)
         {
             try
             {
-                return CreateReturnXmlDocument(sightsSrv.GetSightsByProvinceId(provinceId));
+                return CreateReturnXmlDocument(SightSrv.GetSightByProvinceId(provinceId));
             }
             catch (Exception ex)
             {
@@ -1477,11 +1477,11 @@ namespace SextantTG.WebServices
         }
 
         [WebMethod(Description = "获取指定城市的景点")]
-        public XmlDocument GetSightsByCityId(string cityId)
+        public XmlDocument GetSightByCityId(string cityId)
         {
             try
             {
-                return CreateReturnXmlDocument(sightsSrv.GetSightsByCityId(cityId));
+                return CreateReturnXmlDocument(SightSrv.GetSightByCityId(cityId));
             }
             catch (Exception ex)
             {
@@ -1490,11 +1490,11 @@ namespace SextantTG.WebServices
         }
 
         [WebMethod(Description = "获取指定景点")]
-        public XmlDocument GetSightsBySightsId(string sightsId)
+        public XmlDocument GetSightBySightId(string SightId)
         {
             try
             {
-                return CreateReturnXmlDocument(sightsSrv.GetSightsBySightsId(sightsId));
+                return CreateReturnXmlDocument(SightSrv.GetSightBySightId(SightId));
             }
             catch (Exception ex)
             {
@@ -1503,11 +1503,11 @@ namespace SextantTG.WebServices
         }
 
         [WebMethod(Description = "获取指定景点的平均评分")]
-        public XmlDocument GetAverageStarsBySightsId(string sightsId)
+        public XmlDocument GetAverageStarsBySightId(string SightId)
         {
             try
             {
-                return CreateReturnXmlDocument(sightsSrv.GetAverageStarsBySightsId(sightsId));
+                return CreateReturnXmlDocument(SightSrv.GetAverageStarsBySightId(SightId));
             }
             catch (Exception ex)
             {
@@ -1516,11 +1516,11 @@ namespace SextantTG.WebServices
         }
 
         [WebMethod(Description = "获取指定用户上传的指定景点的图片")]
-        public XmlDocument GetPicturesBySightsIdAndUploaderId(string sightsId, string uploaderId)
+        public XmlDocument GetPicturesBySightIdAndUploaderId(string SightId, string uploaderId)
         {
             try
             {
-                return CreateReturnXmlDocument(sightsSrv.GetPicturesBySightsIdAndUploaderId(sightsId, uploaderId));
+                return CreateReturnXmlDocument(SightSrv.GetPicturesBySightIdAndUploaderId(SightId, uploaderId));
             }
             catch (Exception ex)
             {
@@ -1529,11 +1529,11 @@ namespace SextantTG.WebServices
         }
 
         [WebMethod(Description = "获取用户游览过的景点")]
-        public XmlDocument GetVisitedSights(string userId)
+        public XmlDocument GetVisitedSight(string userId)
         {
             try
             {
-                return CreateReturnXmlDocument(sightsSrv.GetVisitedSights(userId));
+                return CreateReturnXmlDocument(SightSrv.GetVisitedSight(userId));
             }
             catch (Exception ex)
             {
@@ -1542,11 +1542,11 @@ namespace SextantTG.WebServices
         }
 
         [WebMethod(Description = "获取用户游览过的指定国家的景点")]
-        public XmlDocument GetVisitedSightsByCountryId(string countryId, string userId)
+        public XmlDocument GetVisitedSightByCountryId(string countryId, string userId)
         {
             try
             {
-                return CreateReturnXmlDocument(sightsSrv.GetVisitedSightsByCountryId(countryId, userId));
+                return CreateReturnXmlDocument(SightSrv.GetVisitedSightByCountryId(countryId, userId));
             }
             catch (Exception ex)
             {
@@ -1555,11 +1555,11 @@ namespace SextantTG.WebServices
         }
 
         [WebMethod(Description = "获取用户游览过的指定省份的景点")]
-        public XmlDocument GetVisitedSightsByProvinceId(string provinceId, string userId)
+        public XmlDocument GetVisitedSightByProvinceId(string provinceId, string userId)
         {
             try
             {
-                return CreateReturnXmlDocument(sightsSrv.GetVisitedSightsByProvinceId(provinceId, userId));
+                return CreateReturnXmlDocument(SightSrv.GetVisitedSightByProvinceId(provinceId, userId));
             }
             catch (Exception ex)
             {
@@ -1568,11 +1568,11 @@ namespace SextantTG.WebServices
         }
 
         [WebMethod(Description = "获取用户浏览过的指定城市的景点")]
-        public XmlDocument GetVisitedSightsByCityId(string cityId, string userId)
+        public XmlDocument GetVisitedSightByCityId(string cityId, string userId)
         {
             try
             {
-                return CreateReturnXmlDocument(sightsSrv.GetVisitedSightsByCityId(cityId, userId));
+                return CreateReturnXmlDocument(SightSrv.GetVisitedSightByCityId(cityId, userId));
             }
             catch (Exception ex)
             {
@@ -1581,14 +1581,14 @@ namespace SextantTG.WebServices
         }
 
         [WebMethod(Description = "新增景点")]
-        public XmlDocument InsertSights(string inputSights, string inputPictures)
+        public XmlDocument InsertSight(string inputSight, string inputPictures)
         {
             try
             {
                 string msg;
-                Sights sights = ReadModel<Sights>(inputSights);
+                Sight Sight = ReadModel<Sight>(inputSight);
                 List<Picture> pictures = ReadModelList<Picture>(inputPictures);
-                if (sightsSrv.InsertSights(sights, pictures, out msg))
+                if (SightSrv.InsertSight(Sight, pictures, out msg))
                 {
                     return CreateReturnXmlDocument(true);
                 }
@@ -1605,15 +1605,15 @@ namespace SextantTG.WebServices
 
 
         [WebMethod(Description = "更新景点")]
-        public XmlDocument UpdateSights(string inputSights, string inputPictures, string inputRemovedPictures)
+        public XmlDocument UpdateSight(string inputSight, string inputPictures, string inputRemovedPictures)
         {
             try
             {
                 string msg;
-                Sights sights = ReadModel<Sights>(inputSights);
+                Sight Sight = ReadModel<Sight>(inputSight);
                 List<Picture> pictures = ReadModelList<Picture>(inputPictures);
                 List<Picture> removedPictures = ReadModelList<Picture>(inputRemovedPictures);
-                if (sightsSrv.UpdateSights(sights, pictures, removedPictures, out msg))
+                if (SightSrv.UpdateSight(Sight, pictures, removedPictures, out msg))
                 {
                     return CreateReturnXmlDocument(true);
                 }
@@ -1629,13 +1629,13 @@ namespace SextantTG.WebServices
         }
 
         [WebMethod(Description = "删除景点")]
-        public XmlDocument DeleteSights(string inputSights)
+        public XmlDocument DeleteSight(string inputSight)
         {
             try
             {
                 string msg;
-                Sights sights = ReadModel<Sights>(inputSights);
-                if (sightsSrv.DeleteSights(sights, out msg))
+                Sight Sight = ReadModel<Sight>(inputSight);
+                if (SightSrv.DeleteSight(Sight, out msg))
                 {
                     return CreateReturnXmlDocument(true);
                 }
@@ -1682,11 +1682,11 @@ namespace SextantTG.WebServices
         }
 
         [WebMethod(Description = "获取指定景点相关的旅行")]
-        public XmlDocument GetToursBySightsId(string sightsId)
+        public XmlDocument GetToursBySightId(string SightId)
         {
             try
             {
-                return CreateReturnXmlDocument(tourSrv.GetToursBySightsId(sightsId));
+                return CreateReturnXmlDocument(tourSrv.GetToursBySightId(SightId));
             }
             catch (Exception ex)
             {
@@ -1708,11 +1708,11 @@ namespace SextantTG.WebServices
         }
 
         [WebMethod(Description = "获取指定景点相关，并包括指定日期的旅行")]
-        public XmlDocument GetToursBySightsIdAndDate(string sightsId, DateTime date)
+        public XmlDocument GetToursBySightIdAndDate(string SightId, DateTime date)
         {
             try
             {
-                return CreateReturnXmlDocument(tourSrv.GetToursBySightsIdAndDate(sightsId, date));
+                return CreateReturnXmlDocument(tourSrv.GetToursBySightIdAndDate(SightId, date));
             }
             catch (Exception ex)
             {
@@ -1806,11 +1806,11 @@ namespace SextantTG.WebServices
         }
 
         [WebMethod(Description = "获取指定景点相关的所有子旅行")]
-        public XmlDocument GetSubToursBySightsId(string sightsId)
+        public XmlDocument GetSubToursBySightId(string SightId)
         {
             try
             {
-                return CreateReturnXmlDocument(tourSrv.GetSubToursBySightsId(sightsId));
+                return CreateReturnXmlDocument(tourSrv.GetSubToursBySightId(SightId));
             }
             catch (Exception ex)
             {

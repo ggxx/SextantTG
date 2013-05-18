@@ -45,6 +45,8 @@
             android:name="com.ss.stg.RegistActivity"
             android:label="@string/app_name" >
         </activity>
+        <activity android:name="SubtourEditActivity" >
+        </activity>
     </application>
 
 </manifest>

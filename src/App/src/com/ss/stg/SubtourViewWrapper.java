@@ -13,6 +13,7 @@ public class SubtourViewWrapper {
 	private TextView sightTextView;
 	private TextView dateTextView;
 	private Button deleteButton;
+	private Button editButton;
 
 	public SubtourViewWrapper(View view) {
 		this.view = view;
@@ -56,5 +57,12 @@ public class SubtourViewWrapper {
 			this.deleteButton = (Button) this.view.findViewById(R.id.subtour_item_delete);
 		}
 		return this.deleteButton;
+	}
+
+	public Button getEditButton() {
+		if (this.editButton == null) {
+			this.editButton = (Button) this.view.findViewById(R.id.subtour_item_edit);
+		}
+		return this.editButton;
 	}
 }

@@ -5,14 +5,20 @@
     android:orientation="vertical" >
 
     <EditText
-        android:id="@+id/editText1"
+        android:id="@+id/subtour_edit_name"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="行程名称"
-        android:ems="10" >
-
-        <requestFocus />
+        android:ems="10"
+        android:hint="行程名称" >
     </EditText>
+
+    <TextView
+        android:id="@+id/subtour_edit_name_r"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="行程名称"
+        android:textSize="24sp"
+        android:visibility="gone" />
 
     <TextView
         android:id="@+id/textView1"
@@ -21,7 +27,7 @@
         android:text="国家" />
 
     <Spinner
-        android:id="@+id/spinner1"
+        android:id="@+id/subtour_edit_country"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -32,7 +38,7 @@
         android:text="省份" />
 
     <Spinner
-        android:id="@+id/spinner2"
+        android:id="@+id/subtour_edit_province"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -43,7 +49,7 @@
         android:text="城市" />
 
     <Spinner
-        android:id="@+id/spinner3"
+        android:id="@+id/subtour_edit_city"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -54,7 +60,7 @@
         android:text="景点" />
 
     <Spinner
-        android:id="@+id/spinner4"
+        android:id="@+id/subtour_edit_sight"
         android:layout_width="match_parent"
         android:layout_height="wrap_content" />
 
@@ -72,7 +78,7 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/tour_edit_start_date"
+            android:id="@+id/subtour_edit_start_date"
             style="@style/TextAppearance.EditEvent_SpinnerButton"
             android:layout_width="0px"
             android:layout_height="wrap_content"
@@ -97,7 +103,7 @@
         android:orientation="horizontal" >
 
         <Button
-            android:id="@+id/tour_edit_end_date"
+            android:id="@+id/subtour_edit_end_date"
             style="@style/TextAppearance.EditEvent_SpinnerButton"
             android:layout_width="0px"
             android:layout_height="wrap_content"

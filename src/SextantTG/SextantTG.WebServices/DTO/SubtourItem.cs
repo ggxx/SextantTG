@@ -25,7 +25,7 @@ namespace SextantTG.WebServices.DTO
         /// <summary>
         /// 相关景点ID
         /// </summary>
-        public string SightsName { get; set; }
+        public string SightName { get; set; }
 
         /// <summary>
         /// 起始时间

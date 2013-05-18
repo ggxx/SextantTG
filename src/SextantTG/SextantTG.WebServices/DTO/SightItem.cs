@@ -5,17 +5,17 @@ using System.Web;
 
 namespace SextantTG.WebServices.DTO
 {
-    public class SightsItem : DTO
+    public class SightItem : DTO
     {
         /// <summary>
         /// 景点ID
         /// </summary>
-        public string SightsId { get; set; }
+        public string SightId { get; set; }
 
         /// <summary>
         /// 景点名称
         /// </summary>
-        public string SightsName { get; set; }
+        public string SightName { get; set; }
 
         /// <summary>
         /// 城市
@@ -35,7 +35,7 @@ namespace SextantTG.WebServices.DTO
         /// <summary>
         /// 景点级别
         /// </summary>
-        public string SightsLevel { get; set; }
+        public string SightLevel { get; set; }
 
         /// <summary>
         /// 是否游览过

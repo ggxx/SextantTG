@@ -5,29 +5,29 @@ public class SightItem extends DTO {
 	public SightItem() {
 	}
 
-	private String sightsId;
-	private String sightsName;
+	private String sightId;
+	private String sightName;
 	private String cityName;
 	private String provinceName;
 	private String countryName;
-	private String sightsLevel;
+	private String sightLevel;
 	private boolean hasVisited;
 	private float stars;
 
-	public String getSightsId() {
-		return sightsId;
+	public String getSightId() {
+		return sightId;
 	}
 
-	public void setSightsId(String sightsId) {
-		this.sightsId = sightsId;
+	public void setSightId(String sightId) {
+		this.sightId = sightId;
 	}
 
-	public String getSightsName() {
-		return sightsName;
+	public String getSightName() {
+		return sightName;
 	}
 
-	public void setSightName(String sightsName) {
-		this.sightsName = sightsName;
+	public void setSightName(String sightName) {
+		this.sightName = sightName;
 	}
 
 	public String getCityName() {
@@ -54,12 +54,12 @@ public class SightItem extends DTO {
 		this.countryName = countryName;
 	}
 
-	public String getSightsLevel() {
-		return sightsLevel;
+	public String getSightLevel() {
+		return sightLevel;
 	}
 
-	public void setSightsLevel(String sightsLevel) {
-		this.sightsLevel = sightsLevel;
+	public void setSightLevel(String sightLevel) {
+		this.sightLevel = sightLevel;
 	}
 
 	public boolean getHasVisited() {

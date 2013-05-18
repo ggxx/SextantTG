@@ -1,5 +1,6 @@
 package com.ss.stg;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import android.R.integer;
@@ -13,22 +14,30 @@ import com.ss.stg.dto.SubtourItem;
 import com.ss.stg.ws2.DTOApi;
 
 public class SubtourAdapter extends ArrayAdapter<SubtourItem> {
+
 	private LayoutInflater layoutInflater = null;
 	private SubtourViewWrapper viewWrapper = null;
 	private int viewType = 1;
+	private List<SubtourItem> removedList = null;
 
 	public static final int READONLY = 1;
 	public static final int EDITABLE = 2;
+
+	public List<SubtourItem> getRemovedList() {
+		return this.removedList;
+	}
 
 	public SubtourAdapter(Context context, int viewType, List<SubtourItem> objects) {
 		super(context, R.id.subtour_item_sight, objects);
 		this.layoutInflater = LayoutInflater.from(context);
 		this.viewType = viewType;
+		this.removedList = new ArrayList<SubtourItem>();
 	}
 
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 
+		final int pos = position;
 		SubtourItem item = getItem(position);
 
 		if (convertView == null) {
@@ -43,8 +52,31 @@ public class SubtourAdapter extends ArrayAdapter<SubtourItem> {
 
 			if (this.viewType == EDITABLE) {
 				viewWrapper.getDeleteButton().setVisibility(View.VISIBLE);
+				viewWrapper.getDeleteButton().setOnClickListener(new View.OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						SubtourItem item2 = getItem(pos);
+						SubtourAdapter.this.removedList.add(item2);
+						SubtourAdapter.this.remove(item2);
+					}
+				});
+
+				viewWrapper.getEditButton().setVisibility(View.VISIBLE);
+				viewWrapper.getEditButton().setOnClickListener(new View.OnClickListener() {
+
+					@Override
+					public void onClick(View v) {
+						// TODO Auto-generated method stub
+						// SubtourEditDialogFragment fragment = new
+						// SubtourEditDialogFragment();
+						// fragment.show( manager, tag)
+					}
+				});
 			} else {
 				viewWrapper.getDeleteButton().setVisibility(View.GONE);
+				viewWrapper.getEditButton().setVisibility(View.GONE);
 			}
 
 			viewWrapper.setId(item.getSubtourId());

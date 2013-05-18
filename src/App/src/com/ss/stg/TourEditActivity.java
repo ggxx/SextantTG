@@ -23,11 +23,13 @@ import android.os.Message;
 import android.support.v4.app.FragmentActivity;
 import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.Gallery;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 import android.widget.SpinnerAdapter;
@@ -40,6 +42,7 @@ public class TourEditActivity extends FragmentActivity implements OnDateSetListe
 	private Handler handler = null;
 	private Button startDateButton = null;
 	private Button endDateButton = null;
+	private Button addSubtourButton = null;
 	private Spinner statuSpinner = null;
 	private EditText nameEditText = null;
 	private TextView nameTextView = null;
@@ -51,6 +54,7 @@ public class TourEditActivity extends FragmentActivity implements OnDateSetListe
 
 		startDateButton = (Button) findViewById(R.id.tour_edit_start_date);
 		endDateButton = (Button) findViewById(R.id.tour_edit_end_date);
+		addSubtourButton = (Button) findViewById(R.id.tour_edit_addsubtour);
 		statuSpinner = (Spinner) findViewById(R.id.tour_edit_status);
 		nameEditText = (EditText) findViewById(R.id.tour_edit_name);
 		nameTextView = (TextView) findViewById(R.id.tour_edit_name_r);
@@ -83,7 +87,6 @@ public class TourEditActivity extends FragmentActivity implements OnDateSetListe
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				TourDateEditDialogFragment dialog = new TourDateEditDialogFragment();
 				if (!startDateButton.getText().equals("")) {
 					Bundle bundle = new Bundle();
@@ -102,7 +105,6 @@ public class TourEditActivity extends FragmentActivity implements OnDateSetListe
 
 			@Override
 			public void onClick(View v) {
-				// TODO Auto-generated method stub
 				TourDateEditDialogFragment dialog = new TourDateEditDialogFragment();
 				if (!endDateButton.getText().equals("")) {
 					Bundle bundle = new Bundle();
@@ -114,6 +116,15 @@ public class TourEditActivity extends FragmentActivity implements OnDateSetListe
 				}
 
 				dialog.show(TourEditActivity.this.getSupportFragmentManager(), "end");
+			}
+		});
+
+		addSubtourButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(TourEditActivity.this, SubtourEditActivity.class);
+				startActivityForResult(intent, 0);
 			}
 		});
 	}
@@ -172,77 +183,9 @@ public class TourEditActivity extends FragmentActivity implements OnDateSetListe
 				}
 
 				ListView subtourListView = (ListView) activity.findViewById(R.id.tour_edit_subtourlist);
-				ViewGroup.LayoutParams params0 = subtourListView.getLayoutParams();
-				params0.height = tour.getSubtourList().size() * 50;
-				subtourListView.setLayoutParams(params0);
 				SubtourAdapter subtourAdapter = new SubtourAdapter(activity, SubtourAdapter.EDITABLE, tour.getSubtourList());
 				subtourListView.setAdapter(subtourAdapter);
-
-				// TextView dateTextView = (TextView)
-				// activity.findViewById(R.id.tour_view_date);
-				// TextView statusTextView = (TextView)
-				// activity.findViewById(R.id.tour_view_status);
-				// TextView costTextView = (TextView)
-				// activity.findViewById(R.id.tour_view_cost);
-				// TextView subtourTextView = (TextView)
-				// activity.findViewById(R.id.tour_view_subtours);
-				// TextView blogTextView = (TextView)
-				// activity.findViewById(R.id.tour_view_blogs);
-				// TextView commTextView = (TextView)
-				// activity.findViewById(R.id.tour_view_comments);
-				// TextView picTextView = (TextView)
-				// activity.findViewById(R.id.tour_view_pictures);
-				// ListView subtourListView = (ListView)
-				// activity.findViewById(R.id.tour_view_subtourlist);
-				// ListView commentListView = (ListView)
-				// activity.findViewById(R.id.tour_view_commentlist);
-				// ListView blogListView = (ListView)
-				// activity.findViewById(R.id.tour_view_bloglist);
-				// Gallery gallery = (Gallery)
-				// activity.findViewById(R.id.tour_view_gallery);
-				//
-				// nameTextView.setText(tour.getTourName());
-				// dateTextView.setText(DTOApi.dateFormat.format(tour.getBeginDate())
-				// + " ~ " + DTOApi.dateFormat.format(tour.getEndDate()));
-				// statusTextView.setText(tour.getStatus());
-				// costTextView.setText("￥ " + String.valueOf(tour.getCost()) +
-				// "元");
-				// subtourTextView.setText(MessageFormat.format("行程景点({0})",
-				// tour.getSubtourList().size()));
-				// commTextView.setText(MessageFormat.format("留言({0})",
-				// tour.getCommentList().size()));
-				// picTextView.setText(MessageFormat.format("图片({0})",
-				// tour.getPictureList().size()));
-				// blogTextView.setText(MessageFormat.format("日志({0})",
-				// tour.getBlogList().size()));
-				//
-				// ViewGroup.LayoutParams params0 =
-				// subtourListView.getLayoutParams();
-				// params0.height = tour.getSubtourList().size() * 50;
-				// subtourListView.setLayoutParams(params0);
-				// SubtourAdapter subtourAdapter = new SubtourAdapter(activity,
-				// tour.getSubtourList());
-				// subtourListView.setAdapter(subtourAdapter);
-				//
-				// ViewGroup.LayoutParams params =
-				// commentListView.getLayoutParams();
-				// params.height = tour.getCommentList().size() * 60;
-				// commentListView.setLayoutParams(params);
-				// CommentAdapter commentAdapter = new CommentAdapter(activity,
-				// tour.getCommentList());
-				// commentListView.setAdapter(commentAdapter);
-				//
-				// ImageAdapter imageAdapter = new ImageAdapter(activity,
-				// tour.getPictureList());
-				// gallery.setAdapter(imageAdapter);
-				//
-				// ViewGroup.LayoutParams params2 =
-				// blogListView.getLayoutParams();
-				// params2.height = tour.getBlogList().size() * 60;
-				// blogListView.setLayoutParams(params2);
-				// BlogAdapter blogAdapter = new BlogAdapter(activity,
-				// tour.getBlogList());
-				// blogListView.setAdapter(blogAdapter);
+				setListViewHeightBasedOnChildren(subtourListView);
 
 			} else {
 				showNetworkErrorDialog();
@@ -258,6 +201,25 @@ public class TourEditActivity extends FragmentActivity implements OnDateSetListe
 			}).show();
 
 		}
+	}
+
+	public static void setListViewHeightBasedOnChildren(ListView listView) {
+		ListAdapter listAdapter = listView.getAdapter();
+		if (listAdapter == null) {
+			return;
+		}
+
+		int totalHeight = 0;
+		for (int i = 0; i < listAdapter.getCount(); i++) {
+			View listItem = listAdapter.getView(i, null, listView);
+			listItem.measure(0, 0);
+			totalHeight += listItem.getMeasuredHeight() + 4;
+		}
+
+		ViewGroup.LayoutParams params = listView.getLayoutParams();
+		params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+		((MarginLayoutParams) params).setMargins(4, 4, 4, 4);
+		listView.setLayoutParams(params);
 	}
 
 	private void setSartDateValue(int year, int monthOfYear, int dayOfMonth) {

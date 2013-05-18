@@ -14,8 +14,11 @@ import android.content.DialogInterface;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
+import android.view.View;
 import android.view.ViewGroup;
+import android.view.ViewGroup.MarginLayoutParams;
 import android.widget.Gallery;
+import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -81,30 +84,42 @@ public class TourActivity extends Activity {
 				picTextView.setText(MessageFormat.format("图片({0})", tour.getPictureList().size()));
 				blogTextView.setText(MessageFormat.format("日志({0})", tour.getBlogList().size()));
 
-				ViewGroup.LayoutParams params0 = subtourListView.getLayoutParams();
-				params0.height = tour.getSubtourList().size() * 50;
-				subtourListView.setLayoutParams(params0);
 				SubtourAdapter subtourAdapter = new SubtourAdapter(activity, SubtourAdapter.READONLY, tour.getSubtourList());
 				subtourListView.setAdapter(subtourAdapter);
+				setListViewHeightBasedOnChildren(subtourListView);
 
-				ViewGroup.LayoutParams params = commentListView.getLayoutParams();
-				params.height = tour.getCommentList().size() * 60;
-				commentListView.setLayoutParams(params);
 				CommentAdapter commentAdapter = new CommentAdapter(activity, tour.getCommentList());
 				commentListView.setAdapter(commentAdapter);
+				setListViewHeightBasedOnChildren(commentListView);
 
 				ImageAdapter imageAdapter = new ImageAdapter(activity, tour.getPictureList());
 				gallery.setAdapter(imageAdapter);
 
-				ViewGroup.LayoutParams params2 = blogListView.getLayoutParams();
-				params2.height = tour.getBlogList().size() * 60;
-				blogListView.setLayoutParams(params2);
 				BlogAdapter blogAdapter = new BlogAdapter(activity, tour.getBlogList());
 				blogListView.setAdapter(blogAdapter);
-
+				setListViewHeightBasedOnChildren(blogListView);
 			} else {
 				showNetworkErrorDialog();
 			}
+		}
+
+		public void setListViewHeightBasedOnChildren(ListView listView) {
+			ListAdapter listAdapter = listView.getAdapter();
+			if (listAdapter == null) {
+				return;
+			}
+
+			int totalHeight = 0;
+			for (int i = 0; i < listAdapter.getCount(); i++) {
+				View listItem = listAdapter.getView(i, null, listView);
+				listItem.measure(0, 0);
+				totalHeight += listItem.getMeasuredHeight() + 4;
+			}
+
+			ViewGroup.LayoutParams params = listView.getLayoutParams();
+			params.height = totalHeight + (listView.getDividerHeight() * (listAdapter.getCount() - 1));
+			((MarginLayoutParams) params).setMargins(4, 4, 4, 4);
+			listView.setLayoutParams(params);
 		}
 
 		private void showNetworkErrorDialog() {

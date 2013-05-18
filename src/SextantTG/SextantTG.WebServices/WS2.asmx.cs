@@ -28,7 +28,7 @@ namespace SextantTG.WebServices
         private static readonly IBlogService blogSrv = ServiceFactory.CreateService<IBlogService>();
         private static readonly IDictService dictSrv = ServiceFactory.CreateService<IDictService>();
         private static readonly ICommentService commentSrv = ServiceFactory.CreateService<ICommentService>();
-        private static readonly ISightsService sightsSrv = ServiceFactory.CreateService<ISightsService>();
+        private static readonly ISightsService SightSrv = ServiceFactory.CreateService<ISightsService>();
         private static readonly ITourService tourSrv = ServiceFactory.CreateService<ITourService>();
         private static readonly IUserService userSrv = ServiceFactory.CreateService<IUserService>();
         private static readonly IPictureService pictureSrv = ServiceFactory.CreateService<IPictureService>();
@@ -84,9 +84,9 @@ namespace SextantTG.WebServices
                 {
                     WriteModel<DTO.PictureItem>(writer, (List<DTO.PictureItem>)property.GetValue(model, null));
                 }
-                else if (property.PropertyType == typeof(List<DTO.SightsItem>))
+                else if (property.PropertyType == typeof(List<DTO.SightItem>))
                 {
-                    WriteModel<DTO.SightsItem>(writer, (List<DTO.SightsItem>)property.GetValue(model, null));
+                    WriteModel<DTO.SightItem>(writer, (List<DTO.SightItem>)property.GetValue(model, null));
                 }
                 else if (property.PropertyType == typeof(List<DTO.SubtourItem>))
                 {
@@ -465,22 +465,22 @@ namespace SextantTG.WebServices
         {
             try
             {
-                List<SightsItem> list = new List<SightsItem>();
-                foreach (Sights sights in sightsSrv.GetSights())
+                List<SightItem> list = new List<SightItem>();
+                foreach (Sights sight in SightSrv.GetSights())
                 {
-                    City city = dictSrv.GetCityByCityId(sights.CityId);
-                    Province province = dictSrv.GetProvinceByCityId(sights.CityId);
+                    City city = dictSrv.GetCityByCityId(sight.CityId);
+                    Province province = dictSrv.GetProvinceByCityId(sight.CityId);
                     Country country = province != null ? dictSrv.GetCountryByCountryId(province.CountryId) : null;
-                    float? stars = sightsSrv.GetAverageStarsBySightsId(sights.SightsId);
-                    SightsItem obj = new SightsItem()
+                    float? stars = SightSrv.GetAverageStarsBySightsId(sight.SightsId);
+                    SightItem obj = new SightItem()
                     {
                         CityName = city != null ? city.CityName : "",
                         ProvinceName = province != null ? province.ProvinceName : "",
                         CountryName = country != null ? country.CountryName : "",
                         HasVisited = false,
-                        SightsId = sights.SightsId,
-                        SightsName = sights.SightsName,
-                        SightsLevel = sights.SightsLevel,
+                        SightId = sight.SightsId,
+                        SightName = sight.SightsName,
+                        SightLevel = sight.SightsLevel,
                         Stars = stars ?? 0
                     };
                     list.Add(obj);
@@ -496,11 +496,11 @@ namespace SextantTG.WebServices
         [WebMethod(Description = "获取指定景点(未登录)")]
         public XmlDocument GetSightBySightId(string sightId)
         {
-            Sights sights = sightsSrv.GetSightsBySightsId(sightId);
-            City city = dictSrv.GetCityByCityId(sights.CityId);
-            Province province = dictSrv.GetProvinceByCityId(sights.CityId);
+            Sights sight = SightSrv.GetSightsBySightsId(sightId);
+            City city = dictSrv.GetCityByCityId(sight.CityId);
+            Province province = dictSrv.GetProvinceByCityId(sight.CityId);
             Country country = province != null ? dictSrv.GetCountryByCountryId(province.CountryId) : null;
-            float? stars = sightsSrv.GetAverageStarsBySightsId(sights.SightsId);
+            float? stars = SightSrv.GetAverageStarsBySightsId(sight.SightsId);
             List<BlogItem> blogList = new List<BlogItem>();
             List<PictureItem> pictureList = new List<PictureItem>();
             List<CommentItem> commentList = new List<CommentItem>();
@@ -513,14 +513,14 @@ namespace SextantTG.WebServices
                     BlogId = blog.BlogId,
                     Content = blog.Content,
                     CreatingTime = blog.CreatingTime.HasValue ? blog.CreatingTime.Value : DateTime.MinValue,
-                    SightName = sightsSrv.GetSightsBySightsId(blog.SightsId).SightsName,
+                    SightName = SightSrv.GetSightsBySightsId(blog.SightsId).SightsName,
                     SubtourName = tourSrv.GetSubTourByTourIdAndSubTourId(blog.TourId, blog.SubTourId).SubTourName,
                     TourName = tourSrv.GetTourByTourId(blog.TourId).TourName,
                     Title = blog.Title,
                 };
                 blogList.Add(item);
             }
-            foreach (Picture pic in sightsSrv.GetPicturesBySightsId(sightId))
+            foreach (Picture pic in SightSrv.GetPicturesBySightsId(sightId))
             {
                 PictureItem item = new PictureItem()
                 {
@@ -545,21 +545,21 @@ namespace SextantTG.WebServices
                 commentList.Add(item2);
             }
 
-            SightsObject sightObject = new SightsObject()
+            SightObject sightObject = new SightObject()
             {
                 BlogItemList = blogList,
-                CityName = dictSrv.GetCityByCityId(sights.CityId).CityName,
+                CityName = dictSrv.GetCityByCityId(sight.CityId).CityName,
                 ProvinceName = province.ProvinceName,
                 CountryName = dictSrv.GetCountryByProvinceId(province.ProvinceId).CountryName,
                 CommentItemList = commentList,
-                Description = sights.Description,
+                Description = sight.Description,
                 HasVisited = false,
                 MyStar = 0,
                 PictureItemList = pictureList,
-                Price = sights.Price.HasValue ? sights.Price.Value : 0,
-                SightsId = sights.SightsId,
-                SightsLevel = sights.SightsLevel,
-                SightsName = sights.SightsName,
+                Price = sight.Price.HasValue ? sight.Price.Value : 0,
+                SightId = sight.SightsId,
+                SightLevel = sight.SightsLevel,
+                SightName = sight.SightsName,
                 Stars = stars ?? 0
             };
 
@@ -577,7 +577,7 @@ namespace SextantTG.WebServices
                 Path = PicPath + pic.Path,
                 PictureId = pic.PictureId,
                 UploaderName = userSrv.GetUserByUserId(pic.UploaderId).LoginName,
-                SightsName = sightsSrv.GetSightsBySightsId(pic.SightsId).SightsName,
+                SightName = SightSrv.GetSightsBySightsId(pic.SightsId).SightsName,
                 SubTourName = tourSrv.GetSubTourByTourIdAndSubTourId(pic.TourId, pic.SubTourId).SubTourName,
                 TourName = tourSrv.GetTourByTourId(pic.TourId).TourName
             };
@@ -594,7 +594,7 @@ namespace SextantTG.WebServices
                 BlogId = blog.BlogId,
                 Content = blog.Content,
                 CreatingTime = blog.CreatingTime.HasValue ? blog.CreatingTime.Value : DateTime.MinValue,
-                SightName = sightsSrv.GetSightsBySightsId(blog.SightsId).SightsName,
+                SightName = SightSrv.GetSightsBySightsId(blog.SightsId).SightsName,
                 SubtourName = tourSrv.GetSubTourByTourIdAndSubTourId(blog.TourId, blog.SubTourId).SubTourName,
                 TourName = tourSrv.GetTourByTourId(blog.TourId).TourName,
                 Title = blog.Title,
@@ -638,7 +638,7 @@ namespace SextantTG.WebServices
                     BlogId = blog.BlogId,
                     Content = blog.Content,
                     CreatingTime = blog.CreatingTime.HasValue ? blog.CreatingTime.Value : DateTime.MinValue,
-                    SightName = sightsSrv.GetSightsBySightsId(blog.SightsId).SightsName,
+                    SightName = SightSrv.GetSightsBySightsId(blog.SightsId).SightsName,
                     SubtourName = tourSrv.GetSubTourByTourIdAndSubTourId(blog.TourId, blog.SubTourId).SubTourName,
                     Title = blog.Title,
                     TourName = tourSrv.GetTourByTourId(blog.TourId).TourName
@@ -675,7 +675,7 @@ namespace SextantTG.WebServices
                 {
                     BeginDate = subtour.BeginDate ?? DateTime.MinValue,
                     EndDate = subtour.EndDate ?? DateTime.MinValue,
-                    SightsName = sightsSrv.GetSightsBySightsId(subtour.SightsId).SightsName,
+                    SightName = SightSrv.GetSightsBySightsId(subtour.SightsId).SightsName,
                     SubtourId = subtour.SightsId,
                     SubtourName = subtour.SubTourName,
                     TourId = tourId
@@ -715,7 +715,7 @@ namespace SextantTG.WebServices
                     BlogId = blog.BlogId,
                     Content = blog.Content,
                     CreatingTime = blog.CreatingTime.HasValue ? blog.CreatingTime.Value : DateTime.MinValue,
-                    SightName = sightsSrv.GetSightsBySightsId(blog.SightsId).SightsName,
+                    SightName = SightSrv.GetSightsBySightsId(blog.SightsId).SightsName,
                     SubtourName = tourSrv.GetSubTourByTourIdAndSubTourId(blog.TourId, blog.SubTourId).SubTourName,
                     Title = blog.Title,
                     TourName = tourSrv.GetTourByTourId(blog.TourId).TourName
@@ -741,7 +741,7 @@ namespace SextantTG.WebServices
                 BlogItemList = blogList,
                 EndDate = subtour.EndDate ?? DateTime.MinValue,
                 PictureItemList = pictureList,
-                SightsName = sightsSrv.GetSightsBySightsId(subtour.SightsId).SightsName,
+                SightName = SightSrv.GetSightsBySightsId(subtour.SightsId).SightsName,
                 SubtourId = subtourId,
                 SubtourName = subtour.SubTourName,
                 TourId = tourId
@@ -756,22 +756,22 @@ namespace SextantTG.WebServices
         {
             try
             {
-                List<SightsItem> list = new List<SightsItem>();
-                foreach (Sights sights in sightsSrv.GetSights())
+                List<SightItem> list = new List<SightItem>();
+                foreach (Sights sight in SightSrv.GetSights())
                 {
-                    City city = dictSrv.GetCityByCityId(sights.CityId);
-                    Province province = dictSrv.GetProvinceByCityId(sights.CityId);
+                    City city = dictSrv.GetCityByCityId(sight.CityId);
+                    Province province = dictSrv.GetProvinceByCityId(sight.CityId);
                     Country country = province != null ? dictSrv.GetCountryByCountryId(province.CountryId) : null;
-                    float? stars = sightsSrv.GetAverageStarsBySightsId(sights.SightsId);
-                    SightsItem obj = new SightsItem()
+                    float? stars = SightSrv.GetAverageStarsBySightsId(sight.SightsId);
+                    SightItem obj = new SightItem()
                     {
                         CityName = city != null ? city.CityName : "",
                         ProvinceName = province != null ? province.ProvinceName : "",
                         CountryName = country != null ? country.CountryName : "",
-                        HasVisited = userSrv.GetFavoriteByUserIdAndSightsId(userId, sights.SightsId) != null,
-                        SightsId = sights.SightsId,
-                        SightsName = sights.SightsName,
-                        SightsLevel = sights.SightsLevel,
+                        HasVisited = userSrv.GetFavoriteByUserIdAndSightsId(userId, sight.SightsId) != null,
+                        SightId = sight.SightsId,
+                        SightName = sight.SightsName,
+                        SightLevel = sight.SightsLevel,
                         Stars = stars.HasValue ? stars.Value : 0
                     };
                     list.Add(obj);
@@ -787,12 +787,12 @@ namespace SextantTG.WebServices
         [WebMethod(Description = "获取指定景点(已登录)")]
         public XmlDocument GetSightBySightId2(string sightId, string userId)
         {
-            Sights sights = sightsSrv.GetSightsBySightsId(sightId);
-            City city = dictSrv.GetCityByCityId(sights.CityId);
-            Province province = dictSrv.GetProvinceByCityId(sights.CityId);
+            Sights sight = SightSrv.GetSightsBySightsId(sightId);
+            City city = dictSrv.GetCityByCityId(sight.CityId);
+            Province province = dictSrv.GetProvinceByCityId(sight.CityId);
             Country country = province != null ? dictSrv.GetCountryByCountryId(province.CountryId) : null;
             Favorite fav = userSrv.GetFavoriteByUserIdAndSightsId(userId, sightId);
-            float? stars = sightsSrv.GetAverageStarsBySightsId(sights.SightsId);
+            float? stars = SightSrv.GetAverageStarsBySightsId(sight.SightsId);
             List<BlogItem> blogList = new List<BlogItem>();
             List<PictureItem> pictureList = new List<PictureItem>();
             List<CommentItem> commentList = new List<CommentItem>();
@@ -805,14 +805,14 @@ namespace SextantTG.WebServices
                     BlogId = blog.BlogId,
                     Content = blog.Content,
                     CreatingTime = blog.CreatingTime.HasValue ? blog.CreatingTime.Value : DateTime.MinValue,
-                    SightName = sightsSrv.GetSightsBySightsId(blog.SightsId).SightsName,
+                    SightName = SightSrv.GetSightsBySightsId(blog.SightsId).SightsName,
                     SubtourName = tourSrv.GetSubTourByTourIdAndSubTourId(blog.TourId, blog.SubTourId).SubTourName,
                     TourName = tourSrv.GetTourByTourId(blog.TourId).TourName,
                     Title = blog.Title,
                 };
                 blogList.Add(item);
             }
-            foreach (Picture pic in sightsSrv.GetPicturesBySightsId(sightId))
+            foreach (Picture pic in SightSrv.GetPicturesBySightsId(sightId))
             {
                 PictureItem item = new PictureItem()
                 {
@@ -837,25 +837,192 @@ namespace SextantTG.WebServices
                 commentList.Add(item2);
             }
 
-            SightsObject sightObject = new SightsObject()
+            SightObject sightObject = new SightObject()
             {
                 BlogItemList = blogList,
-                CityName = dictSrv.GetCityByCityId(sights.CityId).CityName,
+                CityName = dictSrv.GetCityByCityId(sight.CityId).CityName,
                 ProvinceName = province.ProvinceName,
                 CountryName = dictSrv.GetCountryByProvinceId(province.ProvinceId).CountryName,
                 CommentItemList = commentList,
-                Description = sights.Description,
+                Description = sight.Description,
                 HasVisited = fav != null ? fav.Visited == 1 : false,
                 MyStar = fav != null ? fav.Stars.HasValue ? fav.Stars.Value : 0 : 0,
                 PictureItemList = pictureList,
-                Price = sights.Price.HasValue ? sights.Price.Value : 0,
-                SightsId = sights.SightsId,
-                SightsLevel = sights.SightsLevel,
-                SightsName = sights.SightsName,
+                Price = sight.Price.HasValue ? sight.Price.Value : 0,
+                SightId = sight.SightsId,
+                SightLevel = sight.SightsLevel,
+                SightName = sight.SightsName,
                 Stars = stars ?? 0
             };
 
             return CreateReturnXmlDocument(sightObject);
         }
+
+
+
+        [WebMethod(Description = "获取所有国家")]
+        public XmlDocument GetCountries()
+        {
+            try
+            {
+                List<CountryItem> items = new List<CountryItem>();
+                foreach (Country country in dictSrv.GetCountries())
+                {
+                    CountryItem item = new CountryItem()
+                    {
+                        CountryId = country.CountryId,
+                        CountryName = country.CountryName
+                    };
+                    items.Add(item);
+                }
+                return CreateReturnXmlDocument(items);
+            }
+            catch (Exception ex)
+            {
+                return CreateErrorXmlDocument(ex);
+            }
+        }
+
+        [WebMethod(Description = "获取所有省份")]
+        public XmlDocument GetProvinces()
+        {
+            try
+            {
+                List<ProvinceItem> items = new List<ProvinceItem>();
+                foreach (Province province in dictSrv.GetProvinces())
+                {
+                    ProvinceItem item = new ProvinceItem()
+                    {
+                        CountryId = province.CountryId,
+                        CountryName = dictSrv.GetCountryByProvinceId(province.ProvinceId).CountryName,
+                        ProvinceId = province.ProvinceId,
+                        ProvinceName = province.ProvinceName
+                    };
+                    items.Add(item);
+                }
+                return CreateReturnXmlDocument(items);
+            }
+            catch (Exception ex)
+            {
+                return CreateErrorXmlDocument(ex);
+            }
+        }
+
+        //[WebMethod(Description = "获取所有城市")]
+        //public XmlDocument GetCities()
+        //{
+        //    try
+        //    {
+        //        return CreateReturnXmlDocument(dictSrv.GetCities());
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return CreateErrorXmlDocument(ex);
+        //    }
+        //}
+
+        //[WebMethod(Description = "获取指定国家的省份")]
+        //public XmlDocument GetProvincesByCountryId(string countryId)
+        //{
+        //    try
+        //    {
+        //        return CreateReturnXmlDocument(dictSrv.GetProvincesByCountryId(countryId));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return CreateErrorXmlDocument(ex);
+        //    }
+        //}
+
+        //[WebMethod(Description = "获取指定省份的城市")]
+        //public XmlDocument GetCitiesByProvinceId(string provinceId)
+        //{
+        //    try
+        //    {
+        //        return CreateReturnXmlDocument(dictSrv.GetCitiesByProvinceId(provinceId));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return CreateErrorXmlDocument(ex);
+        //    }
+        //}
+
+        //[WebMethod(Description = "获取指定国家的城市")]
+        //public XmlDocument GetCitiesByCountryId(string countryId)
+        //{
+        //    try
+        //    {
+        //        return CreateReturnXmlDocument(dictSrv.GetCitiesByCountryId(countryId));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return CreateErrorXmlDocument(ex);
+        //    }
+        //}
+
+        //[WebMethod(Description = "获取指定省份的国家")]
+        //public XmlDocument GetCountryByProvinceId(string provinceId)
+        //{
+        //    try
+        //    {
+        //        return CreateReturnXmlDocument(dictSrv.GetCountryByProvinceId(provinceId));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return CreateErrorXmlDocument(ex);
+        //    }
+        //}
+
+        //[WebMethod(Description = "获取指定城市的省份")]
+        //public XmlDocument GetProvinceByCityId(string cityId)
+        //{
+        //    try
+        //    {
+        //        return CreateReturnXmlDocument(dictSrv.GetProvinceByCityId(cityId));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return CreateErrorXmlDocument(ex);
+        //    }
+        //}
+
+        //[WebMethod(Description = "获取指定国家")]
+        //public XmlDocument GetCountryByCountryId(string countryId)
+        //{
+        //    try
+        //    {
+        //        return CreateReturnXmlDocument(dictSrv.GetCountryByCountryId(countryId));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return CreateErrorXmlDocument(ex);
+        //    }
+        //}
+
+        //[WebMethod(Description = "获取指定省份")]
+        //public XmlDocument GetProvinceByProvinceId(string provinceId)
+        //{
+        //    try
+        //    {
+        //        return CreateReturnXmlDocument(dictSrv.GetProvinceByProvinceId(provinceId));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return CreateErrorXmlDocument(ex);
+        //    }
+        //}
+
+        //[WebMethod(Description = "获取指定城市")]
+        //public XmlDocument GetCityByCityId(string cityId)
+        //{
+        //    try
+        //    {
+        //        return CreateReturnXmlDocument(dictSrv.GetCityByCityId(cityId));
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        return CreateErrorXmlDocument(ex);
+        //    }
+        //}
     }
 }

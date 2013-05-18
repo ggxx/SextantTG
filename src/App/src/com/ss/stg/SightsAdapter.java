@@ -35,8 +35,8 @@ public class SightsAdapter extends ArrayAdapter<SightItem> {
 		}
 
 		if (sights != null) {
-			sightsViewWrapper.setId(sights.getSightsId());
-			sightsViewWrapper.getNameTextView().setText(sights.getSightsName());
+			sightsViewWrapper.setId(sights.getSightId());
+			sightsViewWrapper.getNameTextView().setText(sights.getSightName());
 			sightsViewWrapper.getCityTextView().setText(sights.getCountryName() + "-" + sights.getProvinceName() + "-" + sights.getCityName());
 			sightsViewWrapper.getStarsTextView().setText(String.valueOf(sights.getStars()));
 			sightsViewWrapper.getVisitedImageView().setImageResource(sights.getHasVisited() ? R.drawable.tstar : R.drawable.fstar);

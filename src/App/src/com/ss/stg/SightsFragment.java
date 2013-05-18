@@ -113,7 +113,7 @@ public class SightsFragment extends Fragment implements AbsListView.OnItemClickL
 			// Notify the active callbacks interface (the activity, if the
 			// fragment is attached to one) that an item has been selected.
 
-			String id2 = mAdapter.getItem(position).getSightsId();
+			String id2 = mAdapter.getItem(position).getSightId();
 			mListener.onSightsFragmentInteraction(id2);
 		}
 	}
@@ -134,7 +134,7 @@ public class SightsFragment extends Fragment implements AbsListView.OnItemClickL
 
 					// 浏览
 					case 0:
-						String id2 = mAdapter.getItem(pos).getSightsId();
+						String id2 = mAdapter.getItem(pos).getSightId();
 						mListener.onSightsFragmentInteraction(id2);
 						break;
 

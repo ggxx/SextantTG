@@ -20,6 +20,7 @@ import android.widget.AbsListView;
 import android.widget.AdapterView;
 import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
+import android.widget.Toast;
 
 import com.ss.stg.R;
 import com.ss.stg.dto.TourItem;
@@ -37,6 +38,7 @@ import com.ss.stg.ws2.WSThread;
  */
 public class ToursFragment extends Fragment implements AbsListView.OnItemClickListener, OnItemLongClickListener {
 
+	private Toast toast = null;
 	private Handler handler = null;
 
 	private OnTourFragmentInteractionListener mListener;
@@ -143,14 +145,19 @@ public class ToursFragment extends Fragment implements AbsListView.OnItemClickLi
 
 				// 编辑
 				case 1:
-					Intent intent2 = new Intent(getActivity(), TourEditActivity.class);
-					intent2.putExtra("tourid", mAdapter.getItem(pos).getTourId());
-					startActivity(intent2);
+					toast = Toast.makeText(getActivity(), "暂未实现", Toast.LENGTH_SHORT);
+					toast.show();
+					// Intent intent2 = new Intent(getActivity(),
+					// TourEditActivity.class);
+					// intent2.putExtra("tourid",
+					// mAdapter.getItem(pos).getTourId());
+					// startActivity(intent2);
 					break;
 
 				// 删除
 				case 2:
-
+					toast = Toast.makeText(getActivity(), "暂未实现", Toast.LENGTH_SHORT);
+					toast.show();
 					break;
 				}
 			}

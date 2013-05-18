@@ -85,6 +85,10 @@ public class WSThread extends Thread {
 			} else if (this.methodId == IWebService.ID__GET_TOUR_BY_TOURID) {
 				String tourId = this.params.get(IWebService.PARAM__GET_TOUR_BY_TOURID).toString();
 				returnObject = ws.getTourByTourId(tourId);
+			} else if (this.methodId == IWebService.ID__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID) {
+				String tourId = this.params.get(IWebService.PARAM__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID__TOURID).toString();
+				String subtourId = this.params.get(IWebService.PARAM__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID__SUBTOURID).toString();
+				returnObject = ws.getSubtourByTourIdAndSubtourId(tourId, subtourId);
 			}
 
 			else {

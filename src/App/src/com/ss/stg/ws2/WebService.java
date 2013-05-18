@@ -216,8 +216,16 @@ public class WebService implements IWebService {
 
 	@Override
 	public BlogObject getBlogByBlogId(String blogId) {
-		// TODO Auto-generated method stub
-		return null;
+		
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put(IWebService.PARAM__GET_BLOG_BY_BLOGID, blogId);
+		
+		SoapObject response = GetSoapResponse(IWebService.ID__GET_BLOG_BY_BLOGID, params);
+		if (response != null) {
+			return DTOApi.parseBlogObject(response);
+		} else {
+			return null;
+		}
 	}
 
 	@Override
@@ -236,8 +244,17 @@ public class WebService implements IWebService {
 
 	@Override
 	public SubtourObject getSubtourByTourIdAndSubtourId(String tourId, String subtourId) {
-		// TODO Auto-generated method stub
-		return null;
+
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put(IWebService.PARAM__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID__TOURID, tourId);
+		params.put(IWebService.PARAM__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID__SUBTOURID, subtourId);
+		
+		SoapObject response = GetSoapResponse(IWebService.ID__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID, params);
+		if (response != null) {
+			return DTOApi.parseSubtourObject(response);
+		} else {
+			return null;
+		}
 	}
 
 }

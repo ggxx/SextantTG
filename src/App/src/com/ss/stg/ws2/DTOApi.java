@@ -143,9 +143,9 @@ public class DTOApi {
 		item.setCountryName(getString(tmp, "CountryName"));
 		item.setHasVisited(getBoolean(tmp, "HasVisited"));
 		item.setProvinceName(getString(tmp, "ProvinceName"));
-		item.setSightsId(getString(tmp, "SightsId"));
-		item.setSightsLevel(getString(tmp, "SightsLevel"));
-		item.setSightName(getString(tmp, "SightsName"));
+		item.setSightId(getString(tmp, "SightId"));
+		item.setSightLevel(getString(tmp, "SightLevel"));
+		item.setSightName(getString(tmp, "SightName"));
 		item.setStars(getFloat(tmp, "Stars"));
 		item.setDescription(getString(tmp, "Description"));
 		item.setMyStar(getInteger(tmp, "MyStar"));
@@ -173,9 +173,38 @@ public class DTOApi {
 		return item;
 	}
 
+	public static SubtourObject parseSubtourObject(SoapObject obj) {
+		SoapObject tmp = (SoapObject) obj.getProperty(0);
+		SubtourObject item = new SubtourObject();
+		item.setBeginDate(getDate(tmp, "BeginDate"));
+		item.setEndDate(getDate(tmp, "EndDate"));
+		item.setTourId(getString(tmp, "TourId"));
+		item.setSightName(getString(tmp, "SightName"));
+		item.setSubtourId(getString(tmp, "SubtourId"));
+		item.setSubtourName(getString(tmp, "SubtourName"));
+		item.setBlogList(parseBlogItems(tmp));
+		item.setPictureList(parsePictureItems(tmp));
+		return item;
+	}
+
+	public static BlogObject parseBlogObject(SoapObject obj) {
+		SoapObject tmp = (SoapObject) obj.getProperty(0);
+		BlogObject item = new BlogObject();
+		item.setBlogId(getString(tmp, "BlogId"));
+		item.setAnthor(getString(tmp, "Anthor"));
+		item.setTitle(getString(tmp, "Title"));
+		item.setSightName(getString(tmp, "SightName"));
+		item.setTourName(getString(tmp, "TourName"));
+		item.setSubtourName(getString(tmp, "SubtourName"));
+		item.setContent(getString(tmp, "Content"));
+		item.setCreatingTime(getDateTime(tmp, "CreatingTime"));
+		item.setCommentList(parseCommentItems(tmp));
+		return item;
+	}
+
 	public static List<SightItem> parseSightItems(SoapObject obj) {
-		SoapObject tmps = (SoapObject) obj.getProperty("SightsItemList");
-		List<SightItem> sights = new ArrayList<SightItem>();
+		SoapObject tmps = (SoapObject) obj.getProperty("SightItemList");
+		List<SightItem> sight = new ArrayList<SightItem>();
 		for (int i = 0; i < tmps.getPropertyCount(); i++) {
 			SoapObject tmp = (SoapObject) tmps.getProperty(i);
 			SightItem item = new SightItem();
@@ -183,13 +212,13 @@ public class DTOApi {
 			item.setCountryName(getString(tmp, "CountryName"));
 			item.setHasVisited(getBoolean(tmp, "HasVisited"));
 			item.setProvinceName(getString(tmp, "ProvinceName"));
-			item.setSightsId(getString(tmp, "SightsId"));
-			item.setSightsLevel(getString(tmp, "SightsLevel"));
-			item.setSightName(getString(tmp, "SightsName"));
+			item.setSightId(getString(tmp, "SightId"));
+			item.setSightLevel(getString(tmp, "SightLevel"));
+			item.setSightName(getString(tmp, "SightName"));
 			item.setStars(getFloat(tmp, "Stars"));
-			sights.add(item);
+			sight.add(item);
 		}
-		return sights;
+		return sight;
 	}
 
 	public static List<BlogItem> parseBlogItems(SoapObject obj) {
@@ -202,7 +231,7 @@ public class DTOApi {
 			item.setBlogId(getString(tmp, "BlogId"));
 			item.setContent(getString(tmp, "Content"));
 			item.setCreatingTime(getDateTime(tmp, "CreatingTime"));
-			item.setSightName(getString(tmp, "SightsName"));
+			item.setSightName(getString(tmp, "SightName"));
 			item.setSubtourName(getString(tmp, "SubtourName"));
 			item.setTitle(getString(tmp, "Title"));
 			item.setTourName(getString(tmp, "TourName"));
@@ -253,7 +282,7 @@ public class DTOApi {
 			item.setBeginDate(getDate(tmp, "BeginDate"));
 			item.setEndDate(getDate(tmp, "EndDate"));
 			item.setTourId(getString(tmp, "TourId"));
-			item.setSightsName(getString(tmp, "SightsName"));
+			item.setSightName(getString(tmp, "SightName"));
 			item.setSubtourId(getString(tmp, "SubtourId"));
 			item.setSubtourName(getString(tmp, "SubtourName"));
 			list.add(item);

@@ -20,7 +20,7 @@ namespace SextantTG.WebServices.DTO
         /// <summary>
         /// 景点
         /// </summary>
-        public string SightsName { get; set; }
+        public string SightName { get; set; }
 
         /// <summary>
         /// 旅行（可为空）

@@ -88,7 +88,7 @@ public class SightsActivity extends Activity {
 				LinearLayout imagesLayout = (LinearLayout) findViewById(R.id.sights_view_imagesLayout);
 
 				starTextView.setText(String.valueOf(sights.getStars()));
-				nameTextView.setText(MessageFormat.format("{0}({1})", sights.getSightsName(), sights.getSightsLevel()));
+				nameTextView.setText(MessageFormat.format("{0}({1})", sights.getSightName(), sights.getSightLevel()));
 				cityTextView.setText(MessageFormat.format("{0}-{1}-{2}", sights.getCountryName(), sights.getProvinceName(), sights.getCityName()));
 				descTextView.setText(sights.getDescription());
 				ratingBar.setRating(sights.getMyStar());
