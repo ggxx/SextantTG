@@ -12,6 +12,7 @@ public class TourItem extends DTO {
 	private String status;
 	private Date beginDate;
 	private Date endDate;
+	private String userId;
 
 	public String getTourId() {
 		return tourId;
@@ -51,5 +52,13 @@ public class TourItem extends DTO {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 }

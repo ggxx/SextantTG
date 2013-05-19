@@ -21,6 +21,10 @@ public interface IWebService {
 	int ID__GET_TOUR_BY_TOURID = 10;
 	int ID__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID = 11;
 	int ID__GET_SIGHT_BY_SIGHTID_AND_USERID = 12;
+	int ID__GET_COUNTRIES = 13;
+	int ID__GET_PROVINCES = 14;
+	int ID__GET_CITIES = 15;
+	int ID__SAVE_TOUR = 16;
 
 	String METHOD__HELLO_WORLD = "HelloWorld";
 	String METHOD__LOGIN = "Login";
@@ -34,6 +38,10 @@ public interface IWebService {
 	String METHOD__GET_TOURS_BY_USERID = "GetToursByUserId";
 	String METHOD__GET_TOUR_BY_TOURID = "GetTourByTourId";
 	String METHOD__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID = "GetSubtourByTourIdAndSubtourId";
+	String METHOD__GET_COUNTRIES = "GetCountries";
+	String METHOD__GET_PROVINCES = "GetProvinces";
+	String METHOD__GET_CITIES = "GetCities";
+	String METHOD__SAVE_TOUR = "SaveTour";
 
 	String PARAM__LOGIN__LOGIN_NAME = "loginName";
 	String PARAM__LOGIN__PASSWORD = "password";
@@ -49,6 +57,9 @@ public interface IWebService {
 	String PARAM__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID__SUBTOURID = "subtourId";
 	String PARAM__GET_SIGHT_BY_SIGHTID_AND_USERID__SIGHTID = "sightId";
 	String PARAM__GET_SIGHT_BY_SIGHTID_AND_USERID__USERID = "userId";
+	String PARAM__SAVE_TOUR__TOUR = "tourString";
+	String PARAM__SAVE_TOUR__SUBTOURS = "subtoursString";
+	String PARAM__SAVE_TOUR__REMOVED_SUBTOURS = "removedSubtoursString";
 
 	String helloWorld();
 
@@ -74,4 +85,11 @@ public interface IWebService {
 
 	SightObject getSightBySightIdAndUserId(String sightId, String userId);
 
+	List<CountryItem> GetCountries();
+
+	List<ProvinceItem> GetProvinces();
+
+	List<CityItem> GetCities();
+	
+	boolean SaveTour(TourObject tour, List<SubtourItem> subtourItems, List<SubtourItem> removedSubtourItems);
 }

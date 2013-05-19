@@ -17,6 +17,7 @@ import java.util.Locale;
 
 import org.ksoap2.serialization.SoapObject;
 
+import android.R.integer;
 import android.R.string;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
@@ -126,6 +127,23 @@ public class DTOApi {
 				user.getLoginName(), user.getEmail(), user.getStatus());
 	}
 
+	public static String convertToString(TourObject tour) {
+		return MessageFormat
+				.format("<Request><TourObject><TourId>{0}</TourId><TourName>{1}</TourName><Status>{2}</Status><BeginDate>{3}</BeginDate><EndDate>{4}</EndDate><Cost>{5}</Cost><UserId>{6}</UserId></TourObject></Request>",
+						tour.getTourId(), tour.getTourName(), tour.getStatus(), tour.getBeginDate(), tour.getEndDate(), tour.getCost(), tour.getUserId());
+	}
+
+	public static String convertToString(List<SubtourItem> items) {
+		StringBuilder sb = new StringBuilder("");
+		for (SubtourItem item : items) {
+			sb.append(MessageFormat
+					.format("<SubtourItem><TourId>{0}</TourId><SubtourId>{1}</SubtourId><SubtourName>{2}</SubtourName><SightName>{3}</SightName><SightId>{4}</SightId><BeginDate>{5}</BeginDate><EndDate>{6}</EndDate></SubtourItem>",
+							item.getTourId(), item.getSubtourId(), item.getSubtourName(), item.getSightName(), item.getSightId(), item.getBeginDate(), item.getEndDate()));
+		}
+
+		return MessageFormat.format("<Request><SubtourItemList>{0}</SubtourItemList></Request>", sb.toString());
+	}
+
 	public static UserObject parseUserObject(SoapObject obj) {
 		SoapObject tmp = (SoapObject) obj.getProperty(0);
 		UserObject user = new UserObject();
@@ -139,9 +157,12 @@ public class DTOApi {
 	public static SightObject parseSightObject(SoapObject obj) {
 		SoapObject tmp = (SoapObject) obj.getProperty(0);
 		SightObject item = new SightObject();
+		item.setCityId(getString(tmp, "CityId"));
 		item.setCityName(getString(tmp, "CityName"));
+		item.setCountryId(getString(tmp, "CountryId"));
 		item.setCountryName(getString(tmp, "CountryName"));
 		item.setHasVisited(getBoolean(tmp, "HasVisited"));
+		item.setProvinceId(getString(tmp, "ProvinceId"));
 		item.setProvinceName(getString(tmp, "ProvinceName"));
 		item.setSightId(getString(tmp, "SightId"));
 		item.setSightLevel(getString(tmp, "SightLevel"));
@@ -166,6 +187,7 @@ public class DTOApi {
 		item.setTourId(getString(tmp, "TourId"));
 		item.setTourName(getString(tmp, "TourName"));
 		item.setStatus(getString(tmp, "Status"));
+		item.setUserId(getString(tmp, "UserId"));
 		item.setBlogList(parseBlogItems(tmp));
 		item.setCommentList(parseCommentItems(tmp));
 		item.setPictureList(parsePictureItems(tmp));
@@ -179,6 +201,7 @@ public class DTOApi {
 		item.setBeginDate(getDate(tmp, "BeginDate"));
 		item.setEndDate(getDate(tmp, "EndDate"));
 		item.setTourId(getString(tmp, "TourId"));
+		item.setSightId(getString(tmp, "SightId"));
 		item.setSightName(getString(tmp, "SightName"));
 		item.setSubtourId(getString(tmp, "SubtourId"));
 		item.setSubtourName(getString(tmp, "SubtourName"));
@@ -208,9 +231,12 @@ public class DTOApi {
 		for (int i = 0; i < tmps.getPropertyCount(); i++) {
 			SoapObject tmp = (SoapObject) tmps.getProperty(i);
 			SightItem item = new SightItem();
+			item.setCityId(getString(tmp, "CityId"));
 			item.setCityName(getString(tmp, "CityName"));
+			item.setCountryId(getString(tmp, "CountryId"));
 			item.setCountryName(getString(tmp, "CountryName"));
 			item.setHasVisited(getBoolean(tmp, "HasVisited"));
+			item.setProvinceId(getString(tmp, "ProvinceId"));
 			item.setProvinceName(getString(tmp, "ProvinceName"));
 			item.setSightId(getString(tmp, "SightId"));
 			item.setSightLevel(getString(tmp, "SightLevel"));
@@ -282,6 +308,7 @@ public class DTOApi {
 			item.setBeginDate(getDate(tmp, "BeginDate"));
 			item.setEndDate(getDate(tmp, "EndDate"));
 			item.setTourId(getString(tmp, "TourId"));
+			item.setSightId(getString(tmp, "SightId"));
 			item.setSightName(getString(tmp, "SightName"));
 			item.setSubtourId(getString(tmp, "SubtourId"));
 			item.setSubtourName(getString(tmp, "SubtourName"));
@@ -303,9 +330,55 @@ public class DTOApi {
 			item.setStatus(getString(tmp, "Status"));
 			item.setTourId(getString(tmp, "TourId"));
 			item.setTourName(getString(tmp, "TourName"));
+			item.setUserId(getString(tmp, "UserId"));
 			tourList.add(item);
 		}
 		return tourList;
+	}
+
+	public static List<CountryItem> parseCountryItems(SoapObject obj) {
+		SoapObject tmps = (SoapObject) obj.getProperty("CountryItemList");
+		List<CountryItem> items = new ArrayList<CountryItem>();
+		for (int i = 0; i < tmps.getPropertyCount(); i++) {
+			SoapObject tmp = (SoapObject) tmps.getProperty(i);
+			CountryItem item = new CountryItem();
+			item.setCountryId(getString(tmp, "CountryId"));
+			item.setCountryName(getString(tmp, "CountryName"));
+			items.add(item);
+		}
+		return items;
+	}
+
+	public static List<ProvinceItem> parseProvinceItems(SoapObject obj) {
+		SoapObject tmps = (SoapObject) obj.getProperty("ProvinceItemList");
+		List<ProvinceItem> items = new ArrayList<ProvinceItem>();
+		for (int i = 0; i < tmps.getPropertyCount(); i++) {
+			SoapObject tmp = (SoapObject) tmps.getProperty(i);
+			ProvinceItem item = new ProvinceItem();
+			item.setCountryId(getString(tmp, "CountryId"));
+			item.setCountryName(getString(tmp, "CountryName"));
+			item.setProvinceId(getString(tmp, "ProvinceId"));
+			item.setProvinceName(getString(tmp, "ProvinceName"));
+			items.add(item);
+		}
+		return items;
+	}
+
+	public static List<CityItem> parseCityItems(SoapObject obj) {
+		SoapObject tmps = (SoapObject) obj.getProperty("CityItemList");
+		List<CityItem> items = new ArrayList<CityItem>();
+		for (int i = 0; i < tmps.getPropertyCount(); i++) {
+			SoapObject tmp = (SoapObject) tmps.getProperty(i);
+			CityItem item = new CityItem();
+			item.setCountryId(getString(tmp, "CountryId"));
+			item.setCountryName(getString(tmp, "CountryName"));
+			item.setProvinceId(getString(tmp, "ProvinceId"));
+			item.setProvinceName(getString(tmp, "ProvinceName"));
+			item.setCityId(getString(tmp, "CityId"));
+			item.setCityName(getString(tmp, "CityName"));
+			items.add(item);
+		}
+		return items;
 	}
 
 }

@@ -7,8 +7,11 @@ public class SightItem extends DTO {
 
 	private String sightId;
 	private String sightName;
+	private String cityId;
 	private String cityName;
+	private String provinceId;
 	private String provinceName;
+	private String countryId;
 	private String countryName;
 	private String sightLevel;
 	private boolean hasVisited;
@@ -78,4 +81,32 @@ public class SightItem extends DTO {
 		this.stars = stars;
 	}
 
+	public String getCityId() {
+		return cityId;
+	}
+
+	public void setCityId(String cityId) {
+		this.cityId = cityId;
+	}
+
+	public String getProvinceId() {
+		return provinceId;
+	}
+
+	public void setProvinceId(String provinceId) {
+		this.provinceId = provinceId;
+	}
+
+	public String getCountryId() {
+		return countryId;
+	}
+
+	public void setCountryId(String countryId) {
+		this.countryId = countryId;
+	}
+	
+	@Override
+	public String toString() {
+		return this.sightName;
+	}
 }

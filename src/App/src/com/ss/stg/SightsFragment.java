@@ -57,16 +57,16 @@ public class SightsFragment extends Fragment implements AbsListView.OnItemClickL
 		}
 
 		handler = new SightsHandler(getActivity());
-		WSThread thread = null;
 		String userId = ((MainActivity) getActivity()).getLoginUserId();
 		if (userId.equals("")) {
-			thread = new WSThread(handler, IWebService.ID__GET_SIGHTS);
+			WSThread thread = new WSThread(handler, IWebService.ID__GET_SIGHTS);
+			thread.startWithProgressDialog(getActivity());
 		} else {
 			HashMap<String, Object> params = new HashMap<String, Object>();
 			params.put(IWebService.PARAM__GET_SIGHTS_BY_USERID, userId);
-			thread = new WSThread(handler, IWebService.ID__GET_SIGHTS_BY_USERID, params);
+			WSThread thread = new WSThread(handler, IWebService.ID__GET_SIGHTS_BY_USERID, params);
+			thread.startWithProgressDialog(getActivity());
 		}
-		thread.startWithProgressDialog(getActivity());
 	}
 
 	@Override
@@ -200,6 +200,9 @@ public class SightsFragment extends Fragment implements AbsListView.OnItemClickL
 				List<SightItem> list = (List<SightItem>) msg.getData().getSerializable(IWebService.WS_RETURN);
 				mAdapter = new SightsAdapter(activity, list);
 				mListView.setAdapter(mAdapter);
+				
+				// Static Cache
+				AppCache.setSightItems(list);
 			} else {
 				showNetworkErrorDialog();
 			}

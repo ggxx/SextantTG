@@ -12,5 +12,6 @@ namespace SextantTG.WebServices.DTO
         public string Status { get; set; }
         public DateTime BeginDate { get; set; }
         public DateTime EndDate { get; set; }
+        public string UserId { get; set; }
     }
 }

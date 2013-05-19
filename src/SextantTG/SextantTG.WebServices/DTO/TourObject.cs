@@ -20,7 +20,8 @@ namespace SextantTG.WebServices.DTO
         public string Status { get; set; }
         public DateTime BeginDate { get; set; }
         public DateTime EndDate { get; set; }
-        public float Cost { get; set; }
+        public int Cost { get; set; }
+        public string UserId { get; set; }
         public List<SubtourItem> SubtourItemList { get; set; }
         public List<PictureItem> PictureItemList { get; set; }
         public List<BlogItem> BlogItemList { get; set; }

@@ -1,7 +1,11 @@
 package com.ss.stg;
 
 import java.util.HashMap;
+import java.util.List;
 
+import com.ss.stg.dto.CityItem;
+import com.ss.stg.dto.CountryItem;
+import com.ss.stg.dto.ProvinceItem;
 import com.ss.stg.dto.UserObject;
 import com.ss.stg.ws2.IWebService;
 import com.ss.stg.ws2.WSThread;
@@ -53,6 +57,46 @@ public class LoginFragment extends Fragment {
 		}
 
 		setHasOptionsMenu(true);
+
+		Handler handler = new Handler() {
+			@Override
+			public void handleMessage(Message msg) {
+				super.handleMessage(msg);
+				switch (msg.what) {
+				case IWebService.ID__GET_COUNTRIES:
+					Log.d("ws_handler", "ID__GET_COUNTRIES");
+					AppCache.setCountryItems((List<CountryItem>) msg.getData().getSerializable(IWebService.WS_RETURN));
+					break;
+				case IWebService.ID__GET_PROVINCES:
+					Log.d("ws_handler", "ID__GET_PROVINCES");
+					AppCache.setProvinceItems((List<ProvinceItem>) msg.getData().getSerializable(IWebService.WS_RETURN));
+					break;
+				case IWebService.ID__GET_CITIES:
+					Log.d("ws_handler", "ID__GET_CITIES");
+					AppCache.setCityItems((List<CityItem>) msg.getData().getSerializable(IWebService.WS_RETURN));
+					break;
+				// case IWebService.ID__GET_SIGHTS:
+				// Log.d("ws_handler", "ID__GET_SIGHTS");
+				// AppCache.setSightItems((List<SightItem>)
+				// msg.getData().getSerializable(IWebService.WS_RETURN));
+				// break;
+				}
+			}
+		};
+		if (AppCache.getCountryItems() == null) {
+			WSThread thread = new WSThread(handler, IWebService.ID__GET_COUNTRIES);
+			thread.startWithProgressDialog(getActivity());
+		}
+		if (AppCache.getProvinceItems() == null) {
+			WSThread thread2 = new WSThread(handler, IWebService.ID__GET_PROVINCES);
+			thread2.startWithProgressDialog(getActivity());
+		}
+		if (AppCache.getCityItems() == null) {
+			WSThread thread3 = new WSThread(handler, IWebService.ID__GET_CITIES);
+			thread3.startWithProgressDialog(getActivity());
+		}
+		// WSThread thread4 = new WSThread(handler, IWebService.ID__GET_SIGHTS);
+		// thread4.startWithProgressDialog(this);
 	}
 
 	@Override

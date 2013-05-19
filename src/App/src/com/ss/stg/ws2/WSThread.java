@@ -89,8 +89,18 @@ public class WSThread extends Thread {
 				String tourId = this.params.get(IWebService.PARAM__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID__TOURID).toString();
 				String subtourId = this.params.get(IWebService.PARAM__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID__SUBTOURID).toString();
 				returnObject = ws.getSubtourByTourIdAndSubtourId(tourId, subtourId);
+			} else if (methodId == IWebService.ID__GET_COUNTRIES) {
+				returnObject = ws.GetCountries();
+			} else if (methodId == IWebService.ID__GET_PROVINCES) {
+				returnObject = ws.GetProvinces();
+			} else if (methodId == IWebService.ID__GET_CITIES) {
+				returnObject = ws.GetCities();
+			} else if (methodId == IWebService.ID__SAVE_TOUR) {
+				TourObject tour = (TourObject) this.params.get(IWebService.PARAM__SAVE_TOUR__TOUR);
+				List<SubtourItem> subtourItems = (List<SubtourItem>) this.params.get(IWebService.PARAM__SAVE_TOUR__SUBTOURS);
+				List<SubtourItem> removedSubtourItems = (List<SubtourItem>) this.params.get(IWebService.PARAM__SAVE_TOUR__REMOVED_SUBTOURS);
+				returnObject = ws.SaveTour(tour, subtourItems, removedSubtourItems);
 			}
-
 			else {
 
 			}

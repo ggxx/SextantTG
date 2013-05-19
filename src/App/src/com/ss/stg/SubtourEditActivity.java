@@ -2,11 +2,17 @@ package com.ss.stg;
 
 import java.lang.ref.WeakReference;
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 
+import com.ss.stg.dto.CityItem;
+import com.ss.stg.dto.CountryItem;
+import com.ss.stg.dto.ProvinceItem;
 import com.ss.stg.dto.SightItem;
+import com.ss.stg.dto.SubtourItem;
 import com.ss.stg.dto.SubtourObject;
 import com.ss.stg.dto.TourObject;
 import com.ss.stg.ws2.IWebService;
@@ -23,9 +29,13 @@ import android.os.Handler;
 import android.os.Message;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
+import android.text.AndroidCharacter;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemSelectedListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -38,7 +48,9 @@ import android.widget.Toast;
 public class SubtourEditActivity extends FragmentActivity implements OnDateSetListener {
 
 	private Toast toast = null;
-	private Handler handler = null;
+	//private Handler handler = null;
+	private Button okButton = null;
+	private Button cancelButton = null;
 	private Button startDateButton = null;
 	private Button endDateButton = null;
 	private Spinner countrySpinner = null;
@@ -47,30 +59,133 @@ public class SubtourEditActivity extends FragmentActivity implements OnDateSetLi
 	private Spinner sightSpinner = null;
 	private EditText nameEditText = null;
 	private TextView nameTextView = null;
-	private HashMap<String, String> countryMap = null;
-	private HashMap<String, String> provinceMap = null;
-	private HashMap<String, String> cityMap = null;
-	private HashMap<String, String> sightMap = null;
+	private TextView sightTextView = null;
+	private TextView countryTipTextView = null;
+	private TextView provinceTipTextView = null;
+	private TextView cityTipTextView = null;
+	private TextView sightTipTextView = null;
+
+	private int pos = 0;
+
+	private class OnCountrySelectedListener implements OnItemSelectedListener {
+
+		@Override
+		public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+			onCountryChange(arg2);
+		}
+
+		@Override
+		public void onNothingSelected(AdapterView<?> arg0) {
+			onCountryChange(-1);
+		}
+	}
+
+	private class OnProvinceSelectedListener implements OnItemSelectedListener {
+
+		@Override
+		public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+			onProvineChange(arg2);
+		}
+
+		@Override
+		public void onNothingSelected(AdapterView<?> arg0) {
+			onProvineChange(-1);
+		}
+	}
+
+	private class OnCitySelectedListener implements OnItemSelectedListener {
+
+		@Override
+		public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+			onCityChange(arg2);
+		}
+
+		@Override
+		public void onNothingSelected(AdapterView<?> arg0) {
+			onCityChange(-1);
+		}
+	}
+
+	private class OnSightSelectedListener implements OnItemSelectedListener {
+
+		@Override
+		public void onItemSelected(AdapterView<?> arg0, View arg1, int arg2, long arg3) {
+			onSightChange(arg2);
+		}
+
+		@Override
+		public void onNothingSelected(AdapterView<?> arg0) {
+			onSightChange(-1);
+		}
+	}
+
+	public void onCountryChange(int position) {
+		if (position >= 0) {
+			System.out.println("onCountryChange" + position);
+			String countryId = ((CountryItem) countrySpinner.getSelectedItem()).getCountryId();
+			List<ProvinceItem> provinceItems = AppCache.getProvinceByCountry(countryId);
+			if (provinceItems != null) {
+				ArrayAdapter<ProvinceItem> provinceAdapter = new ArrayAdapter<ProvinceItem>(this, android.R.layout.simple_spinner_item, provinceItems);
+				provinceSpinner.setAdapter(provinceAdapter);
+			}
+		} else {
+			ArrayAdapter<ProvinceItem> provinceAdapter = new ArrayAdapter<ProvinceItem>(this, android.R.layout.simple_spinner_item, new ArrayList<ProvinceItem>());
+			provinceSpinner.setAdapter(provinceAdapter);
+		}
+	}
+
+	public void onProvineChange(int position) {
+		if (position >= 0) {
+			System.out.println("onProvineChange" + position);
+			String provinceId = ((ProvinceItem) provinceSpinner.getSelectedItem()).getProvinceId();
+			List<CityItem> cityItems = AppCache.getCityByProvince(provinceId);
+			if (cityItems != null) {
+				ArrayAdapter<CityItem> cityAdapter = new ArrayAdapter<CityItem>(this, android.R.layout.simple_spinner_item, cityItems);
+				citySpinner.setAdapter(cityAdapter);
+			}
+		} else {
+			ArrayAdapter<CityItem> cityAdapter = new ArrayAdapter<CityItem>(this, android.R.layout.simple_spinner_item, new ArrayList<CityItem>());
+			citySpinner.setAdapter(cityAdapter);
+		}
+	}
+
+	public void onCityChange(int position) {
+		if (position >= 0) {
+			System.out.println("onCityChange" + position);
+			String cityId = ((CityItem) citySpinner.getSelectedItem()).getCityId();
+			List<SightItem> sightItems = AppCache.getSightByCity(cityId);
+			if (sightItems != null) {
+				ArrayAdapter<SightItem> sightAdapter = new ArrayAdapter<SightItem>(this, android.R.layout.simple_spinner_item, sightItems);
+				sightSpinner.setAdapter(sightAdapter);
+			}
+		} else {
+			ArrayAdapter<SightItem> sightAdapter = new ArrayAdapter<SightItem>(this, android.R.layout.simple_spinner_item, new ArrayList<SightItem>());
+			sightSpinner.setAdapter(sightAdapter);
+		}
+	}
+
+	public void onSightChange(int position) {
+		if (position >= 0) {
+			String sightName = ((SightItem) sightSpinner.getSelectedItem()).getSightName();
+			sightTextView.setText(sightName);
+		} else {
+			sightTextView.setText("");
+		}
+	}
 
 	public SubtourEditActivity() {
 		super();
-		handler = new STGHandler(this);
-
-		// WSThread thread = new WSThread(handler, IWebService.);
-		// thread.start();
-		// WSThread thread2 = new WSThread(handler,
-		// IWebService.ID__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID);
-		// thread2.start();
-		// WSThread thread3 = new WSThread(handler,
-		// IWebService.ID__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID);
-		// thread3.start();
+		//handler = new STGHandler(this);
 	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-		setContentView(R.layout.subtour_item_edit);
 
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.activity_subtour_edit);
+
+		okButton = (Button) findViewById(R.id.subtour_edit_ok);
+		cancelButton = (Button) findViewById(R.id.subtour_edit_cancel);
 		startDateButton = (Button) findViewById(R.id.subtour_edit_start_date);
 		endDateButton = (Button) findViewById(R.id.subtour_edit_end_date);
 		nameEditText = (EditText) findViewById(R.id.subtour_edit_name);
@@ -79,32 +194,59 @@ public class SubtourEditActivity extends FragmentActivity implements OnDateSetLi
 		provinceSpinner = (Spinner) findViewById(R.id.subtour_edit_province);
 		citySpinner = (Spinner) findViewById(R.id.subtour_edit_city);
 		sightSpinner = (Spinner) findViewById(R.id.subtour_edit_sight);
-
-		WSThread thread2 = new WSThread(handler, IWebService.ID__GET_SIGHTS);
-		thread2.start();
+		sightTextView = (TextView) findViewById(R.id.subtour_edit_sight_r);
+		countryTipTextView = (TextView) findViewById(R.id.subtour_edit_country_tv);
+		provinceTipTextView = (TextView) findViewById(R.id.subtour_edit_province_tv);
+		cityTipTextView = (TextView) findViewById(R.id.subtour_edit_city_tv);
+		sightTipTextView = (TextView) findViewById(R.id.subtour_edit_sight_tv);
 
 		String tourId = null;
 		String subtourId = null;
-		Intent intent = getIntent();
+		final Intent intent = getIntent();
+		pos = intent.getIntExtra("pos", 0);
+		final SubtourItem subtourItem = (SubtourItem) intent.getSerializableExtra("subtour");
 
-		if (intent != null) {
+		if (subtourItem != null) {
+			tourId = subtourItem.getTourId();
+			subtourId = subtourItem.getSubtourId();
 
-			tourId = intent.getStringExtra("tourid");
-			subtourId = intent.getStringExtra("subtourid");
-			if (tourId != null && !tourId.equals("")) {
+			//HashMap<String, Object> params = new HashMap<String, Object>();
+			//WSThread thread = null;
+			//params.put(IWebService.PARAM__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID__TOURID, tourId);
+			//params.put(IWebService.PARAM__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID__SUBTOURID, subtourId);
+			//thread = new WSThread(handler, IWebService.ID__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID, params);
+			//thread.startWithProgressDialog(this);
 
-				HashMap<String, Object> params = new HashMap<String, Object>();
-				WSThread thread = null;
-				params.put(IWebService.PARAM__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID__TOURID, tourId);
-				params.put(IWebService.PARAM__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID__SUBTOURID, subtourId);
-				thread = new WSThread(handler, IWebService.ID__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID, params);
-				thread.startWithProgressDialog(this);
+			nameTextView.setVisibility(View.VISIBLE);
+			sightTextView.setVisibility(View.VISIBLE);
 
-				nameTextView.setVisibility(View.VISIBLE);
-				nameEditText.setVisibility(View.GONE);
-			} else {
+			countrySpinner.setVisibility(View.GONE);
+			provinceSpinner.setVisibility(View.GONE);
+			citySpinner.setVisibility(View.GONE);
+			sightSpinner.setVisibility(View.GONE);
+			countryTipTextView.setVisibility(View.GONE);
+			provinceTipTextView.setVisibility(View.GONE);
+			cityTipTextView.setVisibility(View.GONE);
+			sightTipTextView.setVisibility(View.GONE);
+			nameEditText.setVisibility(View.GONE);
 
-			}
+			nameTextView.setText(subtourItem.getSubtourName());
+			nameEditText.setText(subtourItem.getSubtourName());
+			sightTextView.setText(subtourItem.getSightName());
+
+			Calendar s = Calendar.getInstance();
+			s.setTime(subtourItem.getBeginDate());
+			setSartDateValue(s.get(Calendar.YEAR), s.get(Calendar.MONTH), s.get(Calendar.DAY_OF_MONTH));
+			s.setTime(subtourItem.getEndDate());
+			setEndDateValue(s.get(Calendar.YEAR), s.get(Calendar.MONTH), s.get(Calendar.DAY_OF_MONTH));
+		} else {
+			countrySpinner.setOnItemSelectedListener(new OnCountrySelectedListener());
+			provinceSpinner.setOnItemSelectedListener(new OnProvinceSelectedListener());
+			citySpinner.setOnItemSelectedListener(new OnCitySelectedListener());
+			sightSpinner.setOnItemSelectedListener(new OnSightSelectedListener());
+
+			ArrayAdapter<CountryItem> countryAdapter = new ArrayAdapter<CountryItem>(this, android.R.layout.simple_spinner_item, AppCache.getCountryItems());
+			countrySpinner.setAdapter(countryAdapter);
 		}
 
 		startDateButton.setOnClickListener(new View.OnClickListener() {
@@ -143,6 +285,73 @@ public class SubtourEditActivity extends FragmentActivity implements OnDateSetLi
 			}
 		});
 
+		okButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				System.out.println("行程名称(" + nameEditText.getText().toString() + ")");
+				if (nameEditText.getText().toString().equals("")) {
+					toast = Toast.makeText(SubtourEditActivity.this, "行程名称不能为空", Toast.LENGTH_SHORT);
+					toast.show();
+					return;
+				}
+				if (sightTextView.getText().toString().equals("")) {
+					toast = Toast.makeText(SubtourEditActivity.this, "景点不能为空", Toast.LENGTH_SHORT);
+					toast.show();
+					return;
+				}
+				if (startDateButton.getText().toString().equals("")) {
+					toast = Toast.makeText(SubtourEditActivity.this, "出发日期不能为空", Toast.LENGTH_SHORT);
+					toast.show();
+					return;
+				}
+				if (endDateButton.getText().toString().equals("")) {
+					toast = Toast.makeText(SubtourEditActivity.this, "结束日期不能为空", Toast.LENGTH_SHORT);
+					toast.show();
+					return;
+				}
+
+				int[] s = (int[]) startDateButton.getTag();
+				int[] e = (int[]) endDateButton.getTag();
+				String name = nameEditText.getText().toString();
+				String id = subtourItem != null ? subtourItem.getTourId() : "";
+				String subId = subtourItem != null ? subtourItem.getSubtourId() : "";
+				String sight = sightTextView.getText().toString();
+
+				Calendar calendar = Calendar.getInstance();
+				calendar.set(Calendar.YEAR, s[0]);
+				calendar.set(Calendar.MONTH, s[1]);
+				calendar.set(Calendar.DAY_OF_MONTH, s[2]);
+				Date start = calendar.getTime();
+				calendar.set(Calendar.YEAR, e[0]);
+				calendar.set(Calendar.MONTH, e[1]);
+				calendar.set(Calendar.DAY_OF_MONTH, e[2]);
+				Date end = calendar.getTime();
+
+				SubtourItem subtour = new SubtourItem();
+				subtour.setBeginDate(start);
+				subtour.setEndDate(end);
+				subtour.setSightName(sight);
+				subtour.setSubtourId(subId);
+				subtour.setSubtourName(name);
+				subtour.setTourId(id);
+
+				Intent intent = new Intent();
+				intent.putExtra("pos", pos);
+				intent.putExtra("subtour", subtour);
+				setResult(RESULT_OK, intent);
+				finish();
+			}
+		});
+
+		cancelButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				setResult(RESULT_CANCELED);
+				finish();
+			}
+		});
 	}
 
 	private void setSartDateValue(int year, int monthOfYear, int dayOfMonth) {
@@ -166,7 +375,7 @@ public class SubtourEditActivity extends FragmentActivity implements OnDateSetLi
 		}
 	}
 
-	private static class STGHandler extends Handler {
+/*	private static class STGHandler extends Handler {
 
 		private WeakReference<Activity> refActivity = null;
 
@@ -228,5 +437,5 @@ public class SubtourEditActivity extends FragmentActivity implements OnDateSetLi
 
 		}
 
-	}
+	}*/
 }

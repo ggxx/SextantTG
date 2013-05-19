@@ -5,6 +5,7 @@ import java.text.MessageFormat;
 import java.util.Calendar;
 import java.util.HashMap;
 
+import com.ss.stg.dto.SubtourItem;
 import com.ss.stg.dto.TourObject;
 import com.ss.stg.ws2.DTOApi;
 import com.ss.stg.ws2.IWebService;
@@ -38,26 +39,42 @@ import android.widget.Toast;
 
 public class TourEditActivity extends FragmentActivity implements OnDateSetListener {
 
+	public static final int REQ_EDIT_SUBTOUR = 100;
+	public static final int REQ_ADD_SUBTOUR = 101;
+
+	private TourObject tour;
+
 	private Toast toast = null;
 	private Handler handler = null;
+	private Button okButton = null;
+	private Button cancelButton = null;
 	private Button startDateButton = null;
 	private Button endDateButton = null;
 	private Button addSubtourButton = null;
 	private Spinner statuSpinner = null;
 	private EditText nameEditText = null;
 	private TextView nameTextView = null;
+	private ListView subtourListView = null;
+	private TourObject tourObject = null;
+
+	public void setTour(TourObject tour) {
+		this.tourObject = tour;
+	}
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_tour_edit);
 
+		okButton = (Button) findViewById(R.id.tour_edit_ok);
+		cancelButton = (Button) findViewById(R.id.tour_edit_cancel);
 		startDateButton = (Button) findViewById(R.id.tour_edit_start_date);
 		endDateButton = (Button) findViewById(R.id.tour_edit_end_date);
 		addSubtourButton = (Button) findViewById(R.id.tour_edit_addsubtour);
 		statuSpinner = (Spinner) findViewById(R.id.tour_edit_status);
 		nameEditText = (EditText) findViewById(R.id.tour_edit_name);
 		nameTextView = (TextView) findViewById(R.id.tour_edit_name_r);
+		subtourListView = (ListView) findViewById(R.id.tour_edit_subtourlist);
 
 		String[] mItems = getResources().getStringArray(R.array.tour_status_dict);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, mItems);
@@ -124,7 +141,56 @@ public class TourEditActivity extends FragmentActivity implements OnDateSetListe
 			@Override
 			public void onClick(View v) {
 				Intent intent = new Intent(TourEditActivity.this, SubtourEditActivity.class);
-				startActivityForResult(intent, 0);
+				intent.putExtra("pos", 0);
+				startActivityForResult(intent, TourEditActivity.REQ_ADD_SUBTOUR);
+			}
+		});
+
+		okButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+
+				// 保存TourObject
+				TourObject tour2 = TourEditActivity.this.tour;
+				if (tour2 == null) {
+					tour2 = new TourObject();
+				}
+				
+				if(startDateButton.getTag()==null)
+				{
+					
+				}
+				if(endDateButton.getTag()==null ){
+					
+				}
+				if(nameEditText.getText().toString().equals("") && nameTextView.getText().toString().equals(""))
+				{
+					
+				}
+				
+				Calendar s = Calendar.getInstance();
+				s.set(Calendar.YEAR, )
+				tour2.setBeginDate(beginDate);
+
+				WSThread thread = null;
+				HashMap<String, Object> params2 = new HashMap<String, Object>();
+				params2.put(IWebService.PARAM__SAVE_TOUR__SUBTOURS, ((SubtourAdapter) subtourListView.getAdapter()).getList());
+				params2.put(IWebService.PARAM__SAVE_TOUR__REMOVED_SUBTOURS, ((SubtourAdapter) subtourListView.getAdapter()).getRemovedList());
+				thread = new WSThread(handler, IWebService.ID__SAVE_TOUR, params2);
+				thread.startWithProgressDialog(TourEditActivity.this);
+
+				// userid = userid;
+
+			}
+		});
+
+		cancelButton.setOnClickListener(new View.OnClickListener() {
+
+			@Override
+			public void onClick(View v) {
+				setResult(RESULT_CANCELED);
+				finish();
 			}
 		});
 	}
@@ -147,6 +213,8 @@ public class TourEditActivity extends FragmentActivity implements OnDateSetListe
 			if (msg.what == IWebService.ID__GET_TOUR_BY_TOURID) {
 
 				TourObject tour = (TourObject) msg.getData().getSerializable(IWebService.WS_RETURN);
+
+				((TourEditActivity) activity).setTour(tour);
 
 				TextView nameTextView = (TextView) activity.findViewById(R.id.tour_edit_name_r);
 				nameTextView.setText(tour.getTourName());
@@ -187,7 +255,12 @@ public class TourEditActivity extends FragmentActivity implements OnDateSetListe
 				subtourListView.setAdapter(subtourAdapter);
 				setListViewHeightBasedOnChildren(subtourListView);
 
-			} else {
+			} else if (msg.what == IWebService.ID__SAVE_TOUR) {
+				refActivity.get().setResult(RESULT_OK);
+				refActivity.get().finish();
+			}
+
+			else {
 				showNetworkErrorDialog();
 			}
 		}
@@ -240,6 +313,35 @@ public class TourEditActivity extends FragmentActivity implements OnDateSetListe
 			setSartDateValue(year, monthOfYear, dayOfMonth);
 		} else if (view.getTag().equals("end")) {
 			setEndDateValue(year, monthOfYear, dayOfMonth);
+		}
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		switch (requestCode) {
+		case REQ_ADD_SUBTOUR:
+			if (resultCode == RESULT_OK) {
+				int pos = data.getIntExtra("pos", 0);
+				SubtourItem subtourItem = (SubtourItem) data.getSerializableExtra("subtour");
+				((SubtourAdapter) subtourListView.getAdapter()).insert(subtourItem, pos);
+				((SubtourAdapter) subtourListView.getAdapter()).notifyDataSetChanged();
+				setListViewHeightBasedOnChildren(subtourListView);
+			}
+			break;
+		case REQ_EDIT_SUBTOUR:
+			if (resultCode == RESULT_OK) {
+				int pos = data.getIntExtra("pos", 0);
+				SubtourItem subtourItem = (SubtourItem) data.getSerializableExtra("subtour");
+				SubtourItem subtourItem2 = ((SubtourAdapter) subtourListView.getAdapter()).getItem(pos);
+				subtourItem2.setBeginDate(subtourItem.getBeginDate());
+				subtourItem2.setEndDate(subtourItem.getEndDate());
+				subtourItem2.setSightName(subtourItem.getSightName());
+				subtourItem2.setSubtourId(subtourItem.getSubtourId());
+				subtourItem2.setSubtourName(subtourItem.getSubtourName());
+				subtourItem2.setTourId(subtourItem.getTourId());
+				((SubtourAdapter) subtourListView.getAdapter()).notifyDataSetChanged();
+			}
+			break;
 		}
 	}
 }

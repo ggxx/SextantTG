@@ -12,17 +12,17 @@ public class TourObject extends TourItem {
 		this.commentList = new ArrayList<CommentItem>();
 	}
 	
-	private float cost;
+	private int cost;
 	private List<SubtourItem> subtourList;
 	private List<PictureItem> pictureList;
 	private List<BlogItem> blogList;
 	private List<CommentItem> commentList;
 
-	public float getCost() {
+	public int getCost() {
 		return cost;
 	}
 
-	public void setCost(float cost) {
+	public void setCost(int cost) {
 		this.cost = cost;
 	}
 

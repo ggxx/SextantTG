@@ -141,12 +141,12 @@ namespace SextantTG.WebServices
 
             Type type = typeof(T);
             List<T> list = new List<T>();
-            foreach (XmlNode node in doc.SelectNodes(string.Format("Request/{0}List", type.Name)))
+            foreach (XmlNode node in doc.SelectNodes(string.Format("Request/{0}List/{0}", type.Name)))
             {
                 T t = new T();
                 foreach (PropertyInfo property in type.GetProperties())
                 {
-                    SetModelProperty(t, property, doc, string.Format("Request/{0}/{1}", type.Name, property.Name));
+                    SetModelProperty(t, property, doc, string.Format("Request/{0}List/{0}[{1}]/{2}", type.Name, list.Count + 1, property.Name));
                 }
                 list.Add(t);
             }
@@ -177,7 +177,7 @@ namespace SextantTG.WebServices
             }
             else
             {
-                property.SetValue(t, XmlUtil.ReadSelectXPath(xml, xpath), null);
+                //property.SetValue(t, XmlUtil.ReadSelectXPath(xml, xpath), null);
             }
         }
 
@@ -474,8 +474,11 @@ namespace SextantTG.WebServices
                     float? stars = SightSrv.GetAverageStarsBySightsId(sight.SightsId);
                     SightItem obj = new SightItem()
                     {
+                        CityId = city != null ? city.CityId : "",
                         CityName = city != null ? city.CityName : "",
+                        ProvinceId = province != null ? province.ProvinceId : "",
                         ProvinceName = province != null ? province.ProvinceName : "",
+                        CountryId = country != null ? country.CountryId : "",
                         CountryName = country != null ? country.CountryName : "",
                         HasVisited = false,
                         SightId = sight.SightsId,
@@ -548,8 +551,11 @@ namespace SextantTG.WebServices
             SightObject sightObject = new SightObject()
             {
                 BlogItemList = blogList,
+                CityId = sight.CityId,
                 CityName = dictSrv.GetCityByCityId(sight.CityId).CityName,
+                ProvinceId = province.ProvinceId,
                 ProvinceName = province.ProvinceName,
+                CountryId = province.CountryId,
                 CountryName = dictSrv.GetCountryByProvinceId(province.ProvinceId).CountryName,
                 CommentItemList = commentList,
                 Description = sight.Description,
@@ -765,8 +771,11 @@ namespace SextantTG.WebServices
                     float? stars = SightSrv.GetAverageStarsBySightsId(sight.SightsId);
                     SightItem obj = new SightItem()
                     {
+                        CityId = city != null ? city.CityId : "",
                         CityName = city != null ? city.CityName : "",
+                        ProvinceId = province != null ? province.ProvinceId : "",
                         ProvinceName = province != null ? province.ProvinceName : "",
+                        CountryId = country != null ? country.CountryId : "",
                         CountryName = country != null ? country.CountryName : "",
                         HasVisited = userSrv.GetFavoriteByUserIdAndSightsId(userId, sight.SightsId) != null,
                         SightId = sight.SightsId,
@@ -840,8 +849,11 @@ namespace SextantTG.WebServices
             SightObject sightObject = new SightObject()
             {
                 BlogItemList = blogList,
+                CityId = sight.CityId,
                 CityName = dictSrv.GetCityByCityId(sight.CityId).CityName,
+                ProvinceId = province.ProvinceId,
                 ProvinceName = province.ProvinceName,
+                CountryId = province.CountryId,
                 CountryName = dictSrv.GetCountryByProvinceId(province.ProvinceId).CountryName,
                 CommentItemList = commentList,
                 Description = sight.Description,
@@ -908,121 +920,68 @@ namespace SextantTG.WebServices
             }
         }
 
+        [WebMethod(Description = "获取所有城市")]
+        public XmlDocument GetCities()
+        {
+            try
+            {
+                List<CityItem> items = new List<CityItem>();
+                foreach (City city in dictSrv.GetCities())
+                {
+                    Province province = dictSrv.GetProvinceByCityId(city.CityId);
+                    Country country = dictSrv.GetCountryByProvinceId(province.ProvinceId);
+                    CityItem item = new CityItem()
+                    {
+                        CityId = city.CityId,
+                        CityName = city.CityName,
+                        CountryId = country.CountryId,
+                        CountryName = country.CountryName,
+                        ProvinceId = province.ProvinceId,
+                        ProvinceName = province.ProvinceName
+                    };
+                    items.Add(item);
+                }
+                return CreateReturnXmlDocument(items);
+            }
+            catch (Exception ex)
+            {
+                return CreateErrorXmlDocument(ex);
+            }
+        }
+
+        [WebMethod(Description = "保存旅行")]
+        public XmlDocument SaveTour(string tourString, string subtoursString, string removedSubtoursString)
+        {
+            try
+            {
+                TourObject tourObject = ReadModel<TourObject>(tourString);
+                List<SubtourItem> subtours = ReadModelList<SubtourItem>(subtoursString);
+                List<SubtourItem> subtours2 = ReadModelList<SubtourItem>(removedSubtoursString);
+                Tour tour = new Tour()
+                {
+                    BeginDate = tourObject.BeginDate,
+                    Cost = tourObject.Cost,
+                    CreatingTime = null,
+                    EndDate = tourObject.EndDate,
+                    Memos = "",
+                    Status = tourObject.Status == "未进行" ? 0 : tourObject.Status == "进行中" ? 1 : 2,
+                    TourId = tourObject.TourId,
+                    TourName = tourObject.TourName,
+                    UserId = ""
+                };
+
+                tourSrv.SaveTour(tour, subtours, removedSubTours, out msg);
+            }
+            catch (Exception ex)
+            {
+                return CreateErrorXmlDocument(ex);
+            }
+        }
+
         //[WebMethod(Description = "获取所有城市")]
-        //public XmlDocument GetCities()
+        //public XmlDocument DeleteTour(string tourString, bool deletePictures)
         //{
-        //    try
-        //    {
-        //        return CreateReturnXmlDocument(dictSrv.GetCities());
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return CreateErrorXmlDocument(ex);
-        //    }
-        //}
-
-        //[WebMethod(Description = "获取指定国家的省份")]
-        //public XmlDocument GetProvincesByCountryId(string countryId)
-        //{
-        //    try
-        //    {
-        //        return CreateReturnXmlDocument(dictSrv.GetProvincesByCountryId(countryId));
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return CreateErrorXmlDocument(ex);
-        //    }
-        //}
-
-        //[WebMethod(Description = "获取指定省份的城市")]
-        //public XmlDocument GetCitiesByProvinceId(string provinceId)
-        //{
-        //    try
-        //    {
-        //        return CreateReturnXmlDocument(dictSrv.GetCitiesByProvinceId(provinceId));
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return CreateErrorXmlDocument(ex);
-        //    }
-        //}
-
-        //[WebMethod(Description = "获取指定国家的城市")]
-        //public XmlDocument GetCitiesByCountryId(string countryId)
-        //{
-        //    try
-        //    {
-        //        return CreateReturnXmlDocument(dictSrv.GetCitiesByCountryId(countryId));
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return CreateErrorXmlDocument(ex);
-        //    }
-        //}
-
-        //[WebMethod(Description = "获取指定省份的国家")]
-        //public XmlDocument GetCountryByProvinceId(string provinceId)
-        //{
-        //    try
-        //    {
-        //        return CreateReturnXmlDocument(dictSrv.GetCountryByProvinceId(provinceId));
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return CreateErrorXmlDocument(ex);
-        //    }
-        //}
-
-        //[WebMethod(Description = "获取指定城市的省份")]
-        //public XmlDocument GetProvinceByCityId(string cityId)
-        //{
-        //    try
-        //    {
-        //        return CreateReturnXmlDocument(dictSrv.GetProvinceByCityId(cityId));
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return CreateErrorXmlDocument(ex);
-        //    }
-        //}
-
-        //[WebMethod(Description = "获取指定国家")]
-        //public XmlDocument GetCountryByCountryId(string countryId)
-        //{
-        //    try
-        //    {
-        //        return CreateReturnXmlDocument(dictSrv.GetCountryByCountryId(countryId));
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return CreateErrorXmlDocument(ex);
-        //    }
-        //}
-
-        //[WebMethod(Description = "获取指定省份")]
-        //public XmlDocument GetProvinceByProvinceId(string provinceId)
-        //{
-        //    try
-        //    {
-        //        return CreateReturnXmlDocument(dictSrv.GetProvinceByProvinceId(provinceId));
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return CreateErrorXmlDocument(ex);
-        //    }
-        //}
-
-        //[WebMethod(Description = "获取指定城市")]
-        //public XmlDocument GetCityByCityId(string cityId)
-        //{
-        //    try
-        //    {
-        //        return CreateReturnXmlDocument(dictSrv.GetCityByCityId(cityId));
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        return CreateErrorXmlDocument(ex);
-        //    }
+        //    return tourSrv.DeleteTour(tour, deletePictures);
         //}
     }
 }

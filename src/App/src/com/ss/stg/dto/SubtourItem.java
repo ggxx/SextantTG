@@ -16,6 +16,7 @@ public class SubtourItem extends DTO {
 	private String tourId;
 	private String subtourId;
 	private String subtourName;
+	private String sightId;
 	private String sightName;
 	private Date beginDate;
 	private Date endDate;
@@ -44,7 +45,7 @@ public class SubtourItem extends DTO {
 		this.subtourName = subtourName;
 	}
 
-	public String getSightsName() {
+	public String getSightName() {
 		return sightName;
 	}
 
@@ -66,5 +67,13 @@ public class SubtourItem extends DTO {
 
 	public void setEndDate(Date endDate) {
 		this.endDate = endDate;
+	}
+
+	public String getSightId() {
+		return sightId;
+	}
+
+	public void setSightId(String sightId) {
+		this.sightId = sightId;
 	}
 }

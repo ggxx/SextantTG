@@ -18,14 +18,29 @@ namespace SextantTG.WebServices.DTO
         public string SightName { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public string CityId { get; set; }
+
+        /// <summary>
         /// 城市
         /// </summary>
         public string CityName { get; set; }
 
         /// <summary>
+        /// 
+        /// </summary>
+        public string ProvinceId { get; set; }
+
+        /// <summary>
         /// 省份
         /// </summary>
         public string ProvinceName { get; set; }
+
+        /// <summary>
+        /// 
+        /// </summary>
+        public string CountryId { get; set; }
 
         /// <summary>
         /// 国家

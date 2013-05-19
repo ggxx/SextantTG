@@ -145,13 +145,11 @@ public class ToursFragment extends Fragment implements AbsListView.OnItemClickLi
 
 				// 编辑
 				case 1:
-					toast = Toast.makeText(getActivity(), "暂未实现", Toast.LENGTH_SHORT);
-					toast.show();
-					// Intent intent2 = new Intent(getActivity(),
-					// TourEditActivity.class);
-					// intent2.putExtra("tourid",
-					// mAdapter.getItem(pos).getTourId());
-					// startActivity(intent2);
+					//toast = Toast.makeText(getActivity(), "暂未实现", Toast.LENGTH_SHORT);
+					//toast.show();
+					Intent intent2 = new Intent(getActivity(), TourEditActivity.class);
+					intent2.putExtra("tourid", mAdapter.getItem(pos).getTourId());
+					startActivity(intent2);
 					break;
 
 				// 删除

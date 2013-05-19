@@ -25,6 +25,11 @@ namespace SextantTG.WebServices.DTO
         /// <summary>
         /// 相关景点ID
         /// </summary>
+        public string SightId { get; set; }
+
+        /// <summary>
+        /// 相关景点
+        /// </summary>
         public string SightName { get; set; }
 
         /// <summary>

@@ -7,11 +7,20 @@ import com.ss.stg.LoginFragment.OnLoginFragmentInteractionListener;
 import com.ss.stg.LoginFragment.OnLogoutFragmentInteractionListener;
 import com.ss.stg.SightsFragment.OnSightsFragmentInteractionListener;
 import com.ss.stg.ToursFragment.OnTourFragmentInteractionListener;
+import com.ss.stg.dto.CityItem;
+import com.ss.stg.dto.CountryItem;
+import com.ss.stg.dto.ProvinceItem;
+import com.ss.stg.dto.SightItem;
+import com.ss.stg.dto.UserObject;
+import com.ss.stg.ws2.IWebService;
+import com.ss.stg.ws2.WSThread;
 
 import android.app.ActionBar;
 import android.app.ActionBar.Tab;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.FragmentManager;
@@ -22,6 +31,7 @@ import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.view.ViewGroup;
 
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener, OnTourFragmentInteractionListener, OnSightsFragmentInteractionListener, OnLoginFragmentInteractionListener,
@@ -99,8 +109,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
 		case R.id.action_addtour:
-			//Intent intent = new Intent(this, TourEditActivity.class);
-			//startActivity(intent);
+			Intent intent = new Intent(this, TourEditActivity.class);
+			startActivity(intent);
 			break;
 
 		case R.id.action_settings:

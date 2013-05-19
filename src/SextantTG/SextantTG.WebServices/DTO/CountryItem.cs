@@ -9,6 +9,5 @@ namespace SextantTG.WebServices.DTO
     {
         public string CountryId { get; set; }
         public string CountryName { get; set; }
-
     }
 }
