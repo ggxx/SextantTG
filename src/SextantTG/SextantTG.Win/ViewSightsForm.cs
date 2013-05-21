@@ -8,6 +8,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.Diagnostics;
 
 namespace SextantTG.Win
 {
@@ -320,6 +321,15 @@ namespace SextantTG.Win
                     }
                 }
             }
+        }
+
+        private void button_sightLocation_Click(object sender, EventArgs e)
+        {
+            string sightName = this.textBox_SightsName.Text;
+            string cityName = this.textBox_City.Text;
+
+            string mapUrl = "http://api.go2map.com/engine/api/static/image+{'points':'" + sightName + "','labels':'" + sightName + "','city':'" + cityName + "'}.png";
+            System.Diagnostics.Process.Start(mapUrl);
         }
     }
 }

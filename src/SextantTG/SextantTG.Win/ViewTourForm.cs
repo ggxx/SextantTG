@@ -350,5 +350,20 @@ namespace SextantTG.Win
                 }
             }
         }
+
+        private void button_tourline_Click(object sender, EventArgs e)
+        {
+            List<SubTour> subtourList = (List<SubTour>)(this.bindingSource_SubTour.DataSource);
+
+            string stourName = null;
+            foreach (SubTour st in subtourList)
+            {
+                Sights sig = UIUtil.GetSightsBySightsId(st.SightsId);
+                stourName += sig.SightsName + "|";
+            }
+
+            string mapUrl = "http://api.go2map.com/engine/api/static/image+{'points':'" + stourName + "','labels':'" + stourName +  "'}.png";
+            System.Diagnostics.Process.Start(mapUrl);
+        }
     }
 }

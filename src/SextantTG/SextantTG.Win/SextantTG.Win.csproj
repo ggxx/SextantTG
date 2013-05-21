@@ -38,6 +38,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="OpenTSDK.Tencent">
+      <HintPath>..\..\..\bin\OpenTSDK.Tencent.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.configuration" />
     <Reference Include="System.Core" />
@@ -173,6 +176,7 @@
     <Compile Include="SubTourEditForm.Designer.cs">
       <DependentUpon>SubTourEditForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="TencentWeibo.cs" />
     <Compile Include="TourEditForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -227,6 +231,12 @@
     </Compile>
     <Compile Include="MyTourForm.Designer.cs">
       <DependentUpon>MyTourForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WeiboOauthForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="WeiboOauthForm.Designer.cs">
+      <DependentUpon>WeiboOauthForm.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="AboutBox.resx">
       <DependentUpon>AboutBox.cs</DependentUpon>
@@ -338,6 +348,9 @@
     <EmbeddedResource Include="MyTourForm.resx">
       <DependentUpon>MyTourForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="WeiboOauthForm.resx">
+      <DependentUpon>WeiboOauthForm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="App.config">
       <SubType>Designer</SubType>
