@@ -363,7 +363,8 @@ namespace SextantTG.Win
             }
 
             string mapUrl = "http://api.go2map.com/engine/api/static/image+{'points':'" + stourName + "','labels':'" + stourName +  "'}.png";
-            System.Diagnostics.Process.Start(mapUrl);
+            new NetPictureForm(mapUrl).ShowDialog();
+            //System.Diagnostics.Process.Start(mapUrl);
         }
     }
 }

@@ -121,6 +121,12 @@
     <Compile Include="MainForm.Designer.cs">
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="NetPictureForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="NetPictureForm.Designer.cs">
+      <DependentUpon>NetPictureForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="PictureForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -279,6 +285,9 @@
     <EmbeddedResource Include="MainForm.resx">
       <DependentUpon>MainForm.cs</DependentUpon>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="NetPictureForm.resx">
+      <DependentUpon>NetPictureForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="UploadPicturesForm.resx">
       <DependentUpon>UploadPicturesForm.cs</DependentUpon>

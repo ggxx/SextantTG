@@ -327,9 +327,10 @@ namespace SextantTG.Win
         {
             string sightName = this.textBox_SightsName.Text;
             string cityName = this.textBox_City.Text;
-
             string mapUrl = "http://api.go2map.com/engine/api/static/image+{'points':'" + sightName + "','labels':'" + sightName + "','city':'" + cityName + "'}.png";
-            System.Diagnostics.Process.Start(mapUrl);
+            new NetPictureForm(mapUrl).ShowDialog();
+
+            //System.Diagnostics.Process.Start(mapUrl);
         }
     }
 }

@@ -95,22 +95,22 @@ namespace SextantTG.Win
             this.Blog.Title = this.textBox_Title.Text.Trim();
             this.Blog.Content = this.textBox_Content.Text;
 
-            //将日志发布到腾讯微博中
-            Debug.Assert(this.Blog.Content.Length <= 140, "日志正文不能超过140个字符！");
-            TencentWeibo tencentWeibo = new TencentWeibo();
-            OAuth oauth = tencentWeibo.GetOAuth();
-            if (oauth != null)
-            {
-                Twitter twitter = new Twitter(oauth);
-                var data = twitter.Add(this.Blog.Content, "127.0.0.1");
-            }
-
-            this.DialogResult = System.Windows.Forms.DialogResult.OK;
-            this.Close();
-
             string msg;
             if (UIUtil.SaveBlog(this.Blog, out msg))
             {
+                if (MessageBox.Show("是否将日志同步到微博中？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    //将日志发布到腾讯微博中
+                    Debug.Assert(this.Blog.Content.Length <= 140, "日志正文不能超过140个字符！");
+                    TencentWeibo tencentWeibo = new TencentWeibo();
+                    OAuth oauth = tencentWeibo.GetOAuth();
+                    if (oauth != null)
+                    {
+                        Twitter twitter = new Twitter(oauth);
+                        var data = twitter.Add(this.Blog.Content, "127.0.0.1");
+                    }
+                }
+
                 this.DialogResult = System.Windows.Forms.DialogResult.OK;
                 this.Close();
             }
@@ -119,7 +119,6 @@ namespace SextantTG.Win
                 MessageBox.Show("操作失败\r\n" + msg, "错误", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
         }
     }
 }

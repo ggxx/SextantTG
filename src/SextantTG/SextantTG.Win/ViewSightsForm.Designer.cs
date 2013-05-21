@@ -57,6 +57,7 @@
             this.textBox_Price = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.textBox_Stars = new System.Windows.Forms.TextBox();
+            this.button_sightLocation = new System.Windows.Forms.Button();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
@@ -90,7 +91,6 @@
             this.textBox_MyVisited = new System.Windows.Forms.TextBox();
             this.textBox_MyStars = new System.Windows.Forms.TextBox();
             this.button_Close = new System.Windows.Forms.Button();
-            this.button_sightLocation = new System.Windows.Forms.Button();
             this.tableLayoutPanel2.SuspendLayout();
             this.tableLayoutPanel5.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -109,8 +109,8 @@
             // 
             // listBox_Sights
             // 
-            this.listBox_Sights.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)));
+            this.listBox_Sights.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left)));
             this.listBox_Sights.FormattingEnabled = true;
             this.listBox_Sights.ItemHeight = 12;
             this.listBox_Sights.Location = new System.Drawing.Point(12, 168);
@@ -263,7 +263,6 @@
             this.tableLayoutPanel5.Controls.Add(this.textBox_Price, 3, 2);
             this.tableLayoutPanel5.Controls.Add(this.label16, 4, 0);
             this.tableLayoutPanel5.Controls.Add(this.textBox_Stars, 5, 0);
-            this.tableLayoutPanel5.Controls.Add(this.button_sightLocation, 5, 2);
             this.tableLayoutPanel5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel5.Location = new System.Drawing.Point(3, 17);
             this.tableLayoutPanel5.Name = "tableLayoutPanel5";
@@ -431,11 +430,22 @@
             this.textBox_Stars.Size = new System.Drawing.Size(124, 21);
             this.textBox_Stars.TabIndex = 3;
             // 
+            // button_sightLocation
+            // 
+            this.button_sightLocation.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button_sightLocation.Location = new System.Drawing.Point(238, 528);
+            this.button_sightLocation.Name = "button_sightLocation";
+            this.button_sightLocation.Size = new System.Drawing.Size(75, 22);
+            this.button_sightLocation.TabIndex = 16;
+            this.button_sightLocation.Text = "景点位置";
+            this.button_sightLocation.UseVisualStyleBackColor = true;
+            this.button_sightLocation.Click += new System.EventHandler(this.button_sightLocation_Click);
+            // 
             // tabControl1
             // 
-            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
@@ -460,8 +470,8 @@
             // 
             // groupBox2
             // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox2.Controls.Add(this.tableLayoutPanel5);
             this.groupBox2.Location = new System.Drawing.Point(6, 6);
             this.groupBox2.Name = "groupBox2";
@@ -472,9 +482,9 @@
             // 
             // groupBox1
             // 
-            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom)
-                        | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.groupBox1.Controls.Add(this.dataGridView_Comment);
             this.groupBox1.Location = new System.Drawing.Point(6, 260);
             this.groupBox1.Name = "groupBox1";
@@ -719,8 +729,8 @@
             // 
             // tableLayoutPanel1
             // 
-            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left)
-                        | System.Windows.Forms.AnchorStyles.Right)));
+            this.tableLayoutPanel1.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
             this.tableLayoutPanel1.ColumnCount = 2;
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 80F));
             this.tableLayoutPanel1.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
@@ -785,16 +795,6 @@
             this.button_Close.UseVisualStyleBackColor = true;
             this.button_Close.Click += new System.EventHandler(this.button_Close_Click);
             // 
-            // button_sightLocation
-            // 
-            this.button_sightLocation.Location = new System.Drawing.Point(381, 59);
-            this.button_sightLocation.Name = "button_sightLocation";
-            this.button_sightLocation.Size = new System.Drawing.Size(75, 22);
-            this.button_sightLocation.TabIndex = 16;
-            this.button_sightLocation.Text = "景点位置";
-            this.button_sightLocation.UseVisualStyleBackColor = true;
-            this.button_sightLocation.Click += new System.EventHandler(this.button_sightLocation_Click);
-            // 
             // ViewSightsForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -804,6 +804,7 @@
             this.Controls.Add(this.tabControl1);
             this.Controls.Add(this.tableLayoutPanel2);
             this.Controls.Add(this.listBox_Sights);
+            this.Controls.Add(this.button_sightLocation);
             this.Name = "ViewSightsForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "景点一览";

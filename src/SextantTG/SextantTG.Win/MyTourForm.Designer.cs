@@ -68,7 +68,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.stgReadonlyPictures = new SextantTG.Win.STGReadonlyPictures();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.dataGridView_Blog = new System.Windows.Forms.DataGridView();
             this.Column_B_BlogId = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -87,6 +86,8 @@
             this.button_Comment = new System.Windows.Forms.Button();
             this.button_Picture = new System.Windows.Forms.Button();
             this.button_Del = new System.Windows.Forms.Button();
+            this.button_Map = new System.Windows.Forms.Button();
+            this.stgReadonlyPictures = new SextantTG.Win.STGReadonlyPictures();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -106,7 +107,7 @@
             // button_Close
             // 
             this.button_Close.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Right)));
-            this.button_Close.Location = new System.Drawing.Point(757, 527);
+            this.button_Close.Location = new System.Drawing.Point(817, 527);
             this.button_Close.Name = "button_Close";
             this.button_Close.Size = new System.Drawing.Size(75, 23);
             this.button_Close.TabIndex = 8;
@@ -125,7 +126,7 @@
             this.tabControl1.Location = new System.Drawing.Point(250, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(582, 509);
+            this.tabControl1.Size = new System.Drawing.Size(642, 509);
             this.tabControl1.TabIndex = 1;
             // 
             // tabPage1
@@ -136,7 +137,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(574, 483);
+            this.tabPage1.Size = new System.Drawing.Size(634, 483);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "旅行概述";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -149,7 +150,7 @@
             this.groupBox3.Controls.Add(this.dataGridView_Comment);
             this.groupBox3.Location = new System.Drawing.Point(6, 338);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(562, 139);
+            this.groupBox3.Size = new System.Drawing.Size(622, 139);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "留言";
@@ -174,7 +175,7 @@
             this.dataGridView_Comment.ReadOnly = true;
             this.dataGridView_Comment.RowTemplate.Height = 23;
             this.dataGridView_Comment.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView_Comment.Size = new System.Drawing.Size(556, 119);
+            this.dataGridView_Comment.Size = new System.Drawing.Size(616, 119);
             this.dataGridView_Comment.TabIndex = 7;
             // 
             // Column_C_CommentId
@@ -229,7 +230,7 @@
             this.groupBox2.Controls.Add(this.dataGridView_SubTour);
             this.groupBox2.Location = new System.Drawing.Point(6, 152);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(562, 180);
+            this.groupBox2.Size = new System.Drawing.Size(622, 180);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "行程安排";
@@ -257,7 +258,7 @@
             this.dataGridView_SubTour.ReadOnly = true;
             this.dataGridView_SubTour.RowTemplate.Height = 23;
             this.dataGridView_SubTour.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView_SubTour.Size = new System.Drawing.Size(556, 160);
+            this.dataGridView_SubTour.Size = new System.Drawing.Size(616, 160);
             this.dataGridView_SubTour.TabIndex = 7;
             // 
             // Column_ST_TourId
@@ -344,7 +345,7 @@
             this.groupBox1.Controls.Add(this.tableLayoutPanel1);
             this.groupBox1.Location = new System.Drawing.Point(6, 6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(562, 140);
+            this.groupBox1.Size = new System.Drawing.Size(622, 140);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "旅行概况";
@@ -378,7 +379,7 @@
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 25F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(556, 120);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(616, 120);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // label2
@@ -398,7 +399,7 @@
             this.textBox_TourName.Location = new System.Drawing.Point(83, 4);
             this.textBox_TourName.Name = "textBox_TourName";
             this.textBox_TourName.ReadOnly = true;
-            this.textBox_TourName.Size = new System.Drawing.Size(470, 21);
+            this.textBox_TourName.Size = new System.Drawing.Size(530, 21);
             this.textBox_TourName.TabIndex = 1;
             // 
             // textBox_User
@@ -407,7 +408,7 @@
             this.textBox_User.Location = new System.Drawing.Point(83, 34);
             this.textBox_User.Name = "textBox_User";
             this.textBox_User.ReadOnly = true;
-            this.textBox_User.Size = new System.Drawing.Size(192, 21);
+            this.textBox_User.Size = new System.Drawing.Size(222, 21);
             this.textBox_User.TabIndex = 2;
             // 
             // label3
@@ -436,14 +437,14 @@
             this.textBox_BeginDate.Location = new System.Drawing.Point(83, 64);
             this.textBox_BeginDate.Name = "textBox_BeginDate";
             this.textBox_BeginDate.ReadOnly = true;
-            this.textBox_BeginDate.Size = new System.Drawing.Size(192, 21);
+            this.textBox_BeginDate.Size = new System.Drawing.Size(222, 21);
             this.textBox_BeginDate.TabIndex = 6;
             // 
             // label8
             // 
             this.label8.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(326, 99);
+            this.label8.Location = new System.Drawing.Point(356, 99);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(29, 12);
             this.label8.TabIndex = 9;
@@ -452,28 +453,28 @@
             // textBox_Cost
             // 
             this.textBox_Cost.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_Cost.Location = new System.Drawing.Point(361, 34);
+            this.textBox_Cost.Location = new System.Drawing.Point(391, 34);
             this.textBox_Cost.Name = "textBox_Cost";
             this.textBox_Cost.ReadOnly = true;
-            this.textBox_Cost.Size = new System.Drawing.Size(192, 21);
+            this.textBox_Cost.Size = new System.Drawing.Size(222, 21);
             this.textBox_Cost.TabIndex = 10;
             // 
             // textBox_Status
             // 
             this.textBox_Status.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_Status.Location = new System.Drawing.Point(361, 64);
+            this.textBox_Status.Location = new System.Drawing.Point(391, 64);
             this.textBox_Status.Name = "textBox_Status";
             this.textBox_Status.ReadOnly = true;
-            this.textBox_Status.Size = new System.Drawing.Size(192, 21);
+            this.textBox_Status.Size = new System.Drawing.Size(222, 21);
             this.textBox_Status.TabIndex = 11;
             // 
             // textBox_Memos
             // 
             this.textBox_Memos.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Left | System.Windows.Forms.AnchorStyles.Right)));
-            this.textBox_Memos.Location = new System.Drawing.Point(361, 94);
+            this.textBox_Memos.Location = new System.Drawing.Point(391, 94);
             this.textBox_Memos.Name = "textBox_Memos";
             this.textBox_Memos.ReadOnly = true;
-            this.textBox_Memos.Size = new System.Drawing.Size(192, 21);
+            this.textBox_Memos.Size = new System.Drawing.Size(222, 21);
             this.textBox_Memos.TabIndex = 12;
             // 
             // textBox_EndDate
@@ -482,7 +483,7 @@
             this.textBox_EndDate.Location = new System.Drawing.Point(83, 94);
             this.textBox_EndDate.Name = "textBox_EndDate";
             this.textBox_EndDate.ReadOnly = true;
-            this.textBox_EndDate.Size = new System.Drawing.Size(192, 21);
+            this.textBox_EndDate.Size = new System.Drawing.Size(222, 21);
             this.textBox_EndDate.TabIndex = 13;
             // 
             // label5
@@ -499,7 +500,7 @@
             // 
             this.label6.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(326, 69);
+            this.label6.Location = new System.Drawing.Point(356, 69);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(29, 12);
             this.label6.TabIndex = 7;
@@ -509,7 +510,7 @@
             // 
             this.label7.Anchor = System.Windows.Forms.AnchorStyles.Right;
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(302, 39);
+            this.label7.Location = new System.Drawing.Point(332, 39);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(53, 12);
             this.label7.TabIndex = 8;
@@ -521,18 +522,10 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(574, 483);
+            this.tabPage2.Size = new System.Drawing.Size(634, 483);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "沿途美景";
             this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // stgReadonlyPictures
-            // 
-            this.stgReadonlyPictures.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.stgReadonlyPictures.Location = new System.Drawing.Point(3, 3);
-            this.stgReadonlyPictures.Name = "stgReadonlyPictures";
-            this.stgReadonlyPictures.Size = new System.Drawing.Size(568, 477);
-            this.stgReadonlyPictures.TabIndex = 0;
             // 
             // tabPage3
             // 
@@ -540,7 +533,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(574, 483);
+            this.tabPage3.Size = new System.Drawing.Size(634, 483);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "心情分享";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -568,7 +561,7 @@
             this.dataGridView_Blog.ReadOnly = true;
             this.dataGridView_Blog.RowTemplate.Height = 23;
             this.dataGridView_Blog.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView_Blog.Size = new System.Drawing.Size(568, 477);
+            this.dataGridView_Blog.Size = new System.Drawing.Size(628, 477);
             this.dataGridView_Blog.TabIndex = 1;
             this.dataGridView_Blog.CellDoubleClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_Blog_CellDoubleClick);
             // 
@@ -726,11 +719,31 @@
             this.button_Del.UseVisualStyleBackColor = true;
             this.button_Del.Click += new System.EventHandler(this.button_Del_Click);
             // 
+            // button_Map
+            // 
+            this.button_Map.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left)));
+            this.button_Map.Location = new System.Drawing.Point(736, 527);
+            this.button_Map.Name = "button_Map";
+            this.button_Map.Size = new System.Drawing.Size(75, 23);
+            this.button_Map.TabIndex = 9;
+            this.button_Map.Text = "旅行路线";
+            this.button_Map.UseVisualStyleBackColor = true;
+            this.button_Map.Click += new System.EventHandler(this.button_Map_Click);
+            // 
+            // stgReadonlyPictures
+            // 
+            this.stgReadonlyPictures.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.stgReadonlyPictures.Location = new System.Drawing.Point(3, 3);
+            this.stgReadonlyPictures.Name = "stgReadonlyPictures";
+            this.stgReadonlyPictures.Size = new System.Drawing.Size(628, 477);
+            this.stgReadonlyPictures.TabIndex = 0;
+            // 
             // MyTourForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(844, 562);
+            this.ClientSize = new System.Drawing.Size(904, 562);
+            this.Controls.Add(this.button_Map);
             this.Controls.Add(this.button_Del);
             this.Controls.Add(this.button_Picture);
             this.Controls.Add(this.button_Comment);
@@ -823,5 +836,6 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_B_Content;
         private System.Windows.Forms.DataGridViewComboBoxColumn Column_B_UserId;
         private System.Windows.Forms.DataGridViewTextBoxColumn Column_B_CreatingTime;
+        private System.Windows.Forms.Button button_Map;
     }
 }

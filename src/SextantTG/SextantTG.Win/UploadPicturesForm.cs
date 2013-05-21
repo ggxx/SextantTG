@@ -29,22 +29,30 @@ namespace SextantTG.Win
             string msg;
             if (UIUtil.SavePictures(stgPictures.Pictures, stgPictures.RemovedPictures, out msg))
             {
-                //将图片发布到腾讯微博中
-                TencentWeibo tencentWeibo = new TencentWeibo();
-                OAuth oauth = tencentWeibo.GetOAuth();
-                foreach (Picture pic in stgPictures.Pictures)
-                {
-                    string path = PicPath + pic.Path;
-                    string description;
-                    if (pic.Description == null || pic.Description == "")
-                        description = "图片";
-                    else
-                        description = pic.Description;
 
-                    Twitter twitter = new Twitter(oauth);
-                    if (oauth != null)
+                if (MessageBox.Show("是否将日志同步到微博中？", "提示", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == System.Windows.Forms.DialogResult.Yes)
+                {
+                    //将图片发布到腾讯微博中
+                    TencentWeibo tencentWeibo = new TencentWeibo();
+                    OAuth oauth = tencentWeibo.GetOAuth();
+                    foreach (Picture pic in stgPictures.Pictures)
                     {
-                        var data = twitter.Add(description, @path, "127.0.0.1");
+                        string path = PicPath + pic.Path;
+                        string description;
+                        if (pic.Description == null || pic.Description == "")
+                        {
+                            description = "图片";
+                        }
+                        else
+                        {
+                            description = pic.Description;
+                        }
+
+                        Twitter twitter = new Twitter(oauth);
+                        if (oauth != null)
+                        {
+                            var data = twitter.Add(description, @path, "127.0.0.1");
+                        }
                     }
                 }
 
