@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <TextView
+        android:id="@+id/subtour_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="12dp"
+        android:text="北京三日游(1)"
+        android:textColor="#0099CC"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/subtour_sight"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:text="长城"
+        android:textSize="24sp" />
+
+    <TextView
+        android:id="@+id/subtour_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="4dp"
+        android:text="2013-01-01 ~ 3013-12-31" />
+
+</LinearLayout>

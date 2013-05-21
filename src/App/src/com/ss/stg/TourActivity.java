@@ -1,22 +1,39 @@
 package com.ss.stg;
 
+import java.io.File;
 import java.text.MessageFormat;
+import java.util.Date;
 import java.util.HashMap;
 
+import com.ss.stg.dto.BlogItem;
+import com.ss.stg.dto.PictureItem;
+import com.ss.stg.dto.SubtourItem;
 import com.ss.stg.dto.TourObject;
 import com.ss.stg.ws2.DTOApi;
 import com.ss.stg.ws2.IWebService;
+import com.ss.stg.ws2.MediaScanner;
+import com.ss.stg.ws2.UploadUtil;
 import com.ss.stg.ws2.WSThread;
 
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.MediaStore;
+import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.view.ViewGroup.MarginLayoutParams;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
 import android.widget.Gallery;
 import android.widget.ListAdapter;
 import android.widget.ListView;
@@ -27,6 +44,7 @@ public class TourActivity extends Activity {
 
 	private Toast toast = null;
 	private Handler handler = null;
+	private String TAG = "TourActivity";
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +62,37 @@ public class TourActivity extends Activity {
 		params.put(IWebService.PARAM__GET_TOUR_BY_TOURID, tourId);
 		thread = new WSThread(handler, IWebService.ID__GET_TOUR_BY_TOURID, params);
 		thread.startWithProgressDialog(this);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.tour, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+		case R.id.menu_tour_comment:
+			Intent intent = new Intent(this, CommentEditActivity.class);
+			intent.putExtra("targetid", getIntent().getStringExtra("tourid"));
+			intent.putExtra("userid", getIntent().getStringExtra("userid"));
+			startActivityForResult(intent, 1);
+			break;
+		}
+
+		return false;
+	}
+
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == 1 && resultCode == RESULT_OK) {
+			WSThread thread = null;
+			HashMap<String, Object> params = new HashMap<String, Object>();
+			params.put(IWebService.PARAM__GET_TOUR_BY_TOURID, getIntent().getStringExtra("tourid"));
+			thread = new WSThread(handler, IWebService.ID__GET_TOUR_BY_TOURID, params);
+			thread.startWithProgressDialog(this);
+		}
 	}
 
 	private class STGHandler extends Handler {
@@ -98,6 +147,30 @@ public class TourActivity extends Activity {
 				BlogAdapter blogAdapter = new BlogAdapter(activity, tour.getBlogList());
 				blogListView.setAdapter(blogAdapter);
 				setListViewHeightBasedOnChildren(blogListView);
+
+				subtourListView.setOnItemClickListener(new ListView.OnItemClickListener() {
+					@Override
+					public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+						SubtourItem item = (SubtourItem) parent.getItemAtPosition(position);
+						Intent intent = new Intent(TourActivity.this, SubtourActivity.class);
+						intent.putExtra("tourid", item.getTourId());
+						intent.putExtra("subtourid", item.getSubtourId());
+						intent.putExtra("sightid", item.getSightId());
+						intent.putExtra("userid", getIntent().getStringExtra("userid"));
+						startActivity(intent);
+					}
+				});
+
+				blogListView.setOnItemClickListener(new ListView.OnItemClickListener() {
+					@Override
+					public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+						BlogItem item = (BlogItem) parent.getItemAtPosition(position);
+						Intent intent = new Intent(TourActivity.this, BlogActivity.class);
+						intent.putExtra("blogid", item.getBlogId());
+						startActivity(intent);
+					}
+				});
+
 			} else {
 				showNetworkErrorDialog();
 			}

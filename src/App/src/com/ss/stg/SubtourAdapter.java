@@ -64,7 +64,6 @@ public class SubtourAdapter extends ArrayAdapter<SubtourItem> {
 			if (this.viewType == EDITABLE) {
 				viewWrapper.getDeleteButton().setVisibility(View.VISIBLE);
 				viewWrapper.getDeleteButton().setOnClickListener(new View.OnClickListener() {
-
 					@Override
 					public void onClick(View v) {
 						SubtourItem item2 = getItem(pos);
@@ -75,7 +74,6 @@ public class SubtourAdapter extends ArrayAdapter<SubtourItem> {
 
 				viewWrapper.getEditButton().setVisibility(View.VISIBLE);
 				viewWrapper.getEditButton().setOnClickListener(new View.OnClickListener() {
-
 					@Override
 					public void onClick(View v) {
 						Intent intent = new Intent(getContext(), SubtourEditActivity.class);

@@ -15,6 +15,10 @@ public class BlogItem extends DTO {
 	private String subtourName;
 	private String content;
 	private Date creatingTime;
+	private String userId;
+	private String tourId;
+	private String subtourId;
+	private String sightId;
 
 	public String getBlogId() {
 		return blogId;
@@ -78,5 +82,37 @@ public class BlogItem extends DTO {
 
 	public void setCreatingTime(Date creatingTime) {
 		this.creatingTime = creatingTime;
+	}
+
+	public String getSightId() {
+		return sightId;
+	}
+
+	public void setSightId(String sightId) {
+		this.sightId = sightId;
+	}
+
+	public String getSubtourId() {
+		return subtourId;
+	}
+
+	public void setSubtourId(String subtourId) {
+		this.subtourId = subtourId;
+	}
+
+	public String getTourId() {
+		return tourId;
+	}
+
+	public void setTourId(String tourId) {
+		this.tourId = tourId;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 }

@@ -90,17 +90,31 @@ public class WSThread extends Thread {
 				String subtourId = this.params.get(IWebService.PARAM__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID__SUBTOURID).toString();
 				returnObject = ws.getSubtourByTourIdAndSubtourId(tourId, subtourId);
 			} else if (methodId == IWebService.ID__GET_COUNTRIES) {
-				returnObject = ws.GetCountries();
+				returnObject = ws.getCountries();
 			} else if (methodId == IWebService.ID__GET_PROVINCES) {
-				returnObject = ws.GetProvinces();
+				returnObject = ws.getProvinces();
 			} else if (methodId == IWebService.ID__GET_CITIES) {
-				returnObject = ws.GetCities();
+				returnObject = ws.getCities();
 			} else if (methodId == IWebService.ID__SAVE_TOUR) {
 				TourObject tour = (TourObject) this.params.get(IWebService.PARAM__SAVE_TOUR__TOUR);
 				List<SubtourItem> subtourItems = (List<SubtourItem>) this.params.get(IWebService.PARAM__SAVE_TOUR__SUBTOURS);
 				List<SubtourItem> removedSubtourItems = (List<SubtourItem>) this.params.get(IWebService.PARAM__SAVE_TOUR__REMOVED_SUBTOURS);
-				returnObject = ws.SaveTour(tour, subtourItems, removedSubtourItems);
+				returnObject = ws.saveTour(tour, subtourItems, removedSubtourItems);
+			} else if (methodId == IWebService.ID__UPLOAD_PICTURE) {
+				PictureItem picture = (PictureItem) this.params.get(IWebService.PARAM__UPLOAD_PICTURE__PICTURESTRING);
+				String base64code = this.params.get(IWebService.PARAM__UPLOAD_PICTURE__BASE64CODE).toString();
+				returnObject = ws.uploadPicture(picture, base64code);
+			} else if (methodId == IWebService.ID__INSERT_TOUR_COMMENT) {
+				CommentItem comment = (CommentItem) this.params.get(IWebService.PARAM__INSERT_TOUR_COMMENT);
+				returnObject = ws.insertTourComment(comment);
+			} else if (methodId == IWebService.ID__GET_BLOG_BY_BLOGID) {
+				String blogId = this.params.get(IWebService.PARAM__GET_BLOG_BY_BLOGID).toString();
+				returnObject = ws.getBlogByBlogId(blogId);
+			} else if (methodId == IWebService.ID__INSERT_BLOG) {
+				BlogObject blog = (BlogObject) this.params.get(IWebService.PARAM__INSERT_BLOG);
+				returnObject = ws.insertBlog(blog);
 			}
+
 			else {
 
 			}

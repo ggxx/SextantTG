@@ -33,6 +33,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener, OnTourFragmentInteractionListener, OnSightsFragmentInteractionListener, OnLoginFragmentInteractionListener,
 		OnLogoutFragmentInteractionListener {
@@ -108,15 +109,20 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	@Override
 	public boolean onOptionsItemSelected(MenuItem item) {
 		switch (item.getItemId()) {
-		case R.id.action_addtour:
-			Intent intent = new Intent(this, TourEditActivity.class);
-			startActivity(intent);
+		case R.id.menu_main_addtour:
+			if (loginUserId != null && !loginUserId.equals("")) {
+				Intent intent = new Intent(this, TourEditActivity.class);
+				intent.putExtra("userid", loginUserId);
+				startActivity(intent);
+			} else {
+				Toast toast = Toast.makeText(this, "请先登录", Toast.LENGTH_SHORT);
+				toast.show();
+			}
 			break;
 
-		case R.id.action_settings:
+		case R.id.menu_main_settings:
 			break;
 		}
-
 		return false;
 	}
 
@@ -177,6 +183,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	public void onTourFragmentInteraction(String id) {
 		Intent intent = new Intent(this, TourActivity.class);
 		intent.putExtra("tourid", id);
+		intent.putExtra("userid", loginUserId);
 		startActivity(intent);
 	}
 

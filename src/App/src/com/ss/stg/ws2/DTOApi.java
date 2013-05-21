@@ -38,7 +38,7 @@ public class DTOApi {
 	public static final DateFormat datetimeFormat = new SimpleDateFormat("yyyy/M/d H:mm:ss");
 	private static final Date defaultDate = cal.getTime();
 
-	private static Bitmap returnBitMap(String url) {
+	private static Bitmap convertToBitMap(String url) {
 		URL myFileUrl = null;
 		Bitmap bitmap = null;
 		try {
@@ -144,6 +144,18 @@ public class DTOApi {
 		return MessageFormat.format("<Request><SubtourItemList>{0}</SubtourItemList></Request>", sb.toString());
 	}
 
+	public static String convertToString(CommentItem comment) {
+		return MessageFormat.format("<Request><CommentItem><CommentId>{0}</CommentId><TargetId>{1}</TargetId><UserId>{2}</UserId><Comment>{3}</Comment></CommentItem></Request>",
+				comment.getCommentId(), comment.getTargetId(), comment.getUserId(), comment.getComment());
+	}
+
+	public static String convertToString(BlogObject blog) {
+		return MessageFormat
+				.format("<Request><BlogObject><BlogId>{0}</BlogId><Anthor>{1}</Anthor><Title>{2}</Title><SightName>{3}</SightName><TourName>{4}</TourName><SubtourName>{5}</SubtourName><Content>{6}</Content><CreatingTime>{7}</CreatingTime><SightId>{8}</SightId><TourId>{9}</TourId><SubtourId>{10}</SubtourId><UserId>{11}</UserId></BlogObject></Request>",
+						blog.getBlogId(), blog.getAnthor(), blog.getTitle(), blog.getSightName(), blog.getTourName(), blog.getSubtourName(), blog.getContent(), blog.getCreatingTime(),
+						blog.getSightId(), blog.getTourId(), blog.getSubtourId(), blog.getUserId());
+	}
+
 	public static UserObject parseUserObject(SoapObject obj) {
 		SoapObject tmp = (SoapObject) obj.getProperty(0);
 		UserObject user = new UserObject();
@@ -221,7 +233,10 @@ public class DTOApi {
 		item.setSubtourName(getString(tmp, "SubtourName"));
 		item.setContent(getString(tmp, "Content"));
 		item.setCreatingTime(getDateTime(tmp, "CreatingTime"));
-		item.setCommentList(parseCommentItems(tmp));
+		item.setSightId(getString(tmp, "SightId"));
+		item.setTourId(getString(tmp, "TourId"));
+		item.setSubtourId(getString(tmp, "SubtourId"));
+		item.setUserId(getString(tmp, "UserId"));
 		return item;
 	}
 
@@ -261,6 +276,10 @@ public class DTOApi {
 			item.setSubtourName(getString(tmp, "SubtourName"));
 			item.setTitle(getString(tmp, "Title"));
 			item.setTourName(getString(tmp, "TourName"));
+			item.setSightId(getString(tmp, "SightId"));
+			item.setTourId(getString(tmp, "TourId"));
+			item.setSubtourId(getString(tmp, "SubtourId"));
+			item.setUserId(getString(tmp, "UserId"));
 			blogList.add(item);
 		}
 		return blogList;
@@ -277,6 +296,7 @@ public class DTOApi {
 			item.setCommentUserName(getString(tmp, "CommentUserName"));
 			item.setCreatingTime(getDateTime(tmp, "CreatingTime"));
 			item.setTargetId(getString(tmp, "TargetId"));
+			item.setUserId(getString(tmp, "Userid"));
 			commentList.add(item);
 		}
 		return commentList;
@@ -293,7 +313,9 @@ public class DTOApi {
 			item.setPath(getString(tmp, "Path"));
 			item.setPictureId(getString(tmp, "PictureId"));
 			item.setUploaderName(getString(tmp, "UploaderName"));
-			item.setBitmap(returnBitMap(item.getPath()));
+			item.setTourId(getString(tmp, "TourId"));
+			item.setSubtourId(getString(tmp, "SubtourId"));
+			item.setBitmap(convertToBitMap(item.getPath()));
 			pictureList.add(item);
 		}
 		return pictureList;

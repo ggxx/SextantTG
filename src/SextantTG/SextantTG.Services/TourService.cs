@@ -67,7 +67,7 @@ namespace SextantTG.Services
             {
                 oldBlogs.AddRange(blogDal.GetBlogsByTourId(tour.TourId));
                 oldPictures.AddRange(pictureDal.GetPicturesByTourId(tour.TourId));
-                foreach(Picture pic in oldPictures)
+                foreach (Picture pic in oldPictures)
                 {
                     oldPicComments.AddRange(pictureCommentDal.GetPictureCommentsByPictureId(pic.PictureId));
                 }
@@ -104,7 +104,7 @@ namespace SextantTG.Services
                                 pictureCommentDal.DeletePictureComment(comm, trans);
                             }
                         }
-                        
+
                         trans.Commit();
                         message = "";
                         return true;
@@ -153,7 +153,7 @@ namespace SextantTG.Services
                             {
                                 SubTour oldSubTour = oldSubTours.Find(delegate(SubTour st) { return st.TourId == tour.TourId && st.SubTourId == subTour.SubTourId; });
                                 subTour.TourId = tour.TourId;
-                                if (subtourDal.UpdateSubTourFromOld(subTour, oldSubTour, trans) < 1)
+                                if (oldSubTour == null || subtourDal.UpdateSubTourFromOld(subTour, oldSubTour, trans) < 1)
                                 {
                                     subtourDal.InsertSubTour(subTour, trans);
                                 }

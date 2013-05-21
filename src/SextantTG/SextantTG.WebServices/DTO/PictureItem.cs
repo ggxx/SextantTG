@@ -31,5 +31,9 @@ namespace SextantTG.WebServices.DTO
         /// 上传时间
         /// </summary>
         public DateTime CreatingTime { get; set; }
+
+        public String TourId { get; set; }
+
+        public String SubtourId { get; set; }
     }
 }

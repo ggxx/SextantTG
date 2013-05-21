@@ -15,6 +15,8 @@ public class PictureItem extends DTO {
 	private String uploaderName;
 	private Date creatingTime;
 	private Bitmap bitmap;
+	private String tourId;
+	private String subtourId;
 
 	public String getPictureId() {
 		return pictureId;
@@ -62,5 +64,21 @@ public class PictureItem extends DTO {
 
 	public void setBitmap(Bitmap bitmap) {
 		this.bitmap = bitmap;
+	}
+
+	public String getTourId() {
+		return tourId;
+	}
+
+	public void setTourId(String tourId) {
+		this.tourId = tourId;
+	}
+
+	public String getSubtourId() {
+		return subtourId;
+	}
+
+	public void setSubtourId(String subtourId) {
+		this.subtourId = subtourId;
 	}
 }

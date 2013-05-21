@@ -9,7 +9,7 @@ namespace SextantTG.WebServices.DTO
     {
         public BlogObject()
         {
-            this.CommentItemList = new List<CommentItem>();
+            
         }
 
         public string BlogId { get; set; }
@@ -20,6 +20,9 @@ namespace SextantTG.WebServices.DTO
         public string Title { get; set; }
         public string Content { get; set; }
         public DateTime CreatingTime { get; set; }
-        List<CommentItem> CommentItemList { get; set; }
+        public string UserId { get; set; }
+        public string TourId { get; set; }
+        public string SubtourId { get; set; }
+        public string SightId { get; set; }
     }
 }

@@ -1,14 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android" >
 
     <item
-        android:id="@+id/menu_main_settings"
+        android:id="@+id/menu_subtour_picture"
         android:orderInCategory="100"
         android:showAsAction="ifRoom|collapseActionView"
-        android:title="设置"/>
+        android:title="上传图片"/>
     <item
-        android:id="@+id/menu_main_addtour"
+        android:id="@+id/menu_subtour_blog"
         android:orderInCategory="100"
         android:showAsAction="ifRoom|collapseActionView"
-        android:title="新的旅行"/>
+        android:title="撰写日志"/>
 
 </menu>

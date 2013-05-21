@@ -56,9 +56,13 @@ public class WebService implements IWebService {
 			return IWebService.METHOD__GET_CITIES;
 		} else if (methodId == IWebService.ID__SAVE_TOUR) {
 			return IWebService.METHOD__SAVE_TOUR;
-		}
-
-		else {
+		} else if (methodId == IWebService.ID__UPLOAD_PICTURE) {
+			return IWebService.METHOD__UPLOAD_PICTURE;
+		} else if (methodId == IWebService.ID__INSERT_TOUR_COMMENT) {
+			return IWebService.METHOD__INSERT_TOUR_COMMENT;
+		} else if (methodId == IWebService.ID__INSERT_BLOG) {
+			return IWebService.METHOD__INSERT_BLOG;
+		} else {
 			return "";
 		}
 	}
@@ -255,7 +259,6 @@ public class WebService implements IWebService {
 
 	@Override
 	public SubtourObject getSubtourByTourIdAndSubtourId(String tourId, String subtourId) {
-
 		HashMap<String, Object> params = new HashMap<String, Object>();
 		params.put(IWebService.PARAM__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID__TOURID, tourId);
 		params.put(IWebService.PARAM__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID__SUBTOURID, subtourId);
@@ -269,7 +272,7 @@ public class WebService implements IWebService {
 	}
 
 	@Override
-	public List<CountryItem> GetCountries() {
+	public List<CountryItem> getCountries() {
 		SoapObject response = GetSoapResponse(IWebService.ID__GET_COUNTRIES, null);
 		if (response != null) {
 			return DTOApi.parseCountryItems(response);
@@ -279,7 +282,7 @@ public class WebService implements IWebService {
 	}
 
 	@Override
-	public List<ProvinceItem> GetProvinces() {
+	public List<ProvinceItem> getProvinces() {
 		SoapObject response = GetSoapResponse(IWebService.ID__GET_PROVINCES, null);
 		if (response != null) {
 			return DTOApi.parseProvinceItems(response);
@@ -289,7 +292,7 @@ public class WebService implements IWebService {
 	}
 
 	@Override
-	public List<CityItem> GetCities() {
+	public List<CityItem> getCities() {
 		SoapObject response = GetSoapResponse(IWebService.ID__GET_CITIES, null);
 		if (response != null) {
 			return DTOApi.parseCityItems(response);
@@ -299,13 +302,45 @@ public class WebService implements IWebService {
 	}
 
 	@Override
-	public boolean SaveTour(TourObject tour, List<SubtourItem> subtourItems, List<SubtourItem> removedSubtourItems) {
+	public boolean saveTour(TourObject tour, List<SubtourItem> subtourItems, List<SubtourItem> removedSubtourItems) {
 		HashMap<String, Object> params = new HashMap<String, Object>();
 		params.put(IWebService.PARAM__SAVE_TOUR__TOUR, DTOApi.convertToString(tour));
 		params.put(IWebService.PARAM__SAVE_TOUR__SUBTOURS, DTOApi.convertToString(subtourItems));
 		params.put(IWebService.PARAM__SAVE_TOUR__REMOVED_SUBTOURS, DTOApi.convertToString(removedSubtourItems));
 
-		SoapObject response = GetSoapResponse(IWebService.ID__SAVE_TOUR, null);
+		SoapObject response = GetSoapResponse(IWebService.ID__SAVE_TOUR, params);
+		if (response != null) {
+			return DTOApi.parseBoolean(response);
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean uploadPicture(PictureItem picture, String base64code) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public boolean insertTourComment(CommentItem comment) {
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put(IWebService.PARAM__INSERT_TOUR_COMMENT, DTOApi.convertToString(comment));
+
+		SoapObject response = GetSoapResponse(IWebService.ID__INSERT_TOUR_COMMENT, params);
+		if (response != null) {
+			return DTOApi.parseBoolean(response);
+		} else {
+			return false;
+		}
+	}
+
+	@Override
+	public boolean insertBlog(BlogObject blog) {
+		HashMap<String, Object> params = new HashMap<String, Object>();
+		params.put(IWebService.PARAM__INSERT_BLOG, DTOApi.convertToString(blog));
+
+		SoapObject response = GetSoapResponse(IWebService.ID__INSERT_BLOG, params);
 		if (response != null) {
 			return DTOApi.parseBoolean(response);
 		} else {

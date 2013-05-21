@@ -520,6 +520,10 @@ namespace SextantTG.WebServices
                     SubtourName = tourSrv.GetSubTourByTourIdAndSubTourId(blog.TourId, blog.SubTourId).SubTourName,
                     TourName = tourSrv.GetTourByTourId(blog.TourId).TourName,
                     Title = blog.Title,
+                    SightId = blog.SightsId,
+                    SubtourId = blog.SubTourId,
+                    TourId = blog.TourId,
+                    UserId = blog.UserId
                 };
                 blogList.Add(item);
             }
@@ -531,7 +535,9 @@ namespace SextantTG.WebServices
                     Description = pic.Description,
                     Path = PicPath + pic.Path,
                     PictureId = pic.PictureId,
-                    UploaderName = userSrv.GetUserByUserId(pic.UploaderId).LoginName
+                    UploaderName = userSrv.GetUserByUserId(pic.UploaderId).LoginName,
+                    SubtourId = pic.SubTourId,
+                    TourId = pic.TourId
                 };
                 pictureList.Add(item);
             }
@@ -543,7 +549,8 @@ namespace SextantTG.WebServices
                     CommentId = comment.CommentId,
                     CommentUserName = userSrv.GetUserByUserId(comment.CommentUserId).LoginName,
                     CreatingTime = comment.CreatingTime ?? DateTime.MinValue,
-                    TargetId = sightId
+                    TargetId = sightId,
+                    UserId = comment.CommentUserId
                 };
                 commentList.Add(item2);
             }
@@ -585,7 +592,9 @@ namespace SextantTG.WebServices
                 UploaderName = userSrv.GetUserByUserId(pic.UploaderId).LoginName,
                 SightName = SightSrv.GetSightsBySightsId(pic.SightsId).SightsName,
                 SubTourName = tourSrv.GetSubTourByTourIdAndSubTourId(pic.TourId, pic.SubTourId).SubTourName,
-                TourName = tourSrv.GetTourByTourId(pic.TourId).TourName
+                TourName = tourSrv.GetTourByTourId(pic.TourId).TourName,
+                SubtourId = pic.SubTourId,
+                TourId = pic.TourId
             };
             return CreateReturnXmlDocument(item);
         }
@@ -594,7 +603,7 @@ namespace SextantTG.WebServices
         public XmlDocument GetBlogByBlogId(string blogId)
         {
             Blog blog = blogSrv.GetBlogByBlogId(blogId);
-            BlogItem item = new BlogItem()
+            BlogObject item = new BlogObject()
             {
                 Anthor = userSrv.GetUserByUserId(blog.UserId).LoginName,
                 BlogId = blog.BlogId,
@@ -604,6 +613,10 @@ namespace SextantTG.WebServices
                 SubtourName = tourSrv.GetSubTourByTourIdAndSubTourId(blog.TourId, blog.SubTourId).SubTourName,
                 TourName = tourSrv.GetTourByTourId(blog.TourId).TourName,
                 Title = blog.Title,
+                SightId = blog.SightsId,
+                SubtourId = blog.SubTourId,
+                TourId = blog.TourId,
+                UserId = blog.UserId
             };
             return CreateReturnXmlDocument(item);
         }
@@ -620,7 +633,8 @@ namespace SextantTG.WebServices
                     BeginDate = tour.BeginDate.HasValue ? tour.BeginDate.Value : DateTime.MinValue,
                     Status = tour.Status == 0 ? "未进行" : tour.Status == 1 ? "进行中" : tour.Status == 2 ? "已结束" : "",
                     TourId = tour.TourId,
-                    TourName = tour.TourName
+                    TourName = tour.TourName,
+                    UserId = tour.UserId
                 };
                 list.Add(item);
             }
@@ -647,7 +661,11 @@ namespace SextantTG.WebServices
                     SightName = SightSrv.GetSightsBySightsId(blog.SightsId).SightsName,
                     SubtourName = tourSrv.GetSubTourByTourIdAndSubTourId(blog.TourId, blog.SubTourId).SubTourName,
                     Title = blog.Title,
-                    TourName = tourSrv.GetTourByTourId(blog.TourId).TourName
+                    TourName = tourSrv.GetTourByTourId(blog.TourId).TourName,
+                    SightId = blog.SightsId,
+                    SubtourId = blog.SubTourId,
+                    TourId = blog.TourId,
+                    UserId = blog.UserId
                 };
                 blogList.Add(item);
             }
@@ -659,7 +677,8 @@ namespace SextantTG.WebServices
                     CommentId = comment.CommentId,
                     CommentUserName = userSrv.GetUserByUserId(comment.CommentUserId).LoginName,
                     CreatingTime = comment.CreatingTime.HasValue ? comment.CreatingTime.Value : DateTime.MinValue,
-                    TargetId = comment.TourId
+                    TargetId = comment.TourId,
+                    UserId = comment.CommentUserId
                 };
                 commentList.Add(item);
             }
@@ -671,7 +690,9 @@ namespace SextantTG.WebServices
                     Description = pic.Description,
                     Path = PicPath + pic.Path,
                     PictureId = pic.PictureId,
-                    UploaderName = userSrv.GetUserByUserId(pic.UploaderId).LoginName
+                    UploaderName = userSrv.GetUserByUserId(pic.UploaderId).LoginName,
+                    SubtourId = pic.SubTourId,
+                    TourId = pic.TourId
                 };
                 pictureList.Add(item);
             }
@@ -682,9 +703,10 @@ namespace SextantTG.WebServices
                     BeginDate = subtour.BeginDate ?? DateTime.MinValue,
                     EndDate = subtour.EndDate ?? DateTime.MinValue,
                     SightName = SightSrv.GetSightsBySightsId(subtour.SightsId).SightsName,
-                    SubtourId = subtour.SightsId,
+                    SubtourId = subtour.SubTourId,
                     SubtourName = subtour.SubTourName,
-                    TourId = tourId
+                    TourId = tourId,
+                    SightId = subtour.SightsId
                 };
                 subtourList.Add(item);
             }
@@ -700,7 +722,8 @@ namespace SextantTG.WebServices
                 Status = tour.Status == 0 ? "未进行" : tour.Status == 1 ? "进行中" : tour.Status == 2 ? "已结束" : "",
                 SubtourItemList = subtourList,
                 TourId = tour.TourId,
-                TourName = tour.TourName
+                TourName = tour.TourName,
+                UserId = tour.UserId
             };
 
             return CreateReturnXmlDocument(tourObject);
@@ -724,7 +747,11 @@ namespace SextantTG.WebServices
                     SightName = SightSrv.GetSightsBySightsId(blog.SightsId).SightsName,
                     SubtourName = tourSrv.GetSubTourByTourIdAndSubTourId(blog.TourId, blog.SubTourId).SubTourName,
                     Title = blog.Title,
-                    TourName = tourSrv.GetTourByTourId(blog.TourId).TourName
+                    TourName = tourSrv.GetTourByTourId(blog.TourId).TourName,
+                    SightId = blog.SightsId,
+                    SubtourId = blog.SubTourId,
+                    TourId = blog.TourId,
+                    UserId = blog.UserId
                 };
                 blogList.Add(item);
             }
@@ -736,7 +763,9 @@ namespace SextantTG.WebServices
                     Description = pic.Description,
                     Path = PicPath + pic.Path,
                     PictureId = pic.PictureId,
-                    UploaderName = userSrv.GetUserByUserId(pic.UploaderId).LoginName
+                    UploaderName = userSrv.GetUserByUserId(pic.UploaderId).LoginName,
+                    SubtourId = pic.SubTourId,
+                    TourId = pic.TourId
                 };
                 pictureList.Add(item);
             }
@@ -818,6 +847,10 @@ namespace SextantTG.WebServices
                     SubtourName = tourSrv.GetSubTourByTourIdAndSubTourId(blog.TourId, blog.SubTourId).SubTourName,
                     TourName = tourSrv.GetTourByTourId(blog.TourId).TourName,
                     Title = blog.Title,
+                    SightId = blog.SightsId,
+                    SubtourId = blog.SubTourId,
+                    TourId = blog.TourId,
+                    UserId = blog.UserId
                 };
                 blogList.Add(item);
             }
@@ -829,7 +862,9 @@ namespace SextantTG.WebServices
                     Description = pic.Description,
                     Path = PicPath + pic.Path,
                     PictureId = pic.PictureId,
-                    UploaderName = userSrv.GetUserByUserId(pic.UploaderId).LoginName
+                    UploaderName = userSrv.GetUserByUserId(pic.UploaderId).LoginName,
+                    SubtourId = pic.SubTourId,
+                    TourId = pic.TourId
                 };
                 pictureList.Add(item);
             }
@@ -841,7 +876,8 @@ namespace SextantTG.WebServices
                     CommentId = comment.CommentId,
                     CommentUserName = userSrv.GetUserByUserId(comment.CommentUserId).LoginName,
                     CreatingTime = comment.CreatingTime.HasValue ? comment.CreatingTime.Value : DateTime.MinValue,
-                    TargetId = sightId
+                    TargetId = sightId,
+                    UserId = comment.CommentUserId
                 };
                 commentList.Add(item2);
             }
@@ -956,21 +992,60 @@ namespace SextantTG.WebServices
             {
                 TourObject tourObject = ReadModel<TourObject>(tourString);
                 List<SubtourItem> subtours = ReadModelList<SubtourItem>(subtoursString);
-                List<SubtourItem> subtours2 = ReadModelList<SubtourItem>(removedSubtoursString);
+                List<SubtourItem> removedSubtours = ReadModelList<SubtourItem>(removedSubtoursString);
                 Tour tour = new Tour()
                 {
                     BeginDate = tourObject.BeginDate,
                     Cost = tourObject.Cost,
-                    CreatingTime = null,
+                    CreatingTime = System.DateTime.Now,
                     EndDate = tourObject.EndDate,
                     Memos = "",
                     Status = tourObject.Status == "未进行" ? 0 : tourObject.Status == "进行中" ? 1 : 2,
                     TourId = tourObject.TourId,
                     TourName = tourObject.TourName,
-                    UserId = ""
+                    UserId = tourObject.UserId
                 };
-
-                tourSrv.SaveTour(tour, subtours, removedSubTours, out msg);
+                List<SubTour> subtourList = new List<SubTour>();
+                List<SubTour> rmSubtourList = new List<SubTour>();
+                foreach (SubtourItem item in subtours)
+                {
+                    SubTour subtour = new SubTour()
+                    {
+                        BeginDate = item.BeginDate,
+                        CreatingTime = System.DateTime.Now,
+                        EndDate = item.EndDate,
+                        Memos = "",
+                        SightsId = item.SightId,
+                        SubTourId = item.SubtourId,
+                        SubTourName = item.SubtourName,
+                        TourId = item.TourId
+                    };
+                    subtourList.Add(subtour);
+                }
+                foreach (SubtourItem item in removedSubtours)
+                {
+                    SubTour subtour = new SubTour()
+                    {
+                        BeginDate = item.BeginDate,
+                        CreatingTime = System.DateTime.Now,
+                        EndDate = item.EndDate,
+                        Memos = "",
+                        SightsId = item.SightId,
+                        SubTourId = item.SubtourId,
+                        SubTourName = item.SubtourName,
+                        TourId = item.TourId
+                    };
+                    rmSubtourList.Add(subtour);
+                }
+                string msg;
+                if (tourSrv.SaveTour(tour, subtourList, rmSubtourList, out msg))
+                {
+                    return CreateReturnXmlDocument(true);
+                }
+                else
+                {
+                    throw new Exception(msg);
+                }
             }
             catch (Exception ex)
             {
@@ -978,10 +1053,110 @@ namespace SextantTG.WebServices
             }
         }
 
-        //[WebMethod(Description = "获取所有城市")]
-        //public XmlDocument DeleteTour(string tourString, bool deletePictures)
-        //{
-        //    return tourSrv.DeleteTour(tour, deletePictures);
-        //}
+        [WebMethod(Description = "删除旅行")]
+        public XmlDocument DeleteTour(string tourId, bool deletePictures)
+        {
+            try
+            {
+                string msg;
+                if (tourSrv.DeleteTour(tourSrv.GetTourByTourId(tourId), deletePictures, out msg))
+                {
+                    return CreateReturnXmlDocument(true);
+                }
+                else
+                {
+                    throw new Exception(msg);
+                }
+            }
+            catch (Exception ex)
+            {
+                return CreateErrorXmlDocument(ex);
+            }
+        }
+
+        [WebMethod(Description = "添加评论")]
+        public XmlDocument InsertTourComment(string commentString)
+        {
+            try
+            {
+                CommentItem item = ReadModel<CommentItem>(commentString);
+                TourComment comment = new TourComment()
+                {
+                    Comment = item.Comment,
+                    CommentId = item.CommentId,
+                    CommentUserId = item.UserId,
+                    CreatingTime = DateTime.Now,
+                    TourId = item.TargetId,
+                };
+                string msg;
+
+                if (commentSrv.InsertTourComment(comment, out msg))
+                {
+                    return CreateReturnXmlDocument(true);
+                }
+                else
+                {
+                    return CreateErrorXmlDocument(new Exception(msg));
+                }
+            }
+            catch (Exception ex)
+            {
+                return CreateErrorXmlDocument(ex);
+            }
+        }
+
+        [WebMethod(Description = "撰写日志")]
+        public XmlDocument InsertBlog(string blogString)
+        {
+            try
+            {
+                BlogObject item = ReadModel<BlogObject>(blogString);
+                string msg;
+                Blog blog = new Blog()
+                {
+                    BlogId = item.BlogId,
+                    Content = item.Content,
+                    CreatingTime = System.DateTime.Now,
+                    SightsId = item.SightId,
+                    SubTourId = item.SubtourId,
+                    Title = item.Title,
+                    TourId = item.TourId,
+                    UserId = item.UserId
+                };
+                if (blogSrv.SaveBlog(blog, out msg))
+                {
+                    return CreateReturnXmlDocument(true);
+                }
+                else
+                {
+                    return CreateErrorXmlDocument(new Exception(msg));
+                }
+            }
+            catch (Exception ex)
+            {
+                return CreateErrorXmlDocument(ex);
+            }
+        }
+
+
+
+        [WebMethod(Description = "上传图片")]
+        public XmlDocument UploadPicture(string pictureString, string base64code)
+        {
+            PictureItem pic = ReadModel<PictureItem>(pictureString);
+            byte[] bytes = Convert.FromBase64String(base64code);
+
+            pic.Path = Util.StringHelper.CreateGuid();
+
+            File.WriteAllBytes(PicPath + pic.Path, bytes);
+            return CreateReturnXmlDocument(true);
+            //ltResult2.Text = Encoding.Default.GetString(bytes);
+        }
+
+        [WebMethod]
+        public string testb64()
+        {
+            return Convert.ToBase64String(File.ReadAllBytes(@"E:\ggxx\Pictures\5.jpg")).Length.ToString();
+        }
     }
 }

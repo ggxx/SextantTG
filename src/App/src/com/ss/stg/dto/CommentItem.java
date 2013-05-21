@@ -9,6 +9,7 @@ public class CommentItem extends DTO {
 	
 	private String commentId;
 	private String commentUserName;
+	private String userId;
 	private Date creatingTime;
 	private String targetId;
 	private String comment;
@@ -51,5 +52,13 @@ public class CommentItem extends DTO {
 
 	public void setTargetId(String targetId) {
 		this.targetId = targetId;
+	}
+
+	public String getUserId() {
+		return userId;
+	}
+
+	public void setUserId(String userId) {
+		this.userId = userId;
 	}
 }

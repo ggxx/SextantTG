@@ -15,5 +15,9 @@ namespace SextantTG.WebServices.DTO
         public string SubtourName { get; set; }
         public string Content { get; set; }
         public DateTime CreatingTime { get; set; }
+        public string UserId { get; set; }
+        public string TourId { get; set; }
+        public string SubtourId { get; set; }
+        public string SightId { get; set; }
     }
 }

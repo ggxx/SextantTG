@@ -25,6 +25,9 @@ public interface IWebService {
 	int ID__GET_PROVINCES = 14;
 	int ID__GET_CITIES = 15;
 	int ID__SAVE_TOUR = 16;
+	int ID__UPLOAD_PICTURE = 17;
+	int ID__INSERT_TOUR_COMMENT = 18;
+	int ID__INSERT_BLOG = 19;
 
 	String METHOD__HELLO_WORLD = "HelloWorld";
 	String METHOD__LOGIN = "Login";
@@ -42,6 +45,9 @@ public interface IWebService {
 	String METHOD__GET_PROVINCES = "GetProvinces";
 	String METHOD__GET_CITIES = "GetCities";
 	String METHOD__SAVE_TOUR = "SaveTour";
+	String METHOD__UPLOAD_PICTURE = "UploadPicture";
+	String METHOD__INSERT_TOUR_COMMENT = "InsertTourComment";
+	String METHOD__INSERT_BLOG = "InsertBlog";
 
 	String PARAM__LOGIN__LOGIN_NAME = "loginName";
 	String PARAM__LOGIN__PASSWORD = "password";
@@ -60,6 +66,10 @@ public interface IWebService {
 	String PARAM__SAVE_TOUR__TOUR = "tourString";
 	String PARAM__SAVE_TOUR__SUBTOURS = "subtoursString";
 	String PARAM__SAVE_TOUR__REMOVED_SUBTOURS = "removedSubtoursString";
+	String PARAM__UPLOAD_PICTURE__PICTURESTRING = "pictureString";
+	String PARAM__UPLOAD_PICTURE__BASE64CODE = "base64code";
+	String PARAM__INSERT_TOUR_COMMENT = "commentString";
+	String PARAM__INSERT_BLOG = "blogString";
 
 	String helloWorld();
 
@@ -85,11 +95,17 @@ public interface IWebService {
 
 	SightObject getSightBySightIdAndUserId(String sightId, String userId);
 
-	List<CountryItem> GetCountries();
+	List<CountryItem> getCountries();
 
-	List<ProvinceItem> GetProvinces();
+	List<ProvinceItem> getProvinces();
 
-	List<CityItem> GetCities();
+	List<CityItem> getCities();
+
+	boolean saveTour(TourObject tour, List<SubtourItem> subtourItems, List<SubtourItem> removedSubtourItems);
 	
-	boolean SaveTour(TourObject tour, List<SubtourItem> subtourItems, List<SubtourItem> removedSubtourItems);
+	boolean uploadPicture(PictureItem picture, String base64code);
+	
+	boolean insertTourComment(CommentItem comment);
+	
+	boolean insertBlog(BlogObject blog);
 }

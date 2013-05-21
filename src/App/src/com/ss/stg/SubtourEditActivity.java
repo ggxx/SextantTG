@@ -1,5 +1,6 @@
 package com.ss.stg;
 
+import java.io.File;
 import java.lang.ref.WeakReference;
 import java.text.MessageFormat;
 import java.util.ArrayList;
@@ -9,13 +10,17 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.ss.stg.dto.CityItem;
+import com.ss.stg.dto.CommentItem;
 import com.ss.stg.dto.CountryItem;
+import com.ss.stg.dto.PictureItem;
 import com.ss.stg.dto.ProvinceItem;
 import com.ss.stg.dto.SightItem;
 import com.ss.stg.dto.SubtourItem;
 import com.ss.stg.dto.SubtourObject;
 import com.ss.stg.dto.TourObject;
 import com.ss.stg.ws2.IWebService;
+import com.ss.stg.ws2.MediaScanner;
+import com.ss.stg.ws2.UploadUtil;
 import com.ss.stg.ws2.WSThread;
 
 import android.app.Activity;
@@ -24,13 +29,20 @@ import android.app.Dialog;
 import android.app.DatePickerDialog.OnDateSetListener;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.os.Message;
+import android.provider.MediaStore;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentActivity;
 import android.text.AndroidCharacter;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup;
@@ -47,8 +59,9 @@ import android.widget.Toast;
 
 public class SubtourEditActivity extends FragmentActivity implements OnDateSetListener {
 
+	private final String TAG = "SubtourEditActivity";
 	private Toast toast = null;
-	//private Handler handler = null;
+	private Handler handler = null;
 	private Button okButton = null;
 	private Button cancelButton = null;
 	private Button startDateButton = null;
@@ -60,6 +73,7 @@ public class SubtourEditActivity extends FragmentActivity implements OnDateSetLi
 	private EditText nameEditText = null;
 	private TextView nameTextView = null;
 	private TextView sightTextView = null;
+	private TextView sightIdTextView = null;
 	private TextView countryTipTextView = null;
 	private TextView provinceTipTextView = null;
 	private TextView cityTipTextView = null;
@@ -175,7 +189,7 @@ public class SubtourEditActivity extends FragmentActivity implements OnDateSetLi
 
 	public SubtourEditActivity() {
 		super();
-		//handler = new STGHandler(this);
+		handler = new STGHandler(this);
 	}
 
 	@Override
@@ -199,23 +213,27 @@ public class SubtourEditActivity extends FragmentActivity implements OnDateSetLi
 		provinceTipTextView = (TextView) findViewById(R.id.subtour_edit_province_tv);
 		cityTipTextView = (TextView) findViewById(R.id.subtour_edit_city_tv);
 		sightTipTextView = (TextView) findViewById(R.id.subtour_edit_sight_tv);
+		sightIdTextView = (TextView) findViewById(R.id.subtour_edit_sightid);
 
-		String tourId = null;
-		String subtourId = null;
+		// String tourId = null;
+		// String subtourId = null;
 		final Intent intent = getIntent();
 		pos = intent.getIntExtra("pos", 0);
 		final SubtourItem subtourItem = (SubtourItem) intent.getSerializableExtra("subtour");
 
 		if (subtourItem != null) {
-			tourId = subtourItem.getTourId();
-			subtourId = subtourItem.getSubtourId();
+			// tourId = subtourItem.getTourId();
+			// subtourId = subtourItem.getSubtourId();
 
-			//HashMap<String, Object> params = new HashMap<String, Object>();
-			//WSThread thread = null;
-			//params.put(IWebService.PARAM__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID__TOURID, tourId);
-			//params.put(IWebService.PARAM__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID__SUBTOURID, subtourId);
-			//thread = new WSThread(handler, IWebService.ID__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID, params);
-			//thread.startWithProgressDialog(this);
+			// HashMap<String, Object> params = new HashMap<String, Object>();
+			// WSThread thread = null;
+			// params.put(IWebService.PARAM__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID__TOURID,
+			// tourId);
+			// params.put(IWebService.PARAM__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID__SUBTOURID,
+			// subtourId);
+			// thread = new WSThread(handler,
+			// IWebService.ID__GET_SUBTOUR_BY_TOURID_AND_SUBTOURID, params);
+			// thread.startWithProgressDialog(this);
 
 			nameTextView.setVisibility(View.VISIBLE);
 			sightTextView.setVisibility(View.VISIBLE);
@@ -233,6 +251,7 @@ public class SubtourEditActivity extends FragmentActivity implements OnDateSetLi
 			nameTextView.setText(subtourItem.getSubtourName());
 			nameEditText.setText(subtourItem.getSubtourName());
 			sightTextView.setText(subtourItem.getSightName());
+			sightIdTextView.setText(subtourItem.getSightId());
 
 			Calendar s = Calendar.getInstance();
 			s.setTime(subtourItem.getBeginDate());
@@ -310,6 +329,11 @@ public class SubtourEditActivity extends FragmentActivity implements OnDateSetLi
 					toast.show();
 					return;
 				}
+				if (sightSpinner.getSelectedItem() == null && sightIdTextView.getText().toString().equals("")) {
+					toast = Toast.makeText(SubtourEditActivity.this, "景点不能为空", Toast.LENGTH_SHORT);
+					toast.show();
+					return;
+				}
 
 				int[] s = (int[]) startDateButton.getTag();
 				int[] e = (int[]) endDateButton.getTag();
@@ -317,6 +341,7 @@ public class SubtourEditActivity extends FragmentActivity implements OnDateSetLi
 				String id = subtourItem != null ? subtourItem.getTourId() : "";
 				String subId = subtourItem != null ? subtourItem.getSubtourId() : "";
 				String sight = sightTextView.getText().toString();
+				String sightId = subtourItem != null ? sightIdTextView.getText().toString() : ((SightItem) sightSpinner.getSelectedItem()).getSightId();
 
 				Calendar calendar = Calendar.getInstance();
 				calendar.set(Calendar.YEAR, s[0]);
@@ -335,10 +360,14 @@ public class SubtourEditActivity extends FragmentActivity implements OnDateSetLi
 				subtour.setSubtourId(subId);
 				subtour.setSubtourName(name);
 				subtour.setTourId(id);
+				subtour.setSightId(sightId);
 
 				Intent intent = new Intent();
 				intent.putExtra("pos", pos);
 				intent.putExtra("subtour", subtour);
+
+				System.out.println("fianl dialog subtour = " + subtour.getTourId() + "," + subtour.getSubtourId() + "," + subtour.getSightId());
+
 				setResult(RESULT_OK, intent);
 				finish();
 			}
@@ -375,7 +404,7 @@ public class SubtourEditActivity extends FragmentActivity implements OnDateSetLi
 		}
 	}
 
-/*	private static class STGHandler extends Handler {
+	private static class STGHandler extends Handler {
 
 		private WeakReference<Activity> refActivity = null;
 
@@ -437,5 +466,6 @@ public class SubtourEditActivity extends FragmentActivity implements OnDateSetLi
 
 		}
 
-	}*/
+	}
+
 }

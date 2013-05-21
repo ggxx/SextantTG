@@ -17,7 +17,14 @@ namespace SextantTG.WebServices
         /// <returns></returns>
         internal static object ReadSelectXPath(XmlDocument xml, string xpath)
         {
-            return xml.SelectSingleNode(xpath).InnerText.Trim();
+            try
+            {
+                return xml.SelectSingleNode(xpath).InnerText.Trim();
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
 
@@ -29,7 +36,14 @@ namespace SextantTG.WebServices
         /// <returns></returns>
         internal static string ReadSelectXPathString(XmlDocument xml, string xpath)
         {
-            return xml.SelectSingleNode(xpath).InnerText.Trim();
+            try
+            {
+                return xml.SelectSingleNode(xpath).InnerText.Trim();
+            }
+            catch (Exception ex)
+            {
+                return string.Empty;
+            }
         }
 
         /// <summary>
@@ -56,7 +70,14 @@ namespace SextantTG.WebServices
         /// <returns></returns>
         internal static int? ReadSelectXPathInt(XmlDocument xml, string xpath)
         {
-            return CustomTypeConverter.ToInt32Null(xml.SelectSingleNode(xpath).InnerText.Trim());
+            try
+            {
+                return CustomTypeConverter.ToInt32Null(xml.SelectSingleNode(xpath).InnerText.Trim());
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -67,7 +88,14 @@ namespace SextantTG.WebServices
         /// <returns></returns>
         internal static DateTime? ReadSelectXPathDateTime(XmlDocument xml, string xpath)
         {
-            return CustomTypeConverter.ToDateTimeNull(xml.SelectSingleNode(xpath).InnerText.Trim());
+            try
+            {
+                return CustomTypeConverter.ToDateTimeNull(xml.SelectSingleNode(xpath).InnerText.Trim());
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -78,7 +106,14 @@ namespace SextantTG.WebServices
         /// <returns></returns>
         internal static float? ReadSelectXPathFloat(XmlDocument xml, string xpath)
         {
-            return CustomTypeConverter.ToFloatNull(xml.SelectSingleNode(xpath).InnerText.Trim());
+            try
+            {
+                return CustomTypeConverter.ToFloatNull(xml.SelectSingleNode(xpath).InnerText.Trim());
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
         /// <summary>
@@ -89,7 +124,14 @@ namespace SextantTG.WebServices
         /// <returns></returns>
         internal static bool? ReadSelectXPathBoolean(XmlDocument xml, string xpath)
         {
-            return CustomTypeConverter.ToBooleanNull(xml.SelectSingleNode(xpath).InnerText.Trim());
+            try
+            {
+                return CustomTypeConverter.ToBooleanNull(xml.SelectSingleNode(xpath).InnerText.Trim());
+            }
+            catch (Exception ex)
+            {
+                return null;
+            }
         }
 
         /// <summary>

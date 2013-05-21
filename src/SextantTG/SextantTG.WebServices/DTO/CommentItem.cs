@@ -17,6 +17,8 @@ namespace SextantTG.WebServices.DTO
         /// </summary>
         public string CommentUserName { get; set; }
 
+        public string UserId { get; set; }
+
         /// <summary>
         /// 创建时间
         /// </summary>

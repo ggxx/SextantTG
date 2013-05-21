@@ -145,15 +145,15 @@ public class ToursFragment extends Fragment implements AbsListView.OnItemClickLi
 
 				// 编辑
 				case 1:
-					//toast = Toast.makeText(getActivity(), "暂未实现", Toast.LENGTH_SHORT);
-					//toast.show();
 					Intent intent2 = new Intent(getActivity(), TourEditActivity.class);
 					intent2.putExtra("tourid", mAdapter.getItem(pos).getTourId());
+					intent2.putExtra("userid", ((MainActivity) getActivity()).getLoginUserId());
 					startActivity(intent2);
 					break;
 
 				// 删除
 				case 2:
+
 					toast = Toast.makeText(getActivity(), "暂未实现", Toast.LENGTH_SHORT);
 					toast.show();
 					break;
@@ -192,6 +192,13 @@ public class ToursFragment extends Fragment implements AbsListView.OnItemClickLi
 	public interface OnTourFragmentInteractionListener {
 		// TODO: Update argument type and name
 		public void onTourFragmentInteraction(String id);
+	}
+
+	@Override
+	public void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (resultCode == Activity.RESULT_OK) {
+			mAdapter.notifyDataSetChanged();
+		}
 	}
 
 	private class TourHandler extends Handler {

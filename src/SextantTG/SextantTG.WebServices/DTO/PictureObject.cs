@@ -52,6 +52,9 @@ namespace SextantTG.WebServices.DTO
         /// </summary>
         public DateTime? CreatingTime { get; set; }
 
+        public String TourId { get; set; }
+
+        public String SubtourId { get; set; }
 
         List<CommentItem> CommentItemList { get; set; } 
     }

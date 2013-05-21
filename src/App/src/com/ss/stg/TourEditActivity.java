@@ -42,9 +42,8 @@ public class TourEditActivity extends FragmentActivity implements OnDateSetListe
 	public static final int REQ_EDIT_SUBTOUR = 100;
 	public static final int REQ_ADD_SUBTOUR = 101;
 
-	private TourObject tour;
-
 	private Toast toast = null;
+
 	private Handler handler = null;
 	private Button okButton = null;
 	private Button cancelButton = null;
@@ -54,6 +53,7 @@ public class TourEditActivity extends FragmentActivity implements OnDateSetListe
 	private Spinner statuSpinner = null;
 	private EditText nameEditText = null;
 	private TextView nameTextView = null;
+	private EditText costEditText = null;
 	private ListView subtourListView = null;
 	private TourObject tourObject = null;
 
@@ -75,29 +75,28 @@ public class TourEditActivity extends FragmentActivity implements OnDateSetListe
 		nameEditText = (EditText) findViewById(R.id.tour_edit_name);
 		nameTextView = (TextView) findViewById(R.id.tour_edit_name_r);
 		subtourListView = (ListView) findViewById(R.id.tour_edit_subtourlist);
+		costEditText = (EditText) findViewById(R.id.tour_edit_cost);
 
 		String[] mItems = getResources().getStringArray(R.array.tour_status_dict);
 		ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, mItems);
 		statuSpinner.setAdapter(adapter);
 
 		// boolean readonly = false;
-		String tourId = null;
-		Intent intent = getIntent();
+		final Intent intent = getIntent();
+		final String tourId = intent.getStringExtra("tourid");
+		final String userId = intent.getStringExtra("userid");
 
-		if (intent != null) {
-			tourId = intent.getStringExtra("tourid");
-			if (tourId != null && !tourId.equals("")) {
-				// readonly = intent.getBooleanExtra("readonly", true);
-				handler = new STGHandler(this);
-				HashMap<String, Object> params = new HashMap<String, Object>();
-				WSThread thread = null;
-				params.put(IWebService.PARAM__GET_TOUR_BY_TOURID, tourId);
-				thread = new WSThread(handler, IWebService.ID__GET_TOUR_BY_TOURID, params);
-				thread.startWithProgressDialog(this);
+		if (tourId != null && !tourId.equals("")) {
+			// readonly = intent.getBooleanExtra("readonly", true);
+			handler = new STGHandler(this);
+			HashMap<String, Object> params = new HashMap<String, Object>();
+			WSThread thread = null;
+			params.put(IWebService.PARAM__GET_TOUR_BY_TOURID, tourId);
+			thread = new WSThread(handler, IWebService.ID__GET_TOUR_BY_TOURID, params);
+			thread.startWithProgressDialog(this);
 
-				nameTextView.setVisibility(View.VISIBLE);
-				nameEditText.setVisibility(View.GONE);
-			}
+			nameTextView.setVisibility(View.VISIBLE);
+			nameEditText.setVisibility(View.GONE);
 		}
 
 		startDateButton.setOnClickListener(new View.OnClickListener() {
@@ -152,36 +151,50 @@ public class TourEditActivity extends FragmentActivity implements OnDateSetListe
 			public void onClick(View v) {
 
 				// 保存TourObject
-				TourObject tour2 = TourEditActivity.this.tour;
+				TourObject tour2 = TourEditActivity.this.tourObject;
 				if (tour2 == null) {
 					tour2 = new TourObject();
 				}
-				
-				if(startDateButton.getTag()==null)
-				{
-					
+
+				if (startDateButton.getTag() == null) {
+					toast = Toast.makeText(TourEditActivity.this, "开始时间不能为空", Toast.LENGTH_SHORT);
+					toast.show();
 				}
-				if(endDateButton.getTag()==null ){
-					
+				if (endDateButton.getTag() == null) {
+					toast = Toast.makeText(TourEditActivity.this, "结束时间不能为空", Toast.LENGTH_SHORT);
+					toast.show();
 				}
-				if(nameEditText.getText().toString().equals("") && nameTextView.getText().toString().equals(""))
-				{
-					
+				if (nameEditText.getText().toString().equals("") && nameTextView.getText().toString().equals("")) {
+					toast = Toast.makeText(TourEditActivity.this, "旅行名称不能为空", Toast.LENGTH_SHORT);
+					toast.show();
 				}
-				
-				Calendar s = Calendar.getInstance();
-				s.set(Calendar.YEAR, )
-				tour2.setBeginDate(beginDate);
+
+				int[] s = (int[]) startDateButton.getTag();
+				Calendar c1 = Calendar.getInstance();
+				c1.set(Calendar.YEAR, s[0]);
+				c1.set(Calendar.MONTH, s[1]);
+				c1.set(Calendar.DATE, s[2]);
+
+				int[] e = (int[]) endDateButton.getTag();
+				Calendar c2 = Calendar.getInstance();
+				c2.set(Calendar.YEAR, e[0]);
+				c2.set(Calendar.MONTH, e[1]);
+				c2.set(Calendar.DATE, e[2]);
+
+				tour2.setBeginDate(c1.getTime());
+				tour2.setEndDate(c2.getTime());
+				tour2.setCost(Integer.parseInt(costEditText.getText().toString().replace(",", "")));
+				tour2.setStatus(statuSpinner.getSelectedItem().toString());
+				tour2.setTourName(nameEditText.getText().toString());
+				tour2.setUserId(userId);
 
 				WSThread thread = null;
 				HashMap<String, Object> params2 = new HashMap<String, Object>();
+				params2.put(IWebService.PARAM__SAVE_TOUR__TOUR, tour2);
 				params2.put(IWebService.PARAM__SAVE_TOUR__SUBTOURS, ((SubtourAdapter) subtourListView.getAdapter()).getList());
 				params2.put(IWebService.PARAM__SAVE_TOUR__REMOVED_SUBTOURS, ((SubtourAdapter) subtourListView.getAdapter()).getRemovedList());
 				thread = new WSThread(handler, IWebService.ID__SAVE_TOUR, params2);
 				thread.startWithProgressDialog(TourEditActivity.this);
-
-				// userid = userid;
-
 			}
 		});
 
@@ -222,6 +235,9 @@ public class TourEditActivity extends FragmentActivity implements OnDateSetListe
 				EditText nameEditText = (EditText) activity.findViewById(R.id.tour_edit_name);
 				nameEditText.setText(tour.getTourName());
 
+				EditText costEditText = (EditText) activity.findViewById(R.id.tour_edit_cost);
+				costEditText.setText(String.valueOf(tour.getCost()));
+
 				Calendar c = Calendar.getInstance();
 				c.setTime(tour.getBeginDate());
 				int year = c.get(Calendar.YEAR);
@@ -256,8 +272,15 @@ public class TourEditActivity extends FragmentActivity implements OnDateSetListe
 				setListViewHeightBasedOnChildren(subtourListView);
 
 			} else if (msg.what == IWebService.ID__SAVE_TOUR) {
-				refActivity.get().setResult(RESULT_OK);
-				refActivity.get().finish();
+				if (msg.getData().getBoolean(IWebService.WS_RETURN)) {
+					Toast toast = Toast.makeText(activity, "保存完毕", Toast.LENGTH_SHORT);
+					toast.show();
+					refActivity.get().setResult(RESULT_OK);
+					refActivity.get().finish();
+				} else {
+					Toast toast = Toast.makeText(activity, "保存失败", Toast.LENGTH_SHORT);
+					toast.show();
+				}
 			}
 
 			else {
