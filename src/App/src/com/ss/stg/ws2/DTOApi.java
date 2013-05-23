@@ -151,9 +151,9 @@ public class DTOApi {
 
 	public static String convertToString(BlogObject blog) {
 		return MessageFormat
-				.format("<Request><BlogObject><BlogId>{0}</BlogId><Anthor>{1}</Anthor><Title>{2}</Title><SightName>{3}</SightName><TourName>{4}</TourName><SubtourName>{5}</SubtourName><Content>{6}</Content><CreatingTime>{7}</CreatingTime><SightId>{8}</SightId><TourId>{9}</TourId><SubtourId>{10}</SubtourId><UserId>{11}</UserId></BlogObject></Request>",
+				.format("<Request><BlogObject><BlogId>{0}</BlogId><Anthor>{1}</Anthor><Title>{2}</Title><SightName>{3}</SightName><TourName>{4}</TourName><SubtourName>{5}</SubtourName><Content>{6}</Content><CreatingTime>{7}</CreatingTime><SightId>{8}</SightId><TourId>{9}</TourId><SubtourId>{10}</SubtourId><UserId>{11}</UserId><IsSync>{12}<IsSync></BlogObject></Request>",
 						blog.getBlogId(), blog.getAnthor(), blog.getTitle(), blog.getSightName(), blog.getTourName(), blog.getSubtourName(), blog.getContent(), blog.getCreatingTime(),
-						blog.getSightId(), blog.getTourId(), blog.getSubtourId(), blog.getUserId());
+						blog.getSightId(), blog.getTourId(), blog.getSubtourId(), blog.getUserId(), blog.getSync());
 	}
 
 	public static UserObject parseUserObject(SoapObject obj) {
@@ -237,6 +237,7 @@ public class DTOApi {
 		item.setTourId(getString(tmp, "TourId"));
 		item.setSubtourId(getString(tmp, "SubtourId"));
 		item.setUserId(getString(tmp, "UserId"));
+		item.setSync(getBoolean(tmp, "IsSync"));
 		return item;
 	}
 
@@ -280,6 +281,7 @@ public class DTOApi {
 			item.setTourId(getString(tmp, "TourId"));
 			item.setSubtourId(getString(tmp, "SubtourId"));
 			item.setUserId(getString(tmp, "UserId"));
+			item.setSync(getBoolean(tmp, "IsSync"));
 			blogList.add(item);
 		}
 		return blogList;

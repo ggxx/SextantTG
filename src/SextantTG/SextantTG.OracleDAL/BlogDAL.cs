@@ -40,8 +40,8 @@ namespace SextantTG.OracleDAL
         private static readonly string SELECT___TOUR_ID__SUB_TOUR_ID = "select * from stg_blog where tour_id = :TourId and sub_tour_id = :SubTourId order by creating_time desc";
         private static readonly string SELECT___BLOG_ID = "select * from stg_blog where blog_id = :BlogId order by creating_time desc";
 
-        private static readonly string INSERT = "insert into stg_blog(blog_id, user_id, tour_id, sub_tour_id, sights_id, title, content, creating_time) values(:BlogId, :UserId, :TourId, :SubTourId, :SightsId, :Title, :Content, :CreatingTime)";
-        private static readonly string UPDATE = "update stg_blog set user_id = :UserId, tour_id = :TourId, sub_tour_id = :SubTourId, sights_id = :SightsId, title = :Title, content = :Content, creating_time = :CreatingTime where blog_id = :BlogId";
+        private static readonly string INSERT = "insert into stg_blog(blog_id, user_id, tour_id, sub_tour_id, sights_id, title, content, creating_time, sync) values(:BlogId, :UserId, :TourId, :SubTourId, :SightsId, :Title, :Content, :CreatingTime, :Sync)";
+        private static readonly string UPDATE = "update stg_blog set user_id = :UserId, tour_id = :TourId, sub_tour_id = :SubTourId, sights_id = :SightsId, title = :Title, content = :Content, creating_time = :CreatingTime, sync = :Sync where blog_id = :BlogId";
         private static readonly string DELETE = "delete from stg_blog where blog_id = :BlogId";
         //private static readonly string DELETE___TOUR_ID = "delete from stg_blog where tour_id = :TourId";
         //private static readonly string DELETE___SUB_TOUR_ID = "delete from stg_blog where sub_tour_id = :SubTourId";
@@ -110,6 +110,7 @@ namespace SextantTG.OracleDAL
             pars.Add("Title", blog.Title);
             pars.Add("Content", blog.Content);
             pars.Add("CreatingTime", blog.CreatingTime);
+            pars.Add("Sync", blog.IsSync); 
             return this.ExecuteNonQuery(trans, INSERT, pars);
         }
 
@@ -131,6 +132,7 @@ namespace SextantTG.OracleDAL
             pars.Add("Title", blog.Title);
             pars.Add("Content", blog.Content);
             pars.Add("CreatingTime", blog.CreatingTime);
+            pars.Add("Sync", blog.IsSync); 
             return this.ExecuteNonQuery(trans, UPDATE, pars);
         }
 

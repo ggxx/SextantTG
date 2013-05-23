@@ -49,5 +49,10 @@ namespace SextantTG.ActiveRecord
         /// 创建时间
         /// </summary>
         public DateTime? CreatingTime { get; set; }
+
+        /// <summary>
+        /// 是否已同步
+        /// </summary>
+        public int? IsSync { get; set; }
     }
 }

@@ -19,6 +19,7 @@ public class BlogItem extends DTO {
 	private String tourId;
 	private String subtourId;
 	private String sightId;
+	private boolean sync;
 
 	public String getBlogId() {
 		return blogId;
@@ -114,5 +115,13 @@ public class BlogItem extends DTO {
 
 	public void setUserId(String userId) {
 		this.userId = userId;
+	}
+
+	public boolean getSync() {
+		return sync;
+	}
+
+	public void setSync(boolean sync) {
+		this.sync = sync;
 	}
 }

@@ -54,6 +54,7 @@
         <activity android:name="BlogEditActivity"></activity>
         <activity android:name="CommentEditActivity"></activity>
         <activity android:name="SubtourActivity"></activity>
+        <activity android:name="ConfigActivity"></activity>
     </application>
 
 </manifest>

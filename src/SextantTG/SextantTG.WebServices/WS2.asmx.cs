@@ -616,7 +616,8 @@ namespace SextantTG.WebServices
                 SightId = blog.SightsId,
                 SubtourId = blog.SubTourId,
                 TourId = blog.TourId,
-                UserId = blog.UserId
+                UserId = blog.UserId,
+                IsSync = blog.IsSync == 1
             };
             return CreateReturnXmlDocument(item);
         }
@@ -665,7 +666,8 @@ namespace SextantTG.WebServices
                     SightId = blog.SightsId,
                     SubtourId = blog.SubTourId,
                     TourId = blog.TourId,
-                    UserId = blog.UserId
+                    UserId = blog.UserId,
+                    IsSync = blog.IsSync == 1
                 };
                 blogList.Add(item);
             }
@@ -751,7 +753,8 @@ namespace SextantTG.WebServices
                     SightId = blog.SightsId,
                     SubtourId = blog.SubTourId,
                     TourId = blog.TourId,
-                    UserId = blog.UserId
+                    UserId = blog.UserId,
+                    IsSync = blog.IsSync == 1
                 };
                 blogList.Add(item);
             }
@@ -850,7 +853,8 @@ namespace SextantTG.WebServices
                     SightId = blog.SightsId,
                     SubtourId = blog.SubTourId,
                     TourId = blog.TourId,
-                    UserId = blog.UserId
+                    UserId = blog.UserId,
+                    IsSync = blog.IsSync == 1
                 };
                 blogList.Add(item);
             }
@@ -1121,7 +1125,8 @@ namespace SextantTG.WebServices
                     SubTourId = item.SubtourId,
                     Title = item.Title,
                     TourId = item.TourId,
-                    UserId = item.UserId
+                    UserId = item.UserId,
+                    IsSync = item.IsSync ? 1 : 0
                 };
                 if (blogSrv.SaveBlog(blog, out msg))
                 {
@@ -1139,24 +1144,23 @@ namespace SextantTG.WebServices
         }
 
 
+        //public XmlDocument SyncBlog(string blogId)
+        //{
+
+        //}
 
         [WebMethod(Description = "上传图片")]
         public XmlDocument UploadPicture(string pictureString, string base64code)
         {
-            PictureItem pic = ReadModel<PictureItem>(pictureString);
-            byte[] bytes = Convert.FromBase64String(base64code);
+            return null;
+            //PictureItem pic = ReadModel<PictureItem>(pictureString);
+            //byte[] bytes = Convert.FromBase64String(base64code);
 
-            pic.Path = Util.StringHelper.CreateGuid();
+            //pic.Path = Util.StringHelper.CreateGuid();
 
-            File.WriteAllBytes(PicPath + pic.Path, bytes);
-            return CreateReturnXmlDocument(true);
+            //File.WriteAllBytes(PicPath + pic.Path, bytes);
+            //return CreateReturnXmlDocument(true);
             //ltResult2.Text = Encoding.Default.GetString(bytes);
-        }
-
-        [WebMethod]
-        public string testb64()
-        {
-            return Convert.ToBase64String(File.ReadAllBytes(@"E:\ggxx\Pictures\5.jpg")).Length.ToString();
         }
     }
 }

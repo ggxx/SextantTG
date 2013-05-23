@@ -121,6 +121,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			break;
 
 		case R.id.menu_main_settings:
+			Intent intent = new Intent(this, ConfigActivity.class);
+			startActivity(intent);
 			break;
 		}
 		return false;

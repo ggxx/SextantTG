@@ -1,5 +1,6 @@
 package com.ss.stg.ws2;
 
+import java.text.MessageFormat;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.List;
@@ -9,6 +10,8 @@ import org.ksoap2.SoapEnvelope;
 import org.ksoap2.serialization.SoapObject;
 import org.ksoap2.serialization.SoapSerializationEnvelope;
 import org.ksoap2.transport.HttpTransportSE;
+
+import com.ss.stg.AppConfig;
 import com.ss.stg.dto.*;
 
 public class WebService implements IWebService {
@@ -21,7 +24,7 @@ public class WebService implements IWebService {
 	// private static final String WS_URL =
 	// "http://192.168.137.1:19867/WS2.asmx";
 
-	private static final String WS_URL = "http://10.0.2.2:1153/WS2.asmx";
+	private static final String WS_URL = MessageFormat.format("http://{0}:{1}/{2}", AppConfig.SERVICE_IP, AppConfig.SERVICE_PORT, AppConfig.SERVICE_ASMX);
 
 	private String getMethodName(int methodId) {
 		if (methodId == IWebService.ID__HELLO_WORLD) {

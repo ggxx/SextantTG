@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<PreferenceScreen xmlns:android="http://schemas.android.com/apk/res/android" >
+
+    <PreferenceCategory android:title="配置" android:summary="设置终端信息，请勿任意更改此项设置">
+        <EditTextPreference
+            android:key="service_ip"
+            android:summary="提供WebService的IP地址"
+            android:title="IP地址" />
+        <EditTextPreference
+            android:key="service_port"
+            android:summary="提供WebService的端口"
+            android:title="端口" />
+        <EditTextPreference
+            android:key="service_asmx"
+            android:summary="提供WebService的ASMX地址"
+            android:title="ASMX" />
+    </PreferenceCategory>
+
+</PreferenceScreen>

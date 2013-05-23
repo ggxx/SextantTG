@@ -19,5 +19,6 @@ namespace SextantTG.WebServices.DTO
         public string TourId { get; set; }
         public string SubtourId { get; set; }
         public string SightId { get; set; }
+        public bool IsSync { get; set; }
     }
 }

@@ -12,12 +12,16 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class BlogActivity extends Activity {
 
 	private final static String TAG = "BlogActivity";
 	private Handler handler = null;
+	private static BlogObject blogObject = null;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -31,6 +35,31 @@ public class BlogActivity extends Activity {
 		params.put(IWebService.PARAM__GET_BLOG_BY_BLOGID, blogId);
 		WSThread thread = new WSThread(handler, IWebService.ID__GET_BLOG_BY_BLOGID, params);
 		thread.startWithProgressDialog(this);
+	}
+
+	@Override
+	public boolean onCreateOptionsMenu(Menu menu) {
+		getMenuInflater().inflate(R.menu.blog, menu);
+		return true;
+	}
+
+	@Override
+	public boolean onOptionsItemSelected(MenuItem item) {
+		switch (item.getItemId()) {
+
+		case R.id.menu_blog_sync:
+			if (blogObject == null) {
+				Toast.makeText(this, "同步失败", Toast.LENGTH_SHORT).show();
+				return false;
+			} else if (blogObject.getContent().length() >= 140) {
+				Toast.makeText(this, "不能超过140个字", Toast.LENGTH_SHORT).show();
+				return false;
+			} else {
+				Toast.makeText(this, "暂未实现", Toast.LENGTH_SHORT).show();
+			}
+			break;
+		}
+		return false;
 	}
 
 	private static class STGHandler extends Handler {
@@ -50,15 +79,15 @@ public class BlogActivity extends Activity {
 
 			if (msg.what == IWebService.ID__GET_BLOG_BY_BLOGID) {
 
-				BlogObject blog = (BlogObject) msg.getData().getSerializable(IWebService.WS_RETURN);
-				
-				Log.d(TAG, blog.getBlogId());
-				
+				blogObject = (BlogObject) msg.getData().getSerializable(IWebService.WS_RETURN);
+
+				Log.d(TAG, blogObject.getBlogId());
+
 				TextView titleTextView = (TextView) activity.findViewById(R.id.blog_title);
 				TextView contentTextView = (TextView) activity.findViewById(R.id.blog_content);
 
-				titleTextView.setText(blog.getTitle());
-				contentTextView.setText(blog.getContent());
+				titleTextView.setText(blogObject.getTitle());
+				contentTextView.setText(blogObject.getContent());
 			}
 		}
 	}
