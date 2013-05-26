@@ -8,10 +8,9 @@
 
 * Microsoft Visual Studio 2008/**2010**/2012 (.NET 3.5 SP1)  
 
-### UI控件  
+* Eclipse  
 
-* DevExpress WinForms Toolbox v12.2  
-[http://www.devexpress.com](http://www.devexpress.com)
+* Android Development Tool
 
 ### 数据库及工具  
 
@@ -42,3 +41,5 @@
 
 * Spring.NET 1.3.2  
 [http://www.springsource.org/download/community](http://www.springsource.org/download/community)
+
+* PostSharp

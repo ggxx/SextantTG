@@ -2,6 +2,7 @@ package com.ss.stg;
 
 import java.lang.ref.WeakReference;
 import java.text.MessageFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.HashMap;
 
@@ -86,11 +87,12 @@ public class TourEditActivity extends FragmentActivity implements OnDateSetListe
 		final String tourId = intent.getStringExtra("tourid");
 		final String userId = intent.getStringExtra("userid");
 
+		handler = new STGHandler(this);
+
 		if (tourId != null && !tourId.equals("")) {
 			// readonly = intent.getBooleanExtra("readonly", true);
-			handler = new STGHandler(this);
-			HashMap<String, Object> params = new HashMap<String, Object>();
 			WSThread thread = null;
+			HashMap<String, Object> params = new HashMap<String, Object>();
 			params.put(IWebService.PARAM__GET_TOUR_BY_TOURID, tourId);
 			thread = new WSThread(handler, IWebService.ID__GET_TOUR_BY_TOURID, params);
 			thread.startWithProgressDialog(this);
@@ -154,6 +156,7 @@ public class TourEditActivity extends FragmentActivity implements OnDateSetListe
 				TourObject tour2 = TourEditActivity.this.tourObject;
 				if (tour2 == null) {
 					tour2 = new TourObject();
+					tour2.setTourId("");
 				}
 
 				if (startDateButton.getTag() == null) {
@@ -346,6 +349,11 @@ public class TourEditActivity extends FragmentActivity implements OnDateSetListe
 			if (resultCode == RESULT_OK) {
 				int pos = data.getIntExtra("pos", 0);
 				SubtourItem subtourItem = (SubtourItem) data.getSerializableExtra("subtour");
+
+				if (subtourListView.getAdapter() == null) {
+					subtourListView.setAdapter(new SubtourAdapter(this, SubtourAdapter.EDITABLE, new ArrayList<SubtourItem>()));
+				}
+
 				((SubtourAdapter) subtourListView.getAdapter()).insert(subtourItem, pos);
 				((SubtourAdapter) subtourListView.getAdapter()).notifyDataSetChanged();
 				setListViewHeightBasedOnChildren(subtourListView);

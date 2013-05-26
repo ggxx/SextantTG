@@ -197,7 +197,12 @@ public class ToursFragment extends Fragment implements AbsListView.OnItemClickLi
 	@Override
 	public void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (resultCode == Activity.RESULT_OK) {
-			mAdapter.notifyDataSetChanged();
+			HashMap<String, Object> params = new HashMap<String, Object>();
+			WSThread thread = null;
+			String userId = ((MainActivity) getActivity()).getLoginUserId();
+			params.put(IWebService.PARAM__GET_TOURS_BY_USERID, userId);
+			thread = new WSThread(handler, IWebService.ID__GET_TOURS_BY_USERID, params);
+			thread.startWithProgressDialog(getActivity());
 		}
 	}
 
@@ -218,10 +223,10 @@ public class ToursFragment extends Fragment implements AbsListView.OnItemClickLi
 				List<TourItem> list = (List<TourItem>) msg.getData().getSerializable(IWebService.WS_RETURN);
 				mAdapter = new ToursAdapter(activity, list);
 				mListView.setAdapter(mAdapter);
+				mAdapter.notifyDataSetChanged();
 			} else {
 				showNetworkErrorDialog();
 			}
-
 		}
 
 		private void showNetworkErrorDialog() {
